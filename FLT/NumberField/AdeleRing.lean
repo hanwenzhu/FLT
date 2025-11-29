@@ -1,3 +1,4 @@
+import Architect
 import FLT.Mathlib.NumberTheory.NumberField.Basic
 import FLT.Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
 import FLT.Mathlib.Topology.Algebra.Group.Quotient
@@ -16,6 +17,18 @@ section LocallyCompact
 variable (K : Type*) [Field K] [NumberField K]
 
 open IsDedekindDomain.HeightOneSpectrum in
+@[blueprint
+  "NumberField.AdeleRing.locallyCompactSpace"
+  (statement := /-- The adeles of a number field are locally compact. -/)
+  (proof := /-- The adeles of a number field are a product of the finite adeles and the infinite
+    adeles
+    so it suffices to prove that the finite and infinite adeles are locally compact.
+    The infinite adeles are just isomorphic to $\R^n$ as a topological space, so they're certainly
+    locally compact. As for the finite adeles,
+    the mathlib theorem {\tt RestrictedProduct.locallyCompactSpace\_of\_addGroup}
+    says that a restricted product of locally compact additive groups with respect to open compact
+    subgroups is locally compact, so this reduces us the previous result. -/)
+  (discussion := 253)]
 instance NumberField.AdeleRing.locallyCompactSpace : LocallyCompactSpace (AdeleRing (𝓞 K) K) :=
   Prod.locallyCompactSpace _ _
 
@@ -80,6 +93,14 @@ noncomputable instance : Algebra (𝔸 K) (𝔸 L) :=
 instance instPiIsModuleTopology : IsModuleTopology (𝔸 K) (Fin (Module.finrank K L) → 𝔸 K) :=
   IsModuleTopology.instPi
 
+@[blueprint
+  "NumberField.AdeleRing.baseChange_moduleTopology"
+  (statement := /-- If $K\to L$ is a ring homomorphism between two number fields then the topology
+    on $\A_L$
+    is the $\A_K$-module topology, where the module structure comes from the
+    natural map $\A_K\to\A_L$. -/)
+  (proof := /-- Indeed $\A_L\cong L\otimes_K\A_K$ is a homeomorphism, and
+    the right hand side has the $\A_K$-module topology. -/)]
 instance instBaseChangeIsModuleTopology : IsModuleTopology (𝔸 K) (𝔸 L) := by
   exact IsModuleTopology.instProd' (A := InfiniteAdeleRing K)
     (B := FiniteAdeleRing (𝓞 K) K) (M := InfiniteAdeleRing L) (N := FiniteAdeleRing (𝓞 L) L)
@@ -129,6 +150,12 @@ noncomputable def baseChangeAdeleEquiv : (L ⊗[K] 𝔸 K) ≃A[𝔸 K] 𝔸 L :
 open scoped TensorProduct.RightActions in
 /-- The canonical `L`-algebra isomorphism from `L ⊗_K 𝔸_K` to `𝔸_L` induced by the
 `K`-algebra base change map `𝔸_K → 𝔸_L`. -/
+@[blueprint
+  "NumberField.AdeleRing.baseChangeEquiv"
+  (statement := /-- If $K\to L$ is a ring homomorphism between two number fields then there is a
+    natural isomorphism
+    (both topological and algebraic) $L\otimes_K\A_K\cong\A_L$. -/)
+  (proof := /-- Follows from the previous results. -/)]
 noncomputable def baseChangeEquiv :
     (L ⊗[K] 𝔸 K) ≃A[L] 𝔸 L where
   __ := (baseChangeSemialgHom K L).baseChange_of_algebraMap
@@ -263,6 +290,13 @@ section Discrete
 
 open IsDedekindDomain
 
+@[blueprint
+  "Rat.AdeleRing.zero_discrete"
+  (statement := /-- There's an open subset of $\A_{\Q}$ whose intersection with $\Q$ is $\{0\}$. -/)
+  (proof := /-- Use $\prod_p{\Z_p}\times(-1,1)$. Any rational $q$ in this set is a $p$-adic
+    integer for all primes $p$ and hence (writing it in lowest terms as $q=n/d$)
+    satisfies $p\nmid d$, meaning that $d=\pm1$ and thus $q\in\Z$. The fact
+    that $q\in(-1,1)$ implies $q=0$. -/)]
 theorem Rat.AdeleRing.zero_discrete : ∃ U : Set (AdeleRing (𝓞 ℚ) ℚ),
     IsOpen U ∧ (algebraMap ℚ (AdeleRing (𝓞 ℚ) ℚ)) ⁻¹' U = {0} := by
   let integralAdeles := {f : FiniteAdeleRing (𝓞 ℚ) ℚ |
@@ -328,6 +362,12 @@ theorem Rat.AdeleRing.zero_discrete : ∃ U : Set (AdeleRing (𝓞 ℚ) ℚ),
 
 variable (K : Type*) [Field K] [NumberField K]
 
+@[blueprint
+  "NumberField.AdeleRing.zero_discrete"
+  (statement := /-- There's an open subset of $\A_{K}$ whose intersection with $K$ is $\{0\}$. -/)
+  (proof := /-- By a previous result, we have $\A_K=K\otimes_{\Q}\A_{\Q}$.
+    Choose a basis of $K/\Q$; then $K$ can be identified with $\Q^n\subseteq(\A_{\Q})^n$
+    and the result follows from the previous theorem. -/)]
 theorem NumberField.AdeleRing.zero_discrete : ∃ U : Set (AdeleRing (𝓞 K) K),
     IsOpen U ∧ (algebraMap K (AdeleRing (𝓞 K) K)) ⁻¹' U = {0} := by
   obtain ⟨V, hV, hV0⟩ := Rat.AdeleRing.zero_discrete
@@ -358,6 +398,12 @@ theorem NumberField.AdeleRing.zero_discrete : ∃ U : Set (AdeleRing (𝓞 K) K)
 -- Maybe this discreteness isn't even stated in the best way?
 -- I'm ambivalent about how it's stated
 open Pointwise in
+@[blueprint
+  "NumberField.AdeleRing.discrete"
+  (statement := /-- The additive subgroup $K$ of $\A_K$ is discrete. -/)
+  (proof := /-- If $x\in K$ and $U$ is the open subset in the previous lemma, then
+    it's easily checked that $K\cap U=\{0\}$ implies $K\cap (U+x)=\{x\}$,
+    and $U+x$ is open. -/)]
 theorem NumberField.AdeleRing.discrete : ∀ x : K, ∃ U : Set (AdeleRing (𝓞 K) K),
     IsOpen U ∧ (algebraMap K (AdeleRing (𝓞 K) K)) ⁻¹' U = {x} := by
   obtain ⟨V, hV, hV0⟩ := zero_discrete K
@@ -432,6 +478,16 @@ instance (v : InfinitePlace K) : ProperSpace v.Completion :=
   ProperSpace.of_locallyCompactSpace v.Completion
 
 open Metric IsDedekindDomain.HeightOneSpectrum.FiniteAdeleRing AdeleRing in
+@[blueprint
+  "Rat.AdeleRing.cocompact"
+  (statement := /-- The quotient $\A_{\Q}/\Q$ is compact. -/)
+  (proof := /-- The space $\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}$ is a product of compact spaces
+    and is hence compact. I claim that it surjects onto $\A_{\Q}/\Q$. Indeed,
+    if $a\in\A_{\Q}$ then for the finitely many prime numbers $p\in S$ such that $a_p\not\in\Z_p$
+    we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$, and
+    if $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$ then $a-q\in \prod_p\Z_p\times\R$.
+    Now just subtract $\lfloor a_{\infty}-q\rfloor$ to move into $\prod_p\Z_p\times[0,1)$
+    and we are done. -/)]
 theorem Rat.AdeleRing.cocompact :
     CompactSpace (AdeleRing (𝓞 ℚ) ℚ ⧸ AdeleRing.principalSubgroup (𝓞 ℚ) ℚ) where
   isCompact_univ := by
@@ -459,6 +515,13 @@ theorem Rat.AdeleRing.cocompact :
 
 variable (K L : Type*) [Field K] [Field L] [NumberField K] [NumberField L] [Algebra K L]
 
+@[blueprint
+  "NumberField.AdeleRing.cocompact"
+  (statement := /-- The quotient $\A_K/K$ is compact. -/)
+  (proof := /-- We proceed as in the discreteness proof above, by reducing to $\Q$. As before,
+    choosing
+    a $\Q$-basis of $K$ gives us $\A_K/K\cong(\A_{\Q}/\Q)^n$ so the result follows from
+    the previous theorem. -/)]
 theorem NumberField.AdeleRing.cocompact :
     CompactSpace (AdeleRing (𝓞 K) K ⧸ principalSubgroup (𝓞 K) K) :=
   letI := Rat.AdeleRing.cocompact

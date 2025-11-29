@@ -1,3 +1,4 @@
+import Architect
 import FLT.AutomorphicForm.QuaternionAlgebra.Defs
 import FLT.DivisionAlgebra.Finiteness
 import FLT.Mathlib.Algebra.IsQuaternionAlgebra
@@ -37,6 +38,31 @@ Let `D/F` be a totally definite quaterion algebra over a totally real
 field. Then the space of `K`-valued weight 2 level `U` quaternionic automorphic forms
 for `Dˣ` is finite-dimensional over `K`.
 -/
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional"
+  (statement := /-- Let $k$ be a field. Then the space $S^D(U;k)$ is a finite-dimensional $k$-vector
+    space. -/)
+  (proof := /-- The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's
+    lemma,
+    proved in the Fukisaki miniproject, chapter~\ref{Fujisaki_project}.
+    Write $(D\otimes_F\A_F^\infty)^\times$ as a disjoint union of double cosets
+    $\coprod_i D^\times g_i U$. This open cover descends to a disjoint open
+    cover of $D^\times\backslash (D\otimes_F\A_F^\infty)^\times$,
+    and this latter space is compact by
+    theorem~\ref{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}.
+    Hence the cover is finite; write the double coset representatives
+    as $g_1,g_2,\ldots,g_n$. We claim that
+    the function $S^D(U;k)\to W^n$ sending $f$ to $(f(g_1),f(g_2),\ldots,f(g_n))$
+    is injective and $k$-linear, which suffices by finite-dimensionality of $W$.
+    $k$-linearity is easy, so let's talk about injectivity.
+    
+    Say $f_1$ and $f_2$ are two elements of $S^D(U;k)$ which agree on
+    each $g_i$. It suffices to prove that $f_1(g)=f_2(g)$ for all
+    $g\in(D\otimes_F\A_F^\infty)^\times$. So say $g\in(D\otimes_F\A_F^\infty)^\times$,
+    and write $g=\delta g_iu$ for $\delta \in D^\times$ and $u\in U$.
+    Then $f_1(g)=f_1(\delta g_iu)=f_1(g_i)$ (by the definition of $S^D(U;k)$), and similarly
+    $f_2(g)=f_2(g_i)$
+    and because $f_1(g_i)=f_2(g_i)$ by assumption, we deduce $f_1(g)=f_2(g)$ as required. -/)]
 theorem WeightTwoAutomorphicForm.finiteDimensional
     (hU : IsOpen (U : Set (Dfx F D))) :
     FiniteDimensional K (WeightTwoAutomorphicFormOfLevel U K) := by

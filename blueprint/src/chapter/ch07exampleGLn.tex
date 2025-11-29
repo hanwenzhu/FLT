@@ -28,18 +28,7 @@ topological group, where we are being a bit liberal with our use of the equality
 
 \section{Smooth functions}
 
-\begin{definition}
-  \label{AutomorphicForm.GLn.IsSmooth}
-  \lean{AutomorphicForm.GLn.IsSmooth}
-  A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
-  if it has the following three properties.
-
-  \begin{enumerate}
-    \item $f$ is continuous.
-    \item For all $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$ is smooth.
-    \item For all $y\in\GL_n(\R)$, the function $x\mapsto f(x,y)$ is locally constant.
-  \end{enumerate}
-\end{definition}
+\inputleannode{AutomorphicForm.GLn.IsSmooth}
 
 Current state of this definition: I've half-formalised it; I don't know how to say the the
 function is smooth on the infinite part, because I have never used the manifold library before
@@ -55,28 +44,14 @@ $s(M)=trace(MM^T+M^{-1}M^{-T})$ where $M^{-T}$ denotes inverse-transpose. Note t
 $s(M)$ is always positive, and is large if $M$ has a very large or very small
 (in absolute value) eigenvalue.
 
-\begin{definition}
-  \label{AutomorphicForm.GLn.IsSlowlyIncreasing}
-  \lean{AutomorphicForm.GLn.IsSlowlyIncreasing}
-  \leanok
-  We say that a function $f:\GL_n(\R)\to\bbC$ is \emph{slowly-increasing}
-  if there's some real constant $C$ and positive integer $n$ such that $|f(M)|\leq Cs(M)^n$
-  for all $M\in\GL_n(\R)$.
-\end{definition}
+\inputleannode{AutomorphicForm.GLn.IsSlowlyIncreasing}
 
 Note: the book says $n$ is positive, but $\{M|s(M)\leq 1\}$ is compact so I don't
 think it makes any difference.
 
 \section{Weights at infinity}
 
-\begin{definition}
-  \label{AutomorphicForm.GLn.Weight}
-  \lean{AutomorphicForm.GLn.Weight}
-
-The \emph{weight} of an automorphic form for $\GL_n/\Q$ can be thought of as a finite-dimensional
-continuous complex representation $\rho$ of a maximal compact subgroup of $\GL_n(\R)$,
-and it's convenient to choose one (they're all conjugate) so we choose $O_n(\R)$.
-\end{definition}
+\inputleannode{AutomorphicForm.GLn.Weight}
 
 The Lean definition is incomplete right now -- I don't demand irreducibility
 (I wasn't sure whether I was doing this the right way; if I used category theory
@@ -125,33 +100,7 @@ complex functions.
 
 From here on there is no more Lean right now, only LaTeX.
 
-\begin{definition}
-  \label{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
-  \lean{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
-  \uses{AutomorphicForm.GLn.IsSmooth, AutomorphicForm.GLn.IsSlowlyIncreasing,
-    AutomorphicForm.GLn.Weight, instCentreAction}
-  A smooth function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is
-  an $O_n(\R)$-\emph{automorphic form} on $\GL_n(\A_{\Q})$ if it satisfies the following
-  five conditions.
-  \begin{enumerate}
-    \item (periodicity) For all $g\in\GL_n(\Q)$, we have $f(gx,gy)=f(x,y)$.
-    \item (has a finite level) There exists a compact open subgroup $U\subseteq\GL_n(\A_{\Q}^f)$
-      such that $f(xu,y)=f(x,y)$ for all $u\in U$, $x\in \GL_n(\A_{\Q}^f)$ and $y\in\GL_n(\R)$.
-    \item (weight $\rho$) There exists a continuous finite-dimensional irreducible complex
-    representation $\rho$ of $O_n(\R)$ such that for every $(x,y)\in\GL_n(\A_{\Q})$, the
-    set of functions $k\mapsto f(x,yk)$ span a finite-dimensional complex vector space isomorphic
-    as $O_n(\R)$-representation to a direct sum of copies of $\rho$.
-    \item (has an infinite level) There is an ideal $I$ of the centre $Z_n$ described in the
-    previous section, which has finite complex codimension, and which annihiliates the
-    function $y \mapsto f(x,y)$ for all $x\in \GL_n(\A_{\Q}^f)$. Note that this is a very fancy
-    way of saying ``the function satisfies some natural differential equations''. In the
-    case of modular forms, the differential equations are the Cauchy-Riemann equations, which
-    is why modular forms are holomorphic.
-    \item (growth condition) For every $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$
-  on $\GL_n(\R)$ is slowly-increasing.
-  \end{enumerate}
-
-\end{definition}
+\inputleannode{AutomorphicForm.GLn.AutomorphicFormForGLnOverQ}
 
 Automorphic forms of a fixed weight $\rho$ form a complex vector space, and if we also
 fix the finite level $U$ and the infinite level $I$ then we get a subspace which is

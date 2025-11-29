@@ -1,3 +1,4 @@
+import Architect
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 import FLT.GaloisRepresentation.HardlyRamified.ModThree -- will be needed for proof
 
@@ -11,6 +12,13 @@ local notation "Frob" => Field.AbsoluteGaloisGroup.adicArithFrob
 /--
 A 3-adic hardly ramified representation has trace(Frob_p) = 1 + p for all p ≠ 2,3
 -/
+@[blueprint
+  "hardly_ramified_3adic_reducible"
+  (statement := /-- Suppose $L/\Q_3$ is a finite extension, with integer ring $\calO_L$, and suppose
+    $\rho_3:\GQ\to\GL_2(\calO_L)$ is hardly ramified. Then (considered as a representation
+    to $\GL_2(L)$) $\rho_3^{ss}=1\oplus\chi_3$
+    where $1$ is the trivial character and $\chi_3$ is the 3-adic cyclotomic character. -/)
+  (proof := /-- Omitted for now {\bf TODO} -/)]
 theorem three_adic {R : Type*} [CommRing R] [Algebra ℤ_[3] R] [Module.Finite ℤ_[3] R]
     [Module.Free ℤ_[3] R] [TopologicalSpace R] [IsTopologicalRing R] [IsLocalRing R]
     [IsModuleTopology ℤ_[3] R]

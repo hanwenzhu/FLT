@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Yunzhou Xie
 -/
+import Architect
 import FLT.Mathlib.Algebra.Algebra.Bilinear
 import Mathlib.Algebra.Central.Defs
 import Mathlib.FieldTheory.IsAlgClosed.AlgebraicClosure
@@ -48,6 +49,19 @@ variable [Algebra.IsCentral k D] [IsSimpleRing D] [FiniteDimensional k D]
 instance (A B : Type*) [Ring A] [Ring B] [Algebra k A] [Algebra k B]
     [Algebra.IsCentral k B] [IsSimpleRing A] [IsSimpleRing B] : IsSimpleRing (A ⊗[k] B) := sorry
 
+@[blueprint
+  "IsSimpleRing.mulLeft_det_eq_mulRight_det"
+  (statement := /-- Say $B$ is a finite-dimensional central simple algebra over a field~$k$,
+    and $u\in B^\times$. Let $\ell_u:B\to B$ be the $k$-linear mapping $x$ to $ux$ and
+    let $r_u:B\to B$ be the $k$-linear map sending $x$ to $xu$. Then
+    $\det(\ell_u)=\det(r_u)$. -/)
+  (proof := /-- Determinants are unchanged by base extension, so WLOG $k$ is algebraically closed.
+    Then it's known that $B$ must be a matrix algebra, say $M_n(k)$. Now $u$ can be thought
+    of as a matrix which has its own intrinsic determinant $d$, and $B$ as a left $B$-module
+    becomes a direct sum of $n$ copies of $V$, the standard $n$-dimensional representation of $B$.
+    Thus $\det(\ell_u)=d^n$. Similarly $\det(r_u)=d^n$ and in particular they are equal. -/)
+  (discussion := 518)
+  (latexEnv := "lemma")]
 lemma IsSimpleRing.mulLeft_det_eq_mulRight_det (d : D) :
     (LinearMap.mulLeft k d).det = (LinearMap.mulRight k d).det := by
   let K' := AlgebraicClosure k

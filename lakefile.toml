@@ -14,6 +14,10 @@ linter.mathlibStandardSet = true
 warn.sorry = false
 
 [[require]]
+name = "LeanArchitect"
+scope = "hanwenzhu"
+
+[[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"
 

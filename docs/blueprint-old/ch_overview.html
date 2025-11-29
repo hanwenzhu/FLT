@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>An overview of the proof</title>
+<link rel="next" href="sect0002.html" title="An example of an automorphic form" />
+<link rel="prev" href="ch_freyreduction.html" title="Reducibility of p-torsion of the Frey curve" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="ch_overview">4 An overview of the proof</h1>
+
+<p>So far we have seen that, modulo Mazur’s theorem (and various other things which will still take some work to formalise but which are much easier), Fermat’s Last Theorem can be reduced to the statement that there is no prime \(\ell \geq 5\) and hardly-ramified irreducible 2-dimensional Galois representation \(\rho :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathbb {Z}/\ell \mathbb {Z})\). </p>
+<p>In this chapter we give an overview of our strategy for proving this, and collect various results which we will need along the way. Note that we no longer need to assume that \(\rho \) comes from the \(\ell \)-torsion in an elliptic curve. </p>
+<h1 id="a0000000018">4.1 Potential modularity.</h1>
+<p>We will only speak about modularity for 2-dimensional representations of the absolute Galois group of a totally real field \(F\) <em>of even degree over</em> \(\mathbb {Q}\). What we will mean by “modular” is “associated to an automorphic representation of the units of the totally definite quaternion algebra over \(F\) ramified at no finite places and at all infinite places”. Such a quaternion algebra only exists if \(F\) has even degree, hence the restriction in our definition of modularity. We can furthermore even demand that the infinity type of the form is trivial (the analogue in this setting of classical weight 2 forms), as these are the only forms we shall need for FLT. </p>
+<p>Assume we have a hardly-ramified representation&#160;\(\rho \) as above. Let \(K\) be the number field corresponding to the kernel of&#160;\(\rho \). Our first claim is that there is some totally real field \(F\) of even degree, Galois over \(\mathbb {Q}\), unramified at \(\ell \), and disjoint from \(K\), such that \(\rho |G_F\) is modular. The proof of this is very long, and uses a host of machinery. For example: </p>
+<ul class="itemize">
+  <li><p>Moret–Bailly’s result&#160;<span class="cite">
+	[
+	<a href="sect0005.html#moret-bailly" >8</a>
+	]
+</span> on points on curves with prescribed local behaviour; </p>
+</li>
+  <li><p>several nontrivial results in global class field theory; </p>
+</li>
+  <li><p>the Jacquet–Langlands correspondence; </p>
+</li>
+  <li><p>The assertion that irreducible 2-dimensional mod \(p\) representations induced from a character are modular (this follows from converse theorems); </p>
+</li>
+  <li><p>A modularity lifting theorem. </p>
+</li>
+</ul>
+<p>Almost everything here dates back to the 1980s or before. The exception is the modularity lifting theorem, which we now state explicitly. </p>
+<h1 id="a0000000019">4.2 A modularity lifting theorem</h1>
+<p>Suppose \(\ell \geq 5\) is a prime, that \(F\) is a totally real field of even degree in which \(\ell \) is unramified, and that&#160;\(S\) is a finite set of finite places of&#160;\(F\) not dividing&#160;\(\ell \). Write \(G_F\) for the absolute Galois group of&#160;\(F\). </p>
+<p>If \(v\in S\) then let \(F_v\) denote the completion of&#160;\(F\) at&#160;\(v\), fix an inclusion \(\overline{F}\to \overline{F_v}\), let \(\mathcal{O}_v\) denote the integers of \(F_v\) and \(k(v)\) the residue field. Let \(I_v\subset G_F\) denote the inertia subgroup at&#160;\(v\). Local class field theory (or a more elementary approach) gives a map \(I_v\to \mathcal{O}_{F_v}^\times \) and hence a map \(I_v\to k(v)^\times \). Let \(J_v\) denote the kernel of this map. </p>
+<p>Let \(R\) be a complete local Noetherian \(\mathbb {Z}_\ell \)-algebra with finite residue field of characteristic \(\ell \). We will be interested in representations \(\rho :G_F\to \operatorname{GL}_2(R)\) with the following four properties. </p>
+<ul class="itemize">
+  <li><p>\(\det (\rho )\) is the cyclotomic character; </p>
+</li>
+  <li><p>\(\rho \) is unramified outside \(S\cup \{ \ell \} \); </p>
+</li>
+  <li><p>If \(v\in S\) then \(\rho (g)\) has trace equal to&#160;2 for all \(g\in J_v\); </p>
+</li>
+  <li><p>If \(v\mid \ell \) is a place of \(F\) then \(\rho \) is flat at&#160;\(v\). </p>
+</li>
+</ul>
+<p>In the last bullet point, “flat” means “projective limit of representations arising from finite flat group schemes”. Let us use the lousy temporary notation “\(S\)-good” to denote representations with these four properties. </p>
+<p>Say \(k\) is a finite extension of \(\mathbb {Z}/\ell \mathbb {Z}\) and \(\overline{\rho }:G_F\to \operatorname{GL}_2(k)\) is continuous, absolutely irreducible when restricted to \(F(\zeta _\ell )\), and \(S\)-good. One can check that the functor representing \(S\)-good lifts of \(\overline{\rho }\) is representable. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="modularity_lifting_theorem">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">4.1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_overview.html#modularity_lifting_theorem">#</a>
+    
+    <a class="icon proof" href="ch_overview.html#a0000000098"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#Skinner_Wiles_CFT_trick">Theorem 13.11</a></li>
+          
+          <li><a href="ch_bestiary.html#local_galois_coh_dim_two">Theorem 13.5</a></li>
+          
+          <li><a href="ch_bestiary.html#local_galois_coh_top_degree">Theorem 13.6</a></li>
+          
+          <li><a href="ch_bestiary.html#local_galois_coh_poincare">Theorem 13.8</a></li>
+          
+          <li><a href="ch_bestiary.html#local_galois_coh_euler_poincare">Theorem 13.9</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">Theorem 8.15</a></li>
+          
+          <li><a href="ch_bestiary.html#automorphic_representation_local_decomposition">Theorem 13.28</a></li>
+          
+          <li><a href="ch_bestiary.html#cuspidal_automorphic_representation">Definition 13.26</a></li>
+          
+          <li><a href="ch_bestiary.html#Galois_representation_from_automorphic_representation_on_GL_2_form">Theorem 13.30</a></li>
+          
+          <li><a href="ch_bestiary.html#moret-bailly">Theorem 13.32</a></li>
+          
+          <li><a href="ch_bestiary.html#local_galois_coh_finite">Theorem 13.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  If \(\overline{\rho }\) is modular of level \(\Gamma _1(S)\) and \(\rho :G_F\to \operatorname{GL}_2(\mathcal{O})\) is an \(S\)-good lift of \(\overline{\rho }\) to \(\mathcal{O}\), the integers of a finite extension of \(\mathbb {Q}_\ell \), then \(\rho \) is also modular of level \(\Gamma _1(S)\). </p>
+
+  </div>
+</div>
+<p>Right now we are very far from even stating this theorem in Lean. </p>
+<p>I am not entirely sure where to find a proof of this in the literature, although it has certainly been known to the experts for some time. Theorem 3.3 of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#taylor-mero-cont" >12</a>
+	]
+</span> comes close, although it assumes that \(\ell \) is totally split in \(F\) rather than just unramified. Another near-reference is Theorem&#160;5.2 of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#toby-modularity" >5</a>
+	]
+</span>, although this assumes the slightly stronger assumption that the image of \(\rho \) contains \(\operatorname{SL}_2(\mathbb {Z}/p\mathbb {Z})\) (however it is well-known to the experts that this can be weakened to give the result we need). One reference for the proof is <a href ="https://math.berkeley.edu/~fengt/249A_2018.pdf">Richard Taylor’s 2018 Stanford course</a>. </p>
+<div class="proof_wrapper" id="a0000000098">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>(Sketch) </p>
+<p>The proof is a two-stage procedure and has a nontrivial analytic input. First one uses the Skinner–Wiles trick to reduce to the “minimal case”, and this needs cyclic base change for \(\operatorname{GL}(2)\) and also a characterisation of the image of the base change construction; this seems to need a multiplicity one result, which (because of our definition of “modular”) will need Jacquet–Langlands as well. </p>
+<p>In the minimal case, the argument is the usual Taylor–Wiles trick, using refinements due to Kisin and others. </p>
+
+  </div>
+</div>
+<p>Given this modularity lifting theorem, the strategy to show potential modularity of \(\rho \) is to use Moret–Bailly to find an appropriate totally real field \(F\), an auxiliary prime \(p\), and an auxiliary elliptic curve over \(F\) whose mod \(\ell \) Galois representation is \(\rho \) and whose mod \(p\) Galois representation is induced from a character. By converse theorems (for example) the mod \(p\) Galois representation is associated to an automorphic representation of \(\operatorname{GL}_2/F\) and hence by Jacquet–Langlands it is modular. Now we use the modularity lifting theorem to deduce the modularity of the curve over \(F\) and hence the modularity of the \(\ell \)-torsion. </p>
+<h1 id="a0000000020">4.3 Compatible families, and reduction at 3</h1>
+<p>We now use Khare–Wintenberger to lift \(\rho \) to a potentially modular \(\ell \)-adic Galois representation of conductor 2, and put it into an \(\ell \)-adic family using the Brauer’s theorem trick in <span class="cite">
+	[
+	<a href="sect0005.html#blggt" >1</a>
+	]
+</span>. Finally we look at the 3-adic specialisation of this family. Reducing mod 3 we get a representation which is flat at 3 and tame at 2, so must be reducible because of the techniques introduced in Fontaine’s paper on abelian varieties over \(\mathbb {Z}\) (an irreducible representation would cut out a number field whose discriminant violates the Odlyzko bounds). One can now go on to deduce that the 3-adic representation must be reducible, which contradicts the irreducibility of \(\rho \). </p>
+<p>We apologise for the sketchiness of what is here, however at the time of writing it is so far from what we are even able to <em>state</em> in Lean that there seems to be little point right now in fleshing out the argument further. As this document grows, we will add a far more detailed discussion of what is going on here. Note in particular that stating the modularity lifting theorem in Lean is the first target.  </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="ch_freyreduction.html" title="Reducibility of p-torsion of the Frey curve"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0002.html" title="An example of an automorphic form"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

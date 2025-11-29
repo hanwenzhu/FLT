@@ -1,3 +1,4 @@
+import Architect
 import Mathlib.MeasureTheory.Measure.Haar.Unique
 import Mathlib.MeasureTheory.Measure.Haar.MulEquivHaarChar
 import FLT.Mathlib.Topology.Algebra.ContinuousMonoidHom
@@ -90,7 +91,30 @@ lemma haarScalarFactor_map (μ' μ : Measure G) [IsHaarMeasure μ] [IsHaarMeasur
   · change ∫ x, f (φ x) ∂μ ≠ 0
     rwa [← integral_map hφ f_cont.aestronglyMeasurable]
 
-@[to_additive]
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar"
+  (statement := /-- If $A$ is a locally compact topological additive abelian group,
+    if $\mu$ is a regular Haar measure on $A$, and if $\phi:A\to A$ is an
+    additive homeomorphism, then we let $d_A(\phi)$ denote the unique positive
+    real number such that $\mu(X)=d_A(\phi)(\phi_*\mu)(X)$ for any Borel set~$X$. -/)]
+  MeasureTheory.addEquivAddHaarChar
+
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar_eq"
+  (statement := /-- $d_A(\phi)$ is independent of choice of regular Haar measure. -/)
+  (proof := /-- If $\mu'$ is a second choice then $\mu'=\lambda\mu$ for some
+    positive real $\lambda$, and the $\lambda$s on each side of
+    $\mu'(X)=d_A(\phi)(\phi_*\mu')(X)$ cancel. -/)
+  (discussion := 508)
+  (latexEnv := "lemma")]
+  MeasureTheory.addEquivAddHaarChar_eq
+
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_map"
+  (statement := /-- If $\mu$ is any regular Haar measure on $A$ then
+    $d_A(\phi)(\phi_*\mu) = \mu.$ -/)
+  (proof := /-- This is a restatement of the previous result. -/)
+  (latexEnv := "lemma"))]
 lemma mulEquivHaarChar_map (μ : Measure G)
     [IsHaarMeasure μ] [Regular μ] (φ : G ≃ₜ* G) :
     (mulEquivHaarChar φ) • map φ μ = μ := by
@@ -109,7 +133,13 @@ lemma mulEquivHaarChar_map_open (μ : Measure G)
     measure_isHaarMeasure_eq_smul_of_isOpen haar μ hs, ← mul_smul, haarScalarFactor_map,
     ← haarScalarFactor_eq_mul, haarScalarFactor_self, one_smul]
 
-@[to_additive]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_comap"
+  (statement := /-- If $\mu$ is any regular Haar measure on $A$ then
+    $d_A(\phi)\mu = \phi^*\mu.$ -/)
+  (proof := /-- This follows from lemma~\ref{MeasureTheory.addEquivAddHaarChar_map}
+    applied to the regular Haar measure $\phi^*\mu$ and the fact that $\phi_*\phi^*\mu=\mu$. -/)
+  (latexEnv := "corollary"))]
 lemma mulEquivHaarChar_comap (μ : Measure G)
     [IsHaarMeasure μ] [Regular μ] (φ : G ≃ₜ* G) :
     (mulEquivHaarChar φ) • μ = comap φ μ := by
@@ -121,7 +151,12 @@ lemma mulEquivHaarChar_comap (μ : Measure G)
   · exact φ.toHomeomorph.toMeasurableEquiv.measurable
   · exact e.symm.measurable
 
-@[to_additive addEquivAddHaarChar_smul_integral_comap]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_smul_integral_comap"
+  (statement := /-- If $f:A\to\R$ is a Borel measurable function then
+    $d_A(\phi)\int f(x)d\mu(x)=\int f(x)d\phi^*\mu(x)$. -/)
+  (proof := /-- This is immediate from corollary~\ref{MeasureTheory.addEquivAddHaarChar_comap}. -/)
+  (latexEnv := "lemma")) addEquivAddHaarChar_smul_integral_comap]
 lemma mulEquivHaarChar_smul_integral_comap (μ : Measure G)
     [IsHaarMeasure μ] [Regular μ] {f : G → ℝ} (φ : G ≃ₜ* G) :
     ∫ (a : G), f a ∂(comap φ μ) = (mulEquivHaarChar φ) • ∫ a, f a ∂μ := by
@@ -136,7 +171,16 @@ lemma mulEquivHaarChar_smul_integral_comap (μ : Measure G)
   simp
 
 open ENNReal TopologicalSpace Set in
-@[to_additive addEquivAddHaarChar_eq_one_of_compactSpace]
+@[to_additive addEquivAddHaarChar_eq_one_of_compactSpace, blueprint
+  "MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace"
+  (statement := /-- Say $A$ is a compact topological additive group and $\phi:A\to A$ is an additive
+      isomorphism.
+    Then $d_A(\phi)=1.$ -/)
+  (proof := /-- We have $d_A(\phi)\mu(A)=\mu(A)$
+    from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_preimage}
+    and $\mu(A)$ is positive and finite because $A$ is open and compact. -/)
+  (discussion := 532)
+  (latexEnv := "lemma")]
 lemma mulEquivHaarChar_eq_one_of_compactSpace [CompactSpace G] (φ : G ≃ₜ* G) :
     mulEquivHaarChar φ = 1 := by
   set μ := haarMeasure (⟨⟨univ, isCompact_univ⟩, by simp⟩ : PositiveCompacts G)
@@ -152,7 +196,27 @@ lemma mulEquivHaarChar_eq_one_of_compactSpace [CompactSpace G] (φ : G ≃ₜ* G
     _ = 1 := hμ
 
 open Topology in
-@[to_additive]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding"
+  (statement := /-- If $f:A\to B$ is a group homomorphism and open embedding between locally compact
+    topological additive groups and if $\alpha:A\to A$ and $\beta:B\to B$ are additive
+    homeomorphisms such that the square commutes (i.e., $f\circ\alpha=\beta\circ f$)
+    then $d_A(\alpha)=d_B(\beta)$. -/)
+  (proof := /-- Choose a regular Haar measure $\mu_B$ on $B$. We just saw
+    in lemmas~\ref{Topology.IsOpenEmbedding.isHaarMeasure_comap}
+    and~\ref{Topology.IsOpenEmbedding.regular_comap} that its pullback
+    $\mu_A:=f^*\mu_B$ to $A$ is also a regular Haar
+    measure. Now fix a continuous compactly-supported function $g$ on $A$ with
+    $0<\int g(a)d\mu(a)<\infty$. Then $d_A(\alpha)\int g(a)d\mu_A(a)=\int g(a)d(\alpha^*\mu_A)(a)$
+    by lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_integral_comap}.
+    This equals $\int g(a)d(\alpha^* f^*\mu_B)(a)$ by definition,
+    which is $\int g(a)d(f^*\beta^*\mu_B)(a)$ because pullback of pullback is pullback.
+    This equals $d_B(\beta)\int g(a) d(f^*\mu_B)(a)$ by
+    corollary~\ref{MeasureTheory.addEquivAddHaarChar_comap}
+    which is $d_B(\beta)\int g(a)d\mu_A(a)$ by definition,
+    and so $d_A(\alpha)=d_B(\beta)$ as required. -/)
+  (discussion := 551)
+  (latexEnv := "lemma"))]
 lemma mulEquivHaarChar_eq_mulEquivHaarChar_of_isOpenEmbedding {X Y : Type*}
     [TopologicalSpace X] [Group X] [IsTopologicalGroup X] [LocallyCompactSpace X]
     [MeasurableSpace X] [BorelSpace X]
@@ -222,7 +286,33 @@ variable {G : Type*} [Group G] [TopologicalSpace G]
     {H : Type*} [Group H] [TopologicalSpace H]
     [IsTopologicalGroup H] [LocallyCompactSpace H]
 
-@[to_additive MeasureTheory.addEquivAddHaarChar_prodCongr]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_prodCongr"
+  (statement := /-- If $(A,+)$ and $(B,+)$ are locally compact topological abelian groups,
+    and if $\phi:A\to A$ and $\psi:B\to B$ are additive homeomorphisms,
+    then $\phi\times\psi:A\times B\to A\times B$ is an additive homeomorphism (this is
+    obvious), and
+    $d_{A\times B}(\phi\times\psi)=d_A(\phi)d_B(\psi)$. -/)
+  (proof := /-- We only need this result in the case where both $A$ and $B$ are second-countable, in
+    which case
+    {\tt Prod.borelSpace} can be used to show that Haar measure on $A\times B$ is the product of
+    Haar measures on $A$ and $B$, and in this case the result follows easily. Without this
+    assumption,
+    the product of these measures may not even be a Borel measure and one has to be more careful.
+    The proof in this case is explained by Gou\"{e}zel
+    \href{https://leanprover.zulipchat.com/#narrow/channel/116395-maths/topic/Product.20of.20Borel.20spaces/near/487257981}{here}.
+    Here is the idea. Let $\rho$ be a Haar measure on $A\times B$. Fix sets $X\subseteq A$ and
+    $Y\subseteq B$ which are compact with nonempty interior. We can now pull back $\rho$
+    to a measure $\nu$ on the Borel sigma-algebra of $A$ defined as $\nu(s)=\rho(s\times Y)$
+    and this is easily checked to be a Haar measure on $A$. Then
+    $\delta_{A\times B}(a,0)\nu(X)=
+    \delta_{A\times B}(a,0)\rho(X\times Y)=\rho((a,0)(X\times Y))=
+    \rho(aX\times Y)=\nu(aX)=\delta_A(a)\nu(X)$
+    , so $\delta_{A\times B}(a,0)=\delta_A(a)$.
+    Similarly $\delta_{A\times B}(0,b)=\delta_B(b)$ and because $\delta_{A\times B}$ is a group
+    homomorphism we're home. -/)
+  (discussion := 520)
+  (latexEnv := "lemma")) MeasureTheory.addEquivAddHaarChar_prodCongr]
 lemma mulEquivHaarChar_prodCongr [MeasurableSpace G] [BorelSpace G]
     [MeasurableSpace H] [BorelSpace H] (φ : G ≃ₜ* G) (ψ : H ≃ₜ* H) :
     letI : MeasurableSpace (G × H) := borel _
@@ -352,7 +442,14 @@ variable {ι : Type*} {H : ι → Type*} [Π i, Group (H i)] [Π i, TopologicalS
     [∀ i, MeasurableSpace (H i)] [∀ i, BorelSpace (H i)]
 
 open Classical ContinuousMulEquiv in
-@[to_additive]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_piCongrRight"
+  (statement := /-- If $A_i$ are a finite collection of locally compact topological abelian groups,
+    with $\phi_i:A_i\to A_i$ additive homeomorphisms, then $d_{\prod_i A_i}(\prod_i\phi_i)=\prod_i
+    d_{A_i}(\phi_i)$. -/)
+  (proof := /-- Induction on the size of the finite set, using the previous lemma. -/)
+  (discussion := 521)
+  (latexEnv := "lemma"))]
 lemma mulEquivHaarChar_piCongrRight [Fintype ι] (ψ : Π i, (H i) ≃ₜ* (H i)) :
     letI : MeasurableSpace (Π i, H i) := borel _
     haveI : BorelSpace (Π i, H i) := ⟨rfl⟩
@@ -436,7 +533,27 @@ variable {ι : Type*}
     [∀ i, BorelSpace (G i)]
 
 open ContinuousMulEquiv in
-@[to_additive]
+@[to_additive (attr := blueprint
+  "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"
+  (statement := /-- With $A$, $A_i$, $C_i$, $\phi_i$, $\phi$ defined as above, we have
+    $\delta_A(\phi)=\prod_i\delta_{A_i}(\phi_i)$. -/)
+  (proof := /-- Assume $\phi_i(C_i)=C_i$ for all $i\not\in S$, a finite set, and work in the
+    open subgroup $U:=\prod_{i\in S}A_i\times\prod_{i\not\in S}C_i$. Then $\phi$ induces
+    an automorphism $\phi_S$ of this open subgroup $U$ of $A$, and in particular
+    lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding} tells us
+    that $\delta(\phi)=\delta_U(\phi_S)$.
+    Next note that $\phi_S:U\to U$ can be written as a product of the automorphisms
+    $\prod_{i\not\in S}\phi_i|_{C_i}$ of $\prod_{i\not\in S}C_i$ and
+    $\prod_{i\in S}\phi_i$ of $\prod_{i\in S}A_i$, so by
+    lemma~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}
+    we have $\delta(\phi)=\delta(\prod_{i\not\in S}\phi_i|_{C_i})\times\delta(\prod_{i\in
+    S}\phi_i).$
+    Because $\prod_{i\not\in S}C_i$ is a compact
+    group we must have $\delta(\phi_{i\not\in S}\phi_i|_{C_i})=1$
+    by lemma~\ref{MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace}. Finally
+    $\delta(\prod_{i\in S}\phi_i)=\prod_{i\in S}\delta(\phi_i)$ by
+    lemma~\ref{MeasureTheory.addEquivAddHaarChar_piCongrRight} and we are home. -/)
+  (discussion := 552))]
 lemma mulEquivHaarChar_restrictedProductCongrRight (φ : Π i, (G i) ≃ₜ* (G i))
     (hφ : ∀ᶠ (i : ι) in Filter.cofinite, Set.BijOn ⇑(φ i) ↑(C i) ↑(C i)) :
     -- typeclass stuff

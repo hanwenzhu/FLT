@@ -3,6 +3,7 @@ Copyright (c) 2024 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard
 -/
+import Architect
 import FLT.Hacks.RightActionInstances
 import FLT.Mathlib.Algebra.FixedPoints.Basic
 import Mathlib.NumberTheory.NumberField.FinitePlaces
@@ -85,6 +86,16 @@ weight 2 automorphic form unless `Dˣ` is compact mod centre at infinity.
 This hypothesis will be true if `D` is a totally definite quaternion algebra
 over a totally real field.
 -/
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm"
+  (statement := /-- The space of $R$-valued \emph{automorphic forms} for $D^\times$ is the set of
+    functions $f:D_{\A^\infty}^\times\to R$ satisfying the following axioms:
+    \begin{itemize}
+      \item $f(dg)=f(g)$ for all $d\in D^\times$ and $g\in D_{\A^\infty}^\times$.
+      \item $f(gz)=f(g)$ for all $g\in D_{\A^\infty}^\times$.
+      \item There exists a compact open subgroup $U\subseteq (D_{\A^f}^\times)$ such that
+      $f(gu)=f(g)$ for all $g\in D_{\A^\infty}^\times$ and $u\in U$.
+    \end{itemize} -/)]
 structure WeightTwoAutomorphicForm
   -- defined over R
   (R : Type*) [AddCommMonoid R] where
@@ -168,6 +179,10 @@ instance : Add (WeightTwoAutomorphicForm F D R) where
 theorem add_apply (φ ψ : WeightTwoAutomorphicForm F D R) (x : Dfx F D) :
     (φ + ψ) x = (φ x) + (ψ x) := rfl
 
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup"
+  (statement := /-- Pointwise addition $(f_1+f_2)(g):=f_1(g)+f_2(g)$ makes $S^D(R)$ into an
+    additive abelian group. -/)]
 instance addCommGroup : AddCommGroup (WeightTwoAutomorphicForm F D R) where
   add := (· + ·)
   add_assoc := by intros; ext; simp [add_assoc];
@@ -232,6 +247,10 @@ instance mulAction :
   one_smul φ := by ext; simp only [group_smul_apply, mul_one]
   mul_smul g h φ := by ext; simp only [group_smul_apply, mul_assoc]
 
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction"
+  (statement := /-- The group $D_{\A^f}^\times$ acts on the additive abelian group $S^D(R)$ by
+    $(g\cdot f)(x)=f(xg)$. -/)]
 instance distribMulAction : DistribMulAction (Dfx F D)
     (WeightTwoAutomorphicForm F D R) where
   __ := mulAction
@@ -263,6 +282,11 @@ lemma smul_apply (r : R) (φ : WeightTwoAutomorphicForm F D R)
     (g : Dfx F D) :
     (r • φ) g = r • (φ g) := rfl
 
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module"
+  (statement := /-- If $R$ is a commutative ring then pointwise scalar multiplication $(r\cdot
+    f)(g):= r\cdot(f(g))$ makes
+    $S^D(R)$ into an $R$-module. -/)]
 instance module : Module R (WeightTwoAutomorphicForm F D R) where
   one_smul g := by ext; simp [smul_apply]
   mul_smul r s g := by ext; simp [smul_apply, mul_assoc]
@@ -286,6 +310,10 @@ section finite_level
 `WeightTwoAutomorphicFormOfLevel U R` is the `R`-valued weight 2 automorphic forms of a fixed
 level `U` for a totally definite quaternion algebra over a totally real field.
 -/
+@[blueprint
+  "TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel"
+  (statement := /-- The quaternionic modular forms of level $U$, with notation $S^D(U;R)$, are the
+    $U$-invariants for the $D_{\A^\infty}^\times$-action on $S^D(R)$. -/)]
 def WeightTwoAutomorphicFormOfLevel (U : Subgroup (Dfx F D))
     (R : Type*) [CommRing R] : Type _ := MulAction.FixedPoints U (WeightTwoAutomorphicForm F D R)
 

@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-blue.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/stylecours.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="a0000000281_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000281" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.7</span></div>
+    <div class="thm_thmcontent"><p>There is a “canonical” isomorphism \(H^2(K,\mu _\infty )=\mathbb {Q}/\mathbb {Z}\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#a0000000281">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="automorphic_form_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="automorphic_form" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.22</span></div>
+    <div class="thm_thmcontent"><p>An <em>automorphic form</em> is a function \(\phi :G(\mathbb {A}_N)\to \mathbb {C}\) satisfying the following conditions: </p>
+<ul class="itemize">
+  <li><p>\(\phi \) is locally constant on \(G(\mathbb {A}_N^f)\) and \(C^\infty \) on \(G(N_\infty )\). In other words, for every \(g_\infty \), \(\phi (-,g_\infty )\) is locally constant, and for every \(g_f\), \(\phi (g_f,-)\) is smooth. </p>
+</li>
+  <li><p>\(\phi \) is left-invariant under \(G(N)\); </p>
+</li>
+  <li><p>\(\phi \) is right-\(U_\infty \)-finite (that is, the space spanned by \(x\mapsto \phi (xu)\) as \(u\) varies over \(U_\infty \) is finite-dimensional); </p>
+</li>
+  <li><p>\(\phi \) is right \(K_f\)-finite, where \(K_f\) is one (or equivalently all) compact open subgroups of \(G(\mathbb {A}_N^f)\); </p>
+</li>
+  <li><p>\(\phi \) is \(\mathcal{z}\)-finite, where \(\mathcal{z}\) is the centre of the universal enveloping algebra of the Lie algebra of \(G(N_\infty )\), acting via differential operators. Equivalently \(\phi \) is annihiliated by a finite index ideal of this centre, so morally \(\phi \) satisfies lots of differential equations of a certain type; </p>
+</li>
+  <li><p>For all \(g_f\), the function \(g_\infty \mapsto \phi (g_f g\infty )\) is slowly-increasing in the sense above. </p>
+</li>
+</ul>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#automorphic_form">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="automorphic_form_actions_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="automorphic_form_actions" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.24</span></div>
+    <div class="thm_thmcontent"><p>The group \(G(\mathbb {A}_N)\) acts on itself on the right, and this induces a left action of its subgroup \(G(\mathbb {A}_N^f)\times U_\infty \) on the spaces of automorphic forms and cusp forms. The Lie algebra \(\mathfrak {g}\) of \(G(N_\infty )\) also acts, via differential operators. Furthermore the actions of \(\mathfrak {g}\) and \(U_\infty \) are compatible in the sense that the differential of the \(U_\infty \) action is the action of its Lie algebra considered as a subalgebra of \(\mathfrak {g}\). We say that the spaces are \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-modules. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#automorphic_form_actions">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="automorphic_representation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="automorphic_representation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.27</span></div>
+    <div class="thm_thmcontent"><p>An automorphic representation is an irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module isomorphic to an irreducible subquotient of the space of automorphic forms. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#automorphic_representation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="automorphic_representation_local_decomposition_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="automorphic_representation_local_decomposition" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.28</span></div>
+    <div class="thm_thmcontent"><p>An irreducible admissible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module is a restricted tensor product of irreducible representations \(\pi _v\) of \(G(N_v)\) as \(v\) runs through the finite places of \(N\), tensored with a tensor product of irreducible \((\mathfrak {g}_v,U_{\infty ,v})\)-modules as \(v\) runs through the infinite places of \(N\). The representations \(\pi _v\) are unramified for all but finitely many \(v\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#automorphic_representation_local_decomposition">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="compatible_family_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="compatible_family" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.29</span></div>
+    <div class="thm_thmcontent"><p> Let \(N\) be a number field. A <em>compatible family of \(d\)-dimensional Galois representations over \(N\)</em> is a finite set of finite places \(S\) of \(N\), a number field \(E\), a monic degree \(d\) polynomial \(F_{{\mathfrak {p}}}(X)\in E[X]\) for each finite place \({\mathfrak {p}}\) of \(K\) not in \(S\) and, for each prime number \(\ell \) and field embedding \(\phi : E\to \overline{\mathbb {Q}}_\ell \) (or essentially equivalently for each finite place of \(E\)), a continuous homomorphism \(\rho :\operatorname{Gal}(K^{\operatorname{sep}}/K)\to \operatorname{GL}_2(\overline{\mathbb {Q}}_\ell )\) unramified outside \(S\) and the primes of \(K\) above \(\ell \), such that \(\rho (\operatorname{Frob}_{\mathfrak {p}})\) has characteristic polynomial \(P_\pi (X)\) if \(\pi \) lies above a prime number \(p\not=\ell \) with \(p\not\in S\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#compatible_family">LaTeX</a>
+    
+    
+  
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/23">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="connected_reductive_group_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="connected_reductive_group" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.19</span></div>
+    <div class="thm_thmcontent"><p>An affine algebraic group&#160;\(G\) of finite type over a field&#160;\(k\) is said to be <em>connected</em> if it is connected as a scheme, and <em>reductive</em> if \(G_{\overline{k}}\) has no nontrivial smooth connected unipotent normal \(k\)-subgroup. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#connected_reductive_group">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="cuspidal_automorphic_form_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="cuspidal_automorphic_form" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.23</span></div>
+    <div class="thm_thmcontent"><p>An automorphic form is <em>cuspidal</em> (or “a cusp form”) if it furthermore satisfies \(\int _{U(N)\backslash U(\mathbb {A}_N)}\phi (ux)du=0\), where \(P\) runs through all the proper parabolic subgroups of \(G\) defined over \(N\) and \(U\) is the unipotent radical of \(P\), and the integral is with respect to the measure coming from Haar measure. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#cuspidal_automorphic_form">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="cuspidal_automorphic_form_decomposition_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="cuspidal_automorphic_form_decomposition" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.25</span></div>
+    <div class="thm_thmcontent"><p> The cusp forms decompose as a (typically infinite) direct sum of irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-modules. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#cuspidal_automorphic_form_decomposition">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="cuspidal_automorphic_representation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="cuspidal_automorphic_representation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.26</span></div>
+    <div class="thm_thmcontent"><p>A cuspidal automorphic representation is an irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module isomorphic to an irreducible summand of the space of cusp forms. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#cuspidal_automorphic_representation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Galois_representation_from_automorphic_representation_on_GL_2_form_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Galois_representation_from_automorphic_representation_on_GL_2_form" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.30</span></div>
+    <div class="thm_thmcontent"><p>Given an automorphic representation \(\pi \) for an inner form of \(\operatorname{GL}_2\) over a totally real field and with reflex field&#160;\(E\), such that \(\pi \) is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to \(\pi \), with \(S\) being the places at which \(\pi \) is ramified, and \(F_{{\mathfrak {p}}}(X)\) being the monic polynomial with roots the two Satake parameters for \(\pi \) at \({\mathfrak {p}}\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#Galois_representation_from_automorphic_representation_on_GL_2_form">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="global_class_field_theory_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="global_class_field_theory" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.10</span></div>
+    <div class="thm_thmcontent"><p>If \(N\) is a finite extension of \(\mathbb {Q}\) then there are two “canonical” isomorphisms of topological groups between the profinite abelian groups \(\pi _0(\mathbb {A}_N^\times /N^\times )\) and \(\operatorname{Gal}(\overline{N}/N)^{\operatorname{ab}}\); one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#global_class_field_theory">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="lie_group_from_algebraic_group_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="lie_group_from_algebraic_group" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">13.17</span></div>
+    <div class="thm_thmcontent"><p>If \(G\) is an affine algebraic group of finite type over \(K=\mathbb {R}\) or \(\mathbb {C}\) then \(G(K)\) is naturally a real or complex Lie group. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#lie_group_from_algebraic_group">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_class_field_theory_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_class_field_theory" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.3</span></div>
+    <div class="thm_thmcontent"><p>If \(K\) is a finite extension of \(\mathbb {Q}_p\) then there are two “canonical” isomorphisms of topological abelian groups, between \(K^\times \) and the abelianisation of the Weil group of \(K\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_class_field_theory">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_galois_coh_dim_two_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_galois_coh_dim_two" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.5</span><span class="theorem_thmtitle">"the dimension is 2"</span></div>
+    <div class="thm_thmcontent"><p>If \(M\) is torsion then \(H^i(G_K,M)=0\) if \(i{\gt}2\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_galois_coh_dim_two">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_galois_coh_euler_poincare_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_galois_coh_euler_poincare" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.9</span><span class="theorem_thmtitle">"Euler-Poincaré characteristic"</span></div>
+    <div class="thm_thmcontent"><p>If \(h^i(M)\) denotes the order of \(H^i(G_K,M)\) then \(h^0(M)-h^1(M)+h^2(M)=0\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_galois_coh_euler_poincare">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_galois_coh_finite_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_galois_coh_finite" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.4</span></div>
+    <div class="thm_thmcontent"><p> If \(M\) is finite then the cohomology groups \(H^i(G_K,M)\) all finite. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_galois_coh_finite">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_galois_coh_poincare_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_galois_coh_poincare" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.8</span><span class="theorem_thmtitle">"Poincaré duality"</span></div>
+    <div class="thm_thmcontent"><p>If \(\mu =\bigcup _{n\geq 1}\mu _n\) and \(M':=\operatorname{Hom}(M,\mu )\) is the dual of \(M\) then for \(0\leq i\leq 2\) the cup product pairing \(H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu )=\mathbb {Q}/\mathbb {Z}\) is perfect. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_galois_coh_poincare">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_galois_coh_top_degree_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_galois_coh_top_degree" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.6</span><span class="theorem_thmtitle">"top degree"</span></div>
+    <div class="thm_thmcontent"><p>  \(H^2(G_K,\mu _n)\) is “canonically” isomorphic to \(\mathbb {Z}/n\mathbb {Z}\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_galois_coh_top_degree">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="local_Weil_group_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="local_Weil_group" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.2</span></div>
+    <div class="thm_thmcontent"><p>The topological group described above is called the <em>Weil group</em> of \(K\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#local_Weil_group">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="manifold_on_algebraic_variety_computation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="manifold_on_algebraic_variety_computation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.16</span></div>
+    <div class="thm_thmcontent"><p>If \(X\) is as in the previous definition and \(X\to \mathbb {A}^n_K\) is a closed immersion, then the induced map from \(X(K)\) with its manifold structure to \(K^n\) is an embedding of manifolds. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#manifold_on_algebraic_variety_computation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="manifold_on_algebraic_variety_points_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="manifold_on_algebraic_variety_points" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.14</span></div>
+    <div class="thm_thmcontent"><p>Let \(K\) be a field equipped with an isomorphism to the reals, complexes, or a finite extension of the \(p\)-adic numbers. Let \(X\) be a smooth affine algebraic variety over \(K\). Then the points \(X(K)\) naturally inherit the structure of a manifold over \(K\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#manifold_on_algebraic_variety_points">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="maximal_unramified_extension_of_p-adic_field_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="maximal_unramified_extension_of_p-adic_field" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.1</span></div>
+    <div class="thm_thmcontent"><p>The maximal unramified extension \(K^{un}\) in a given algebraic closure of \(K\) is Galois over \(K\) with Galois group “canonically” isomorphic to \(\widehat{\mathbb {Z}}\) in two ways; one of these two isomorphisms identifies \(1\in \widehat{\mathbb {Z}}\) with an arithmetic Frobenius (the endomorphism inducing \(x\mapsto x^q\) on the residue field of \(K^{un}\), where \(q\) is the size of the residue field of \(K\)). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#maximal_unramified_extension_of_p-adic_field">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="moret-bailly_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="moret-bailly" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.32</span></div>
+    <div class="thm_thmcontent"><p>Let \(K^{\operatorname{avoid}}/K\) be a Galois extension of number fields. Suppose also that \(S\) is a finite set of places of \(K\). For \(v\in S\) let \(L_v/K_v\) be a finite Galois extension. Suppose also that \(T /K\) is a smooth, geometrically connected curve and that for each \(v\in S\) we are given a nonempty, \(\operatorname{Gal}(L_v/K_v)\)-invariant, open subset \(\Omega _v\subseteq (L_v)\). Then there is a finite Galois extension \(L/K\) and a point \(P ∈ T (L)\) such that </p>
+<ul class="itemize">
+  <li><p>\(L/K\) is Galois and linearly disjoint from \(K^{\operatorname{avoid}}\) over \(K\); </p>
+</li>
+  <li><p>if \(v\in S\) and \(w\) is a prime of \(L\) above \(v\) then \(L_w /K_v\) is isomorphic to \(L_v/K_v\); </p>
+</li>
+  <li><p>and \(P \in \Omega _v\subseteq T (L_v) \cong (L_w)\) via one such \(K_v\)-algebra morphism (this makes sense as \(\Omega _v\) is \(\operatorname{Gal}(L_v/K v)\)-invariant). </p>
+</li>
+</ul>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#moret-bailly">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Shimura_varieties_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Shimura_varieties" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.31</span></div>
+    <div class="thm_thmcontent"><p>We need the definition of (the canonical model over \(F\) of) the Shimura curve attached to an inner form of \(\operatorname{GL}_2\) with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it’s compact). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#Shimura_varieties">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Skinner_Wiles_CFT_trick_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Skinner_Wiles_CFT_trick" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.11</span></div>
+    <div class="thm_thmcontent"><p>Let \(S\) be a finite set of places of a number field \(K\) . For each \(v \in S\) let \(L_v/K_v\) be a finite Galois extension. Then there is a finite solvable Galois extension \(L/K\) such that if \(w\) is a place of \(L\) dividing \(v \in S\), then \(L_w/K_v\) is isomorphic to \(L_v/K_v\) as \(K_v\)-algebra. Moreover, if \(K^{\operatorname{avoid}} /K\) is any finite extension then we can choose \(L\) to be linearly disjoint from \(K^{\operatorname{avoid}}\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#Skinner_Wiles_CFT_trick">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="slowly_increasing_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="slowly_increasing" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.20</span></div>
+    <div class="thm_thmcontent"><p>A function \(f : G(N_\infty )\to \mathbb {C}\) is <em>slowly-increasing</em> if there exists some \(C{\gt}0\) and \(n\geq 1\) such that \(|f(x)\leq C||x||_\rho ^n\). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#slowly_increasing">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="slowly_increasing_well_defined_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="slowly_increasing_well_defined" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.21</span></div>
+    <div class="thm_thmcontent"><p>This is independent of the choice of \(\rho \) as above. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#slowly_increasing_well_defined">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="topology_on_affine_variety_computation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="topology_on_affine_variety_computation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13.13</span></div>
+    <div class="thm_thmcontent"><p> If \(X\) is as above and \(X\to \mathbb {A}^n_K\) is a closed immersion, then the induced map from \(X(R)\) with its topology as above to \(R^n\) is an embedding of topological spaces (that is, a homeomorphism onto its image). </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#topology_on_affine_variety_computation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="topology_on_affine_variety_points_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="topology_on_affine_variety_points" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">13.12</span></div>
+    <div class="thm_thmcontent"><p> If \(X\) is an affine scheme of finite type over \(K\), and if \(R\) is a \(K\)-algebra which is also a topological ring, then we define a topology on the \(R\)-points \(X(R)\) of \(K\) by embedding the \(K\)-algebra homomorphisms from \(A\) to \(R\) into the set-theoretic maps from \(A\) to \(R\) with its product topology, and giving it the subspace topology. </p>
+</div>
+
+    <a class="latex_link" href="ch_bestiary.html#topology_on_affine_variety_points">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	automorphic_form	[color="#FFAA33",		label=automorphic_form,		shape=box];	cuspidal_automorphic_form	[color="#FFAA33",		label=cuspidal_automorphic_form,		shape=box];	automorphic_form -> cuspidal_automorphic_form	[style=dashed];	automorphic_form_actions	[color="#FFAA33",		label=automorphic_form_actions,		shape=box];	automorphic_form -> automorphic_form_actions	[style=dashed];	cuspidal_automorphic_form_decomposition	[label=cuspidal_automorphic_form_decomposition,		shape=ellipse];	cuspidal_automorphic_form -> cuspidal_automorphic_form_decomposition	[style=dashed];	automorphic_form_actions -> cuspidal_automorphic_form_decomposition	[style=dashed];	automorphic_representation	[color="#FFAA33",		label=automorphic_representation,		shape=box];	automorphic_form_actions -> automorphic_representation	[style=dashed];	cuspidal_automorphic_representation	[color="#FFAA33",		label=cuspidal_automorphic_representation,		shape=box];	cuspidal_automorphic_form_decomposition -> cuspidal_automorphic_representation	[style=dashed];	Galois_representation_from_automorphic_representation_on_GL_2_form	[color="#FFAA33",		label=Galois_representation_from_automorphic_representation_on_GL_2_form,		shape=ellipse];	automorphic_representation -> Galois_representation_from_automorphic_representation_on_GL_2_form	[style=dashed];	automorphic_representation_local_decomposition	[color="#FFAA33",		label=automorphic_representation_local_decomposition,		shape=ellipse];	automorphic_representation -> automorphic_representation_local_decomposition	[style=dashed];	local_galois_coh_finite	[color="#FFAA33",		label=local_galois_coh_finite,		shape=ellipse];	global_class_field_theory	[color="#FFAA33",		label=global_class_field_theory,		shape=ellipse];	Skinner_Wiles_CFT_trick	[color="#FFAA33",		label=Skinner_Wiles_CFT_trick,		shape=ellipse];	global_class_field_theory -> Skinner_Wiles_CFT_trick	[style=dashed];	manifold_on_algebraic_variety_points	[color="#FFAA33",		label=manifold_on_algebraic_variety_points,		shape=box];	manifold_on_algebraic_variety_computation	[color="#FFAA33",		label=manifold_on_algebraic_variety_computation,		shape=ellipse];	manifold_on_algebraic_variety_points -> manifold_on_algebraic_variety_computation	[style=dashed];	lie_group_from_algebraic_group	[color="#FFAA33",		label=lie_group_from_algebraic_group,		shape=ellipse];	manifold_on_algebraic_variety_computation -> lie_group_from_algebraic_group	[style=dashed];	lie_group_from_algebraic_group -> automorphic_form	[style=dashed];	Shimura_varieties	[color="#FFAA33",		label=Shimura_varieties,		shape=box];	Shimura_varieties -> Galois_representation_from_automorphic_representation_on_GL_2_form	[style=dashed];	local_galois_coh_poincare	[color="#FFAA33",		label=local_galois_coh_poincare,		shape=ellipse];	"moret-bailly"	[color="#FFAA33",		label="moret-bailly",		shape=ellipse];	topology_on_affine_variety_points	[color=blue,		fillcolor="#A3D6FF",		label=topology_on_affine_variety_points,		shape=box,		style=filled];	topology_on_affine_variety_computation	[label=topology_on_affine_variety_computation,		shape=ellipse];	topology_on_affine_variety_points -> topology_on_affine_variety_computation	[style=dashed];	topology_on_affine_variety_computation -> automorphic_form	[style=dashed];	compatible_family	[color=blue,		fillcolor="#A3D6FF",		label=compatible_family,		shape=box,		style=filled];	compatible_family -> Galois_representation_from_automorphic_representation_on_GL_2_form	[style=dashed];	local_galois_coh_dim_two	[color="#FFAA33",		label=local_galois_coh_dim_two,		shape=ellipse];	local_galois_coh_euler_poincare	[color="#FFAA33",		label=local_galois_coh_euler_poincare,		shape=ellipse];	slowly_increasing_well_defined	[color="#FFAA33",		label=slowly_increasing_well_defined,		shape=ellipse];	slowly_increasing_well_defined -> automorphic_form	[style=dashed];	connected_reductive_group	[color="#FFAA33",		label=connected_reductive_group,		shape=box];	connected_reductive_group -> automorphic_form	[style=dashed];	slowly_increasing	[color="#FFAA33",		label=slowly_increasing,		shape=box];	slowly_increasing -> slowly_increasing_well_defined	[style=dashed];	a0000000281	[color="#FFAA33",		label=a0000000281,		shape=ellipse];	local_galois_coh_top_degree	[color="#FFAA33",		label=local_galois_coh_top_degree,		shape=ellipse];	local_class_field_theory	[color="#FFAA33",		label=local_class_field_theory,		shape=ellipse];	local_class_field_theory -> global_class_field_theory	[style=dashed];	local_Weil_group	[color="#FFAA33",		label=local_Weil_group,		shape=box];	local_Weil_group -> local_class_field_theory	[style=dashed];	"maximal_unramified_extension_of_p-adic_field"	[color="#FFAA33",		label="maximal_unramified_extension_of_p-adic_field",		shape=ellipse];	"maximal_unramified_extension_of_p-adic_field" -> local_Weil_group	[style=dashed];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

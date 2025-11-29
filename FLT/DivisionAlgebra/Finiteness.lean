@@ -3,6 +3,7 @@ Copyright (c) 2024 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, William Coram
 -/
+import Architect
 import Mathlib.NumberTheory.NumberField.Basic
 import Mathlib.RingTheory.DedekindDomain.FiniteAdeleRing
 import Mathlib.Algebra.Group.Subgroup.Pointwise
@@ -54,6 +55,30 @@ noncomputable abbrev incl : Dˣ →* D_𝔸ˣ :=
 
 namespace Aux
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"
+  (statement := /-- There's a compact subset $E$ of $D_{\A}$
+    with the property that for all $x\in D_{\A}^{(1)}$,
+    the obvious map $xE\to D\backslash D_{\A}$ is not injective. -/)
+  (proof := /-- We know that if we pick a $\Q$-basis for $D$
+     of size $d$ then this identifies $D$ with $\Q^d$,
+     $D_{\A}$ with $\A_{\Q}^d$, and $D\backslash D_{\A}$ with
+     $(\Q\backslash\A_{\Q})^d$. Now $\Q$ is discrete in $\A_{\Q}$
+     by theorem~\ref{NumberField.AdeleRing.discrete}, and the quotient
+     $\Q\backslash \A_{\Q}$ is compact by theorem~\ref{Rat.AdeleRing.cocompact}.
+     Hence $D$ is discrete in $D_{\A}$
+     and the quotient $D\backslash D_{\A}$ is compact.
+    
+       Fix a Haar measure $\mu$ on $D_{\A}$ and push it forward
+       to $D\backslash D_{\A}$; by compactness this quotient has finite
+       and positive measure, say $m\in\R_{>0}$.
+       Choose any compact $E\subseteq D_{\A}$ with measure $> m$
+       (for example, choose a $\Z$-lattice $L\cong\Z^d$ in $D\cong\Q^d$,
+       define $E_f:=\prod_p L_p\in D\otimes_{\Q}\A_{\Q}^\infty$,
+       and define $E_{\infty}\subseteq D\otimes_{\Q}\R\cong\R^n$ to be a huge closed
+       ball, large enough to ensure the measure of $E:=E_f\times E_{\infty}$ is bigger than $m$).
+       Then $\mu(xE)=\mu(E)>m$ so the map can't be injective. -/)
+  (latexEnv := "lemma")]
 lemma existsE : ∃ E : Set (D_𝔸), IsCompact E ∧
     ∀ φ : D_𝔸 ≃ₜ+ D_𝔸, addEquivAddHaarChar φ = 1 → ∃ e₁ ∈ E, ∃ e₂ ∈ E,
     e₁ ≠ e₂ ∧ φ e₁ - φ e₂ ∈ Set.range (Algebra.TensorProduct.includeLeft : D →ₐ[K] D_𝔸) :=
@@ -61,6 +86,10 @@ lemma existsE : ∃ E : Set (D_𝔸), IsCompact E ∧
   sorry
 
 /-- An auxiliary set E used in the proof of Fukisaki's lemma. -/
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.E"
+  (statement := /-- We let $E$ denote any compact set satisfying the hypothesis of the previous
+    lemma. -/)]
 def E : Set D_𝔸 := (existsE K D).choose
 
 lemma E_compact : IsCompact (E K D) := (existsE K D).choose_spec.1
@@ -79,20 +108,50 @@ lemma E_noninjective_right {x : D_𝔸ˣ} (h : x ∈ ringHaarChar_ker D_𝔸) :
 
 open scoped Pointwise in
 /-- An auxiliary set X used in the proof of Fukisaki's lemma. Defined as E - E. -/
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.X"
+  (statement := /-- Define $X:=E-E:=\{e-f:e,f\in E\}\subseteq D_{\A}$. -/)]
 def X : Set D_𝔸 := E K D - E K D
 
 open scoped Pointwise in
 /-- An auxiliary set Y used in the proof of Fukisaki's lemma. Defined as X * X. -/
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"
+  (statement := /-- Define $Y:=X.X:=\{xy:x,y\in X\}\subseteq D_{\A}$. -/)]
 def Y : Set D_𝔸 := X K D * X K D
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"
+  (statement := /-- $X$ is a compact subset of $D_{\A}$. -/)
+  (proof := /-- It's the continuous image of the compact set~$E\times E$. -/)
+  (latexEnv := "lemma")]
 lemma X_compact : IsCompact (X K D) := by
   simpa only [Set.image_prod, Set.image2_sub] using (IsCompact.image_of_continuousOn
     ((E_compact K D).prod (E_compact K D)) ((continuous_fst.sub continuous_snd).continuousOn))
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"
+  (statement := /-- $Y$ is a compact subset of $D_{\A}$. -/)
+  (proof := /-- It's the continuous image of the compact set~$X\times X$. -/)
+  (latexEnv := "lemma")]
 lemma Y_compact : IsCompact (Y K D) := by
   simpa only [Set.image_prod, Set.image2_mul] using (IsCompact.image_of_continuousOn
     ((X_compact K D).prod (X_compact K D)) ((continuous_fst.mul continuous_snd).continuousOn))
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"
+  (statement := /-- % TODO I used E in the statement of the lemma here
+    
+      If $\beta\in D_{\A}^{(1)}$ then
+    $\beta X\cap D^\times\not=\emptyset$. -/)
+  (proof := /-- Indeed by lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.existsE},
+    the map $\beta E\to D\backslash D_{\A}$
+    isn't injective, so there are distinct
+    $\beta e_1,\beta e_2\in \beta E$ with $e_i\in E$ and
+    $\beta e_1-\beta e_2=b\in D$.
+    Now $b\not=0$ and $D$ is a division algebra, so $b\in D^\times$.
+    And $e_1-e_2\in X$ so $b=\beta(e_1-e_2)\in \beta X$, so we're done. -/)
+  (latexEnv := "lemma")]
 lemma X_meets_kernel {β : D_𝔸ˣ} (hβ : β ∈ ringHaarChar_ker D_𝔸) :
     ∃ x ∈ X K D, ∃ d ∈ Set.range (incl K D : Dˣ → D_𝔸ˣ), β * x = d := by
   obtain ⟨e1, he1, e2, he2, noteq, b, hb⟩ := E_noninjective_left K D hβ
@@ -106,6 +165,20 @@ lemma X_meets_kernel {β : D_𝔸ˣ} (hβ : β ∈ ringHaarChar_ker D_𝔸) :
     simp only [← hb, TensorProduct.zero_tmul, ne_eq, not_true_eq_false] at h1
   exact ⟨incl K D b1, ⟨b1, rfl⟩, by simpa [mul_sub] using hb.symm⟩
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"
+  (statement := /-- Similarly, if $\beta\in D_{\A}^{(1)}$ then
+    $X\beta^{-1}\cap D^\times\not=\emptyset$. -/)
+  (proof := /-- % TODO does this make the lines dottted? I used E in the proof here
+    % TODO does \uses a theorem from another project mess up the colouring?
+    
+    Indeed, $\beta^{-1}\in D_{\A}^{(1)}$, and so left multiplication by $\beta^{-1}$
+    doesn't change Haar measure on $D_{\A}$, so neither does right multiplication
+    (by theorem~\ref{addHaarScalarFactor.left_mul_eq_right_mul}).
+    So the same argument works: $E\beta^{-1}\to D\backslash D_{\A}$ is not
+    injective so choose $e_1\beta^{-1}\not=e_2\beta^{-1}$ with difference $b\in D$
+    and then $(e_1-e_2)\beta^{-1}\in D-{0}=D^\times$. -/)
+  (latexEnv := "lemma")]
 lemma X_meets_kernel' {β : D_𝔸ˣ} (hβ : β ∈ ringHaarChar_ker D_𝔸) :
     ∃ x ∈ X K D, ∃ d ∈ Set.range (incl K D : Dˣ → D_𝔸ˣ), x * β⁻¹ = d := by
   obtain ⟨e1, he1, e2, he2, noteq, b, hb⟩ := E_noninjective_right K D hβ
@@ -120,6 +193,9 @@ lemma X_meets_kernel' {β : D_𝔸ˣ} (hβ : β ∈ ringHaarChar_ker D_𝔸) :
   exact ⟨incl K D b1, ⟨b1, rfl⟩, by simpa [sub_mul] using hb.symm⟩
 
 /-- An auxiliary set T used in the proof of Fukisaki's lemma. Defined as Y ∩ Dˣ. -/
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.T"
+  (statement := /-- Let $T:=Y\cap D^\times$. -/)]
 def T : Set D_𝔸ˣ := ((↑) : D_𝔸ˣ → D_𝔸) ⁻¹' (Y K D) ∩ Set.range ((incl K D : Dˣ → D_𝔸ˣ))
 
 /-- The K-algebra equivalence of D and K^n. -/
@@ -214,6 +290,15 @@ lemma T_finite_extracted1 : IsCompact (Y K D ∩
   simpa [includeLeft_subgroup] using AddSubgroup.isClosed_of_discrete
     (H := includeLeft_subgroup K D)
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"
+  (statement := /-- $T$ is finite. -/)
+  (proof := /-- % TODO I used T in both the theorem and proof this time!
+    It suffices to prove that $Y\cap D$ is finite.
+      But $D\subseteq D_{\A}$ is a discrete additive subgroup, and hence closed.
+      And $Y\subseteq D_{\A}$ is compact.
+      So $D\cap Y$ is compact and discrete, so finite. -/)
+  (latexEnv := "lemma")]
 lemma T_finite : Set.Finite (T K D) := by
   have h := IsCompact.finite (T_finite_extracted1 K D)
     ⟨(inter_Discrete (includeLeft_subgroup K D).carrier (Y K D))⟩
@@ -226,8 +311,16 @@ lemma T_finite : Set.Finite (T K D) := by
 
 open scoped Pointwise in
 /-- An auxiliary set C used in the proof of Fukisaki's lemma. Defined as T⁻¹X × X. -/
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.C"
+  (statement := /-- Define $C:= (T^{-1}.X) \times X\subset D_{\A}\times D_{\A}$. -/)]
 def C : Set (D_𝔸 × D_𝔸) := ((((↑) : D_𝔸ˣ → D_𝔸) '' (T K D)⁻¹) * X K D) ×ˢ X K D
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"
+  (statement := /-- $C$ is compact. -/)
+  (proof := /-- $X$ is compact and $T$ is finite. -/)
+  (latexEnv := "lemma")]
 lemma C_compact : IsCompact (C K D) := by
   refine IsCompact.prod ?_ (X_compact K D)
   simpa only [Set.image_prod, Set.image2_mul] using
@@ -236,6 +329,27 @@ lemma C_compact : IsCompact (C K D) := by
     (Units.continuous_val) (continuousOn_id' (T K D)⁻¹)))
     (X_compact K D)) ((continuous_fst.mul continuous_snd).continuousOn))
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"
+  (statement := /-- For every $\beta\in D_{\A}^{(1)}$, there exists $b\in D^\times$
+    and $\nu\in D_{\A}^{(1)}$ such that $\beta=b\nu$ and $(\nu,\nu^{-1})\in C.$ -/)
+  (proof := /-- By lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel},
+    $\beta X\cap D^\times\not=\emptyset$,
+    and lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'},
+    $X\beta^{-1}\cap D^\times\not=\emptyset$,
+    so we can write $\beta x_1=b_1$ and $x_2\beta^{-1}=b_2$ with $b_i\in D^\times$ and $x_i\in X$.
+    Note that $\beta\in D_{\A}^{(1)}$ and $b_i\in D^{\times}\subseteq D_{\A}^{(1)}$ by
+    corollary~\ref{NumberField.AdeleRing.units_mem_ringHaarCharacter_ker}, so $x_i\in D_{\A}^{(1)}$
+    as well. In particular $x_i\in D_{\A}^\times$ so $x_1^{-1}$ makes sense.
+    
+    Multiplying the equations defining the $x_i$ and $b_i$ we deduce that
+    $x_2x_1=b_2b_1\in Y\cap D^\times=T$ (recall that $Y=X.X$ and $T=Y\cap D^\times$
+    is finite); call this element $t$. Then $x_1^{-1}=t^{-1}x_2\in T^{-1}.X$,
+    and $x_1\in X$, so if we set $\nu=x_1^{-1}\in D_{\A}^{(1)}$
+    and $b=b_1\in D^\times$ then we have $\beta=b\nu$ and $(\nu,\nu^{-1})\in C := (T^{-1}.X)\times
+    X$.
+    We are done! -/)
+  (latexEnv := "lemma")]
 lemma antidiag_mem_C {β : D_𝔸ˣ} (hβ : β ∈ ringHaarChar_ker D_𝔸) :
     ∃ b ∈ Set.range (incl K D : Dˣ → D_𝔸ˣ),
     ∃ ν ∈ ringHaarChar_ker D_𝔸,
@@ -315,6 +429,21 @@ lemma ImAux_isCompact : IsCompact ((fun p ↦ (p.1, MulOpposite.op p.2)) '' Aux.
 lemma M_compact : IsCompact (M K D) := Topology.IsClosedEmbedding.isCompact_preimage
   (incl₂_isClosedEmbedding K D) (ImAux_isCompact K D)
 
+@[blueprint
+  "NumberField.AdeleRing.DivisionAlgebra.compact_quotient"
+  (statement := /-- If $D$ is a division algebra then
+    the quotient $D^\times\backslash D_{\A}^{(1)}$
+    with its quotient topology coming from $D_{\A}^{(1)}$, is compact. -/)
+  (proof := /-- Indeed, if $M$ is the preimage of $C$ under the inclusion $D_{\A}^{(1)} \to
+    D_{\A}\times D_{\A}$
+    sending $\nu$ to $(\nu,\nu^{-1})$, then $M$ is a closed subspace
+      of a compact
+    space so it's compact (note that $\delta_{D_{\A}}$ is continuous,
+    by theorem~\ref{MeasureTheory.ringHaarChar_continuous}, so $D_{\A}^{(1)}$ is a closed subset of
+    $D_{\A}^\times$ which is itself a closed subset of $D_{\A}\times D_{\A}$).
+    Lemma~\ref{NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C} shows that $M$ surjects
+    onto
+    $D^\times\backslash D_{\A}^{(1)}$ which is thus also compact. -/)]
 lemma compact_quotient : CompactSpace (_root_.Quotient (QuotientGroup.rightRel
     ((MonoidHom.range (incl K D)).comap (ringHaarChar_ker D_𝔸).subtype))) :=
   isCompact_univ_iff.mp (by simpa only [toQuot_surjective, Set.image_univ] using
@@ -343,6 +472,29 @@ noncomputable abbrev incl₁ : Dˣ →* Dfx K D :=
   Units.map Algebra.TensorProduct.includeLeftRingHom.toMonoidHom
 
 open scoped TensorProduct.RightActions in
+@[blueprint
+  "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"
+  (statement := /-- $D^\times\backslash(D\otimes_K\A_K^\infty)^\times$ is compact. -/)
+  (proof := /-- There's a natural map $\alpha$ from $D^\times\backslash D_{\A}^{(1)}$ to
+      $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$. We claim that it's
+      surjective. Granted this claim, we are home, because if we put the quotient
+      topology on $D^\times\backslash (D\otimes_K \A_K^\infty)^\times$ coming from
+      $(D\otimes_K \A_K^\infty)^\times$ then it's readily verified that $\alpha$
+      is continuous, and the continuous image of a compact space is compact.
+    
+      As for surjectivity: say $x\in (D\otimes_K \A_K^\infty)^\times$. We need to extend
+      $x$ to an element $(x,y)\in (D\otimes_K \A_K^\infty)^\times\times(D\otimes_K K_\infty)^\times$
+      which is in the kernel of $\delta_{D_{\A}}$. Because $\delta_{D_{\A}}(x,1)$ is some positive
+      real number, it will suffice to show that if $r$ is any positive real number then we can
+      find $y\in (D\otimes_K \A_K^\infty)^\times=(D\otimes_{\Q}\R)^\times$ with
+      $\delta_{D_{\A}}(1,y)=r$,
+      or equivalently (setting $D_{\R}=D\otimes_{\Q}\R$) that $\delta_{D_{\R}}(y)=r$.
+      But $D\not=0$ as it is a division algebra,and hence $\Q\subseteq D$, meaning
+      $\R\subseteq D_{\R}$, and if
+      $x\in\R^\times\subseteq D_{\R}^\times$ then $\delta(x)=|x|^d$ with $d=\dim_{\Q}(D)$,
+      as multiplication by $x$ is just scaling by a factor of $x$ on $D_{\R}\cong\R^d$.
+      In particular we can set $x=y^{1/d}$. -/)
+  (proofUses := ["NumberField.AdeleRing.DivisionAlgebra.compact_quotient"])]
 theorem NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact :
     CompactSpace (_root_.Quotient (QuotientGroup.rightRel (incl₁ K D).range)) := by
   sorry
@@ -354,6 +506,14 @@ then the double coset space `Dˣ \ (D ⊗ 𝔸_K^infty)ˣ / U` is finite for any
 of `(D ⊗ 𝔸_F^infty)ˣ`.
 -/
 open scoped TensorProduct.RightActions in
+@[blueprint
+  "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"
+  (statement := /-- If $U$ is an open subgroup of $(D\otimes_K \A_K^\infty)^\times$
+    then the double coset space $D^\times\backslash(D\otimes_K \A_K^\infty)^\times/U$ is finite. -/)
+  (proof := /-- The double cosets give a disjoint open cover of $(D\otimes_K \A_K^\infty)$
+    which descends to a disjoint open cover of the quotient space
+    $D^\times\backslash(D\otimes_K \A_K^\infty)^\times$. However this space is compact
+    by theorem~\ref{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}. -/)]
 theorem NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset
     {U : Subgroup (Dfx K D)} (hU : IsOpen (U : Set (Dfx K D))) :
     Finite (DoubleCoset.Quotient (Set.range (incl₁ K D)) U) := by

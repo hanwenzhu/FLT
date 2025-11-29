@@ -71,37 +71,12 @@ that a restricted product of topological additive groups $K_v$ over compact open
 subgroups $A_v$ is locally compact.
 
 What we need then is this (note that this is not true for a general Dedekind domain):
-\begin{theorem}
-  \label{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \lean{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \discussion{451}
-  \leanok
-  If $K$ is a number field and $v$ is a nonzero prime ideal of the integers of $K$,
-  then the integers of $K_v$ is a compact open subgroup.
-\end{theorem}
-\begin{proof} Openness should follow from the fact that the integers are
-  $\{x : v(x)<v(1/\pi)\}$ where $\pi$ is a uniformizer. Compactness needs
-  finiteness of the residue field $\mathcal{O}_K/v$.
-\end{proof}
+\inputleannode{NumberField.instCompactSpaceAdicCompletionIntegers}
+
 
 Once we have this, the above result from mathlib gives us
-\begin{theorem}
-  \lean{NumberField.AdeleRing.locallyCompactSpace}
-  \label{NumberField.AdeleRing.locallyCompactSpace}
-  \uses{NumberField.instCompactSpaceAdicCompletionIntegers}
-  \discussion{253}
-  \leanok
-  The adeles of a number field are locally compact.
-\end{theorem}
-\begin{proof}
-  The adeles of a number field are a product of the finite adeles and the infinite adeles
-  so it suffices to prove that the finite and infinite adeles are locally compact.
-  The infinite adeles are just isomorphic to $\R^n$ as a topological space, so they're certainly
-  locally compact. As for the finite adeles,
-  the mathlib theorem {\tt RestrictedProduct.locallyCompactSpace\_of\_addGroup}
-  says that a restricted product of locally compact additive groups with respect to open compact
-  subgroups is locally compact, so this reduces us the previous result.
-\end{proof}
+\inputleannode{NumberField.AdeleRing.locallyCompactSpace}
+
 
 \section{Base change}
 
@@ -148,79 +123,18 @@ a function also called $v$ from $K$ to $\Z\cup\{\infty\}$ normalised so that if 
 for $v$ then $v(\pi)=1$. Similarly we consider $w$ as a function from $L$ to $\Z\cup\{\infty\}$.
 The next lemma explains how these valuations are related.
 
-\begin{lemma}
-  \label{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
-  \lean{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
-  \leanok
-  If $i:K\to L$ denotes the inclusion then for $k\in K$ we have
-  $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$
-  (recall that valuations here are written additively, unlike in mathlib).
-\end{lemma}
-\begin{proof}
-  \leanok
-  Standard (and formalized).
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
 
-\begin{definition}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap}
-  \leanok
-  There's a natural ring map $K_v\to L_w$ extending the map $K\to L$.
-  It is defined by completing
-  the inclusion $K\to L$ at the finite places $v$ and $w$ (which can be done
-  because the previous lemma shows that the map is uniformly continuous for the $v$-adic
-  and $w$-adic topologies).
-\end{definition}
 
-\begin{lemma}
-  \lean{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
-  \label{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
-  \uses{IsDedekindDomain.HeightOneSpectrum.valuation_comap,
-  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \leanok
-  If $i_v:K_v\to L_w$ denotes the map of the previous definition
-  then for $x\in K_v$ we have
-  $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  Follows by continuity from lemma~\ref{IsDedekindDomain.HeightOneSpectrum.valuation_comap}.
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
 
-\begin{lemma}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
-  \uses{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
-  \leanok
-  The map $i_v:K_v\to L_w$ sends the integer ring $A_v$ into $B_w$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  The integer ring is defined by $v\geq0$ (or $v\leq 1$ in mathlib, which uses multiplicative
-  valuations) so the result follows from \ref{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}.
-\end{proof}
-\begin{theorem}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \leanok
-  \discussion{326}
-  Giving $L_w$ the $K_v$-algebra structure coming from the natural map $K_v\to L_w$,
-  the $w$-adic topology on $L_w$ is the $K_v$-module topology.
-\end{theorem}
-\begin{proof}
-  Any basis for $L$ as a $K$-vector space spans $L_w$ as a $K_v$-module, so $L_w$ is
-  finite-dimensional over $K_v$ and the module topology is the same as the product
-  topology. So we need to establish that the product topology on $L_w=K_v^n$ is
-  the $w$-adic topology. But the $w$-adic topology is induced by the $w$-adic norm,
-  which makes $L_w$ into a normed $K_v$-vector space, and (after picking a basis)
-  the product norm on $L_w=K_v^n$ also makes $L_w$ into a normed $K_v$-vector space.
-  So the result follows from the standard fact (see for example the lemma on p52
-  of Cassels-Froelich, formalized as {\tt ContinuousLinearEquiv.ofFinrankEq} in mathlib)
-  that any two norms on a finite-dimensional vector space over
-  a complete field are equivalent (and thus induce the same topology).
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}
+
+
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
+
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
+
 
 Because of the commutative diagram
 \begin{center}
@@ -235,124 +149,32 @@ we can view $L_w$ as an $L\otimes_KK_v$-algebra.
 Now instead of fixing $w$ upstairs, we fix $v$ downstairs and consider all $w$ lying
 over it at once. So say $v$ is in the height one spectrum of $A$.
 
-\begin{lemma}
-  \lean{IsDedekindDomain.HeightOneSpectrum.Extension.finite}
-  \label{IsDedekindDomain.HeightOneSpectrum.Extension.finite}
-  \leanok
-  There are only finitely many primes $w$ of $B$ lying above $v$.
-\end{lemma}
-\begin{proof}
-  \leanok
-  This is a standard fact about Dedekind domains. The key input is
-  mathlib's theorem {\tt primesOver\_finite}.
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.Extension.finite}
+
 
 We write $w|v$ to denote the fact that $w$ is a prime of $B$ above $v$ of $A$.
 
-\begin{definition}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom}
-  \leanok
-  The product of the maps $K_v\to L_w$ for $w|v$ is a natural ring map $K_v\to\prod_{w|v}L_w$
-  lying over $K\to L$.
-\end{definition}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'}
 
 Because $K_v\to\prod_{w|v}L_w$ lies over $K\to L$, there's an induced $L$-algebra
 map $L\otimes_KK_v\to\prod_{w|v}L_w$. We are now able to state one of the key results
 in this section. The proof is probably the hardest proof
 in this section to formalize.
 
-\begin{theorem}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom',
-  IsDedekindDomain.HeightOneSpectrum.Extension.finite}
-  \leanok
-  The induced $L$-algebra homomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ is an
-  isomorphism of rings.
-\end{theorem}
-\begin{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
 
-  My current proposal to formalize this is as follows. The map is surjective
-  because the image is dense and closed; this has been formalized already.
-  It is also a $K_v$-algebra homomorphism if we give $L_w$ the obvious $K_v$-algebra
-  structure. Thus we can conclude the result if we can prove that both spaces are
-  finite-dimensional and have the same dimension. The $K_v$-dimension of $L\otimes_KK_v$
-  is equal to the $K$-dimension of $L$, which is $\sum_{w|v}e_wf_w$ using the standard
-  notation that $e_w$ is the ramification index of $w$ and $f_w$ the residue degree
-  (this result is in mathlib). So it suffices to prove that $[L_w:K_v]=e_wf_w$.
-  We already have that $e_w$ (defined globally) is equal to the local ramification
-  index (defined as the factor by which the valuations differ on $K$). So what is left
-  is to prove that (i) the residue field extension induced by $L_w/K_v$ has degree is equal to the
-  globally-defined $f_w$, (ii) an extension of local fields has degree $ef$. Now (i) sounds
-  straightforward given what we have (the map from $A$ to $\mathcal{O}_v$ has kernel $v$ and
-  dense image) and (ii) is true for any complete discretely-valued field; I am not suggesting
-  we formalize the following proof, but at least it represents a rigorous justification:
-  A field complete with respect to a discrete valuation is \emph{stable} in the sense
-  of the book by Bosch-G\"{u}ntzer-Remmert (Prop 3.6.2.1), so every finite extension of such a field
-  is cartesian (def 3.6.1.1) and thus $ef=n$ (Prop 3.6.2.4, (iii) implies (ii)). Note
-  that if you weaken the hypotheses too much then there are counterexamples; it's possible
-  to have $ef<n$ and BGR goes into details.
 
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
 
-\begin{theorem}
-  \label{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
-  \lean{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology}
-  \leanok
-  For $v$ fixed, the product topology on $\prod_{w|v}L_w$ is the $K_v$-module
-  topology.
-\end{theorem}
-\begin{proof}
-  \leanok
-  This is a finite product of $K_v$-modules each of which has the $K_v$-module topology
-  by~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology},
-  and the product topology is the module topology for a finite product of modules each of which
-  has the module topology (this is in mathlib).
-\end{proof}
 
-\begin{theorem}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology}
-  If we give $L\otimes_KK_v$ the $K_v$-module topology then the $L$-algebra isomorphism
-  $L\otimes_K K_v\cong\prod_{w|v}L_w$ is also a homeomorphism.
-\end{theorem}
-\begin{proof} Indeed, is a $K_v$-algebra isomorphism between two modules each of which
-  have the module topology, and any module map is automorphically continuous for the
-  module topologies.
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv}
+
 
 We now start thinking about what's going on at the integral level. We write $A_v$
 for the integers of $K_v$ and $B_w$ for the integers of $L_w$.
 
-\begin{theorem}
-  \lean{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
-  \label{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv}
-  \leanok
-  The isomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ induces an isomorphism
-  $B\otimes_AA_v\to \prod_{w|v}B_w$
-  for all $v$ in the height one spectrum of $A$.
-\end{theorem}
-\begin{proof}
-  \leanok
-  Certainly the image of the integral elements are integral. The argument in the other
-  direction is more delicate. My original plan was to follow Cassels--Froehlich,
-  Cassels' article ``Global fields'', section 12 lemma, p61, which proves it for
-  all but finitely many primes, but \href{https://github.com/ImperialCollegeLondon/FLT/pull/400}
-  {a PR by Matthew Jasper} gives another approach which works for all primes.
-  Jasper's argument is to show that the closure of $A$ in $K_v$ is $A_v$
-  for a valuation on a Dedekind domain, and then that the closure of $A$ in $\prod_{v\in S}K_v$
-  is $\prod_{v\in S}A_v$ for $S$ a finite set of valuations (using the Chinese
-  remainder theorem). Applying this to $B$ we get that the closure of $B$ in $\prod_{w|v}L_w$
-  is $\prod_{w|v}B_w$. He then shows that this closure is the image of
-  $B\otimes_A\mathcal{O}_v$ (by showing that this image is closed because it's open),
-  giving surjectivity; injectivity follows from the statement
-  that $L\otimes_KK_v=\prod_{w|v}L_w$.
-\end{proof}
+\inputleannode{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
+
 
 A summary of what we have so far: for all finite places $v$ of $A$
 we have shown that the natural map $L\otimes_KK_v\to\prod_wL_w$
@@ -371,43 +193,18 @@ there's a map $K_v\to L_w$ if $w|v$, extending $K\to L$, and we have seen in
 theorem~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
 that this sends $A_v$ to $B_w$. We conclude
 
-\begin{definition}
-  \label{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
-  \lean{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom,
-  IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers}
-  \leanok
-  There's a natural ring homomorphism
-  $\A_{A,K}^\infty\to\A_{B,L}^\infty$ lying over $K\to L$.
-\end{definition}
+\inputleannode{IsDedekindDomain.FiniteAdeleRing.mapSemialgHom}
 
 Hence there's a natural $L$-algebra homomorphism $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$.
 
 Our next goal in this section is the following two results. First the algebraic claim:
 
-\begin{theorem}
-  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral,
-    RestrictedProduct.relabelIso,
-    IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv,
-    IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
-  \leanok
-  \discussion{243}
-  This natural map $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is an isomorphism.
-\end{theorem}
+\inputleannode{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
 
 Now $L\otimes_K\A_{A,K}^\infty$ is an $\A_{A,K}^\infty$-module and hence can be given
 the $\A_{A,K}^\infty$-module topology. We also claim
 
-\begin{theorem}
-  \label{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
-  \lean{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
-  \uses{IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral}
-  \leanok
-The induced $L$-algebra morphism
-  $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is a topological isomorphism.
-\end{theorem}
+\inputleannode{IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv}
 
 Informally, the proofs are simple: componentwise we know
 that $L\otimes_KK_v$ is isomorphic both algebraically and
@@ -479,20 +276,8 @@ starting with $L$ we only have to check on elements of $B$. Hopefully both are
 straightforward.
 \end{proof}
 
-\begin{corollary}
-  \label{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
-  %%% \uses{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv} -- uncomment to break leanblueprint
-  \lean{IsDedekindDomain.linearEquivTensorProductModule}
-  \leanok
-  If $M$ is any $K$-module then the canonical map $B\otimes_A M\to L\otimes_K M$
-  is an isomorphism.
-\end{corollary}
-\begin{proof}
-  \leanok
-  We can factor this map as $B\otimes_AM\cong B\otimes_A(K\otimes_KM)\cong
-  (B\otimes_A K)\cong_KM\to L\otimes_KM$ and we just showed that the latter map was an
-  isomorphism.
-\end{proof}
+\inputleannode{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}
+
 
 We now need to explain how tensor products sometimes commute with restricted products.
 Something we will need along the way is
@@ -592,11 +377,7 @@ From this, we can deduce the theorem we claimed earlier:
 Because this map factors through the isomorphism $B\otimes_A\A_K^\infty\to L\otimes_K\A_K^\infty$
 we can finally deduce that the natural map $L\otimes_K\A_K^\infty\to\A_L^\infty$ is an algebraic
   isomorphism.
-\begin{proof}
-  \proves{IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  Follows immediately from theorem~\ref{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
-  and theorem~\ref{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}.
-\end{proof}
+
 
 We still need to talk about topologies though, so let's finish by doing this. Let's start with some trivialities, expressed as definitions rather than theorems
 because they're constructions.
@@ -697,153 +478,44 @@ We then use these homeomorphisms to construct base change for the infinite adele
 First, we require a preliminary result that $K$ is dense inside any product of
 completions $\prod_{v\in S} K_v$ of $K$ at infinite places.
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
-  \lean{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
-  \leanok
-  Let $S$ be a set of infinite places of $K$. The image of $K$ under the embedding
-  $K\hookrightarrow (K_v)_{v\in S}; k \mapsto (k)_v$ is dense in the product topology.
-\end{theorem}
-\begin{proof}
-  Let $(K, v)$ denote $K$ equipped with the topology induced by the infinite place $v$.
-  It suffices to show that the image of $K$ under the embedding
-  $K\hookrightarrow \prod_{v\mid \infty}(K, v)$ is dense in the product topology.
-  By a standard analytic argument, for each $v$ it is possible to select a sequence $(x_n^{(v)})_n$
-  with the property that $x_n^{(v)} \to 1$ in $v$'s topology, while $x_n^{(v)} \to 0$ in any other
-  infinite place's topology.
-  Let $(z_v)_v \in \prod_{v\mid \infty}(K, v)$.
-  For each $v$, the sequence $y_n := \sum_{v\mid\infty} x_n^{(v)}z_v$ in $K$ converges to
-  $z_v$ in $v$'s topology.
-  So the embedded image of $y_n$ in $\prod_{v\mid \infty}(K, v)$ converges to $(z_v)_v$ in the
-  product topology.
-\end{proof}
+\inputleannode{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
+
 
 \subsubsection{Dimensionality of $\prod_{w\mid v}L_w$ as a $K_v$-vector space}
 
 This subsection contains a result that the $K_v$-dimension of
 $L \otimes_K K_v$ is equal to the $K_v$-dimension of $\prod_{w\mid v}L_w$.
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
-  \lean{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
-  For a fixed infinite place $v$ of $K$, we have
-  $\text{dim}_{K_v} \prod_{w\mid v} L_w = \text{dim}_{K_v} L\otimes_K K_v$.
-\end{theorem}
+\inputleannode{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
 
 \subsubsection{Base change at infinite places}
 
-\begin{definition}
-  \label{NumberField.InfinitePlace.Completion.piExtension}
-  \lean{NumberField.InfinitePlace.Completion.piExtension}
-  \leanok
-  Let $v$ be an infinite place of $K$. There is a continuous $K$-algebra homomorphism
-  $K_v \to \prod_{w\mid v}L_w$, whose restriction to $K$ corresponds to the global embedding
-  of $K$ into $(L_w)_w$.
-\end{definition}
+\inputleannode{NumberField.InfinitePlace.Completion.piExtension}
 
 The map in~\ref{NumberField.InfinitePlace.Completion.piExtension} can be lifted to an
 $L$-algebra homomorphism defined on $L\otimes_K K_v$.
 
-\begin{definition}
-  \label{NumberField.InfinitePlace.Completion.baseChange}
-  \lean{NumberField.InfinitePlace.Completion.baseChange}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.piExtension}
-  Let $v$ be an infinite place of $K$. There is a natural $L$-algebra homomorphism
-  $L\otimes_K K_v \to \prod_{w\mid v}L_w$, whose restriction to $1\otimes_K K_v$ corresponds to
-  the map in~\ref{NumberField.InfinitePlace.Completion.piExtension}.
-\end{definition}
+\inputleannode{NumberField.InfinitePlace.Completion.baseChange}
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.baseChange_surjective}
-  \lean{NumberField.InfinitePlace.Completion.baseChange_surjective}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}
-  For a fixed infinite place $v$ of $K$, the map $L\otimes_K K_v \to\prod_{w\mid v}L_w$ is
-  surjective.
-\end{theorem}
-\begin{proof}
-  Let $(x_i)_i$ be a $K_v$-basis of $\prod_{w\mid v}L_w$. By the density of $L$ in
-  $\prod_{w\mid v}L_w$
-  (Theorem~\ref{NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi}), we can
-  find $\alpha_i \in L$ arbitrarily close to $x_i\prod_{w\mid v}L_w$ with respect to the sup norm
-  when embedded globally in $\prod_{w\mid v}L_w$.
-  In particular, it is possible to choose such $\alpha_i$ so that the matrix representing
-  the vector $((\alpha_i)_{w \mid v})_i$ in the basis $(x_i)_i$ has non-zero determinant.
-  Since $(\alpha_i)_{w \mid v}$ is the image of $1\otimes \alpha_i$ under base change, we have
-  that $(1 \otimes \alpha_i)_i$ also forms a basis of $L\otimes_K K_v$, and base change
-  is surjective.
-\end{proof}
+\inputleannode{NumberField.InfinitePlace.Completion.baseChange_surjective}
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.baseChange_injective}
-  \lean{NumberField.InfinitePlace.Completion.baseChange_injective}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}
-  For a fixed infinite place $v$ of $K$, the map $L\otimes_K K_v \to\prod_{w\mid v}L_w$ is
-  injective.
-\end{theorem}
-\begin{proof}
-  The $L$-algebra map $L\otimes_K K_v \to\prod_{w\mid v}L_w$ can equivalently be thought of
-  as $K_v$-linear, which is injective, because it is surjective by
-  Theorem~\ref{NumberField.InfinitePlace.Completion.baseChange_surjective}, and both side have the same
-  $K_v$-dimension by
-  Theorem~\ref{NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct}.
-\end{proof}
+
+\inputleannode{NumberField.InfinitePlace.Completion.baseChange_injective}
+
 
 We have established that the map of
 Definition~\ref{NumberField.InfinitePlace.Completion.baseChange} gives an $L$-algebra isomorphism
 between $L\otimes_K K_v$ and $\prod_{w\mid v}L_w$.
 The left-hand side is given the $K_v$-module topology, while we show that the right-hand side also
 has the $K_v$-module topology.
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
-  \lean{NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
-  \leanok
-  If $w \mid v$ is an infinite place of $L$ lying above the infinite place $v$ of $K$, then
-  $L_w$ has the $K_v$-module topology.
-\end{theorem}
-\begin{proof}
-  Because $L_w$ is a finite-dimensional normed $K_v$ vector space, there exists a $K_v$-linear
-  linear homeomorphism $L_w \cong K_v^n$, from which $L_w$ has the $K_v$-module topology.
-\end{proof}
+\inputleannode{NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.baseChangeEquiv}
-  \lean{NumberField.InfinitePlace.Completion.baseChangeEquiv}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.baseChange,
-    NumberField.InfinitePlace.Completion.baseChange_surjective,
-    NumberField.InfinitePlace.Completion.baseChange_injective,
-    NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT}
-  Let $v$ be an infinite place of $K$. There is a natural $L$-algebra homeomorphism
-  $L\otimes_K K_v \cong_L \prod_{w\mid v}L_w$, whose restriction to $1\otimes_K K_v$ corresponds to
-  the map in~\ref{NumberField.InfinitePlace.Completion.piExtension}.
-\end{theorem}
-\begin{proof}
-  The map in~\ref{NumberField.InfinitePlace.Completion.baseChange} is an $L$-algebra
-  isomorphism by Theorem~\ref{NumberField.InfinitePlace.Completion.baseChange_surjective}
-  and Theorem~\ref{NumberField.InfinitePlace.Completion.baseChange_injective}.
-  Every $K_v$-algebra isomorphism between two $K_v$-module topological spaces is a homeomorphism.
-  Since the $L$-algebra isomorphism of
-  Definition~\ref{NumberField.InfinitePlace.Completion.baseChange} can equivalently be viewed as
-  a $K_v$-algebra isomorphism, it is also a homeomorphism.
-\end{proof}
 
-\begin{theorem}
-  \label{NumberField.InfinitePlace.Completion.piEquiv}
-  \lean{NumberField.InfinitePlace.Completion.piEquiv}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.baseChangeEquiv}
-  Let $v$ be an infinite place of $K$. There is a natural $K_v$-linear homeomorphism
-  $K_v^{[L:K]} \cong_{K_v} \prod_{w\mid v}L_w$.
-\end{theorem}
-\begin{proof}
-  Compose the $K_v$-linear isomorphism $K_v^{[L:K]} \cong \prod_{w\mid v}L_w$ with the $K_v$-linear
-  version of base change~\ref{NumberField.InfinitePlace.Completion.baseChangeEquiv} to get the
-  isomorphism in the statement.
-  Since both sides have the $K_v$-module topology, then this is also a homeomorphism.
-\end{proof}
+\inputleannode{NumberField.InfinitePlace.Completion.baseChangeEquiv}
+
+
+\inputleannode{NumberField.InfinitePlace.Completion.piEquiv}
+
 
 \subsubsection{Base change for the infinite adele ring}
 
@@ -853,57 +525,14 @@ Specifically, this means that for $x \in K_{\infty}$ and $y \in L_{\infty}$, we 
 $(x \cdot y)_w = x_{v_w} \cdot y_w$, where $v_w$ is the restriction of $w$ to $K$.
 We show that $L_{\infty}$ has the $K_{\infty}$-module topology.
 
-\begin{theorem}
-  \label{NumberField.InfiniteAdeleRing.piEquiv}
-  \lean{NumberField.InfiniteAdeleRing.piEquiv}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.piEquiv}
-  There is a natural $K_{\infty}$-linear homeomorphism
-  $K_{\infty}^{[L:K]} \cong_{K_{\infty}} L_{\infty}$.
-\end{theorem}
-\begin{proof}
-  Using the isomorphisms $K_v^{[L:K]} \cong_{K_v} \prod_{w\mid v}L_w$ from
-  Theorem~\ref{NumberField.InfinitePlace.Completion.piEquiv}, we clearly have a bijection
-  $K_{\infty}^{[L:K]} \cong \prod_v\prod_{w \mid v} L_w \cong \prod_w L_w$.
-  The $K_v$-linearity of each component isomorphism extends to $K_{\infty}$-linearity if the
-  action of $\prod_v K_v$ on $\prod_w L_w$ is constant on the fibers of the restriction map on
-  infinite places.
-  In other words, if, for all $x \in K_{\infty}$ and $y \in L_{\infty}$, we have
-  $(x \cdot y)_w = x_{v_w} \cdot y_w$, which is true by definition.
-\end{proof}
+\inputleannode{NumberField.InfiniteAdeleRing.piEquiv}
 
-\begin{theorem}
-  \label{NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
-  \lean{NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
-  \leanok
-  \uses{NumberField.InfiniteAdeleRing.piEquiv}
-  $L_{\infty}$ has the $K_{\infty}$-module topology.
-\end{theorem}
-\begin{proof}
-  Since $L_{\infty}$ is homeomorphic to a finite product of $K_{\infty}$ as a $K_{\infty}$-vector
-  space, it has the $K_{\infty}$-module topology.
-\end{proof}
 
-\begin{theorem}
-  \label{NumberField.InfiniteAdeleRing.baseChangeEquivAux}
-  \lean{NumberField.InfiniteAdeleRing.baseChangeEquivAux}
-  \leanok
-  \uses{NumberField.InfinitePlace.Completion.baseChangeEquiv}
-  There is a natural $L$-algebra isomorphism
-  $L \otimes_K K_{\infty} \cong_L L_{\infty}$.
-\end{theorem}
-\begin{proof}
-  This follows from the following chain of isomorphisms:
-  \[
-    L \otimes_K K_{\infty} \cong_L \prod_v (L \otimes_K K_v) \cong_L
-      \prod_v \prod_{w\mid v}L_w \cong_L L_{\infty} .
-  \]
-  The first isomorphism is the standard $L$-algebra isomorphism
-  $L \otimes_K \prod_v K_v \cong_L \prod_v (L \otimes_K K_v)$.
-  The second isomorphism is given by the component $L$-algebra isomorphisms
-  $L \otimes_K K_v \cong_L \prod_{w\mid v}L_w$ from
-  Theorem~\ref{NumberField.InfinitePlace.Completion.baseChangeEquiv}.
-\end{proof}
+\inputleannode{NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
+
+
+\inputleannode{NumberField.InfiniteAdeleRing.baseChangeEquivAux}
+
 
 It remains to show that the map in~\ref{NumberField.InfiniteAdeleRing.baseChangeEquivAux} is a
 homeomorphism.
@@ -911,21 +540,8 @@ Since both sides have the $K_{\infty}$-module topology, and since the $L$-algebr
 of~\ref{NumberField.InfiniteAdeleRing.baseChangeEquivAux} can equivalently be viewed as a
 $K_{\infty}$-linear isomorphism, it is also a homeomorphism.
 
-\begin{theorem}
-  \label{NumberField.InfiniteAdeleRing.baseChangeEquiv}
-  \lean{NumberField.InfiniteAdeleRing.baseChangeEquiv,
-    NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT}
-  \leanok
-  \uses{NumberField.InfiniteAdeleRing.baseChangeEquivAux}
-  If $K\to L$ is a ring homomorphism between two number fields then there is a natural isomorphism
-  (both topological and algebraic) $L\otimes_KK_\infty\cong L_\infty$.
-\end{theorem}
-\begin{proof}
-  Since both sides of the $L$-algebra isomorphism
-  in~\ref{NumberField.InfiniteAdeleRing.baseChangeEquivAux} have the $K_{\infty}$-module topology,
-  and since the isomorphism can equivalently be viewed as a $K_{\infty}$-linear isomorphism,
-  it is also a homeomorphism.
-\end{proof}
+\inputleannode{NumberField.InfiniteAdeleRing.baseChangeEquiv}
+
 
 
 \subsection{Base change for adeles}
@@ -934,36 +550,13 @@ From the previous results we deduce immediately that if $L/K$ is a finite extens
 of number fields then there's a natural (topological and algebraic) isomorphism
 $L\otimes_K\A_K\to \A_L$.
 
-\begin{theorem}
-  \label{NumberField.AdeleRing.baseChangeEquiv}
-  \lean{NumberField.AdeleRing.baseChangeEquiv}
-  \leanok
-  \uses{NumberField.InfiniteAdeleRing.baseChangeEquiv,
-  IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv}
-  If $K\to L$ is a ring homomorphism between two number fields then there is a natural isomorphism
-  (both topological and algebraic) $L\otimes_K\A_K\cong\A_L$.
-\end{theorem}
-\begin{proof}
-  \leanok
-  Follows from the previous results.
-\end{proof}
+\inputleannode{NumberField.AdeleRing.baseChangeEquiv}
+
 
 Something else we shall need:
 
-\begin{theorem}
-  \label{NumberField.AdeleRing.baseChange_moduleTopology}
-  \lean{NumberField.AdeleRing.instBaseChangeIsModuleTopology}
-  \leanok
-  \uses{NumberField.AdeleRing.baseChangeEquiv}
-  If $K\to L$ is a ring homomorphism between two number fields then the topology on $\A_L$
-  is the $\A_K$-module topology, where the module structure comes from the
-  natural map $\A_K\to\A_L$.
-\end{theorem}
-\begin{proof}
-  \leanok
-  Indeed $\A_L\cong L\otimes_K\A_K$ is a homeomorphism, and
-  the right hand side has the $\A_K$-module topology.
-\end{proof}
+\inputleannode{NumberField.AdeleRing.baseChange_moduleTopology}
+
 
 \section{Discreteness and compactness}
 
@@ -971,72 +564,19 @@ We need that if $K$ is a number field then
 $K\subseteq\mathbb{A}_K$ is discrete, and the quotient (with the
 quotient topology) is compact. Here is a proposed proof.
 
-\begin{theorem}
-  \lean{Rat.AdeleRing.zero_discrete}
-  \label{Rat.AdeleRing.zero_discrete}
-  \leanok
-  There's an open subset of $\A_{\Q}$ whose intersection with $\Q$ is $\{0\}$.
-\end{theorem}
-\begin{proof}
-  Use $\prod_p{\Z_p}\times(-1,1)$. Any rational $q$ in this set is a $p$-adic
-  integer for all primes $p$ and hence (writing it in lowest terms as $q=n/d$)
-  satisfies $p\nmid d$, meaning that $d=\pm1$ and thus $q\in\Z$. The fact
-  that $q\in(-1,1)$ implies $q=0$.
-\end{proof}
+\inputleannode{Rat.AdeleRing.zero_discrete}
 
-\begin{theorem}
-  \lean{NumberField.AdeleRing.zero_discrete}
-  \label{NumberField.AdeleRing.zero_discrete}
-  \uses{Rat.AdeleRing.zero_discrete,NumberField.AdeleRing.baseChangeEquiv}
-  \leanok
-  There's an open subset of $\A_{K}$ whose intersection with $K$ is $\{0\}$.
-\end{theorem}
-\begin{proof}
-  By a previous result, we have $\A_K=K\otimes_{\Q}\A_{\Q}$.
-  Choose a basis of $K/\Q$; then $K$ can be identified with $\Q^n\subseteq(\A_{\Q})^n$
-  and the result follows from the previous theorem.
-\end{proof}
 
-\begin{theorem}
-  \lean{NumberField.AdeleRing.discrete}
-  \label{NumberField.AdeleRing.discrete}
-  \uses{NumberField.AdeleRing.zero_discrete}
-  \leanok
-  The additive subgroup $K$ of $\A_K$ is discrete.
-\end{theorem}
-\begin{proof}
-  If $x\in K$ and $U$ is the open subset in the previous lemma, then
-  it's easily checked that $K\cap U=\{0\}$ implies $K\cap (U+x)=\{x\}$,
-  and $U+x$ is open.
-\end{proof}
+\inputleannode{NumberField.AdeleRing.zero_discrete}
+
+
+\inputleannode{NumberField.AdeleRing.discrete}
+
 
 For compactness we follow the same approach.
 
-\begin{theorem}
-  \lean{Rat.AdeleRing.cocompact}
-  \label{Rat.AdeleRing.cocompact}
-  \leanok
-  The quotient $\A_{\Q}/\Q$ is compact.
-\end{theorem}
-\begin{proof}
-  The space $\prod_p\Z_p\times[0,1]\subseteq\A_{\Q}$ is a product of compact spaces
-  and is hence compact. I claim that it surjects onto $\A_{\Q}/\Q$. Indeed,
-  if $a\in\A_{\Q}$ then for the finitely many prime numbers $p\in S$ such that $a_p\not\in\Z_p$
-  we have $a_p\in\frac{r_p}{p^{n_p}}+\Z_p$ with $r_p/p^{n_p}\in\Q$, and
-  if $q=\sum_{p\in S}\frac{r_p}{p^{n_p}}\in\Q$ then $a-q\in \prod_p\Z_p\times\R$.
-  Now just subtract $\lfloor a_{\infty}-q\rfloor$ to move into $\prod_p\Z_p\times[0,1)$
-  and we are done.
-\end{proof}
+\inputleannode{Rat.AdeleRing.cocompact}
 
-\begin{theorem}
-  \lean{NumberField.AdeleRing.cocompact}
-  \label{NumberField.AdeleRing.cocompact}
-  \uses{Rat.AdeleRing.cocompact,NumberField.AdeleRing.baseChangeEquiv}
-  \leanok
-  The quotient $\A_K/K$ is compact.
-\end{theorem}
-\begin{proof}
-  We proceed as in the discreteness proof above, by reducing to $\Q$. As before, choosing
-  a $\Q$-basis of $K$ gives us $\A_K/K\cong(\A_{\Q}/\Q)^n$ so the result follows from
-  the previous theorem.
-\end{proof}
+
+\inputleannode{NumberField.AdeleRing.cocompact}
+

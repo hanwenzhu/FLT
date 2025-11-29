@@ -83,66 +83,23 @@ We may also regard $D$ as a subring of $D\otimes_F\A_F^\infty$ via the map $d\ma
 we can think of $D^\times$ as a subgroup of $(D\otimes_F\A_F^\infty)^\times$.
 
 Let $R$ be an additive commutative group. Later on $R$ will be a commutative ring but we will not need this for the definition.
-\begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
-  \leanok
-  The space of $R$-valued \emph{automorphic forms} for $D^\times$ is the set of
-  functions $f:D_{\A^\infty}^\times\to R$ satisfying the following axioms:
-  \begin{itemize}
-    \item $f(dg)=f(g)$ for all $d\in D^\times$ and $g\in D_{\A^\infty}^\times$.
-    \item $f(gz)=f(g)$ for all $g\in D_{\A^\infty}^\times$.
-    \item There exists a compact open subgroup $U\subseteq (D_{\A^f}^\times)$ such that $f(gu)=f(g)$ for all $g\in D_{\A^\infty}^\times$ and $u\in U$.
-  \end{itemize}
-\end{definition}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
 
 Let $S^D(R)$ denote the set of automorphic forms for $D^\times$. The space $S^D(R)$ is sometimes referred to as a space of
 ``quaternionic modular forms'' over $R$.
 Three basic observations about $S^D(R)$ are
 
-\begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm}
-  \leanok
-  Pointwise addition $(f_1+f_2)(g):=f_1(g)+f_2(g)$ makes $S^D(R)$ into an
-  additive abelian group.
-\end{definition}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
 
-\begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup}
-  \leanok
-  If $R$ is a commutative ring then pointwise scalar multiplication $(r\cdot f)(g):= r\cdot(f(g))$ makes
-  $S^D(R)$ into an $R$-module.
-\end{definition}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
 
-\begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
-  \leanok
-  The group $D_{\A^f}^\times$ acts on the additive abelian group $S^D(R)$ by $(g\cdot f)(x)=f(xg)$.
-\end{definition}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction}
 
 If $R$ is a commutative ring then the action of $D_{\A^\infty}^\times$ commutes with the $R$-action.
 
 Now let $U$ be a level, that is, a compact open subgroup of $D_{\A^\infty}^\times$.
 
-\begin{definition}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction,
-    TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
-  \leanok
-  The quaternionic modular forms of level $U$, with notation $S^D(U;R)$, are the $U$-invariants for the $D_{\A^\infty}^\times$-action on $S^D(R)$.
-\end{definition}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel}
 
 The Hecke algebras involved in the main modularity lifting
 theorems needed in the FLT project will be endomorphisms of these spaces $S^D(U;R)$.
@@ -157,35 +114,8 @@ although of course the Jacquet--Langlands theorem is much much harder to prove t
 proof of finite-dimensionality.
 
 
-\begin{theorem}
-  \lean{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \label{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \uses{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module}
-  Let $k$ be a field. Then the space $S^D(U;k)$ is a finite-dimensional $k$-vector space.
-\end{theorem}
+\inputleannode{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
 
 
 
-\begin{proof}
-  \proves{TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional}
-  \uses{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact,
-  NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset}
-  The finite-dimensionality theorem is in fact an easy consequence of Fujisaki's lemma,
-  proved in the Fukisaki miniproject, chapter~\ref{Fujisaki_project}.
-  Write $(D\otimes_F\A_F^\infty)^\times$ as a disjoint union of double cosets
-  $\coprod_i D^\times g_i U$. This open cover descends to a disjoint open
-  cover of $D^\times\backslash (D\otimes_F\A_F^\infty)^\times$,
-  and this latter space is compact by theorem~\ref{NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact}.
-  Hence the cover is finite; write the double coset representatives
-  as $g_1,g_2,\ldots,g_n$. We claim that
-  the function $S^D(U;k)\to W^n$ sending $f$ to $(f(g_1),f(g_2),\ldots,f(g_n))$
-  is injective and $k$-linear, which suffices by finite-dimensionality of $W$.
-  $k$-linearity is easy, so let's talk about injectivity.
 
-  Say $f_1$ and $f_2$ are two elements of $S^D(U;k)$ which agree on
-  each $g_i$. It suffices to prove that $f_1(g)=f_2(g)$ for all
-  $g\in(D\otimes_F\A_F^\infty)^\times$. So say $g\in(D\otimes_F\A_F^\infty)^\times$,
-  and write $g=\delta g_iu$ for $\delta \in D^\times$ and $u\in U$.
-  Then $f_1(g)=f_1(\delta g_iu)=f_1(g_i)$ (by the definition of $S^D(U;k)$), and similarly $f_2(g)=f_2(g_i)$
-  and because $f_1(g_i)=f_2(g_i)$ by assumption, we deduce $f_1(g)=f_2(g)$ as required.
-\end{proof}

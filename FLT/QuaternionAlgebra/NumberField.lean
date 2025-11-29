@@ -1,3 +1,4 @@
+import Architect
 import FLT.Mathlib.Algebra.IsQuaternionAlgebra
 import FLT.Mathlib.Topology.Algebra.Valued.ValuationTopology
 import FLT.Mathlib.Topology.Instances.Matrix
@@ -66,10 +67,22 @@ noncomputable def GL2.localFullLevel (v : HeightOneSpectrum (𝓞 F)) :
   MonoidHom.range (Units.map
     (RingHom.mapMatrix (v.adicCompletionIntegers F).subtype).toMonoidHom)
 
+@[blueprint
+  "M2.localFullLevel.isOpen"
+  (statement := /-- $M_2(\calO_v)$ is an open subring of $M_2(K_v)$. -/)
+  (proof := /-- Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
+    follows because a product of compacts is compact and a product of opens is open. -/)
+  (latexEnv := "lemma")]
 theorem M2.localFullLevel.isOpen (v : HeightOneSpectrum (𝓞 F)) :
     IsOpen (M2.localFullLevel v).carrier :=
   (NumberField.isOpenAdicCompletionIntegers F v).matrix
 
+@[blueprint
+  "M2.localFullLevel.isCompact"
+  (statement := /-- $M_2(\calO_v)$ is a compact subring of $M_2(K_v)$. -/)
+  (proof := /-- Topologically $M_2(\calO_v)\cong \calO_v^4$ as a subset of $K_v^4$ so this
+    follows because a product of compacts is compact and a product of opens is open. -/)
+  (latexEnv := "lemma")]
 theorem M2.localFullLevel.isCompact (v : HeightOneSpectrum (𝓞 F)) :
     IsCompact (M2.localFullLevel v).carrier :=
   (isCompact_iff_compactSpace.mpr (NumberField.instCompactSpaceAdicCompletionIntegers F v)).matrix
@@ -226,6 +239,13 @@ noncomputable def GL2.toAdicCompletion
 /-- `GL_2(𝔸_F^∞)` is isomorphic and homeomorphic to the
 restricted product of the local components `GL_2(F_v)`.
 -/
+@[blueprint
+  "GL2.restrictedProduct"
+  (statement := /-- $G$ is isomorphic and homeomorphic
+    to the restricted product of $GL_2(K_v)$ with respect
+    to the compact open subgroups $GL_2(\calO_v)$. -/)
+  (proof := /-- This follows from lemma~\ref{ContinuousMulEquiv.restrictedProductUnits}
+    and lemma~\ref{Homeomorph.restrictedProductMatrix}. -/)]
 noncomputable def GL2.restrictedProduct :
     GL (Fin 2) (FiniteAdeleRing (𝓞 F) F) ≃ₜ*
     Πʳ (v : HeightOneSpectrum (𝓞 F)),

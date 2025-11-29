@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Andrew Yang, Matthew Jasper
 -/
+import Architect
 import Mathlib.Algebra.BigOperators.GroupWithZero.Action
 import Mathlib.Algebra.Module.LinearMap.Defs
 import Mathlib.Algebra.Ring.Action.Submonoid
@@ -149,6 +150,11 @@ lemma eq_finsum_quotient_out_of_bijOn' (a : fixedPoints V A)
   exact finsum_mem_eq_of_bijOn e he₀ he₁
 
 /-- The Hecke operator T_g = [UgV] : A^V → A^U associated to the double coset UgV. -/
+@[blueprint
+  "AbstractHeckeOperator.HeckeOperator_toFun"
+  (statement := /-- Assuming $UgV$ is a finite union of cosets $g_iV$,
+    we define $[UgV]:A^V\to A^U$ to be the map sending $a\in A^V$
+    to $\sum_i g_ia.$ -/)]
 noncomputable def HeckeOperator_toFun (a : fixedPoints V A) : fixedPoints U A :=
   ⟨∑ᶠ gᵢ ∈ Quotient.out '' (QuotientGroup.mk '' (U * {g}) : Set (G ⧸ V)), gᵢ • a.1, by
   rintro ⟨u, huU⟩
@@ -183,6 +189,18 @@ noncomputable def HeckeOperator_addMonoidHom : fixedPoints V A →+ fixedPoints 
 variable {R : Type*} [Ring R] [Module R A] [SMulCommClass G R A]
 
 variable (g U V) in
+@[blueprint
+  "AbstractHeckeOperator.HeckeOperator"
+  (statement := /-- This function is well-defined (that is, independent of the
+    choice of $g_i$), has image in $A^U$ and is $R$-linear. -/)
+  (proof := /-- Well-definedness is because if we change $g_i$ to $g'_i:=g_iv$
+    for some $v\in V$ then $g_ia=g_i'a$ because $a\in A^V$.
+    
+    The image lands in $A^U$ because left multiplication by $u$
+    fixes $UgV$ and hence permutes the cosets $g_iV$.
+    
+    Finally $R$-linearity is because the $G$-action is $R$-linear. -/)
+  (latexEnv := "lemma")]
 noncomputable def HeckeOperator : fixedPoints V A →ₗ[R] fixedPoints U A where
   toFun := HeckeOperator_toFun h
   map_add' a b := by
@@ -199,6 +217,16 @@ lemma HeckeOperator_apply (a : fixedPoints V A) :
     ∑ᶠ (gᵢ ∈ Quotient.out '' (QuotientGroup.mk '' (U * {g}) : Set (G ⧸ V))), gᵢ • (a : A) :=
   rfl
 
+@[blueprint
+  "AbstractHeckeOperator.comm"
+  (statement := /-- Say $g,h\in G$ and we have $UgU=\coprod_i g_iU$
+    and $UhU=\coprod_j h_j$ and we have $g_ih_j=h_jg_i$ for all $i,j$.
+    Then $[UgU][UhU]=[UhU][UgU]$, that is, the Hecke operators
+    acting on $A^U$ commute. -/)
+  (proof := /-- We have $[UgU][UhU]a=\sum_ig_i(\sum_jh_ja)=\sum_{i,j}g_ih_ja$
+    and $[UhU][UgU]a=\sum_jh_j\sum_ig_ia=\sum_{j,i}h_jg_ia$ and these
+    sums are equal because $g_ih_j=h_jg_i$. -/)
+  (latexEnv := "lemma")]
 theorem comm {g₁ g₂ : G} (h₁ : (QuotientGroup.mk '' (U * {g₁}) : Set (G ⧸ U)).Finite)
     (h₂ : (QuotientGroup.mk '' (U * {g₂}) : Set (G ⧸ U)).Finite)
     (hcomm : ∃ s₁ s₂ : Set G,

@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Andrew Yang, Matthew Jasper
 -/
+import Architect
 import FLT.Mathlib.RingTheory.Localization.BaseChange -- removing this breaks a simp proof
 import Mathlib.Algebra.Group.Int.TypeTags
 import Mathlib.NumberTheory.RamificationInertia.Basic
@@ -114,6 +115,13 @@ lemma intValuation_comap (hAB : Function.Injective (algebraMap A B))
 
 omit [IsIntegralClosure B A L] in
 /-- If w | v then for x ∈ K we have w(x)=v(x)^e where e is the ramification index. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.valuation_comap"
+  (statement := /-- If $i:K\to L$ denotes the inclusion then for $k\in K$ we have
+    $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$
+    (recall that valuations here are written additively, unlike in mathlib). -/)
+  (proof := /-- Standard (and formalized). -/)
+  (latexEnv := "lemma")]
 lemma valuation_comap (w : HeightOneSpectrum B) (x : K) :
     (comap A w).valuation K x ^
       (Ideal.ramificationIdx (algebraMap A B) (comap A w).asIdeal w.asIdeal) =
@@ -132,6 +140,12 @@ lemma noZeroSMulDivisors [IsDomain B] : NoZeroSMulDivisors A B := by
 include K L in
 omit [IsIntegralClosure B A L] [IsFractionRing B L] in
 /-- There are only finitely many nonzero primes of B above a nonzero prime of A. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.Extension.finite"
+  (statement := /-- There are only finitely many primes $w$ of $B$ lying above $v$. -/)
+  (proof := /-- This is a standard fact about Dedekind domains. The key input is
+    mathlib's theorem {\tt primesOver\_finite}. -/)
+  (latexEnv := "lemma")]
 theorem Extension.finite (v : HeightOneSpectrum A) : Finite (v.Extension B) := by
   have := noZeroSMulDivisors A K L B
   rw [Extension, ← Set.coe_setOf]
@@ -243,6 +257,17 @@ lemma LinearEquivTensorProduct_symm_tmul (k : K) (b : B) :
 variable (M : Type*) [AddCommGroup M] [Module K M] [Module A M] [IsScalarTower A K M]
 
 /-- The canonical `A`-linear isomorphism `L ⊗ M ≅ B ⊗ M` for any `K`-module `M`. -/
+@[blueprint
+  "IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"
+  (statement := /-- %%%  -- uncomment to break leanblueprint
+    
+    
+    If $M$ is any $K$-module then the canonical map $B\otimes_A M\to L\otimes_K M$
+    is an isomorphism. -/)
+  (proof := /-- We can factor this map as $B\otimes_AM\cong B\otimes_A(K\otimes_KM)\cong
+    (B\otimes_A K)\cong_KM\to L\otimes_KM$ and we just showed that the latter map was an
+    isomorphism. -/)
+  (latexEnv := "corollary")]
 noncomputable def linearEquivTensorProductModule : L ⊗[K] M ≃ₗ[A] B ⊗[A] M :=
   let f₁ : L ⊗[K] M ≃ₗ[A] L ⊗[A] M := IsLocalization.moduleTensorEquiv (nonZeroDivisors A) K L M
     |>.restrictScalars A

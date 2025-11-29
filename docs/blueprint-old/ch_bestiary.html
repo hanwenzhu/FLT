@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Appendix: A collection of results which are needed in the proof.</title>
+<link rel="next" href="sect0005.html" title="Bibliography" />
+<link rel="prev" href="HeckeOperator_project.html" title="Miniproject: Hecke Operators" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="ch_bestiary">13 Appendix: A collection of results which are needed in the proof.</h1>
+
+<p>In this (temporary, unorganised) appendix we list a whole host of definitions and theorems which were known to humanity by the end of the 1980s and which we shall need. These definitions and theorems will find their way into more relevant sections of the blueprint once I have written more details. Note that some of these things are straightforward; others are probably multi-year research projects. The purpose of this chapter right now is simply to give the community (and possibly AIs) some kind of idea of the task we face. Note also that many of the <em>definitions</em> here are yet to be formalised in Lean, and this needs to be done before we can start talking about formalising theorems. </p>
+<h1 id="a0000000074">13.1 Results from class field theory</h1>
+<p>We start with the local case. In fact we restrict to the \(p\)-adic case, but only for simplicity of exposition because it’s all we’ll need (and, to be frank, because I’m not 100 percent of what is true in the function field case). </p>
+<p>Let \(K\) be a finite extension of \(\mathbb {Q}_p\). We write \(\widehat{\mathbb {Z}}\) for the profinite completion of \(\mathbb {Z}\); it is isomorphic to \(\prod _p\mathbb {Z}_p\) where \(\mathbb {Z}_p\) is the \(p\)-adic integers and the product is over all primes. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="maximal_unramified_extension_of_p-adic_field">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#maximal_unramified_extension_of_p-adic_field">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>The maximal unramified extension \(K^{un}\) in a given algebraic closure of \(K\) is Galois over \(K\) with Galois group “canonically” isomorphic to \(\widehat{\mathbb {Z}}\) in two ways; one of these two isomorphisms identifies \(1\in \widehat{\mathbb {Z}}\) with an arithmetic Frobenius (the endomorphism inducing \(x\mapsto x^q\) on the residue field of \(K^{un}\), where \(q\) is the size of the residue field of \(K\)). The other identifies 1 with geometric Frobenius (defined to be the inverse of arithmetic Frobenius). </p>
+
+  </div>
+</div>
+<p>It is impossible to say which of the two canonical isomorphisms is “the most canonical”; people working in different areas make different choices in order to locally minimise the number of minus signs in their results. </p>
+<p>As a result, the absolute Galois group of \(K\) surjects onto \(\widehat{\mathbb {Z}}\); its kernel is said to be the <em>inertia subgroup</em> of this Galois group. Now pull back this surjection along the continuous map from \(\mathbb {Z}\) (with its discrete topology) to \(\widehat{\mathbb {Z}}\), in the category of topological groups. We end up with a group containing the inertia group as an open normal subgroup, and with quotient isomorphic to the integers. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="local_Weil_group">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_Weil_group">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#maximal_unramified_extension_of_p-adic_field">Theorem 13.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The topological group described above is called the <em>Weil group</em> of \(K\). </p>
+
+  </div>
+</div>
+<p>The following theorem is nontrivial. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_class_field_theory">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.3</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_class_field_theory">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000277"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#local_Weil_group">Definition 13.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(K\) is a finite extension of \(\mathbb {Q}_p\) then there are two “canonical” isomorphisms of topological abelian groups, between \(K^\times \) and the abelianisation of the Weil group of \(K\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000277">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is the main theorem of local class field theory; see for example the relevant articles in&#160;<span class="cite">
+	[
+	<a href="sect0005.html#cf" >4</a>
+	]
+</span> or many other places. </p>
+
+  </div>
+</div>
+<p>Note that María Inés de Frutos Fernández and Filippo Nuccio are working on a formalisation of the proof of this using Lubin–Tate formal groups. </p>
+<p>Now let \(M\) be an abelian group (with the discrete topology) equipped with a continuous action of \(G_K\), the Galois group \(\operatorname{Gal}(K^{\operatorname{sep}}/K)\) where we fix an algebraic closure \(\overline{K}\) of \(K\). Note that if one doesn’t want to choose an algebraic closure of \(K\) one can instead think of \(M\) as being an etale sheaf of abelian groups on \(\operatorname{Spec}(K)\). </p>
+<p>Continuous group cohomology \(H^i(G_K,M)\) in this setting can be defined using continuous cocycles and continuous coboundaries, or just as a colimit of usual group cohomology over the finite quotients of this absolute Galois group (or as etale cohomology, if you prefer). Here are some of the facts we will need about cohomology in this situation. A nice summary is that cohomology of a local Galois group behaves like the cohomology of a compact connected 2-manifold. All the theorems below will need extensive planning. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_galois_coh_finite">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.4</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_galois_coh_finite">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000278"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> If \(M\) is finite then the cohomology groups \(H^i(G_K,M)\) all finite. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000278">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is Proposition&#160;14 in section&#160;5.2 of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#serre-galcoh" >10</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_galois_coh_dim_two">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.5</span>
+    <span class="theorem_thmtitle">"the dimension is 2"</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_galois_coh_dim_two">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000279"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(M\) is torsion then \(H^i(G_K,M)=0\) if \(i{\gt}2\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000279">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This follows from Proposition&#160;15 in&#160;section 5.3 of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#serre-galcoh" >10</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_galois_coh_top_degree">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.6</span>
+    <span class="theorem_thmtitle">"top degree"</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_galois_coh_top_degree">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000280"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  \(H^2(G_K,\mu _n)\) is “canonically” isomorphic to \(\mathbb {Z}/n\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000280">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is also included in Lemma 2 of section 5.2 of <span class="cite">
+	[
+	<a href="sect0005.html#serre-galcoh" >10</a>
+	]
+</span> (Serre just writes that the groups are equal; he clearly is not a Lean user. I can see no explanation in his book of this use of the equality symbol. When the statement of this “theorem” is formalised in Lean it may well actually be a definition, giving the map). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="a0000000281">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.7</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#a0000000281">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000282"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>There is a “canonical” isomorphism \(H^2(K,\mu _\infty )=\mathbb {Q}/\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000282">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is in Theorem II.5.2 in&#160;<span class="cite">
+	[
+	<a href="sect0005.html#serre-galcoh" >10</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_galois_coh_poincare">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.8</span>
+    <span class="theorem_thmtitle">"Poincaré duality"</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_galois_coh_poincare">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000283"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(\mu =\bigcup _{n\geq 1}\mu _n\) and \(M':=\operatorname{Hom}(M,\mu )\) is the dual of \(M\) then for \(0\leq i\leq 2\) the cup product pairing \(H^i(G_K,M)\times H^{2-i}(G_K,M')\to H^2(G_K,\mu )=\mathbb {Q}/\mathbb {Z}\) is perfect. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000283">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is Theorem 2 in section 5.2 in <span class="cite">
+	[
+	<a href="sect0005.html#serre-galcoh" >10</a>
+	]
+</span>. Note again the dubious (as far as Lean is concerned) use of the equality symbol. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="local_galois_coh_euler_poincare">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.9</span>
+    <span class="theorem_thmtitle">"Euler-Poincaré characteristic"</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#local_galois_coh_euler_poincare">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(h^i(M)\) denotes the order of \(H^i(G_K,M)\) then \(h^0(M)-h^1(M)+h^2(M)=0\). </p>
+
+  </div>
+</div>
+<p>We now move onto the global case. If \(N\) is a number field, that is, a finite extension of \(\mathbb {Q}\), then let \(\mathbb {A}_N^f:= N\otimes _{\mathbb {Z}}\widehat{\mathbb {Z}}\) denote the finite adeles of \(N\) and let \(N_\infty := N\otimes _{\mathbb {Q}}\mathbb {R}\) denote the product of the completions of \(N\) at the infinite places, so \(\mathbb {A}_N:=\mathbb {A}_N^f\times N_\infty \) is the ring of adeles of \(N\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="global_class_field_theory">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.10</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#global_class_field_theory">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000284"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#local_class_field_theory">Theorem 13.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(N\) is a finite extension of \(\mathbb {Q}\) then there are two “canonical” isomorphisms of topological groups between the profinite abelian groups \(\pi _0(\mathbb {A}_N^\times /N^\times )\) and \(\operatorname{Gal}(\overline{N}/N)^{\operatorname{ab}}\); one sends local uniformisers to arithmetic Frobenii and the other to geometric Frobenii; each of the global isomorphisms is compatible with the local isomorphisms above. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000284">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is the main theorem of global class field theory; see for example Tate’s article in&#160;<span class="cite">
+	[
+	<a href="sect0005.html#cf" >4</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<p>We need the following consequence: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Skinner_Wiles_CFT_trick">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.11</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#Skinner_Wiles_CFT_trick">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#global_class_field_theory">Theorem 13.10</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>Let \(S\) be a finite set of places of a number field \(K\) . For each \(v \in S\) let \(L_v/K_v\) be a finite Galois extension. Then there is a finite solvable Galois extension \(L/K\) such that if \(w\) is a place of \(L\) dividing \(v \in S\), then \(L_w/K_v\) is isomorphic to \(L_v/K_v\) as \(K_v\)-algebra. Moreover, if \(K^{\operatorname{avoid}} /K\) is any finite extension then we can choose \(L\) to be linearly disjoint from \(K^{\operatorname{avoid}}\). </p>
+
+  </div>
+</div>
+<p>We also need Poitou-Tate duality; I’ll refrain from writing it down for now, because we don’t even have Galois cohomology in Lean yet (although we are very close to it). </p>
+<h1 id="a0000000075">13.2 Structures on the points of an affine variety.</h1>
+<p>All rings and algebras in this section are commutative with a 1, and all morphisms send 1 to 1. </p>
+<p>Let \(X=\operatorname{Spec}(A)\) be an affine scheme of finite type over a field \(K\). For example \(X\) could be an affine algebraic variety; in fact we shall only be interested in smooth affine varieties in the applications, but the initial definition and theorem are fine for all finite type schemes. </p>
+<p>If \(R\) is any \(K\)-algebra then one can talk about the \(R\)-points \(X(R)\) of \(X\), which in this case naturally bijects with the \(K\)-algebra homomorphisms from \(A\) to \(R\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="topology_on_affine_variety_points">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.12</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#topology_on_affine_variety_points">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p> If \(X\) is an affine scheme of finite type over \(K\), and if \(R\) is a \(K\)-algebra which is also a topological ring, then we define a topology on the \(R\)-points \(X(R)\) of \(K\) by embedding the \(K\)-algebra homomorphisms from \(A\) to \(R\) into the set-theoretic maps from \(A\) to \(R\) with its product topology, and giving it the subspace topology. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="topology_on_affine_variety_computation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.13</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#topology_on_affine_variety_computation">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000285"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#topology_on_affine_variety_points">Definition 13.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> If \(X\) is as above and \(X\to \mathbb {A}^n_K\) is a closed immersion, then the induced map from \(X(R)\) with its topology as above to \(R^n\) is an embedding of topological spaces (that is, a homeomorphism onto its image). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000285">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>See <a href ="https://math.stanford.edu/~conrad/papers/adelictop.pdf">Conrad’s notes</a>. </p>
+
+  </div>
+</div>
+<p>We now specialise to the smooth case. I want to make the following conjectural “definition”: </p>
+<div class="definition_thmwrapper theorem-style-definition" id="manifold_on_algebraic_variety_points">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.14</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#manifold_on_algebraic_variety_points">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Let \(K\) be a field equipped with an isomorphism to the reals, complexes, or a finite extension of the \(p\)-adic numbers. Let \(X\) be a smooth affine algebraic variety over \(K\). Then the points \(X(K)\) naturally inherit the structure of a manifold over \(K\). </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000286">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">13.15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#a0000000286">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>Probably this is fine for a broader class of fields \(K\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="manifold_on_algebraic_variety_computation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.16</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#manifold_on_algebraic_variety_computation">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000287"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#manifold_on_algebraic_variety_points">Definition 13.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>If \(X\) is as in the previous definition and \(X\to \mathbb {A}^n_K\) is a closed immersion, then the induced map from \(X(K)\) with its manifold structure to \(K^n\) is an embedding of manifolds. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000287">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>I’m assuming this is standard, if true. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="lie_group_from_algebraic_group">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">13.17</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#lie_group_from_algebraic_group">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#manifold_on_algebraic_variety_computation">Theorem 13.16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>If \(G\) is an affine algebraic group of finite type over \(K=\mathbb {R}\) or \(\mathbb {C}\) then \(G(K)\) is naturally a real or complex Lie group. </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000288">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">13.18</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#a0000000288">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>The corollary, for sure, is true! And it’s all we need. I have not yet made any serious effort to find a reference for the definition or independence, although there seem to be some ideas <a href ="https://leanprover.zulipchat.com/#narrow/stream/116395-maths/topic/top.20space.20.2F.20manifold.20structure.20on.20points.20of.20alg.20varieties/near/431812525">here</a>. As a toy example, one can embed \(\operatorname{GL}_n(\mathbb {R})\) into either \(\mathbb {R}^{n^2+1}\) via \(M\mapsto (M,\det (M)^{-1})\) or into \(\mathbb {R}^{2n^2}\) via \(M\mapsto (M,M^{-1})\) and the claim is that the two induced manifold structures are the same. </p>
+
+  </div>
+</div>
+<h1 id="a0000000076">13.3 Algebraic groups.</h1>
+<p>The concept of an affine algebraic group over a field \(K\) can be implemented in Lean as a commutative Hopf algebra over \(K\), as a group object in the category of affine schemes over \(K\), as a representable group functor on the category of affine schemes over \(K\), or as a representable group functor on the category of schemes over \(K\) which is represented by an affine scheme. All of these are the same to mathematicians but different to Lean and some thought should go into which of these should be the actual definition, and which should be proved to be the same thing as the definition. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="connected_reductive_group">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.19</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#connected_reductive_group">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>An affine algebraic group&#160;\(G\) of finite type over a field&#160;\(k\) is said to be <em>connected</em> if it is connected as a scheme, and <em>reductive</em> if \(G_{\overline{k}}\) has no nontrivial smooth connected unipotent normal \(k\)-subgroup. </p>
+
+  </div>
+</div>
+<h1 id="a0000000077">13.4 Automorphic forms and representations</h1>
+<p>This section needs a lot of work; I am just attempting to write down some approximation to the (well-known) definitions but in great generality (far greater than we need). Some definitions below are short on details; indeed there may even be errors or imprecisions right now (because we are working in more generality than I am used to). It will be a very interesting project to get these details down. One reference (which leaves a lot of exercises) is Borel-Casselman in <span class="cite">
+	[
+	<a href="sect0005.html#corvallis1" >2</a>
+	]
+</span>. Even <em>stating</em> these definitions will be a big challenge in Lean; indeed one of the motivations of the project is that it forces us to write down all the below properly. </p>
+<p>Let \(G\) be a connected reductive group over a number field \(N\). We note that \(G(\mathbb {A}_N^f)\) is a (locally profinite) topological space and \(G(N_\infty )\) is a real Lie group; their product is \(G(\mathbb {A}_N)\). If \(g\in G(\mathbb {A}_N)\), write \(g_f\in G(\mathbb {A}_N^f)\) for the finite part and \(g_\infty \in G(N_\infty )\) for its infinite part. </p>
+<p>For some reason, in the literature people seem to fix a choice of maximal compact subgroup \(U_\infty \) of \(G(N_\infty )\). I believe that all such subgroups are conjugate, and probably this gives some route between the different definitions coming from the different choices. </p>
+<p>Example: if \(G=\operatorname{GL}_2\) and \(N=\mathbb {Q}\) then \(N_\infty =\mathbb {R}\) and \(G(N_\infty )\) is just \(\operatorname{GL}_2(\mathbb {R})\) with its usual Lie group structure and we can take \(U_\infty \) to be \(O_2(\mathbb {R})\); \(G(\mathbb {A}_N^f)\) is the restricted product of \(\operatorname{GL}_2(\mathbb {Q}_p)\) over \(\operatorname{GL}_2(\mathbb {Z}_p)\), for all primes \(p\). </p>
+<p>By assumption, \(G(N_\infty )\) admits a finite-dimensional (algebraic) representation \(\rho \) with finite kernel. Consider \(\rho \) as taking values in \(GL_N(\mathbb {C})=\operatorname{Aut}_{\mathbb {C}}(V)\). Fix a hermitian sesquilinear form on \(V\) which is \(U_\infty \) invariant, and now define a norm \(||g||_\rho \) on \(G(N_\infty )\) by </p>
+<div class="displaymath" id="a0000000289">
+  \[ ||g||_\rho =(\operatorname{tr}\rho (g)^*\rho (g))^{1/2}, \]
+</div>
+<p> where the asterisk denotes adjoint with respect to the sesquilinear form. According to the article by Borel–Jacquet in <span class="cite">
+	[
+	<a href="sect0005.html#corvallis1" >2</a>
+	]
+</span> (p189), if \(\rho '\) is another such choice then there exists a positive real \(C\) and a positive integer \(n\) such that \(||g||_{\rho '}\leq C||g||_\rho ^n\) for all \(g\in G(N_\infty )\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="slowly_increasing">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.20</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#slowly_increasing">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>A function \(f : G(N_\infty )\to \mathbb {C}\) is <em>slowly-increasing</em> if there exists some \(C{\gt}0\) and \(n\geq 1\) such that \(|f(x)\leq C||x||_\rho ^n\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="slowly_increasing_well_defined">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.21</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#slowly_increasing_well_defined">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000290"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#slowly_increasing">Definition 13.20</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>This is independent of the choice of \(\rho \) as above. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000290">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows from the above. </p>
+
+  </div>
+</div>
+<p>We can now give the definition of an automorphic form. For FLT we only need the definition for \(G\) being either an abelian algebraic group, or an inner form of \(GL(2)\), but we have chosen to work in full generality here. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="automorphic_form">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.22</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#automorphic_form">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#slowly_increasing_well_defined">Theorem 13.21</a></li>
+          
+          <li><a href="ch_bestiary.html#connected_reductive_group">Definition 13.19</a></li>
+          
+          <li><a href="ch_bestiary.html#lie_group_from_algebraic_group">Corollary 13.17</a></li>
+          
+          <li><a href="ch_bestiary.html#topology_on_affine_variety_computation">Theorem 13.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>An <em>automorphic form</em> is a function \(\phi :G(\mathbb {A}_N)\to \mathbb {C}\) satisfying the following conditions: </p>
+<ul class="itemize">
+  <li><p>\(\phi \) is locally constant on \(G(\mathbb {A}_N^f)\) and \(C^\infty \) on \(G(N_\infty )\). In other words, for every \(g_\infty \), \(\phi (-,g_\infty )\) is locally constant, and for every \(g_f\), \(\phi (g_f,-)\) is smooth. </p>
+</li>
+  <li><p>\(\phi \) is left-invariant under \(G(N)\); </p>
+</li>
+  <li><p>\(\phi \) is right-\(U_\infty \)-finite (that is, the space spanned by \(x\mapsto \phi (xu)\) as \(u\) varies over \(U_\infty \) is finite-dimensional); </p>
+</li>
+  <li><p>\(\phi \) is right \(K_f\)-finite, where \(K_f\) is one (or equivalently all) compact open subgroups of \(G(\mathbb {A}_N^f)\); </p>
+</li>
+  <li><p>\(\phi \) is \(\mathcal{z}\)-finite, where \(\mathcal{z}\) is the centre of the universal enveloping algebra of the Lie algebra of \(G(N_\infty )\), acting via differential operators. Equivalently \(\phi \) is annihiliated by a finite index ideal of this centre, so morally \(\phi \) satisfies lots of differential equations of a certain type; </p>
+</li>
+  <li><p>For all \(g_f\), the function \(g_\infty \mapsto \phi (g_f g\infty )\) is slowly-increasing in the sense above. </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<p>Automorphic forms form a typically infinite-dimensional vector space. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="cuspidal_automorphic_form">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.23</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#cuspidal_automorphic_form">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#automorphic_form">Definition 13.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>An automorphic form is <em>cuspidal</em> (or “a cusp form”) if it furthermore satisfies \(\int _{U(N)\backslash U(\mathbb {A}_N)}\phi (ux)du=0\), where \(P\) runs through all the proper parabolic subgroups of \(G\) defined over \(N\) and \(U\) is the unipotent radical of \(P\), and the integral is with respect to the measure coming from Haar measure. </p>
+
+  </div>
+</div>
+<p>The cuspidal automorphic forms form a complex subspace of the space of automorphic forms. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="automorphic_form_actions">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.24</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#automorphic_form_actions">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#automorphic_form">Definition 13.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The group \(G(\mathbb {A}_N)\) acts on itself on the right, and this induces a left action of its subgroup \(G(\mathbb {A}_N^f)\times U_\infty \) on the spaces of automorphic forms and cusp forms. The Lie algebra \(\mathfrak {g}\) of \(G(N_\infty )\) also acts, via differential operators. Furthermore the actions of \(\mathfrak {g}\) and \(U_\infty \) are compatible in the sense that the differential of the \(U_\infty \) action is the action of its Lie algebra considered as a subalgebra of \(\mathfrak {g}\). We say that the spaces are \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-modules. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="cuspidal_automorphic_form_decomposition">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.25</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#cuspidal_automorphic_form_decomposition">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#cuspidal_automorphic_form">Definition 13.23</a></li>
+          
+          <li><a href="ch_bestiary.html#automorphic_form_actions">Definition 13.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> The cusp forms decompose as a (typically infinite) direct sum of irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-modules. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="cuspidal_automorphic_representation">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.26</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#cuspidal_automorphic_representation">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#cuspidal_automorphic_form_decomposition">Theorem 13.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>A cuspidal automorphic representation is an irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module isomorphic to an irreducible summand of the space of cusp forms. </p>
+
+  </div>
+</div>
+<p>For non-cuspidal representations, they do not decompose as a direct sum; there is a continuous spectrum which decomposes as a direct integral. We may not ever need these. As a result the definition of an automorphic representation has to be slightly modified in the non-cuspidal case. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="automorphic_representation">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.27</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#automorphic_representation">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#automorphic_form_actions">Definition 13.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>An automorphic representation is an irreducible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module isomorphic to an irreducible subquotient of the space of automorphic forms. </p>
+
+  </div>
+</div>
+<p>Admissibility is a finiteness condition on an irreducible representation of \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\); automorphic representations are admissible, and this seems to boil down to theorems of Godement and Harish-Chandra in the general case. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="automorphic_representation_local_decomposition">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.28</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#automorphic_representation_local_decomposition">#</a>
+    
+    <a class="icon proof" href="ch_bestiary.html#a0000000291"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#automorphic_representation">Definition 13.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>An irreducible admissible \((G(\mathbb {A}_N^f)\times U_\infty ,\mathfrak {g})\)-module is a restricted tensor product of irreducible representations \(\pi _v\) of \(G(N_v)\) as \(v\) runs through the finite places of \(N\), tensored with a tensor product of irreducible \((\mathfrak {g}_v,U_{\infty ,v})\)-modules as \(v\) runs through the infinite places of \(N\). The representations \(\pi _v\) are unramified for all but finitely many \(v\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000291">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>See Flath’s article in&#160;<span class="cite">
+	[
+	<a href="sect0005.html#corvallis2" >3</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<p>As mentioned above, we only need all of this for abelian algebraic groups and for inner forms of \(\operatorname{GL}_2\) over totally real fields, where everything can be made more concrete (and in particular where I can write down concrete definitions, although this still needs to be done). In particular, we don’t strictly speaking need all of the above, we could just cheat and deal with \(\operatorname{GL}_2(\mathbb {R})\) and \(\mathbb {H}^\times \) separately. </p>
+<p>The theorems I need are: Jacquet-Langlands for inner forms of \(\operatorname{GL}_2\) over totally real fields, and multiplicity 1 for these inner forms. We also need cyclic base change plus classification of image, all for totally definite quaternion algebras, and we need automorphic induction from \(\operatorname{GL}_1(K)\) to \(\operatorname{GL}_2(F)\) when \(K/F\) is a degree 2 totally imaginary extension. There seems to be little point formalising the statements of the theorems if we cannot yet even formalise the definition of an automorphic representation properly. </p>
+<h1 id="a0000000078">13.5 Galois representations</h1>
+<p>Ivan Farabella has formalised the definition of a compatible family of Galois representations, modulo the existence of Frobenius elements, which has been established by Jou Glasheen. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="compatible_family">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.29</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#compatible_family">#</a>
+    
+    
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/23">Discussion</a>
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p> Let \(N\) be a number field. A <em>compatible family of \(d\)-dimensional Galois representations over \(N\)</em> is a finite set of finite places \(S\) of \(N\), a number field \(E\), a monic degree \(d\) polynomial \(F_{{\mathfrak {p}}}(X)\in E[X]\) for each finite place \({\mathfrak {p}}\) of \(K\) not in \(S\) and, for each prime number \(\ell \) and field embedding \(\phi : E\to \overline{\mathbb {Q}}_\ell \) (or essentially equivalently for each finite place of \(E\)), a continuous homomorphism \(\rho :\operatorname{Gal}(K^{\operatorname{sep}}/K)\to \operatorname{GL}_2(\overline{\mathbb {Q}}_\ell )\) unramified outside \(S\) and the primes of \(K\) above \(\ell \), such that \(\rho (\operatorname{Frob}_{\mathfrak {p}})\) has characteristic polynomial \(P_\pi (X)\) if \(\pi \) lies above a prime number \(p\not=\ell \) with \(p\not\in S\). </p>
+
+  </div>
+</div>
+<p>The big theorem, which again we are far from even <em>stating</em> right now, is </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Galois_representation_from_automorphic_representation_on_GL_2_form">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.30</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#Galois_representation_from_automorphic_representation_on_GL_2_form">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_bestiary.html#automorphic_representation">Definition 13.27</a></li>
+          
+          <li><a href="ch_bestiary.html#Shimura_varieties">Definition 13.31</a></li>
+          
+          <li><a href="ch_bestiary.html#compatible_family">Definition 13.29</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>Given an automorphic representation \(\pi \) for an inner form of \(\operatorname{GL}_2\) over a totally real field and with reflex field&#160;\(E\), such that \(\pi \) is weight 2 discrete series at every infinite place, there exists a compatible family of 2-dimensional Galois representations associated to \(\pi \), with \(S\) being the places at which \(\pi \) is ramified, and \(F_{{\mathfrak {p}}}(X)\) being the monic polynomial with roots the two Satake parameters for \(\pi \) at \({\mathfrak {p}}\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000079">13.6 Algebraic geometry</h1>
+<p>We have already mentioned Mazur’s Theorem on torsion subgroups of elliptic curves (theorem&#160;??). The proof of this is the main theorem of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#mazur-torsion" >7</a>
+	]
+</span>, 150 pages of subtle arithmetic geometry involving the bad reduction of modular curves, exotic cohomology theories (etale and more), and the consequences of this for the Neron models of their Jacobians. After a beautiful introductory chapter containing a history and examples, the convention is established that throughout the paper, \(N\) will denote a prime number which is at least 5. And then the first sentence of chapter 1 of the paper proper is “Consider quasi-finite separated commutative group schemes of finite presentation over the base \(S:=\operatorname{Spec}{\mathbb {Z}}\) which are finite flat group schemes over \(S':=\operatorname{Spec}(Z[1/N]).\)”. At the time of writing (May 2024), Lean’s algebraic geometry cannot get us through <em>the first sentence of Mazur’s proof</em>, which occupies pages 43 to 172 of the paper (not including the appendix or references, that’s just the proof). Anyone interested in formalising Mazur’s paper should make a formalisation of its first sentence their first milestone. </p>
+<p>Talking of modular curves, we also need the existence of Shimura curves and surfaces over totally real fields&#160;\(F\) (of degree greater than&#160;2, so always compact). The curves are "modeles étranges" in the sense of Deligne, so we also need moduli spaces of unitary Shimura varieties over CM extensions. We need to decompose the first and second etale cohomology groups of these varieties into Galois representations, by understanding them in terms of automorphic representations. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="Shimura_varieties">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">13.31</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#Shimura_varieties">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>We need the definition of (the canonical model over \(F\) of) the Shimura curve attached to an inner form of \(\operatorname{GL}_2\) with precisely one split infinite place, and the same for the Shimura surface associated to an inner form split at two infinite places (and ramified elsewhere, so it’s compact). </p>
+
+  </div>
+</div>
+<p>We also need Moret-Bailly’s theorem from&#160;<span class="cite">
+	[
+	<a href="sect0005.html#moret-bailly" >8</a>
+	]
+</span>: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="moret-bailly">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13.32</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_bestiary.html#moret-bailly">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>Let \(K^{\operatorname{avoid}}/K\) be a Galois extension of number fields. Suppose also that \(S\) is a finite set of places of \(K\). For \(v\in S\) let \(L_v/K_v\) be a finite Galois extension. Suppose also that \(T /K\) is a smooth, geometrically connected curve and that for each \(v\in S\) we are given a nonempty, \(\operatorname{Gal}(L_v/K_v)\)-invariant, open subset \(\Omega _v\subseteq (L_v)\). Then there is a finite Galois extension \(L/K\) and a point \(P ∈ T (L)\) such that </p>
+<ul class="itemize">
+  <li><p>\(L/K\) is Galois and linearly disjoint from \(K^{\operatorname{avoid}}\) over \(K\); </p>
+</li>
+  <li><p>if \(v\in S\) and \(w\) is a prime of \(L\) above \(v\) then \(L_w /K_v\) is isomorphic to \(L_v/K_v\); </p>
+</li>
+  <li><p>and \(P \in \Omega _v\subseteq T (L_v) \cong (L_w)\) via one such \(K_v\)-algebra morphism (this makes sense as \(\Omega _v\) is \(\operatorname{Gal}(L_v/K v)\)-invariant). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<p>Note that we do not even have the definition of a curve over a field in Lean. </p>
+<h1 id="a0000000080">13.7 Algebra</h1>
+<p>We need the classification of finite subgroups of \(\operatorname{PGL}_2(\overline{\mathbb {F}}_p)\). The answer is that they are all cyclic, dihedral, \(A_4\), \(S_4\), \(A_5\), or isomorphic to \(\operatorname{PSL}_2(k)\) or \(\operatorname{PGL}_2(k)\) for some finite field of characteristic&#160;\(p\). This should at least be easy to state!   </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="HeckeOperator_project.html" title="Miniproject: Hecke Operators"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0005.html" title="Bibliography"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Towards a Lean proof of Fermat’s Last Theorem</title>
+<link rel="next" href="sect0001.html" title="Introduction" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<div class="titlepage">
+<h1>Towards a Lean proof of Fermat’s Last Theorem</h1>
+<p class="authors">
+<span class="author">Kevin Buzzard, Richard Taylor</span>
+</p>
+</div>
+
+</div> <!--main-text -->
+<nav class=local_toc>
+<ul>
+  <li>	
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+  </li>
+  <li>	
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+	<ul>
+		   <li>	
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+  </li>
+  <li>	
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+	<ul>
+		   <li>	
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+  </li>
+  <li>	
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+	<ul>
+		   <li>	
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+  </li>
+  <li>	
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+  </li>
+  <li>	
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+  </li>
+  <li>	
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+  </li>
+  <li>	
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+	<ul>
+		   <li>	
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+  </li>
+  <li>	
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+  </li>
+  <li>	
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+  </li>
+  <li>	
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+  </li>
+  <li>	
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+	<ul>
+		   <li>	
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+  </li>
+  <li>	
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+	<ul>
+		   <li>	
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+  </li>
+  <li>	
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+  </li>
+  <li>	
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+  </li>
+  <li>	
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+	<ul>
+		   <li>	
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+  </li>
+  <li>	
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+  </li>
+  <li>	
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+  </li>
+  <li>	
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+  </li>
+  <li>	
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+	<ul>
+		   <li>	
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+  </li>
+  <li>	
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+	<ul>
+		   <li>	
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+  </li>
+  <li>	
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+  </li>
+</ul>
+</nav>
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

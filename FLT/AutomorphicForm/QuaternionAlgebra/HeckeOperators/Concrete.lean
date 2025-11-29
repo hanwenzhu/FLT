@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Andrew Yang, Matthew Jasper
 -/
+import Architect
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Local -- abstract Hecke ops
 import FLT.AutomorphicForm.QuaternionAlgebra.HeckeOperators.Abstract -- abstract Hecke ops
 import FLT.AutomorphicForm.QuaternionAlgebra.Defs -- definitions of automorphic forms
@@ -60,6 +61,16 @@ variable {G : Type*} [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
     {g : G} {U V : Subgroup G}
 
 open scoped Pointwise in
+@[blueprint
+  "QuotientGroup.mk_image_finite_of_compact_of_open"
+  (statement := /-- If $U$ and $V$ are compact subgroups of a topological group~$G$,
+    if $V$ is also open, and if $g\in G$, then the double coset space $UgV$
+    is a finite union of left cosets $g_iV$. -/)
+  (proof := /-- The subset $UgV$ of $G$ is a continuous image of the compact set $U\times V$
+    and is hence compact, and it is covered by the disjoint left cosets $g_iV$;
+    this cover must thus be finite. -/)
+  (discussion := 563)
+  (latexEnv := "lemma")]
 lemma QuotientGroup.mk_image_finite_of_compact_of_open
     (hU : IsCompact (U : Set G)) (hVopen : IsOpen (V : Set G)) :
     (QuotientGroup.mk '' (U * {g}) : Set (G ⧸ V)).Finite := by

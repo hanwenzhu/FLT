@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard
 -/
+import Architect
 import FLT.HaarMeasure.HaarChar.AddEquiv
 import Mathlib.Algebra.Group.Pi.Units
 import Mathlib.MeasureTheory.Group.Pointwise
@@ -54,6 +55,21 @@ open Measure
 variable {R : Type*} [Ring R] [TopologicalSpace R]
   [IsTopologicalRing R] [LocallyCompactSpace R] [MeasurableSpace R] [BorelSpace R]
 
+@[blueprint
+  "MeasureTheory.ringHaarChar_continuous"
+  (statement := /-- The function $\delta_R:R^\times\to\R_{>0}$ is continuous. -/)
+  (proof := /-- Fix a Haar measure $\mu$ on $R$ and a continuous real-valued function
+    $f$ on $R$ with compact support and such that $\int f(x) d\mu(x)\not=0$.
+    Then $r \mapsto \int f(rx) d\mu(x)$ is a continuous function
+    from $R\to\R$ (because a continuous function with compact support is uniformly
+     continuous) and thus gives a continuous function $R^\times\to\R$.
+     Thus the function $u\mapsto (\int f(ux) d\mu(x))/(\int f(x)d\mu(x))$ is
+     a continuous function from $R^\times$ to $\R$ taking values in $\R_{>0}$.
+     Hence $\delta_R^{-1}$ is continuous,
+     from lemma~\ref{MeasureTheory.ringHaarChar_mul_integral},
+     and thus $\delta_R$ is too. -/)
+  (discussion := 516)
+  (latexEnv := "corollary")]
 lemma ringHaarChar_continuous :
     Continuous (fun (u : Rˣ) ↦ addEquivAddHaarChar (ContinuousAddEquiv.mulLeft u)) := by
   suffices
@@ -87,11 +103,43 @@ lemma ringHaarChar_continuous :
   contrapose! hx
   exact ⟨(↑p⁻¹ : R) , hps, p * x, hx, by simp⟩
 
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar_refl"
+  (statement := /-- $d_A(id)=1.$ -/)
+  (proof := /-- Clear. -/)
+  (latexEnv := "lemma")]
+  MeasureTheory.addEquivAddHaarChar_refl
+
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar_smul_preimage"
+  (statement := /-- If $X$ is a Borel set then $\mu(X)=d_A(\phi)\mu(\phi^{-1}X)$. -/)
+  (proof := /-- This follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_map}
+    and the definition of the pushforward of a measure. -/)
+  (discussion := 509)
+  (latexEnv := "lemma")]
+  MeasureTheory.addEquivAddHaarChar_smul_preimage
+
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar_trans"
+  (statement := /-- $d_A(\phi\circ\psi)=d_A(\phi)d_A(\psi).$ -/)
+  (proof := /-- Here's one way: it suffices to prove that
+    $d_A(\phi\circ\psi)(\phi\circ\psi)_*\mu=d_A(\phi)d_A(\psi)(\phi\circ\psi)_*\mu$
+    (because there exists a compact set with positive finite measure)
+    and using lemma~\ref{MeasureTheory.addEquivAddHaarChar_map}
+    and the fact that $(\phi\circ\psi)_*\mu=\phi_*(\psi_*\mu)$
+    one can simplify both sides to $\mu$. -/)
+  (discussion := 511)
+  (latexEnv := "lemma")]
+  MeasureTheory.addEquivAddHaarChar_trans
+
 /-- `ringHaarChar : Rˣ →ₜ* ℝ≥0` is the function sending a unit of
 a locally compact topological ring `R` to the positive real factor
 which left multiplication by the unit scales additive Haar measure by.
 -/
-@[simps (isSimp := false)]
+@[simps (isSimp := false), blueprint
+  "MeasureTheory.ringHaarChar"
+  (statement := /-- We define $\delta_R(u)$ (or just $\delta(u)$ when the ring $R$ is clear) to be
+    $d_R(\ell_u)$. -/)]
 noncomputable def ringHaarChar : Rˣ →ₜ* ℝ≥0 where
   toFun r := addEquivAddHaarChar (ContinuousAddEquiv.mulLeft r)
   map_one' := by convert addEquivAddHaarChar_refl (G := R); ext; simp
@@ -100,6 +148,24 @@ noncomputable def ringHaarChar : Rˣ →ₜ* ℝ≥0 where
     convert addEquivAddHaarChar_trans (G := R); ext; simp [mul_assoc]
   continuous_toFun := ringHaarChar_continuous
 
+attribute [blueprint
+  "MeasureTheory.addEquivAddHaarChar_smul_integral_map"
+  (statement := /-- If $f:A\to\R$ is a Borel measurable function then
+    $d_A(\phi)\int f(x)d\phi_*\mu(x)=\int f(x)d\mu(x)$. -/)
+  (proof := /-- This also follows immediately from
+    lemma~\ref{MeasureTheory.addEquivAddHaarChar_map}. -/)
+  (discussion := 510)
+  (latexEnv := "lemma")]
+  MeasureTheory.addEquivAddHaarChar_smul_integral_map
+
+@[blueprint
+  "MeasureTheory.ringHaarChar_mul_integral"
+  (statement := /-- If $f:R\to\R$ is a Borel measurable function and $u\in R^\times$ then
+    $\delta_R(u)\int f(ux)d\mu(x)=\int f(x)d\mu(x)$. -/)
+  (proof := /-- A short calculation using
+    lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_integral_map}. -/)
+  (discussion := 514)
+  (latexEnv := "lemma")]
 lemma ringHaarChar_mul_integral
     (μ : Measure R) [IsAddHaarMeasure μ] [μ.Regular]
     {f : R → ℝ} (hf : Measurable f) (u : Rˣ) :
@@ -113,6 +179,13 @@ lemma ringHaarChar_mul_integral
   simp
 
 open Pointwise in
+@[blueprint
+  "MeasureTheory.ringHaarChar_mul_volume"
+  (statement := /-- If $X$ is a Borel subset of $R$ and $r\in R^\times$ then
+    $\mu(rX)=\delta_R(r)\mu(X)$. -/)
+  (proof := /-- Immediate from lemma~\ref{MeasureTheory.addEquivAddHaarChar_smul_preimage}. -/)
+  (discussion := 515)
+  (latexEnv := "lemma")]
 lemma ringHaarChar_mul_volume (μ : Measure R) [IsAddHaarMeasure μ] [μ.Regular]
     {X : Set R} (u : Rˣ) :
     μ (u • X) = ringHaarChar u * μ X := by
@@ -142,6 +215,12 @@ variable {S : Type*} [Ring S] [TopologicalSpace S]
 -- this is true in general, but the proof is easier if we assume
 -- `SecondCountableTopologyEither R S` because then if R and S are equipped with the Borel
 -- sigma algebra, the product sigma algebra on R × S is also the Borel sigma algebra.
+@[blueprint
+  "MeasureTheory.ringHaarChar_prod"
+  (statement := /-- If $R$ and $S$ are locally compact topological rings, then $\delta_{R\times
+    S}(r,s)=\delta_R(r)\times\delta_S(s)$. -/)
+  (proof := /-- Follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}. -/)
+  (latexEnv := "lemma")]
 lemma ringHaarChar_prod (u : Rˣ) (v : Sˣ) :
     letI : MeasurableSpace (R × S) := borel (R × S)
     haveI : BorelSpace (R × S) := ⟨rfl⟩
@@ -163,6 +242,13 @@ variable {ι : Type*} {A : ι → Type*} [Π i, Ring (A i)] [Π i, TopologicalSp
     [∀ i, IsTopologicalRing (A i)] [∀ i, LocallyCompactSpace (A i)]
     [∀ i, MeasurableSpace (A i)] [∀ i, BorelSpace (A i)]
 
+@[blueprint
+  "MeasureTheory.ringHaarChar_pi"
+  (statement := /-- If $R_i$ are a finite collection of locally compact topological rings,
+    and $u_i\in R_i^\times$ then $\delta_{\prod_i R_i}((u_i)_i)=\prod_i\delta_{R_i}(u_i)$. -/)
+  (proof := /-- Follows immediately from lemma~\ref{MeasureTheory.addEquivAddHaarChar_piCongrRight}.
+    -/)
+  (latexEnv := "lemma")]
 lemma ringHaarChar_pi [Fintype ι] (u : Π i, (A i)ˣ) :
     letI : MeasurableSpace (Π i, A i) := borel _
     haveI : BorelSpace (Π i, A i) := ⟨rfl⟩
@@ -182,6 +268,18 @@ variable {ι : Type*} {A : ι → Type*} [Π i, Ring (A i)] [Π i, TopologicalSp
     [hCopen : Fact (∀ (i : ι), IsOpen (C i : Set (A i)))]
     [hCcompact : ∀ i, CompactSpace (C i)]
 
+@[blueprint
+  "MeasureTheory.ringHaarChar_restrictedProduct"
+  (statement := /-- If $u=(u_i)_i\in R^\times$ then $\delta_R(u)=\prod_i\delta_{R_i}(u_i)$. -/)
+  (proof := /-- By definition of restricted product we have $u_i\in C_i$ for all but finitely many
+    $i$.
+    Note also that $u$ has an inverse $v=(v_i)_i$ with $v_i\in C_i$ for all but finitely many $i$.
+    The fact that $u_iv_i=v_iu_i=1$ means that $u_i,v_i\in C_i^\times$ for all but finitely many
+    $i$.
+    Thus the previous theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+    applies. -/)
+  (discussion := 554)
+  (latexEnv := "corollary")]
 lemma ringHaarChar_restrictedProduct (u : (Πʳ i, [A i, C i])ˣ) :
     letI : MeasurableSpace (Πʳ i, [A i, C i]) := borel _
     haveI : BorelSpace (Πʳ i, [A i, C i]) := ⟨rfl⟩

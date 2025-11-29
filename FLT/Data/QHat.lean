@@ -1,3 +1,4 @@
+import Architect
 import Mathlib.Algebra.Order.Star.Basic
 import Mathlib.Analysis.Normed.Field.Lemmas
 import Mathlib.Data.PNat.Prime
@@ -11,6 +12,13 @@ import Mathlib.RingTheory.Flat.TorsionFree
 /-- We define the profinite completion of ℤ explicitly as compatible elements of ℤ/Nℤ for
 all positive integers `N`. We declare it as a subring of `∏_{N ≥ 1} (ℤ/Nℤ)`, and then promote it
 to a type. -/
+@[blueprint
+  "ZHat"
+  (statement := /-- The profinite completion $\Zhat$ of $\Z$ is the set of
+       all compatible collections $c=(c_N)_N$ of elements of $\Z/N\Z$ indexed by
+       $\N^+:=\{1,2,3,\ldots\}$.
+       A collection is said to be \emph{compatible} if for all positive integers
+       $D\mid N$, we have $c_N$ mod $D$ equals $c_D$. -/)]
 def ZHat : Type := {
   carrier := { f : Π M : ℕ+, ZMod M | ∀ (D N : ℕ+) (h : (D : ℕ) ∣ N),
     ZMod.castHom h (ZMod D) (f N) = f D },
@@ -53,6 +61,11 @@ lemma ext (x y : ZHat) (h : ∀ n : ℕ+, x n = y n) : x = y :=
 @[simp] lemma natCast_val (m : ℕ) (n : ℕ+) : (m : ZHat) n = (m : ZMod n) := rfl
 @[simp] lemma intCast_val (m : ℤ) (n : ℕ+) : (m : ZHat) n = (m : ZMod n) := rfl
 
+@[blueprint
+  "ZHat.commRing"
+  (statement := /-- $\Zhat$ is a subring of $\prod_{N\geq1}(Z/N\Z)$ and in particular is a ring. -/)
+  (proof := /-- Follow your nose. -/)
+  (latexEnv := "lemma")]
 instance commRing : CommRing ZHat := inferInstance
 
 lemma zeroNeOne : (0 : ZHat) ≠ 1 := by
@@ -61,8 +74,20 @@ lemma zeroNeOne : (0 : ZHat) ≠ 1 := by
   rw [zero_val, one_val] at h2
   revert h2 ; decide
 
+@[blueprint
+  "ZHat.nontrivial"
+  (statement := /-- $0\not=1$ in $\Zhat$. -/)
+  (proof := /-- Recall that you can evaluate an element of $\Zhat$ at a positive integer.
+    Evaluating $0$ at 2 gives $0$, and evaluating $1$ at $2$ gives $1$, and these
+    are distinct elements of $\Z/2\Z$, so $0\not=1$ in $\Zhat$. -/)
+  (latexEnv := "lemma")]
 instance nontrivial : Nontrivial ZHat := ⟨0, 1, zeroNeOne⟩
 
+@[blueprint
+  "ZHat.charZero"
+  (statement := /-- The map from the naturals into $\Zhat$ sending $n$ to $n$ is injective. -/)
+  (proof := /-- Generalise the above idea. Feel free to write up a LaTeX proof and PR it. -/)
+  (latexEnv := "lemma")]
 instance charZero : CharZero ZHat := ⟨ fun a b h ↦ by
   rw [ZHat.ext_iff] at h
   specialize h ⟨_, (max a b).succ_pos⟩
@@ -75,6 +100,15 @@ instance charZero : CharZero ZHat := ⟨ fun a b h ↦ by
 open BigOperators Nat Finset in
 /-- A nonarchimedean analogue `0! + 1! + 2! + ⋯` of `e = 1/0! + 1/1! + 1/2! + ⋯`.
 It is defined as the function whose value at `ZMod n` is the sum of `i!` for `0 ≤ i < n`. -/
+@[blueprint
+  "ZHat.e"
+  (statement := /-- The infinite sum $0!+1!+2!+3!+4!+5!+\cdots$ looks
+    like it makes no sense at all; it is the sum of an infinite series of larger and larger
+    positive numbers.
+    However, the sum is \emph{finite} modulo $N$ for every positive integer $N$, because
+    all the terms from $N!$ onwards are multiples of $N$ and thus are zero in $\Z/N\Z$.
+    Thus it makes sense to define $e_N$ to be the value of the finite sum modulo $N$.
+    Explicitly, $e_N=0!+1!+\cdots+(N-1)!$ modulo $N$. -/)]
 def e : ZHat := ⟨fun (n : ℕ+) ↦ ∑ i ∈ range (n : ℕ), i !, by
   intros D N hDN
   dsimp only
@@ -87,6 +121,11 @@ def e : ZHat := ⟨fun (n : ℕ+) ↦ ∑ i ∈ range (n : ℕ), i !, by
 
 open BigOperators Nat Finset
 
+@[blueprint
+  "ZHat.e_def"
+  (statement := /-- The collection $(e_N)_N$ is an element of $\Zhat$. -/)
+  (proof := /-- This boils down to checking that $D!+(D+1)!+\cdots+(N-1)!$ is a multiple of~$D$. -/)
+  (latexEnv := "lemma")]
 lemma e_def (n : ℕ+) : e n = ∑ i ∈ range (n : ℕ), (i ! : ZMod n) := rfl
 
 lemma _root_.Nat.sum_factorial_lt_factorial_succ {j : ℕ} (hj : 1 < j) :
@@ -122,6 +161,21 @@ lemma e_factorial_succ (j : ℕ) :
   exact factorial_dvd_factorial (Nat.le_add_right _ _)
 
 /-- Nonarchimedean $e$ is not an integer. -/
+@[blueprint
+  "ZHat.e_not_in_Int"
+  (statement := /-- The element $(e_N)_N$ of $\Zhat$ is not in $\Z$. -/)
+  (proof := /-- First imagine that $e=n$ with $n\in\Z$ and $0\leq n$. In this case, choose $j$
+    such that $0!+1!+2!+\cdots+j!>n$ and check also that the sum is less
+    than $(j+1)!$. Now set $N=(j+1)!$ and let's compare $e_N$
+    and $n_N=n$. The trick is that $e_N$ must be $0!+1!+\cdots+j!$ mod $N$,
+    because all the terms beyond this are multiples not just of $(j+1)$ but
+    of $(j+1)!=N$. Thus mod $N$ we have $0\leq n<e_N<N$ so $n\not=e$.
+    
+    Now we deal with $n=-t<0$; choose $j$ large such that
+    $(j+1)!-(0!+1!+\cdots+j!)>t$ (possible because the sum is at most $2\times j!$)
+    and then set $N=(j+1)!$ and we have $0 < e_N<N-t<N$ so we cannot have $e_N=-t$ in $\Z/N\Z$,
+    so again $e\not=n$. -/)
+  (latexEnv := "lemma")]
 lemma e_not_in_Int : ∀ a : ℤ, e ≠ a := by
   rintro (a|a) ha
   · obtain ⟨j, honelt, hj⟩ : ∃ j : ℕ, 1 < j ∧ a < ∑ i ∈ range (j + 1), i ! := by
@@ -202,6 +256,17 @@ theorem eq_zero_of_mul_eq_zero (N : ℕ+) (a : ZHat) (ha : N * a = 0) : a = 0 :=
     using congrArg ZMod.val this
 
 -- ZHat is torsion-free. LaTeX proof in the notes.
+@[blueprint
+  "ZHat.torsionfree"
+  (statement := /-- If $0<N$ is an integer then multiplication by $N$ is injective on $\Zhat$. -/)
+  (proof := /-- Suppose that $(z_i)_i\in\Zhat$ and $Nz=0$. This means that $Nz_i=0\in\Z/i\Z$ for all
+    $i$.
+    Let us fix an arbitrary positive integer~$j$; we need to prove that $z_j=0\in\Z/j\Z$.
+    Consider the element $z_{Nj}\in\Z/Nj\Z$. By assumption, we have $Nz_{Nj}=0$, meaning that
+    if we lift $z_{Nj}$ to an integer, we have $Nj\mid Nz_{Nj}$, and thus $j\mid z_{Nj}$.
+    Thus by the compatibility assumption on the $z_i$ we have that $z_j\in\Z/j\Z$ is the
+    mod~$j$ reduction of $z_{Nj}$ and hence is zero. -/)
+  (latexEnv := "lemma")]
 lemma torsionfree (N : ℕ+) : Function.Injective (fun z : ZHat ↦ N * z) := by
   rw [← AddMonoidHom.coe_mulLeft, injective_iff_map_eq_zero]
   intro a ha
@@ -235,6 +300,20 @@ lemma y_mul_N_eq_z (N : ℕ+) (z : ZHat) (hz : z N = 0) (j : ℕ+) :
   rw [ZMod.castHom_apply, ZMod.cast_eq_val]
 
 -- LaTeX proof in the notes.
+@[blueprint
+  "ZHat.multiples"
+  (statement := /-- The multiples of~$N$ in $\Zhat$ are precisely the compatible collections
+    $(z_i)_i\in\Zhat$
+    with $z_N=0$. -/)
+  (proof := /-- Clearly $z_N=0$ is a necessary condition to be a multiple of~$N$. To see it is
+    sufficient,
+    take a general $(z_i)\in\Zhat$ such that $z_N=0$,
+    and now define a new element $(y_j)_j$ of $\Zhat$
+    by $y_j=z_{Nj}/N$. Just to clarify what this means: $z_{Nj}\in\Z/Nj\Z$ reduces mod~$N$
+    to $z_N=0$ by the compatibility assumption, so it is in the subgroup $N\Z/Nj\Z$ of $\Z/Nj\Z$,
+    which is isomorphic (via "division by $N$") to the group $\Z/j\Z$; this is how we construct
+    $y_j$. It is easily checked that the $y_j$ are compatible and that $Ny=z$. -/)
+  (latexEnv := "lemma")]
 lemma multiples (N : ℕ+) (z : ZHat) : (∃ (y : ZHat), N * y = z) ↔ z N = 0 := by
   constructor
   · intro ⟨y, hy⟩
@@ -276,12 +355,35 @@ end ZHat
 open scoped TensorProduct in
 /-- The "profinite completion" of ℚ is defined to be `ℚ ⊗ ZHat`, with `ZHat` the profinite
 completion of `ℤ`. -/
+@[blueprint
+  "QHat"
+  (statement := /-- % blue node
+    The profinite completion $\Qhat$ of $\Q$ is the tensor product $\Q\otimes_{\Z}\Zhat$,
+    or $\Qhat=\Q\otimes\Zhat$ for short. -/)]
 abbrev QHat := ℚ ⊗[ℤ] ZHat
 
 noncomputable example : QHat := (22 / 7) ⊗ₜ ZHat.e
 
 namespace QHat
 
+@[blueprint
+  "QHat.canonicalForm"
+  (statement := /-- Every element of $\Qhat:=\Q\otimes\Zhat$ can be written as $q\otimes_t z$ with
+    $q\in\Q$ and $z\in\Zhat$.
+    Furthermore one can even assume that $q=\frac{1}{N}$ for some positive integer $N$. -/)
+  (proof := /-- A proof I would write on the board would look like the following. Take a general
+    element of $\Qhat$; we know it can be expressed as a finite sum
+    $\sum_i q_i\otimes_t z_i$ with $q_i\in\Q$ and $z_i\in\Zhat$. Now choose a large
+    positive integer $N$, the lowest common multiple of all the denominators showing up in the
+    $q_i$, and then rewrite $\sum_i q_i\otimes_t z_i$ as $\sum_i \frac{n_i}{N}\otimes z_i$ with
+    $n_i\in\Z$. Now using the fundamental fact that $na\otimes_t b=a\otimes_t nb$ for $n\in\Z$,
+    we can rewrite the sum as $\sum_i \frac{1}{N}\otimes_t n_i z_i$
+    which is equal to the pure tensor $\frac{1}{N}\otimes(\sum_i n_i z_i)$.
+    
+    In Lean I would prove this using {\tt TensorProduct.induction\_on}, which quickly
+    reduces us to the claim that the sum of two pure tensors is pure, which we can prove
+    using the above technique whilst avoiding the general theory of finite sums. -/)
+  (latexEnv := "lemma")]
 lemma canonicalForm (z : QHat) : ∃ (N : ℕ+) (z' : ZHat), z = (1 / N : ℚ) ⊗ₜ z' := by
   induction z using TensorProduct.induction_on with
   | zero =>
@@ -306,6 +408,11 @@ lemma canonicalForm (z : QHat) : ∃ (N : ℕ+) (z' : ZHat), z = (1 / N : ℚ) �
     congr
     simp [mul_comm]
 
+@[blueprint
+  "QHat.IsCoprime"
+  (statement := /-- If $N\in\N^+$ and $z\in\Zhat$ then we say that $N$ and $z$ are \emph{coprime} if
+    $z_N\in(\Z/N\Z)^\times$. We write $z/N$ as notation
+    for the element $\frac{1}{N}\otimes_tz$. -/)]
 def IsCoprime (N : ℕ+) (z : ZHat) : Prop := IsUnit (z N)
 
 open ZMod in
@@ -326,6 +433,14 @@ lemma isCoprime_iff_coprime (N : ℕ+) (z : ZHat) : IsCoprime N z ↔ Nat.Coprim
   rw [isUnit_iff_coprime, Nat.coprime_comm]
 
 noncomputable abbrev i₂ : ZHat →ₐ[ℤ] QHat := Algebra.TensorProduct.includeRight
+@[blueprint
+  "QHat.injective_zHat"
+  (statement := /-- The ring homomorphism $\Zhat\to\Qhat$ sending
+    $z$ to $1\otimes_t z$ is injective. -/)
+  (proof := /-- The map from $\Z$ to $\Q$ is injective, and we have seen
+    that $\Zhat$ is a torsion-free and thus flat $\Z$-module,
+    so the map from $\Zhat$ to $\Qhat$ is also injective. -/)
+  (latexEnv := "lemma")]
 lemma injective_zHat :
     Function.Injective i₂ := by
       intro a b h
@@ -344,12 +459,46 @@ instance nontrivial_QHat : Nontrivial QHat where
   exists_pair_ne := ⟨1 ⊗ₜ 0, 1 ⊗ₜ 1, injective_zHat.ne ZHat.zeroNeOne⟩
 
 noncomputable abbrev i₁ : ℚ →ₐ[ℤ] QHat := Algebra.TensorProduct.includeLeft
+@[blueprint
+  "QHat.injective_rat"
+  (statement := /-- The ring homomorphism $\Q\to\Qhat$ sending $q$ to $q\otimes_t 1$
+    is injective. -/)
+  (proof := /-- We have seen that the map from $\Z$ to $\Zhat$ is
+    injective. Now $\Q$ is a flat $\Z$-module, because it's
+    torsion-free, so tensoring up we deduce that the map
+    from $\Q=\Q\otimes\Z$ to $\Qhat=\Q\otimes\Zhat$ is also injective.
+    There is no doubt a more elementary proof of this fact. -/)
+  (latexEnv := "lemma")]
 lemma injective_rat :
     Function.Injective i₁ := RingHom.injective i₁.toRingHom
 
 theorem PNat.lcm_comm (m n : ℕ+) : PNat.lcm m n = PNat.lcm n m := PNat.eq <| by
   simp [Nat.lcm_comm]
 
+@[blueprint
+  "QHat.lowestTerms"
+  (statement := /-- Every element of $\Qhat$ can be uniquely written as $z/N$ with $z\in\Zhat$,
+    $N\in\N^+$,
+    and with $N$ and $z$ coprime. -/)
+  (proof := /-- Existence: by the previous lemma, an arbitrary element can be written as $z/N$; let
+    $D$
+    be the greatest common divisor of $N$ and $z_N$ (lifted to a natural). If $D=1$
+    then the fraction is by definition in lowest terms. However if $1<D\mid N$ then $z_D$
+    is the reduction of $z_N$ and is hence 0. By lemma~\ref{ZHat.multiples} we deduce that $z=Dy$
+    is a multiple of~$D$, and hence $z/N=\frac{1}{N}\otimes_tDy=\frac{1}{E}\otimes y$, where
+    $E=N/D$. Now if a natural divided both $y_E$ and $E$ then this natural would divide both $z_N/D$
+    and $N/D$, contradicting the fact that $D$ is the greatest common divisor.
+    
+    Uniqueness: if $z/N=w/M$, we deduce $1\otimes_t Mz=1\otimes_t Nw$,
+    and by injectivity of $\Zhat\to\Qhat$ we deduce that $Mz=Nw=y$.
+    In particular, if $L$ is the lowest common multiple of $M$ and $N$ then $y_L$ is a multiple of
+    both $M$ and $N$ and is
+    hence zero, so $y=Lx$ is a multiple of~$L$ by~\ref{ZHat.multiples}, and we deduce
+    from torsionfreeness that $z=(L/M)x$ and $w=(L/N)x$. If some prime divided $L/M$
+    then it would have to divide~$N$ which means that $z$ is not in lowest terms;
+    similarly if some prime divided $L/N$ then $w/M$ would not be in lowest terms.
+    We deduce that $L=M=N$ and hence $z=w$ by torsionfreeness. -/)
+  (latexEnv := "lemma")]
 lemma lowestTerms (x : QHat) : (∃ N z, IsCoprime N z ∧ x = (1 / N : ℚ) ⊗ₜ z) ∧
     (∀ N₁ N₂ z₁ z₂,
     IsCoprime N₁ z₁ ∧ IsCoprime N₂ z₂ ∧ (1 / N₁ : ℚ) ⊗ₜ z₁ = (1 / N₂ : ℚ) ⊗ₜ[ℤ] z₂ →
@@ -514,6 +663,15 @@ lemma _root_.Algebra.TensorProduct.one_tmul_intCast {R : Type*} {A : Type*} {B :
   rw [← map_intCast (F := B →ₐ[R] TensorProduct R A B),
     Algebra.TensorProduct.includeRight_apply]
 
+@[blueprint
+  "QHat.rat_meet_zHat"
+  (statement := /-- The intersection of $\Q$ and $\Zhat$ in $\Qhat$ is $\Z$. -/)
+  (proof := /-- Clearly $\Z\subseteq\Q\cap\Zhat$. Now suppose that $x\in\Q\cap\Zhat$.
+    Because $x$ is rational we can write it as $\frac{A}{B}\otimes_t1$ for some
+    fraction $A/B$ in lowest terms, and hence $x=A/B$ where now we regard $A\in\Zhat$
+    and note that $A/B$ is still in lowest terms. However $x\in\Zhat$ implies that
+    $x=x/1$ is in lowest terms, so we deduce that $B=1$ and thus $x=A\in\Z$. -/)
+  (latexEnv := "lemma")]
 lemma rat_meet_zHat : ratsub ⊓ zHatsub = zsub := by
   apply le_antisymm
   · intro x ⟨⟨l, hl⟩, ⟨r, hr⟩⟩
@@ -540,6 +698,15 @@ lemma rat_meet_zHat : ratsub ⊓ zHatsub = zsub := by
       (use k; simp only [AddMonoidHom.coe_coe,
         map_intCast]; exact hk)
 
+@[blueprint
+  "QHat.rat_join_zHat"
+  (statement := /-- The sum of $\Q$ and $\Zhat$ in $\Qhat$ is $\Qhat$.
+    More precisely, every element of $\Qhat$ can be written as $q+z$ with $q\in\Q$ and $z\in\Zhat$,
+    or more precisely as $q\otimes_t 1+1\otimes_t z$. -/)
+  (proof := /-- Write $x\in\Qhat$ as $x=z/N$ in lowest terms. Lift $z_N$ to an integer $t$ and
+    observe
+    that $(z-t)_N=0$, hence $z-t=Ny$ for some $y\in\Zhat$. Now $x=t/N+y\in\Q+\Zhat$. -/)
+  (latexEnv := "lemma")]
 lemma rat_join_zHat : ratsub ⊔ zHatsub = ⊤ := by
   rw [eq_top_iff]
   intro x _
@@ -574,6 +741,15 @@ noncomputable abbrev unitszHatsub : Subgroup QHatˣ :=
 noncomputable abbrev unitszsub : Subgroup QHatˣ :=
   (Units.map (Int.castRingHom QHat : ℤ →* QHat)).range
 
+@[blueprint
+  "Qhat.unitsrat_meet_unitszHat"
+  (statement := /-- The intersection of $\Q^\times$ and $\Zhat^\times$ in $\Qhat^\times$ is
+    $\Z^\times$. -/)
+  (proof := /-- Clearly the intersection is contained within $\Q\cap\Zhat=\Z$. If $n\in\Z$ is in
+    $\Zhat^\times$
+    then $n\not=0$ and its inverse $1/n=\pm1/|n|$ is in lowest terms but also in $\Zhat$,
+    and hence $|n|=1$ by uniqueness of lowest term representation. -/)
+  (latexEnv := "lemma")]
 lemma unitsrat_meet_unitszHat : unitsratsub ⊓ unitszHatsub = unitszsub := by
   apply le_antisymm
   · intro x ⟨⟨q, hxq⟩, ⟨zHat, hxzHat⟩⟩
@@ -651,6 +827,34 @@ lemma _root_.Algebra.TensorProduct.one_tmul_natCast {R : Type*} {A : Type*} {B :
     Algebra.TensorProduct.includeRight_apply]
 
 -- this needs that ℤ is a PID.
+@[blueprint
+  "QHat.unitsrat_join_unitszHat"
+  (statement := /-- The product of $\Q^\times$ and $\Zhat^\times$ in $\Qhat^\times$ is all of
+    $\Qhat^\times$.
+    More precisely, every element of $\Qhat^\times$ can be written as $qz$ with $q\in\Q^\times$
+    and $z\in\Zhat^\times$. -/)
+  (proof := /-- We already know that a general element of $\Qhat^\times$ can be written as $x/N$
+    with $N$
+    positive, so this reduces us to proving that a general element $x\in\Zhat$ which is invertible
+    in $\Qhat^\times$ can be written as $qz$ with $q\in\Q^\times$ and $z\in\Zhat^\times$.
+    
+    We know $1/x$ can be written in lowest terms as $y/M$, and multiplying up we deduce
+    that $xy=M$, and hence $x$ divides a positive integer. If $i:\Z\to\Zhat$ denotes
+    the inclusion, then we've just seen that the preimage of the principal
+    ideal $(x)$, namely, $J:=i^{-1}(x\Zhat)$ is nonzero, as it contains $M$.
+    Let $g\in J$ be the smallest positive integer; it's well-known that $J=(g)$.
+    
+    I claim that it suffices to show that $x\Zhat=g\Zhat$. Because knowing $g=yx$ and
+    $x=gz$ for some $y,z\in\Zhat$ tells us that $g(1-yz)=0$, and we know that multiplication by $g$
+    is injective,
+    hence $yz=1$, so $z$ is a unit and we have written $x=gz$ with $g\in\Q^\times$ and
+    $z\in\Zhat^\times$.
+    
+    It remains to prove the claim. By definition $g\in J\subseteq x\Zhat$ so this is one
+    inclusion. For the other, it suffices to prove that $x_g=0$. However if $0<x_g<g$
+    lifts $x_g$ to the naturals then I claim that $x_g\in J$, for $x_g-x$ is a multiple
+    of~$g$ and hence of~$x$, and this contradicts minimality of~$g$. -/)
+  (latexEnv := "lemma")]
 lemma unitsrat_join_unitszHat : unitsratsub ⊔ unitszHatsub = ⊤ := by
   rw [eq_top_iff]
   rintro y -

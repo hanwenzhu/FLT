@@ -1,0 +1,3085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>An example of an automorphic form</title>
+<link rel="next" href="sect0003.html" title="Stating the modularity lifting theorems" />
+<link rel="prev" href="ch_overview.html" title="An overview of the proof" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="a0000000003">5 An example of an automorphic form</h1>
+<h1 id="a0000000021">5.1 Introduction</h1>
+<p>The key ingredient in Wiles’ proof of Fermat’s Last Theorem is a <em>modularity lifting theorem</em>, sometimes called an \(R=T\) theorem. For Wiles, the \(R\) came from elliptic curves, the \(T\) came from classical modular forms, and the fact that they’re equal is basically the Shimura–Taniyama–Weil conjecture, now known as the Breuil–Conrad–Diamond–Taylor modularity theorem: any elliptic curve over the rationals is modular. </p>
+<p>At the heart of the proof we shall formalise is also an \(R=T\) theorem, however the \(T\) which we shall use will be associated not to classical modular forms, but to spaces of more general automorphic forms called quaternionic modular forms. Those of you who know something about classical modular forms might well know that the groups \(\operatorname{SL}_2(\mathbb {R})\) and \(\operatorname{SL}_2(\mathbb {Z})\) are intimately involved; these are the norm 1 units in the matrix rings \(M_2(\mathbb {R})\) and \(M_2(\mathbb {Z})\). In the theory of quaternionic modular forms, the analogous groups are the norm 1 units in rings such as Hamilton’s quaternions \(\mathbb {R}\oplus \mathbb {R}i\oplus \mathbb {R}j\oplus \mathbb {R}k\), and subrings such as \(\mathbb {Z}\oplus \mathbb {Z}i\oplus \mathbb {Z}j\oplus \mathbb {Z}k\). </p>
+<p>One of the main goals of the FLT project at the time of writing this sentence, is formalising the <em>statement</em> of the modularity lifting theorem which we shall use. So we are going to need to develop the theory of quaternionic modular forms, which is rather different to the theory of classical modular forms (for example, in the cases we need, the definition is completely algebraic; there are no holomorphic functions in sight, and the analogue of the upper half plane in the quaternionic theory is a finite set of points). </p>
+<p>We could just launch into the general theory over totally real fields, which will be the generality which we’ll need. But when I was a PhD student, I learnt about these objects by playing with explicit examples. So, whilst not logically necessary for the proof, I thought it would be fun, and perhaps also instructional, to compute a concrete example of a space of quaternionic modular forms. The process of constructing the example might even inform what kind of machinery we should be developing in general. Let’s begin by discussing the quaternion algebra we shall use. </p>
+<h1 id="a0000000022">5.2 A quaternion algebra</h1>
+<p>Let’s define \(D\) to be the quaternion algebra \(\mathbb {Q}\oplus \mathbb {Q}i\oplus \mathbb {Q}j\oplus \mathbb {Q}k\). As a vector space, \(D\) is 4-dimensional over \(\mathbb {Q}\) with \([1,i,j,k]\) giving a basis. It has a (non-commutative)ring structure, with multiplication satisfying the usual quaternion algebra relations \(i^2=j^2=k^2=ijk=-1\). You can think of&#160;\(D\) as an analogue of \(2\times 2\) matrices with rational coefficients, hence its units \(D^\times \) are an analogue of the group \(\operatorname{GL}_2(\mathbb {Q})\). </p>
+<p>We will also need an analogue of the group \(\operatorname{GL}_2(\mathbb {Z})\), which will come from an integral structure on&#160;\(D\). We choose the Hurwitz order, namely the subring \(\mathcal{O}:=\mathbb {Z}\oplus \mathbb {Z}i\oplus \mathbb {Z}j\oplus \mathbb {Z}\omega \), where \(\omega =\frac{-1+(i+j+k)}{2}\), a cube root of unity, as \((i+j+k)^2=-3\). The simplest way to understand \(\mathcal{O}\) is that it’s quaternions \(a+bi+cj+dk\) where either \(a,b,c,d\) are all integers or are all in \(\frac{1}{2}+\mathbb {Z}\). </p>
+<p>Note that \(\mathcal{O}\) is a maximal order and a Euclidean domain, which is why we prefer it over the more obvious sublattice \(\mathbb {Z}\oplus \mathbb {Z}i\oplus \mathbb {Z}j\oplus \mathbb {Z}k.\) </p>
+<p>In this chapter, we are going to compute a complex vector space which could be called something like the “weight 2 level 2 modular forms for \(D^\times \)”. The main result will be that this space is 1-dimensional. </p>
+<p>Note that mathlib has modular forms, but it doesn’t have enough complex analysis to deduce that the space of modular forms of a given weight and level is finite-dimensional. If all the ‘sorry‘s in this chapter are completed before mathlib gets the necessary complex analysis, then the first nonzero space of modular forms to be proved finite-dimensional in Lean will be a space of quaternionic modular forms. </p>
+<p>We will use a modern "adelic" definition of our modular forms, so the first thing we need to do is to talk about profinite completions. </p>
+<h1 id="a0000000023">5.3 \(\widehat{\mathbb {Z}}\)</h1>
+<p>Classically automorphic forms were defined as functions on symmetric spaces (like the upper half plane) which transformed well under the action of certain discrete groups (for example \(\operatorname{SL}_2(\mathbb {Z})\)). However such definitions became combinatorially problematic when generalised to number fields with nontrivial class group, because the classical theory needed a <em>number</em> \(p\) to define the Hecke operator \(T_p\), and in the case where \(p\) was a non-principal prime ideal in a number field, there was no appropriate number. One fix is to take disjoint unions of symmetric spaces indexed by the ideal class group of the field in question, but it is easier to work adelically, which is morally what we shall do. However we are able to avoid introducing the adeles explicitly; we can work instead with the conceptually simpler object \(\widehat{\mathbb {Z}}\), the profinite completion of \(\mathbb {Z}\). So what is \(\widehat{\mathbb {Z}}\)? We offer a low-level definition of this object. </p>
+<p>Given an integer \(z\), we can reduce it mod \(N\) for every positive natural number and get elements \(z_N=\overline{z}\in \mathbb {Z}/N\mathbb {Z}\). These elements are not completely arbitrary though – they must satisfy some compatibility conditions. For example there can be no positive integer \(z\) such that \(z_{10}=6\) and \(z_2=1\), because \(z_{10}=6\) tells us that \(z\) ends in a 6 when written in base 10, and in particular it’s even, so \(z_2\) must be&#160;0. The general rule: if \(D\mid N\) then \(z_D\) must be equal to image of \(z_N\) under the natural ring homomorphism from \(\mathbb {Z}/N\mathbb {Z}\) to \(\mathbb {Z}/D\mathbb {Z}\). We say that a collection of elements \(z_N\in \mathbb {Z}/N\mathbb {Z}\) is <em>compatible</em> if it satisfies this rule. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="ZHat">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat" class="lean_decl">ZHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>The profinite completion \(\widehat{\mathbb {Z}}\) of \(\mathbb {Z}\) is the set of all compatible collections \(c=(c_N)_N\) of elements of \(\mathbb {Z}/N\mathbb {Z}\) indexed by \(\mathbb {N}^+:=\{ 1,2,3,\ldots \} \). A collection is said to be <em>compatible</em> if for all positive integers \(D\mid N\), we have \(c_N\) mod \(D\) equals \(c_D\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.commRing">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.commRing">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000099"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat">Definition 5.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.commRing" class="lean_decl">ZHat.commRing</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(\widehat{\mathbb {Z}}\) is a subring of \(\prod _{N\geq 1}(Z/N\mathbb {Z})\) and in particular is a ring. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000099">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follow your nose. </p>
+
+  </div>
+</div>
+<p>Examples of elements of \(\widehat{\mathbb {Z}}\) are are given by integers, where we define \(z_N\) to be \(z\) mod \(N\) for all \(N\). This gives us a natural map from \(\mathbb {Z}\) to \(\widehat{\mathbb {Z}}\). In particular we can talk about \(0\in \widehat{\mathbb {Z}}\) and \(1\in \widehat{\mathbb {Z}}\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.nontrivial">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.nontrivial">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000100"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.nontrivial" class="lean_decl">ZHat.nontrivial</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(0\not=1\) in \(\widehat{\mathbb {Z}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000100">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Recall that you can evaluate an element of \(\widehat{\mathbb {Z}}\) at a positive integer. Evaluating \(0\) at 2 gives \(0\), and evaluating \(1\) at \(2\) gives \(1\), and these are distinct elements of \(\mathbb {Z}/2\mathbb {Z}\), so \(0\not=1\) in \(\widehat{\mathbb {Z}}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.charZero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.charZero">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000101"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.charZero" class="lean_decl">ZHat.charZero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  The map from the naturals into \(\widehat{\mathbb {Z}}\) sending \(n\) to \(n\) is injective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000101">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Generalise the above idea. Feel free to write up a LaTeX proof and PR it. </p>
+
+  </div>
+</div>
+<p>Note that it follows easily that that the map from the integers to \(\widehat{\mathbb {Z}}\) is injective. </p>
+<p>But \(\widehat{\mathbb {Z}}\) is <em>much</em> larger than \(\mathbb {Z}\); it has the same cardinality as the reals in fact. Let’s write down an explicit example of an element of \(\widehat{\mathbb {Z}}\) which isn’t obviously in \(\mathbb {Z}\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="ZHat.e">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.e">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.e" class="lean_decl">ZHat.e</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The infinite sum \(0!+1!+2!+3!+4!+5!+\cdots \) looks like it makes no sense at all; it is the sum of an infinite series of larger and larger positive numbers. However, the sum is <em>finite</em> modulo \(N\) for every positive integer \(N\), because all the terms from \(N!\) onwards are multiples of \(N\) and thus are zero in \(\mathbb {Z}/N\mathbb {Z}\). Thus it makes sense to define \(e_N\) to be the value of the finite sum modulo \(N\). Explicitly, \(e_N=0!+1!+\cdots +(N-1)!\) modulo \(N\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.e_def">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.e_def">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000102"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.e">Definition 5.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.e_def" class="lean_decl">ZHat.e_def</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The collection \((e_N)_N\) is an element of \(\widehat{\mathbb {Z}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000102">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This boils down to checking that \(D!+(D+1)!+\cdots +(N-1)!\) is a multiple of&#160;\(D\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.e_not_in_Int">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.7</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.e_not_in_Int">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000103"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.e">Definition 5.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.e_not_in_Int" class="lean_decl">ZHat.e_not_in_Int</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The element \((e_N)_N\) of \(\widehat{\mathbb {Z}}\) is not in \(\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000103">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>First imagine that \(e=n\) with \(n\in \mathbb {Z}\) and \(0\leq n\). In this case, choose \(j\) such that \(0!+1!+2!+\cdots +j!{\gt}n\) and check also that the sum is less than \((j+1)!\). Now set \(N=(j+1)!\) and let’s compare \(e_N\) and \(n_N=n\). The trick is that \(e_N\) must be \(0!+1!+\cdots +j!\) mod \(N\), because all the terms beyond this are multiples not just of \((j+1)\) but of \((j+1)!=N\). Thus mod \(N\) we have \(0\leq n{\lt}e_N{\lt}N\) so \(n\not=e\). </p>
+<p>Now we deal with \(n=-t{\lt}0\); choose \(j\) large such that \((j+1)!-(0!+1!+\cdots +j!){\gt}t\) (possible because the sum is at most \(2\times j!\)) and then set \(N=(j+1)!\) and we have \(0 {\lt} e_N{\lt}N-t{\lt}N\) so we cannot have \(e_N=-t\) in \(\mathbb {Z}/N\mathbb {Z}\), so again \(e\not=n\). </p>
+
+  </div>
+</div>
+<p>Let’s prove some more basic facts about \(\widehat{\mathbb {Z}}\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.torsionfree">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.8</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.torsionfree">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000104"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+          <li><a href="sect0002.html#ZHat.charZero">Lemma 5.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.torsionfree" class="lean_decl">ZHat.torsionfree</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(0{\lt}N\) is an integer then multiplication by \(N\) is injective on \(\widehat{\mathbb {Z}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000104">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Suppose that \((z_i)_i\in \widehat{\mathbb {Z}}\) and \(Nz=0\). This means that \(Nz_i=0\in \mathbb {Z}/i\mathbb {Z}\) for all \(i\). Let us fix an arbitrary positive integer&#160;\(j\); we need to prove that \(z_j=0\in \mathbb {Z}/j\mathbb {Z}\). Consider the element \(z_{Nj}\in \mathbb {Z}/Nj\mathbb {Z}\). By assumption, we have \(Nz_{Nj}=0\), meaning that if we lift \(z_{Nj}\) to an integer, we have \(Nj\mid Nz_{Nj}\), and thus \(j\mid z_{Nj}\). Thus by the compatibility assumption on the \(z_i\) we have that \(z_j\in \mathbb {Z}/j\mathbb {Z}\) is the mod&#160;\(j\) reduction of \(z_{Nj}\) and hence is zero. </p>
+
+  </div>
+</div>
+<p>We will also need to understand exactly which elements of \(\widehat{\mathbb {Z}}\) are multiples of&#160;\(N\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="ZHat.multiples">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ZHat.multiples">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000105"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ZHat.multiples" class="lean_decl">ZHat.multiples</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The multiples of&#160;\(N\) in \(\widehat{\mathbb {Z}}\) are precisely the compatible collections \((z_i)_i\in \widehat{\mathbb {Z}}\) with \(z_N=0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000105">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Clearly \(z_N=0\) is a necessary condition to be a multiple of&#160;\(N\). To see it is sufficient, take a general \((z_i)\in \widehat{\mathbb {Z}}\) such that \(z_N=0\), and now define a new element \((y_j)_j\) of \(\widehat{\mathbb {Z}}\) by \(y_j=z_{Nj}/N\). Just to clarify what this means: \(z_{Nj}\in \mathbb {Z}/Nj\mathbb {Z}\) reduces mod&#160;\(N\) to \(z_N=0\) by the compatibility assumption, so it is in the subgroup \(N\mathbb {Z}/Nj\mathbb {Z}\) of \(\mathbb {Z}/Nj\mathbb {Z}\), which is isomorphic (via "division by \(N\)") to the group \(\mathbb {Z}/j\mathbb {Z}\); this is how we construct \(y_j\). It is easily checked that the \(y_j\) are compatible and that \(Ny=z\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000024">5.4 More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</h1>
+<p>This section can be skipped on first reading. </p>
+<p>People who have seen some more advanced algebra might recognise this construction of \(\widehat{\mathbb {Z}}\) as being the profinite completion of the additive abelian group \(\mathbb {Z}\), so it is a fundamental object of mathematics in some sense. But usually, when building mathematics, after \(\mathbb {Z}\) we go to \(\mathbb {Q}\), a multiplicative localisation of \(\mathbb {Z}\), and only complete after that (to get \(\mathbb {R}\)). The process of “completing before localising” gives us a far more arithmetic completion of \(\mathbb {Z}\). </p>
+<p>Even though \(\mathbb {Q}\) is a divisible abelian group and hence its profinite completion vanishes, we can still attempt to "locally profinitely complete it" by defining \(\widehat{\mathbb {Q}}:=\mathbb {Q}\otimes _{\mathbb {Z}}\widehat{\mathbb {Z}}\). This object is more commonly known as the <em>finite adeles</em> of \(\mathbb {Q}\). More generally if \(F\) is any number field then \(F\otimes _{\mathbb {Z}}\widehat{\mathbb {Z}}\) is the ring of finite adeles of \(F\). To get to the full ring of adeles of a number field&#160;\(F\) you need to take the product with the ring of infinite adeles of \(F\), which is \(F\otimes _{\mathbb {Q}}\mathbb {R}\): some kind of universal archimedean completion of \(F\). I don’t know a reference which develops the theory of adeles in this way, so this is what we shall do here. </p>
+<h1 id="a0000000025">5.5 \(\widehat{\mathbb {Q}}\) and tensor products.</h1>
+<p>The definition of \(\widehat{\mathbb {Q}}\) is easy if you know about tensor products of additive abelian groups. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="QHat">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.10</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat">Definition 5.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat" class="lean_decl">QHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The profinite completion \(\widehat{\mathbb {Q}}\) of \(\mathbb {Q}\) is the tensor product \(\mathbb {Q}\otimes _{\mathbb {Z}}\widehat{\mathbb {Z}}\), or \(\widehat{\mathbb {Q}}=\mathbb {Q}\otimes \widehat{\mathbb {Z}}\) for short. </p>
+
+  </div>
+</div>
+<h1 id="a0000000026">5.6 A crash course in tensor products</h1>
+<p>We’ve defined \(\widehat{\mathbb {Q}}\) to be \(\mathbb {Q}\otimes \widehat{\mathbb {Z}}\). Whatever does this mean? Well just to orient yourself, if \(A\) and \(B\) are additive abelian groups, then \(A\otimes B\) is also an abelian group. And if \(A\) and \(B\) are commutative rings (as they are in our case), then \(A\otimes B\) is also a commutative ring. </p>
+<p>Even if \(A\) and \(B\) are completely concrete commutative rings, their tensor product \(A\otimes B\) might be incomprehensible. For example \(\mathbb {C}\otimes \mathbb {C}\) is completely incomprehensible (note that we are tensoring over the integers). It is not like the product of groups or the disjoint union of two sets, where you have a completely explicit unambiguous formula for each element. </p>
+<p>In this sense, the theory of tensor products is a bit like the theory of continuous functions. Humanity started off studying concrete polynomial equations such as \(x^2+1\) and then moved on to concrete analytic functions such as \(\log (x)\) and \(\sin (x)\), but eventually the abstract concept of a continuous function from the reals to the reals was born. There is no “formula” for a general continuous function, and continuous functions such as \(e^{-1/x^2}\) or \(|x|\) have no power series. Even if there <em>were</em> a formula for a specific continuous function of interest, it is not clear in general how to make sense of the claim that it’s the “best” formula. In other words, there is no "canonical form" for a general continuous function, and yet we prove things about them anyway. We shall adopt the same attitude for elements of \(A\otimes B\). </p>
+<p>The first thing to know about the tensor product \(A\otimes B\) of two abelian groups \(A\) and \(B\) is a “constructor” for the type. In other words, how can we make elements \(A\otimes B\)? Well, it turns out that given elements \(a\in A\) and \(b\in B\), we can form the element \(a\otimes _t b\in A\otimes B\). </p>
+<div class="example_thmwrapper theorem-style-remark" id="a0000000106">
+  <div class="example_thmheading">
+    <span class="example_thmcaption">
+    Example
+    </span>
+    <span class="example_thmlabel">5.11</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000106">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="example_thmcontent">
+  <p>Recall that the sum of all the factorials is an element \(e\in \widehat{\mathbb {Z}}\), and \(22/7\) is certainly a rational number, so we can make the element \(\frac{22}{7}\otimes _te\in \widehat{\mathbb {Q}}\). </p>
+
+  </div>
+</div>
+<p>This example is in the Lean code. </p>
+<p>Elements of the form \(a\otimes _t b\in A\otimes B\) are known as <em>pure tensors</em>. In the literature, pure tensors are often written \(a\otimes b\), but we shall follow <span class="tt">mathlib</span>’s convention in reserving the \(\otimes \) symbol for <em>groups</em> like \(A \otimes B\), and adorning it with a \(t\) when using it on <em>elements</em> of the groups (or, as Lean calls them, <em>terms</em>, which explains the notation). </p>
+<p>Addition of pure tensors obeys the “distributivity” rules \(a\otimes _t b_1+a\otimes _t b_2=a\otimes _t(b_1+b_2)\) and \(a_1\otimes _t b+a_2\otimes _t b=(a_1+a_2)\otimes _t b\), but there is no rule which simplifies a general sum \(a\otimes _t b + c\otimes _t d\) into a pure tensor. Indeed, in general it is <em>not</em> the case that every element of a tensor product \(A\otimes B\) is of the form \(a\otimes _t b\); there can be tensors which aren’t pure. However every element of \(A\otimes B\) is a finite sum of pure tensors, with the result that one can attempt to define additive maps from \(A\otimes B\) by saying what they do on pure tensors, and then extending linearly. </p>
+<p>Another thing worth understanding is that just like how rational numbers can be written as quotients of integers in several ways (for example \(1/2=2/4=3/6=\cdots \)), a general pure tensor in \(A\otimes B\) can be represented as \(a\otimes _t b\) in many ways. For example, in \(\widehat{\mathbb {Q}}\) we have \(1\otimes _t 2=2\otimes _t 1\). A general rule for equality of pure tensors is that if \(a\in A\) and \(b\in B\) and \(z\in \mathbb {Z}\), then \(za\otimes _tb=a\otimes _tzb\); integers can move over the tensor symbol. But equality is hard: in general there may not be an algorithm to decide whether two pure tensors \(a\otimes _t b\) and \(c\otimes _t d\) are equal in \(A\otimes B\). </p>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000107">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">5.12</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000107">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>A summary of the situation: if \(A\) and \(B\) are abelian groups, then every element of \(A\otimes B\) can be written in the form \(\sum _{i=1}^Na_i\otimes _tb_i\). It’s just that this representation is highly nonunique, and furthermore given explicit elements \(a_1,a_2\in A\) and \(b_1,b_2\in B\) it might be a hard problem to figure out if \(a_1\otimes _t b_1=a_2\otimes _t b_2\). </p>
+<p>For example, it turns out that \((\mathbb {Z}/2\mathbb {Z})\otimes (\mathbb {Z}/3\mathbb {Z})=0\) and so in this tensor product all the \(a\otimes _t b\) are equal to each other and to \(0\otimes 0\). </p>
+
+  </div>
+</div>
+<p>Having said all of that, one nice property of \(\widehat{\mathbb {Q}}\) is that every tensor <em>is</em> pure; let’s prove this now. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.canonicalForm">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.13</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.canonicalForm">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000108"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.canonicalForm" class="lean_decl">QHat.canonicalForm</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Every element of \(\widehat{\mathbb {Q}}:=\mathbb {Q}\otimes \widehat{\mathbb {Z}}\) can be written as \(q\otimes _t z\) with \(q\in \mathbb {Q}\) and \(z\in \widehat{\mathbb {Z}}\). Furthermore one can even assume that \(q=\frac{1}{N}\) for some positive integer \(N\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000108">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A proof I would write on the board would look like the following. Take a general element of \(\widehat{\mathbb {Q}}\); we know it can be expressed as a finite sum \(\sum _i q_i\otimes _t z_i\) with \(q_i\in \mathbb {Q}\) and \(z_i\in \widehat{\mathbb {Z}}\). Now choose a large positive integer \(N\), the lowest common multiple of all the denominators showing up in the \(q_i\), and then rewrite \(\sum _i q_i\otimes _t z_i\) as \(\sum _i \frac{n_i}{N}\otimes z_i\) with \(n_i\in \mathbb {Z}\). Now using the fundamental fact that \(na\otimes _t b=a\otimes _t nb\) for \(n\in \mathbb {Z}\), we can rewrite the sum as \(\sum _i \frac{1}{N}\otimes _t n_i z_i\) which is equal to the pure tensor \(\frac{1}{N}\otimes (\sum _i n_i z_i)\). </p>
+<p>In Lean I would prove this using <span class="tt">TensorProduct.induction_on</span>, which quickly reduces us to the claim that the sum of two pure tensors is pure, which we can prove using the above technique whilst avoiding the general theory of finite sums. </p>
+
+  </div>
+</div>
+<p>Be careful though: just because every element of \(\widehat{\mathbb {Q}}\) can be written as \(q\otimes z\), this representation may not be unique. For example \(2\otimes 1=1\otimes 2\). However, writing \(\frac{1}{N}\otimes _t z\) as \(z/N\) does tempt us into the following definition. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="QHat.IsCoprime">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.14</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.IsCoprime">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.IsCoprime" class="lean_decl">QHat.IsCoprime</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   If \(N\in \mathbb {N}^+\) and \(z\in \widehat{\mathbb {Z}}\) then we say that \(N\) and \(z\) are <em>coprime</em> if \(z_N\in (\mathbb {Z}/N\mathbb {Z})^\times \). We write \(z/N\) as notation for the element \(\frac{1}{N}\otimes _tz\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.lowestTerms">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.lowestTerms">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000109"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat.IsCoprime">Definition 5.14</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.lowestTerms" class="lean_decl">QHat.lowestTerms</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Every element of \(\widehat{\mathbb {Q}}\) can be uniquely written as \(z/N\) with \(z\in \widehat{\mathbb {Z}}\), \(N\in \mathbb {N}^+\), and with \(N\) and \(z\) coprime. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000109">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Existence: by the previous lemma, an arbitrary element can be written as \(z/N\); let \(D\) be the greatest common divisor of \(N\) and \(z_N\) (lifted to a natural). If \(D=1\) then the fraction is by definition in lowest terms. However if \(1{\lt}D\mid N\) then \(z_D\) is the reduction of \(z_N\) and is hence 0. By lemma&#160;<a href="sect0002.html#ZHat.multiples">5.9</a> we deduce that \(z=Dy\) is a multiple of&#160;\(D\), and hence \(z/N=\frac{1}{N}\otimes _tDy=\frac{1}{E}\otimes y\), where \(E=N/D\). Now if a natural divided both \(y_E\) and \(E\) then this natural would divide both \(z_N/D\) and \(N/D\), contradicting the fact that \(D\) is the greatest common divisor. </p>
+<p>Uniqueness: if \(z/N=w/M\), we deduce \(1\otimes _t Mz=1\otimes _t Nw\), and by injectivity of \(\widehat{\mathbb {Z}}\to \widehat{\mathbb {Q}}\) we deduce that \(Mz=Nw=y\). In particular, if \(L\) is the lowest common multiple of \(M\) and \(N\) then \(y_L\) is a multiple of both \(M\) and \(N\) and is hence zero, so \(y=Lx\) is a multiple of&#160;\(L\) by&#160;<a href="sect0002.html#ZHat.multiples">5.9</a>, and we deduce from torsionfreeness that \(z=(L/M)x\) and \(w=(L/N)x\). If some prime divided \(L/M\) then it would have to divide&#160;\(N\) which means that \(z\) is not in lowest terms; similarly if some prime divided \(L/N\) then \(w/M\) would not be in lowest terms. We deduce that \(L=M=N\) and hence \(z=w\) by torsionfreeness. </p>
+
+  </div>
+</div>
+<p>If \(A\) and \(B\) are additive abelian groups then \(A\otimes B\) is also an additive abelian group. However if \(A\) and \(B\) are commutative rings, then \(A\otimes B\) also inherits the structure of a commutative ring, with \(0=0\otimes _t 0\) and \(1=1\otimes _t 1\). Pure tensors multiply in the obvious way: the product of \(a_1\otimes _t b_1\) and \(a_2\otimes _t b_2\) is \(a_1a_2\otimes _t b_1b_2.\) There are ring homomorphisms \(A\to A\otimes B\) and \(B\to A\otimes B\) sending \(a\) to \(a\otimes _t 1\) and \(b\) to \(1\otimes _t b\). In general such maps are not injective, but in the case of \(\widehat{\mathbb {Q}}=\mathbb {Q}\otimes \widehat{\mathbb {Z}}\) both maps from \(\mathbb {Q}\) and \(\widehat{\mathbb {Z}}\) are inclusions. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.injective_rat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.16</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.injective_rat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000110"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.injective_rat" class="lean_decl">QHat.injective_rat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The ring homomorphism \(\mathbb {Q}\to \widehat{\mathbb {Q}}\) sending \(q\) to \(q\otimes _t 1\) is injective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000110">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We have seen that the map from \(\mathbb {Z}\) to \(\widehat{\mathbb {Z}}\) is injective. Now \(\mathbb {Q}\) is a flat \(\mathbb {Z}\)-module, because it’s torsion-free, so tensoring up we deduce that the map from \(\mathbb {Q}=\mathbb {Q}\otimes \mathbb {Z}\) to \(\widehat{\mathbb {Q}}=\mathbb {Q}\otimes \widehat{\mathbb {Z}}\) is also injective. There is no doubt a more elementary proof of this fact. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.injective_zHat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.17</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.injective_zHat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000111"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.torsionfree">Lemma 5.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.injective_zHat" class="lean_decl">QHat.injective_zHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The ring homomorphism \(\widehat{\mathbb {Z}}\to \widehat{\mathbb {Q}}\) sending \(z\) to \(1\otimes _t z\) is injective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000111">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The map from \(\mathbb {Z}\) to \(\mathbb {Q}\) is injective, and we have seen that \(\widehat{\mathbb {Z}}\) is a torsion-free and thus flat \(\mathbb {Z}\)-module, so the map from \(\widehat{\mathbb {Z}}\) to \(\widehat{\mathbb {Q}}\) is also injective. </p>
+
+  </div>
+</div>
+<p>We can thus identify \(\mathbb {Q}=\mathbb {Q}\otimes \mathbb {Z}\) and \(\widehat{\mathbb {Z}}=\mathbb {Z}\otimes \widehat{\mathbb {Z}}\) with subrings of \(\widehat{\mathbb {Q}}=\mathbb {Q}\otimes \widehat{\mathbb {Z}}\). Note that, being commutative rings, \(\mathbb {Q}\) and \(\widehat{\mathbb {Z}}\) both contain a copy of \(\mathbb {Z}\) as a subring, and the corresponding copies of \(\mathbb {Z}\) in \(\widehat{\mathbb {Q}}\) are equal; this is because \(1\otimes a=a\otimes 1\) for all \(a\in \mathbb {Z}\). </p>
+<h1 id="a0000000027">5.7 Additive structure of \(\widehat{\mathbb {Q}}\).</h1>
+<p>Here we forget the ring structure on everything, and analyse \(\widehat{\mathbb {Q}}\) as an additive abelian group, and in particular how the subgroups \(\mathbb {Z}\), \(\mathbb {Q}\) and \(\widehat{\mathbb {Z}}\) sit within it. </p>
+<p>The two results we prove in this section are that \(\mathbb {Q}\cap \widehat{\mathbb {Z}}=\mathbb {Z}\) and that \(\mathbb {Q}+\widehat{\mathbb {Z}}=\widehat{\mathbb {Q}}\). Using lattice-theoretic notation we could write these results as \(\mathbb {Q}\sqcap \widehat{\mathbb {Z}}=\mathbb {Z}\) and \(\mathbb {Q}\sqcup \widehat{\mathbb {Z}}=\widehat{\mathbb {Q}}\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.rat_meet_zHat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.18</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.rat_meet_zHat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000112"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+          <li><a href="sect0002.html#QHat.lowestTerms">Lemma 5.15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.rat_meet_zHat" class="lean_decl">QHat.rat_meet_zHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The intersection of \(\mathbb {Q}\) and \(\widehat{\mathbb {Z}}\) in \(\widehat{\mathbb {Q}}\) is \(\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000112">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Clearly \(\mathbb {Z}\subseteq \mathbb {Q}\cap \widehat{\mathbb {Z}}\). Now suppose that \(x\in \mathbb {Q}\cap \widehat{\mathbb {Z}}\). Because \(x\) is rational we can write it as \(\frac{A}{B}\otimes _t1\) for some fraction \(A/B\) in lowest terms, and hence \(x=A/B\) where now we regard \(A\in \widehat{\mathbb {Z}}\) and note that \(A/B\) is still in lowest terms. However \(x\in \widehat{\mathbb {Z}}\) implies that \(x=x/1\) is in lowest terms, so we deduce that \(B=1\) and thus \(x=A\in \mathbb {Z}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.rat_join_zHat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.19</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.rat_join_zHat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000113"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+          <li><a href="sect0002.html#QHat.canonicalForm">Lemma 5.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.rat_join_zHat" class="lean_decl">QHat.rat_join_zHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The sum of \(\mathbb {Q}\) and \(\widehat{\mathbb {Z}}\) in \(\widehat{\mathbb {Q}}\) is \(\widehat{\mathbb {Q}}\). More precisely, every element of \(\widehat{\mathbb {Q}}\) can be written as \(q+z\) with \(q\in \mathbb {Q}\) and \(z\in \widehat{\mathbb {Z}}\), or more precisely as \(q\otimes _t 1+1\otimes _t z\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000113">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Write \(x\in \widehat{\mathbb {Q}}\) as \(x=z/N\) in lowest terms. Lift \(z_N\) to an integer \(t\) and observe that \((z-t)_N=0\), hence \(z-t=Ny\) for some \(y\in \widehat{\mathbb {Z}}\). Now \(x=t/N+y\in \mathbb {Q}+\widehat{\mathbb {Z}}\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000028">5.8 Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</h1>
+<p>We now forget the additive structure on the commutative ring \(\widehat{\mathbb {Q}}\) and consider the multiplicative structure of its group of units \(\widehat{\mathbb {Q}}^\times \) (which I couldn’t get into the section title). We have the obvious subgroups \(\mathbb {Q}^\times \), \(\mathbb {Z}^\times \) and \(\widehat{\mathbb {Z}}^\times \). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="Qhat.unitsrat_meet_unitszHat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.20</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Qhat.unitsrat_meet_unitszHat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000114"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+          <li><a href="sect0002.html#QHat.lowestTerms">Lemma 5.15</a></li>
+          
+          <li><a href="sect0002.html#QHat.rat_meet_zHat">Lemma 5.18</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.unitsrat_meet_unitszHat" class="lean_decl">QHat.unitsrat_meet_unitszHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The intersection of \(\mathbb {Q}^\times \) and \(\widehat{\mathbb {Z}}^\times \) in \(\widehat{\mathbb {Q}}^\times \) is \(\mathbb {Z}^\times \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000114">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Clearly the intersection is contained within \(\mathbb {Q}\cap \widehat{\mathbb {Z}}=\mathbb {Z}\). If \(n\in \mathbb {Z}\) is in \(\widehat{\mathbb {Z}}^\times \) then \(n\not=0\) and its inverse \(1/n=\pm 1/|n|\) is in lowest terms but also in \(\widehat{\mathbb {Z}}\), and hence \(|n|=1\) by uniqueness of lowest term representation. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="QHat.unitsrat_join_unitszHat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.21</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#QHat.unitsrat_join_unitszHat">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000115"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat.commRing">Lemma 5.2</a></li>
+          
+          <li><a href="sect0002.html#ZHat.multiples">Lemma 5.9</a></li>
+          
+          <li><a href="sect0002.html#QHat.canonicalForm">Lemma 5.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QHat.unitsrat_join_unitszHat" class="lean_decl">QHat.unitsrat_join_unitszHat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The product of \(\mathbb {Q}^\times \) and \(\widehat{\mathbb {Z}}^\times \) in \(\widehat{\mathbb {Q}}^\times \) is all of \(\widehat{\mathbb {Q}}^\times \). More precisely, every element of \(\widehat{\mathbb {Q}}^\times \) can be written as \(qz\) with \(q\in \mathbb {Q}^\times \) and \(z\in \widehat{\mathbb {Z}}^\times \). </p>
+
+  </div>
+</div>
+<p> Note that by the previous lemma, this representation will be unique up to sign. </p>
+<div class="proof_wrapper" id="a0000000115">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> We already know that a general element of \(\widehat{\mathbb {Q}}^\times \) can be written as \(x/N\) with \(N\) positive, so this reduces us to proving that a general element \(x\in \widehat{\mathbb {Z}}\) which is invertible in \(\widehat{\mathbb {Q}}^\times \) can be written as \(qz\) with \(q\in \mathbb {Q}^\times \) and \(z\in \widehat{\mathbb {Z}}^\times \). </p>
+<p>We know \(1/x\) can be written in lowest terms as \(y/M\), and multiplying up we deduce that \(xy=M\), and hence \(x\) divides a positive integer. If \(i:\mathbb {Z}\to \widehat{\mathbb {Z}}\) denotes the inclusion, then we’ve just seen that the preimage of the principal ideal \((x)\), namely, \(J:=i^{-1}(x\widehat{\mathbb {Z}})\) is nonzero, as it contains \(M\). Let \(g\in J\) be the smallest positive integer; it’s well-known that \(J=(g)\). </p>
+<p>I claim that it suffices to show that \(x\widehat{\mathbb {Z}}=g\widehat{\mathbb {Z}}\). Because knowing \(g=yx\) and \(x=gz\) for some \(y,z\in \widehat{\mathbb {Z}}\) tells us that \(g(1-yz)=0\), and we know that multiplication by \(g\) is injective, hence \(yz=1\), so \(z\) is a unit and we have written \(x=gz\) with \(g\in \mathbb {Q}^\times \) and \(z\in \widehat{\mathbb {Z}}^\times \). </p>
+<p>It remains to prove the claim. By definition \(g\in J\subseteq x\widehat{\mathbb {Z}}\) so this is one inclusion. For the other, it suffices to prove that \(x_g=0\). However if \(0{\lt}x_g{\lt}g\) lifts \(x_g\) to the naturals then I claim that \(x_g\in J\), for \(x_g-x\) is a multiple of&#160;\(g\) and hence of&#160;\(x\), and this contradicts minimality of&#160;\(g\). </p>
+
+  </div>
+</div>
+<p>We are nearly ready to embark upon the multiplicative adelic theory for quaternion algebras. However before we do this, we need to develop the theory of the Hurwitz quaternions a bit more formally. </p>
+<h1 id="a0000000029">5.9 The Hurwitz quaternions</h1>
+<div class="definition_thmwrapper theorem-style-definition" id="Hurwitz">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.22</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz" class="lean_decl">Hurwitz</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The Hurwitz quaternions are the set \(\mathcal{O}:= \mathbb {Z}\oplus \mathbb {Z}\omega \oplus \mathbb {Z}i\oplus \mathbb {Z}i\omega \) (as an abstract abelian group or as a subgroup of the usual quaternions). Here \(\omega =\frac{-1+(i+j+k)}{2}\) and note that \((i+j+k)^2=-3\). We have \(\overline{\omega }=\omega ^2=-(\omega +1)\). A general quaternion \(a+bi+cj+dk\) is a Hurwitz quaternion if either \(a,b,c,d\in \mathbb {Z}\) or \(a,b,c,d\in \mathbb {Z}+\frac{1}{2}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.ring">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.23</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.ring">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000116"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz">Definition 5.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.ring" class="lean_decl">Hurwitz.ring</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The Hurwitz quaternions form a ring. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000116">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follow your nose. </p>
+
+  </div>
+</div>
+<p>This ring is isomorphic to \(\mathbb {Z}^4\) as an additive group, and \(\mathcal{O}\otimes _{\mathbb {Z}}\mathbb {R}=\mathbb {R}\oplus \mathbb {R}i\oplus \mathbb {R}j\oplus \mathbb {R}\omega \) is the usual Hamilton quaternions. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="Hurwitz.starRing">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.24</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.starRing">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.ring">Lemma 5.23</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.starRing" class="lean_decl">Hurwitz.starRing</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   There’s a conjugation map (which we’ll call "star") from the Hurwitz quaternions to themselves, sending integers to themselves and purely imaginary elements like \(2\omega +1\) to minus themselves. It satisfies \((x^*)^*=x\), \((xy)^*=y^*x^*\) and \((x+y)^*=x^*+y^*\). In particular, the Hurwitz quaternions are a "star ring" in the sense of mathlib. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="Hurwitz.norm">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">5.25</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz">Definition 5.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm" class="lean_decl">Hurwitz.norm</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The Hurwitz quaternions come equipped with an integer-valued norm, which is \(a^2+b^2+c^2+d^2\) on \(a+bi+cj+dk\) but needs to be modified a bit to deal with \(\omega \). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_eq_mul_conj">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.26</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_eq_mul_conj">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000117"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_eq_mul_conj" class="lean_decl">Hurwitz.norm_eq_mul_conj</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  We have \(N(x)=x\overline{x}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000117">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Easy calculation. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.27</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_zero">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000118"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_zero" class="lean_decl">Hurwitz.norm_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The norm of \(0\) is \(0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000118">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A calculation. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_one">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.28</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_one">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000119"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_one" class="lean_decl">Hurwitz.norm_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The norm of \(1\) is \(1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000119">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A calculation. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_mul">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.29</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_mul">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000120"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_mul" class="lean_decl">Hurwitz.norm_mul</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The norm of a product is the product of the norms. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000120">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A calculation. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_nonneg">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.30</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_nonneg">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000121"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_nonneg" class="lean_decl">Hurwitz.norm_nonneg</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The norm of an element is nonnegative. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000121">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>It’s a sum of rational squares. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.norm_eq_zero">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.31</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.norm_eq_zero">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000122"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.norm_eq_zero" class="lean_decl">Hurwitz.norm_eq_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The norm of an element is zero if and only if the element is zero. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000122">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>It’s a sum of rational squares. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.exists_near">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.32</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.exists_near">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000123"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.exists_near" class="lean_decl">Hurwitz.exists_near</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Given a “usual” quaternion \(a=x+yi+zj+wk\) with \(x,y,z,w\in \mathbb {R}\), there exists a Hurwitz quaternion \(q\) such that \(N(a-q){\lt}1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000123">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>If \([r]\) denotes the nearest integer to the real number \(r\), then \(|r-[r]|\leq \frac{1}{2}\). Hence if \(q=[x]+[y]i+[z]j+[w]k\) then \(N(a-q)=|x-[x]|^2+\cdots \leq \frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}\leq 1\), with strict inequality unless \(|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}\), in which case \(a\in \mathcal{O}\) because \(a-\omega \) has integer coordinates. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Hurwitz.quot_rem">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.33</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.quot_rem">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000124"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+          <li><a href="sect0002.html#Hurwitz.exists_near">Lemma 5.32</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.quot_rem" class="lean_decl">Hurwitz.quot_rem</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Given two Hurwitz quaternions \(a\) and \(b\) with \(b\) nonzero, there exists \(q\) and \(r\) such that \(a=qb+r\) and \(N(r){\lt}N(b)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000124">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(q\) be the Hurwitz quaternion obtained by applying Lemma&#160;<a href="sect0002.html#Hurwitz.exists_near">5.32</a> to \(a/b := ab^{-1}\); then \(N(a/b-q){\lt}1\) and now everything follows after multiplying up. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="Hurwitz.left_ideal_princ">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">5.34</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.left_ideal_princ">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000125"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz.norm">Definition 5.25</a></li>
+          
+          <li><a href="sect0002.html#Hurwitz.quot_rem">Lemma 5.33</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Hurwitz.left_ideal_princ" class="lean_decl">Hurwitz.left_ideal_princ</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>   All left ideals of \(\mathcal{O}\) are principal. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000125">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> If the ideal is 0, use 0. Otherwise, choose a nonzero element of smallest norm. </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000126">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">5.35</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000126">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>All right ideals are principal too, because there’s another version of Euclid saying \(a=bq+r\). </p>
+
+  </div>
+</div>
+<h1 id="a0000000030">5.10 Profinite completion of the Hurwitz quaternions</h1>
+<p>We define \(\widehat{\mathcal{O}}\) to be \(\mathcal{O}\otimes \widehat{\mathbb {Z}}\), so it’s elements \(a+bi+cj+d\omega \) with \(a,b,c,d\in \widehat{\mathbb {Z}}\). The basic thing we need is this: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Hurwitz.surjective_pnat_quotient">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">5.36</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Hurwitz.surjective_pnat_quotient">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000127"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#Hurwitz">Definition 5.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  If \(N\) is a positive natural then the obvious map \(\mathcal{O}\to \widehat{\mathcal{O}}/N\widehat{\mathcal{O}}\) is surjective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000127">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is just four copies of the surjection \(\mathbb {Z}\to \widehat{\mathbb {Z}}/N\widehat{\mathbb {Z}}\). Note that this latter map is surjective because \(\mathbb {Z}\to \mathbb {Z}/N\mathbb {Z}\) is surjective, hence given \(z\in \widehat{\mathbb {Z}}\) you can subtract an integer \(w\) such that \((z-w)_N=0\), so \(z-w\) is a multiple of&#160;\(N\). </p>
+
+  </div>
+</div>
+<p>We define \(D:=\mathbb {Q}\otimes \mathcal{O}=\mathbb {Q}\oplus \mathbb {Q}i\oplus \mathbb {Q}j\oplus \mathbb {Q}\omega =\mathbb {Q}\oplus \mathbb {Q}i\oplus \mathbb {Q}j\oplus \mathbb {Q}k\). Finally, we define \(\widehat{D}:=D\otimes \widehat{\mathbb {Z}}\). Just as with \(\widehat{\mathbb {Q}}\) we have </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="HurwitzRatHat.canonicalForm">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">5.37</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#HurwitzRatHat.canonicalForm">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000128"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#QHat">Definition 5.10</a></li>
+          
+          <li><a href="sect0002.html#ZHat">Definition 5.1</a></li>
+          
+          <li><a href="sect0002.html#Hurwitz">Definition 5.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/HurwitzRatHat.canonicalForm" class="lean_decl">HurwitzRatHat.canonicalForm</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Every element of \(\widehat{D}\) can be written as \(z/N\) with \(z\in \widehat{\mathcal{O}}\) and \(N\in \mathbb {N}^+\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000128">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Same as the proof for \(\widehat{\mathbb {Q}}\). </p>
+
+  </div>
+</div>
+<p>It is not hard to check that \(\widehat{D}\) contains \(\widehat{\mathcal{O}}\) and \(D\) as subrings, and that as additive abelian groups we have \(\widehat{\mathcal{O}}\cap D=\mathcal{O}\) and \(\widehat{\mathcal{O}}+D=\widehat{D}\). This is because \(\mathcal{O}\) is just four copies of \(\mathbb {Z}\) and we’ve proved the analogous result for \(\mathbb {Z}\). </p>
+<p>However the multiplicative structure is more interesting, especially as \(D\) is not commutative. For a general quaternion algebra it is <em>not</em> true that \((\widehat{D})^\times =D^\times (\widehat{\mathcal{O}})^\times \), because there are "class group obstructions". The double coset space is some kind of non-commutative analogue of a class group. However for our particular choice of \(D\) and \(\mathcal{O}\) the result is true. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="HurwitzRatHat.completed_units">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">5.38</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#HurwitzRatHat.completed_units">#</a>
+    
+    <a class="icon proof" href="sect0002.html#a0000000129"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0002.html#HurwitzRatHat.canonicalForm">Lemma 5.37</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/HurwitzRatHat.completed_units" class="lean_decl">HurwitzRatHat.completed_units</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The group of units of \(\widehat{D}\) is \(D^\times \widehat{\mathcal{O}}^\times \). More precisely, every element of \(\widehat{D}^\times \) can be written as a product \(\delta u\) with \(\delta \in D^\times \) and \(u\in \widehat{\mathcal{O}}^\times \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000129">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Given an element \(x\) of \(\widehat{D}^\times \), we can use lemma&#160;<a href="sect0002.html#HurwitzRatHat.canonicalForm">5.37</a> to write it as \(z/N\) with \(N\) a positive integer and \(z\in \widehat{\mathcal{O}}\). Note that \(N\) is central and in \(D^\times \). Similarly, we can write \(x^{-1}\) as \(y/M\) with \(M\) a positive integer and \(y\in \widehat{\mathcal{O}}\). Then \(1=xx^{-1}=zy/NM\) and so \(zy=NM=MN\), and \(1=x^{-1}x=yz/MN\) so \(yz=MN\) too. In particular \(y\) both left and right divides a positive integer. </p>
+<p>Now consider the left ideal \(\widehat{\mathcal{O}}y\) generated by \(y\). We’ve just seen that this ideal has nontrivial intersection with \(\mathcal{O}\), because it contains \(MN{\gt}0\). Hence its intersection with \(\mathcal{O}\) is a nonzero left ideal of \(\mathcal{O}\), which is hence principal by corollary&#160;<a href="sect0002.html#Hurwitz.left_ideal_princ">5.34</a>. Write it as \(\mathcal{O}\alpha \) with \(0\not=\alpha \in \mathcal{O}\). </p>
+<p>It suffices to show that \(\widehat{\mathcal{O}}\alpha =\widehat{\mathcal{O}}y\). For this would imply that \(u\alpha =y\) and \(vy=\alpha \) for some \(u,v\in \widehat{\mathcal{O}}\) and thus \((vu-1)\alpha =0\) and \((uv-1)y=0\), and both \(\alpha \) and \(y\) are left divisors of positive integers (the norm of \(\alpha \), and \(MN\) respectively), so now using the fact that \(\widehat{\mathcal{O}}\) is \(\mathbb {Z}\)-torsion-free (is the tensor product of torsion-free abelian groups torsion-free? That would be a cheap way of doing it. Otherwise use \(\mathcal{O}=\mathbb {Z}^4\)) we deduce that \(u\) and \(v\) are units, and thus \(x^{-1}=\frac{1}{M}u\alpha \) so \(x=(M\alpha ^{-1})v\in D^\times \widehat{\mathcal{O}}^\times \). </p>
+<p>What remains is this. We have \(y\in \widehat{\mathcal{O}}\) which left and right divides some positive integer. We’ve defined \(0\not=\alpha \in \mathcal{O}\) such that \(\mathcal{O}\alpha \) is the pullback of the abelian group \(\widehat{\mathcal{O}}y\) along the map \(\mathcal{O}\to \widehat{\mathcal{O}}\). We need to show that when we push this ideal \(\mathcal{O}\alpha \) forwards to \(\widehat{\mathcal{O}}\) we get \(\widehat{\mathcal{O}}y\) again. The fact that \(\widehat{\mathcal{O}}\alpha \subseteq \widehat{\mathcal{O}}y\) is easy, because \(\alpha \in \widehat{\mathcal{O}}y\) by definition. So it remains to show that \(y\in \widehat{\mathcal{O}}\alpha \). </p>
+<p>Let’s define \(T\) to be a positive integer which is both a left and right multiple of both \(y\) and \(\alpha \) (for example \(T=MN\alpha \overline{\alpha }\) will do). Now note that we have an isomorphism \(\mathcal{O}/T\mathcal{O}=\widehat{\mathcal{O}}/T\widehat{\mathcal{O}}\), so we can choose some \(\beta \in \mathcal{O}\) such that \(\beta -y\in T\widehat{\mathcal{O}}\) is a multiple of \(T\). Next note that \(\beta \in y+\widehat{\mathcal{O}}T\subset \widehat{\mathcal{O}}y\) is in \(\widehat{\mathcal{O}}y\cap \mathcal{O}=\mathcal{O}\alpha \), meaning \(\beta =\gamma \alpha \) for some \(\gamma \in \mathcal{O}\). Hence \(y\in \beta +\widehat{\mathcal{O}}T\subseteq \widehat{\mathcal{O}}\alpha \). </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="ch_overview.html" title="An overview of the proof"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="sect0003.html" title="Stating the modularity lifting theorems"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

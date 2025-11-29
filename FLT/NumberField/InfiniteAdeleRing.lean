@@ -1,3 +1,4 @@
+import Architect
 import FLT.NumberField.Completion.Infinite
 import FLT.Mathlib.LinearAlgebra.Dimension.Constructions
 import FLT.Mathlib.LinearAlgebra.Pi
@@ -50,6 +51,18 @@ instance : Pi.FiberwiseSMul (fun a => a.comap (algebraMap K L)) Completion Compl
   map_smul' r x b σ := by obtain ⟨a, rfl⟩ := σ; rfl
 
 /-- The $K_{\infty}$-linear homeomorphism $K_{\infty}^{[L:K]} \cong L_{\infty}$. -/
+@[blueprint
+  "NumberField.InfiniteAdeleRing.piEquiv"
+  (statement := /-- There is a natural $K_{\infty}$-linear homeomorphism
+    $K_{\infty}^{[L:K]} \cong_{K_{\infty}} L_{\infty}$. -/)
+  (proof := /-- Using the isomorphisms $K_v^{[L:K]} \cong_{K_v} \prod_{w\mid v}L_w$ from
+    Theorem~\ref{NumberField.InfinitePlace.Completion.piEquiv}, we clearly have a bijection
+    $K_{\infty}^{[L:K]} \cong \prod_v\prod_{w \mid v} L_w \cong \prod_w L_w$.
+    The $K_v$-linearity of each component isomorphism extends to $K_{\infty}$-linearity if the
+    action of $\prod_v K_v$ on $\prod_w L_w$ is constant on the fibers of the restriction map on
+    infinite places.
+    In other words, if, for all $x \in K_{\infty}$ and $y \in L_{\infty}$, we have
+    $(x \cdot y)_w = x_{v_w} \cdot y_w$, which is true by definition. -/)]
 noncomputable
 def piEquiv : let d := Module.finrank K L
     (Fin d → InfiniteAdeleRing K) ≃L[InfiniteAdeleRing K] InfiniteAdeleRing L := by
@@ -60,6 +73,12 @@ def piEquiv : let d := Module.finrank K L
     (ContinuousLinearEquiv.piScalarPiCongrFiberwise
       (fun v : InfinitePlace K => (Completion.piEquiv L v).symm)).symm
 
+@[blueprint
+  "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT"
+  (statement := /-- $L_{\infty}$ has the $K_{\infty}$-module topology. -/)
+  (proof := /-- Since $L_{\infty}$ is homeomorphic to a finite product of $K_{\infty}$ as a
+    $K_{\infty}$-vector
+    space, it has the $K_{\infty}$-module topology. -/)]
 instance : IsModuleTopology (InfiniteAdeleRing K) (InfiniteAdeleRing L) := by
   exact IsModuleTopology.iso (piEquiv K L)
 
@@ -69,6 +88,20 @@ instance : IsModuleTopology (InfiniteAdeleRing K) (InfiniteAdeleRing L) := by
 -- equivalences for infinite completions of `K` and the product over all `w` lying above `v`
 open scoped Classical in
 /-- The $L$-algebra isomorphism $L\otimes_K K_{\infty} \cong L_{\infty}$. -/
+@[blueprint
+  "NumberField.InfiniteAdeleRing.baseChangeEquivAux"
+  (statement := /-- There is a natural $L$-algebra isomorphism
+    $L \otimes_K K_{\infty} \cong_L L_{\infty}$. -/)
+  (proof := /-- This follows from the following chain of isomorphisms:
+    \[
+      L \otimes_K K_{\infty} \cong_L \prod_v (L \otimes_K K_v) \cong_L
+        \prod_v \prod_{w\mid v}L_w \cong_L L_{\infty} .
+    \]
+    The first isomorphism is the standard $L$-algebra isomorphism
+    $L \otimes_K \prod_v K_v \cong_L \prod_v (L \otimes_K K_v)$.
+    The second isomorphism is given by the component $L$-algebra isomorphisms
+    $L \otimes_K K_v \cong_L \prod_{w\mid v}L_w$ from
+    Theorem~\ref{NumberField.InfinitePlace.Completion.baseChangeEquiv}. -/)]
 noncomputable def baseChangeEquivAux :
     L ⊗[K] InfiniteAdeleRing K ≃ₐ[L] InfiniteAdeleRing L :=
   -- L ⊗ K_∞ ≃[K_∞] ∏ v, L ⊗ K_v
@@ -114,6 +147,12 @@ instance : Module.Free (InfiniteAdeleRing K) (L ⊗[K] InfiniteAdeleRing K) := b
 
 /-- The canonical `L`-algebra homeomorphism from `L ⊗_K K_∞` to `L_∞` induced by the
 `K`-algebra base change map `K_∞ → L_∞`. -/
+@[blueprint
+  "NumberField.InfiniteAdeleRing.baseChangeEquiv"
+  (statement := /-- If $K\to L$ is a ring homomorphism between two number fields then there is a
+    natural isomorphism
+    (both topological and algebraic) $L\otimes_KK_\infty\cong L_\infty$. -/)
+  (latexEnv := "theorem")]
 noncomputable
 def baseChangeEquiv :
     L ⊗[K] InfiniteAdeleRing K ≃A[L] InfiniteAdeleRing L :=

@@ -1,3 +1,4 @@
+import Architect
 import FLT.HaarMeasure.HaarChar.Ring
 import FLT.NumberField.AdeleRing
 import FLT.Hacks.RightActionInstances
@@ -81,6 +82,21 @@ lemma NumberField.AdeleRing.ModuleBaseChangeContinuousSemilinearMap_apply
 open scoped TensorProduct.RightActions in
 /-- 𝔸_K ⊗[K] V = 𝔸_L ⊗[L] V as topological additive groups
 for V an L-module and K ⊆ L number fields. -/
+@[blueprint
+  "NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv"
+  (statement := /-- If $K$ is a number field and $V$ is an $K$-module, then
+    the natural isomorphism $V\otimes_K\A_K=V\otimes_{\Q}\A_{\Q}$ induced by the natural
+    isomorphism $\A_K=K\otimes_K\A_{\Q}$ is a homeomorphism if the left hand side has the
+    $\A_K$-module
+    topology and the right hand side has the $\A_{\Q}$-module topology. -/)
+  (proof := /-- Lemma~\ref{IsModuleTopology.continuous_bilinear_of_finite_left} tells us that
+    $V\otimes_K\A_K$
+    has the $\A_{\Q}$-module topology, and it is easily checked that the isomorphism is
+    $\A_{\Q}$-linear and hence automatically continuous.
+    
+    Note that in the Lean we prove this for a general extension $L/K$ rather than $K/\Q$. -/)
+  (proofUses := ["IsModuleTopology.continuous_bilinear_of_finite_left"])
+  (latexEnv := "corollary")]
 noncomputable def NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv :
     V ⊗[K] (𝔸 K) ≃ₜ+ (V ⊗[L] (𝔸 L)) :=
   {
@@ -99,6 +115,22 @@ open scoped TensorProduct.RightActions in
 variable
   [MeasurableSpace (B ⊗[K] 𝔸 K)]
   [BorelSpace (B ⊗[K] 𝔸 K)] in
+@[blueprint
+  "NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul"
+  (statement := /-- Let $B$ be a finite-dimensional central simple $K$-algebra.
+    Say $u\in B_{\A}^\times$, and define $\ell_u$ and $r_u:B_{\A}\to B_{\A}$ by
+    $\ell_u(x)=ux$ and $r_u(x)=xu$. Then $d_{B_{\A}}(\ell_u)=d_{B_{\A}}(r_u)$. -/)
+  (proof := /-- We think of $B_{\A}$ as $B\otimes_K\A_K$.
+    If $u=(u_v)$ as $v$ runs through the places of $K$ then
+    $d_{B_{\A}}(\ell_u)=\prod_v d_{B_v}(\ell_{u_v})$ by
+    theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} (and the product is
+    finite).
+    By corollary~\ref{IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight}
+    this equals $\prod_v d_{B_v}(r_{u_v})$, and again by
+    theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} this is
+    $d_{B_{\A}}(r_u)$. -/)
+  (proofUses := ["MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight",
+    "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"])]
 lemma NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul
     [IsSimpleRing B] [Algebra.IsCentral K B] (u : (B ⊗[K] (𝔸 K))ˣ) :
     addEquivAddHaarChar (ContinuousAddEquiv.mulLeft u) =
@@ -115,10 +147,35 @@ variable [MeasurableSpace (𝔸 ℚ)] [BorelSpace (𝔸 ℚ)]
     MeasurableSpace (IsDedekindDomain.HeightOneSpectrum.adicCompletion ℚ p)]
   [∀ (p : IsDedekindDomain.HeightOneSpectrum (𝓞 ℚ)),
     BorelSpace (IsDedekindDomain.HeightOneSpectrum.adicCompletion ℚ p)] in
+@[blueprint
+  "MeasureTheory.ringHaarChar_adeles_rat"
+  (statement := /-- If $x\in\A_{\Q}^\times$ then $\delta_{\A_{\Q}}(x)=\prod_v|x_v|_v.$ -/)
+  (proof := /-- By theorem~\ref{MeasureTheory.addEquivAddHaarChar_prodCongr}
+    we have $\delta_{\A_{\Q}}(x)=\delta_{\A_{\Q}^\infty}(x^\infty)\times\delta_{\R}(x_\infty)$.
+    By lemma~\ref{MeasureTheory.ringHaarChar_real} we have $\delta_{\R}(x_\infty)=|x|_\infty$, and
+    by
+    theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight} we have
+    $\delta_{\A_{\Q}^\infty}=\prod_p\delta_{\Q_p}(x_p)$. By
+    lemma~\ref{MeasureTheory.ringHaarChar_padic}
+    we have $\delta_{\Q_p}(x_p)=|x_p|_p$ and putting everything together we get the result. -/)
+  (proofUses := ["MeasureTheory.addEquivAddHaarChar_prodCongr",
+    "MeasureTheory.ringHaarChar_real", "MeasureTheory.ringHaarChar_padic",
+    "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"])
+  (latexEnv := "lemma")]
 lemma MeasureTheory.ringHaarChar_adeles_rat (x : (𝔸 ℚ)ˣ) :
   ringHaarChar x = ringHaarChar (MulEquiv.prodUnits x).1 *
     (∏ᶠ p, ringHaarChar (MulEquiv.restrictedProductUnits (MulEquiv.prodUnits x).2 p)) := sorry
 
+@[blueprint
+  "MeasureTheory.ringHaarChar_adeles_units_rat_eq_one"
+  (statement := /-- If $x\in\Q^\times\subseteq\A_{\Q}^\times$ then $\delta_{\A_{\Q}}(x)=1.$ -/)
+  (proof := /-- By lemma~\ref{MeasureTheory.ringHaarChar_adeles_rat} we have
+    $\delta_{\A_{\Q}}(x)=\prod_v|x|_v$.
+    But the product formula says that this is 1.
+    A quick proof: if $x=\pm\prod_pp^{e_p}$ then $\prod_p|x|_p=\prod_pp^{-e_p}$
+    and $|x|_\infty=\prod_pp^{e_p}$ so they cancel. -/)
+  (proofUses := ["MeasureTheory.ringHaarChar_adeles_rat"])
+  (latexEnv := "lemma")]
 lemma MeasureTheory.ringHaarChar_adeles_units_rat_eq_one (x : ℚˣ)
     [MeasurableSpace ((𝔸 ℚ))] [BorelSpace (𝔸 ℚ)] :
   ringHaarChar (Units.map (algebraMap ℚ (𝔸 ℚ)) x : (𝔸 ℚ)ˣ) = 1 := sorry
@@ -138,6 +195,40 @@ noncomputable def ContinuousLinearEquiv.baseChange (R : Type*) [CommRing R]
 
 open scoped TensorProduct.RightActions
 
+@[blueprint
+  "MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"
+  (statement := /-- In the above situation ($V$ a finite-dimensional $\Q$-vector space, $\phi:V\cong
+    V$ is
+    $\Q$-linear, $\phi_{\A}$ the base extension to $V_{\A}:=V\otimes_{\Q}{\A_{\Q}}$, a continuous
+    linear
+    endomorphism of $V_{\A}$ with the $\A_{\Q}$-module topology), we have $d_{V_{\A}}(\phi_{\A})=1.$
+    -/)
+  (proof := /-- Fix once and for all a $\Z$-lattice $L\subseteq V$
+    (that is, a spanning $\Z^N$ in the $\Q^N$). Then $V\otimes_{\Q}\A_{\Q}=L\otimes_{\Z}\A_{\Q}$
+    which is $L\otimes_{\Z}(\A_{\Q}^\infty\times\R)$.
+    Because tensoring by a finitely presented module commute with restricted products and binary
+    products this equals $\prod'_p(L\otimes_{\Z}\Q_p)\times(L\otimes_{\Q}\R)$, the restricted
+    product being over $L\otimes_{\Z}\Z_p$, and this is
+    $\prod'_p(V\otimes_{\Q}\Q_p)\times(V\otimes_{\Q}\R)$.
+    If $V_v$ denotes $V\otimes_{\Q}\Q_v$ then the endomorphism $\phi_{\A}$ is the product of
+    $\phi_p$ for all $p$ and $\phi_\infty$,
+    where $\phi_v$ is a $\Q_v$-linear and and hence continuous automorphism of $V_v$.
+    
+    Hence by theorem~\ref{MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight}
+    we have $d_{V_{\A}}(\phi_{\A})=\prod_p d_{V_p}(\phi_p)\times d_{V_\infty}(\phi_\infty)$,
+    where we note that all but finitely many of the $d_{V_p}(\phi_p)$ are 1.
+    
+    By Lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} we have that
+    $d_{V_v}(\phi_v)=\delta_{\Q_v}(\det(\phi_v))$, hence
+    $d_{V_{\A}}(\phi_{\A})=\prod_v\delta_{\Q_v}(\det(\phi_v))$.
+    But $\det(\phi_v)$ is equal to the determinant of $\phi$ on $V$ as $\Q$-vector space (because
+    base change does not change determinant),
+    which is some nonzero rational number $q$. Thus
+    $d_{V_{\A}}(\phi_{\A})=\prod_v\delta_{\Q_v}(q)=1$
+    by the product formula for $\Q$. -/)
+  (proofUses := ["MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det",
+    "NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv",
+    "MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight"])]
 lemma MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one (φ : V ≃ₗ[K] V)
     [MeasurableSpace (V ⊗[K] 𝔸 K)] [BorelSpace (V ⊗[K] 𝔸 K)] :
     addEquivAddHaarChar
@@ -148,6 +239,15 @@ open scoped TensorProduct.RightActions in
 /-- Left multiplication by an element of Bˣ on B ⊗ 𝔸_K does not scale additive
 Haar measure. In other words, Bˣ is in the kernel of the `ringHaarChar` of `B ⊗ 𝔸_K`.
 -/
+@[blueprint
+  "NumberField.AdeleRing.units_mem_ringHaarCharacter_ker"
+  (statement := /-- If $B$ is a finite-dimensional $\Q$-algebra (for example a number field, or a
+    quaternion algebra over a number field),
+    if $B_{\A}$ denotes the ring $B\otimes_{\Q}\A_{\Q}$, and if $b\in B^\times$,
+    then $\delta_{B_{\A}}(b)=1$. -/)
+  (proof := /-- Follows immediately from the previous theorem. -/)
+  (proofUses := ["MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"])
+  (latexEnv := "corollary")]
 lemma NumberField.AdeleRing.units_mem_ringHaarCharacter_ker
     [MeasurableSpace (B ⊗[K] AdeleRing (𝓞 K) K)] [BorelSpace (B ⊗[K] AdeleRing (𝓞 K) K)]
     (b : Bˣ) :
@@ -159,6 +259,14 @@ open scoped TensorProduct.RightActions in
 /-- Right multiplication by an element of Bˣ on B ⊗ 𝔸_K does not scale additive
 Haar measure.
 -/
+@[blueprint
+  "NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one"
+  (statement := /-- If $B$ is a finite-dimensional $\Q$-algebra and
+    if $b\in B^\times$ then right multiplication by $b$
+    does not change Haar measure on $B_{\A}$. -/)
+  (proof := /-- Follows immediately from the previous theorem. -/)
+  (proofUses := ["MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one"])
+  (latexEnv := "corollary")]
 lemma NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one
     [MeasurableSpace (B ⊗[K] AdeleRing (𝓞 K) K)] [BorelSpace (B ⊗[K] AdeleRing (𝓞 K) K)]
     (b : Bˣ) :

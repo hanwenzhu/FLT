@@ -1,3 +1,4 @@
+import Architect
 import Mathlib.MeasureTheory.Measure.Regular
 import FLT.Mathlib.MeasureTheory.Measure.Typeclasses.Finite
 
@@ -38,6 +39,15 @@ lemma innerRegularWRT_comap
       Set.image_preimage_eq_iff.mpr hK]
 
 
+@[blueprint
+  "Topology.IsOpenEmbedding.regular_comap"
+  (statement := /-- The pullback of a regular Borel measure along an open
+    embedding is a regular Borel measure. -/)
+  (proof := /-- Again this is because the image of compact is compact and the
+    image of open is open, so all the properties of being a regular measure
+    are easily checked. -/)
+  (discussion := 513)
+  (latexEnv := "lemma")]
 lemma regular_comap
     (φ : X → Y) (hφ : IsOpenEmbedding φ) (μ : Measure Y) [Regular μ] :
     Regular (comap φ μ) where

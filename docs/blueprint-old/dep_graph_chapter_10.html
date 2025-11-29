@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-blue.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/stylecours.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.14</span></div>
+    <div class="thm_thmcontent"><p>   For every \(\beta \in D_{\mathbb {A}}^{(1)}\), there exists \(b\in D^\times \) and \(\nu \in D_{\mathbb {A}}^{(1)}\) such that \(\beta =b\nu \) and \((\nu ,\nu ^{-1})\in C.\) </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">10.12</span></div>
+    <div class="thm_thmcontent"><p>   Define \(C:= (T^{-1}.X) \times X\subset D_{\mathbb {A}}\times D_{\mathbb {A}}\). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.C">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.13</span></div>
+    <div class="thm_thmcontent"><p>   \(C\) is compact. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.E_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.E" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">10.3</span></div>
+    <div class="thm_thmcontent"><p>   We let \(E\) denote any compact set satisfying the hypothesis of the previous lemma. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.E">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.existsE_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.2</span></div>
+    <div class="thm_thmcontent"><p>  There’s a compact subset \(E\) of \(D_{\mathbb {A}}\) with the property that for all \(x\in D_{\mathbb {A}}^{(1)}\), the obvious map \(xE\to D\backslash D_{\mathbb {A}}\) is not injective. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">10.10</span></div>
+    <div class="thm_thmcontent"><p>   Let \(T:=Y\cap D^\times \). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.T">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.11</span></div>
+    <div class="thm_thmcontent"><p>   \(T\) is finite. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">10.4</span></div>
+    <div class="thm_thmcontent"><p>   Define \(X:=E-E:=\{ e-f:e,f\in E\} \subseteq D_{\mathbb {A}}\). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.6</span></div>
+    <div class="thm_thmcontent"><p>   \(X\) is a compact subset of \(D_{\mathbb {A}}\). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.8</span></div>
+    <div class="thm_thmcontent"><p>   If \(\beta \in D_{\mathbb {A}}^{(1)}\) then \(\beta X\cap D^\times \not=\emptyset \). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.9</span></div>
+    <div class="thm_thmcontent"><p>   Similarly, if \(\beta \in D_{\mathbb {A}}^{(1)}\) then \(X\beta ^{-1}\cap D^\times \not=\emptyset \). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">10.5</span></div>
+    <div class="thm_thmcontent"><p>   Define \(Y:=X.X:=\{ xy:x,y\in X\} \subseteq D_{\mathbb {A}}\). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.Y">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">10.7</span></div>
+    <div class="thm_thmcontent"><p>   \(Y\) is a compact subset of \(D_{\mathbb {A}}\). </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.DivisionAlgebra.compact_quotient_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.DivisionAlgebra.compact_quotient" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">10.1</span></div>
+    <div class="thm_thmcontent"><p>  If \(D\) is a division algebra then the quotient \(D^\times \backslash D_{\mathbb {A}}^{(1)}\) with its quotient topology coming from \(D_{\mathbb {A}}^{(1)}\), is compact. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.compact_quotient">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.compact_quotient">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">10.17</span></div>
+    <div class="thm_thmcontent"><p>   If \(U\) is an open subgroup of \((D\otimes _K \mathbb {A}_K^\infty )^\times \) then the double coset space \(D^\times \backslash (D\otimes _K \mathbb {A}_K^\infty )^\times /U\) is finite. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">10.15</span></div>
+    <div class="thm_thmcontent"><p>  \(D^\times \backslash (D\otimes _K\mathbb {A}_K^\infty )^\times \) is compact. </p>
+</div>
+
+    <a class="latex_link" href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"NumberField.AdeleRing.DivisionAlgebra.Aux.T"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.T",		shape=box,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.C"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.C",		shape=box,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.T" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.C"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.T" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.C" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.C" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.compact_quotient"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.compact_quotient",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" -> "NumberField.AdeleRing.DivisionAlgebra.compact_quotient";	"NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" -> "NumberField.AdeleRing.DivisionAlgebra.compact_quotient";	"NumberField.AdeleRing.DivisionAlgebra.Aux.X"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.X",		shape=box,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.Y"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.Y",		shape=box,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.Y"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.Y" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.T"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.Y" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C";	"NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C";	"NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite";	"NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.compact_quotient" -> "NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact";	"NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset",		shape=ellipse,		style=filled];	"NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" -> "NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.E"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.E",		shape=box,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.E" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.X"	[style=dashed];	"NumberField.AdeleRing.DivisionAlgebra.Aux.existsE"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.DivisionAlgebra.Aux.existsE",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" -> "NumberField.AdeleRing.DivisionAlgebra.Aux.E"	[style=dashed];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

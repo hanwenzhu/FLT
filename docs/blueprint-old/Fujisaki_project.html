@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miniproject: Fujisaki’s Lemma</title>
+<link rel="next" href="Quat_alg_project.html" title="Miniproject: Quaternion algebras" />
+<link rel="prev" href="Haar_char_project.html" title="Miniproject: Haar Characters" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="Fujisaki_project">10 Miniproject: Fujisaki’s Lemma</h1>
+
+<h1 id="a0000000056">10.1 The goal</h1>
+<p>There is an idelic compactness statement which encapsulates both finiteness of the class group of a number field and Dirichlet’s units theorem about the rank of the unit group. In fact there is even a noncommutative version of this statement. In John Voight’s book&#160;<span class="cite">
+	[
+	<a href="sect0005.html#voightbook" >13</a>
+	]
+</span> this is Main Theorem 27.6.14(a) and Voight calls it Fujisaki’s lemma. I know nothing of the history but I’m happy to adopt this name. In the quaternion algebra miniproject we will use this compactness result to prove finite-dimensionality of a space of quaternionic modular forms. </p>
+<h1 id="a0000000057">10.2 Initial definitions</h1>
+<p>Let \(K\) be a field. A <em>central simple \(K\)-algebra</em> is a \(K\)-algebra&#160;\(B\) (not necessarily commutative) with centre \(K\) such that \(B\) has exactly two two-sided ideals, namely \({0}\) and \(B\) (or \(\bot \) and \(\top \), as Lean would call them). We will be concerned only with central simple \(K\)-algebras which are finite-dimensional as \(K\)-vector spaces, and when \(K\) is clear we will just refer to them as central simple algebras. We remark that a 4-dimensional central simple algebra is called a <em>quaternion algebra</em>; we will have more to say about these later on. </p>
+<p>Matrix algebras \(M_n(K)\) are examples of finite-dimensional central simple \(K\)-algebras. If \(K=\mathbb {C}\) (or more generally if \(K\) is algebraically closed) then matrix algebras are the only finite-dimensional examples up to isomorphism. There are other examples over the reals: for example Hamilton’s quaternions \(\mathbb {H}:=\mathbb {R}\oplus \mathbb {R}i\oplus \mathbb {R}j\oplus \mathbb {R}k\) with the usual rules \(i^2=j^2=k^2=-1\), \(ij=-ji=k\) etc, are an example of a central simple \(\mathbb {R}\)-algebra (and a quaternion algebra), and matrix algebras over \(\mathbb {H}\) are other central simple \(\mathbb {R}\)-algebras. For a general field \(K\) one can make an analogue of Hamilton’s quaternions \(K\oplus Ki\oplus Kj\oplus Kk\) with the same multiplication rules (\(i^2=-1\) and so on) to describe the multiplication, and if the characteristic of&#160;\(K\) isn’t 2 then this is a quaternion algebra (which may or may not be isomorphic to \(M_2(K)\) in this generality). </p>
+<p>Some central simple algebras&#160;\(B\) are <em>division algebras</em>, meaning that they are division rings, or equivalently that every nonzero \(b\in B\) has a two-sided inverse. For example Hamilton’s quaternions are a division algebra over \(\mathbb {R}\), because \((x+yi+zj+tk)(x-yi-zj-tk)=x^2+y^2+z^2+t^2\), so the inverse of a nonzero \(x+yi+zj+tk\) is \((x-yi-zj-tk)/(x^2+y^2+z^2+t^2)\). However \(2\times 2\) matrices over a field&#160;\(K\), whilst being a central simple algebra over&#160;\(K\), are never a division algebra (even if \(K=\mathbb {C}\)) because a nonzero matrix with determinant zero such as \(\begin{pmatrix} 1
+
+& 0
+
+\\ 0
+
+& 0
+
+\end{pmatrix}\) has no inverse. </p>
+<h1 id="a0000000058">10.3 Enter the adeles</h1>
+<p>The adeles of a number field are discussed in far more detail in the adele miniproject <a href="Adele_miniproject.html">8</a>. We just recall here that if \(K\) is a number field then there are two huge commutative topological \(K\)-algebras called the <em>finite adeles</em> \(\mathbb {A}_K^\infty \) and the <em>adeles</em> \(\mathbb {A}_K\) of \(K\), and that they’re both locally compact as topological spaces. We also know from theorem&#160;<a href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">8.47</a> that \(\mathbb {A}_K\cong K\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}K\) (both topologically and algebraically), meaning that if \(R\) is a \(K\)-algebra then \(R_{\mathbb {A}} := R\otimes _K\mathbb {A}_K\) is naturally isomorphic to \(R\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\). One can furthermore check that if \(R\) is a finite \(K\)-algebra then the \(\mathbb {A}_K\)-module topologies and \(\mathbb {A}_{\mathbb {Q}}\)-module topologies on \(R_{\mathbb {A}}\) coincide. Indeed, the topology on \(\mathbb {A}_K\) is the \(\mathbb {A}_{\mathbb {Q}}\)-module topology, as \(\mathbb {A}_K=\mathbb {A}_{\mathbb {Q}}\otimes _{\mathbb {Q}}K\) as topological \(\mathbb {A}_{\mathbb {Q}}\)-algebras, where the right hand side has the \(\mathbb {A}_{\mathbb {Q}}\)-module topology by definition. So the claim follows from the fact that if \(A\) is a topological ring, \(B\) is a topological \(A\)-algebra finite as an \(A\)-module and with the \(A\)-module topology, and if \(M\) is a topological \(B\)-module (and hence a topological \(A\)-module), then the \(A\)-module and \(B\)-module topologies on&#160;\(M\) coincide (this is <span class="tt">moduleTopology.trans</span> in the repo, not yet PRed to mathlib). </p>
+<p>Let \(K\) be a number field and let \(D/K\) be a finite-dimensional central simple \(K\)-algebra (later on \(D\) will be a division algebra (hence the name) but we do not need this yet). Then \(D_{\mathbb {A}}:=D\otimes _K\mathbb {A}_K\) is an \(\mathbb {A}_K\)-algebra which is free of finite rank, and if we give \(D_{\mathbb {A}}\) the \(\mathbb {A}_K\)-module topology then it is a topological ring (by results in mathlib). Furthermore \(D_{\mathbb {A}}\) is free of finite rank over the locally compact topological ring \(\mathbb {A}_K\) and is thus also locally compact. So by the theory of Haar characters (see Chapter&#160;<a href="Haar_char_project.html">9</a>) there is a canonical character \(\delta _{D_{\mathbb {A}}}:D_{\mathbb {A}}^\times \to \mathbb {R}_{{\gt}0}\) measuring how left multiplication by an element of \(D_{\mathbb {A}}^\times \) changes the additive Haar measure on \(D_{\mathbb {A}}\). Let \(D_{\mathbb {A}}^{(1)}\) denote the kernel of \(\delta _{D_{\mathbb {A}}}\), and give it the subspace topology coming from \(D_{\mathbb {A}}^\times \). Corollary&#160;<a href="Haar_char_project.html#NumberField.AdeleRing.units_mem_ringHaarCharacter_ker">9.39</a> from the Haar character miniproject shows that \(D^\times \) (regarded as a subgroup of \(D_{\mathbb {A}}^\times \) via the map \(d\mapsto d\otimes 1\)) is contained within \(D_{\mathbb {A}}^{(1)}\), thus the below theorem typechecks. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.compact_quotient">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">10.1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.compact_quotient">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000239"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.compact_quotient" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.compact_quotient</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  If \(D\) is a division algebra then the quotient \(D^\times \backslash D_{\mathbb {A}}^{(1)}\) with its quotient topology coming from \(D_{\mathbb {A}}^{(1)}\), is compact. </p>
+
+  </div>
+</div>
+<p>The rest of this miniproject is devoted to a proof of this theorem. </p>
+<h1 id="a0000000059">10.4 The proof</h1>
+<p>We prove the theorem via a series of lemmas. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000240"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.existsE" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.existsE</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  There’s a compact subset \(E\) of \(D_{\mathbb {A}}\) with the property that for all \(x\in D_{\mathbb {A}}^{(1)}\), the obvious map \(xE\to D\backslash D_{\mathbb {A}}\) is not injective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000240">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We know that if we pick a \(\mathbb {Q}\)-basis for \(D\) of size \(d\) then this identifies \(D\) with \(\mathbb {Q}^d\), \(D_{\mathbb {A}}\) with \(\mathbb {A}_{\mathbb {Q}}^d\), and \(D\backslash D_{\mathbb {A}}\) with \((\mathbb {Q}\backslash \mathbb {A}_{\mathbb {Q}})^d\). Now \(\mathbb {Q}\) is discrete in \(\mathbb {A}_{\mathbb {Q}}\) by theorem&#160;<a href="Adele_miniproject.html#NumberField.AdeleRing.discrete">8.51</a>, and the quotient \(\mathbb {Q}\backslash \mathbb {A}_{\mathbb {Q}}\) is compact by theorem&#160;<a href="Adele_miniproject.html#Rat.AdeleRing.cocompact">8.52</a>. Hence \(D\) is discrete in \(D_{\mathbb {A}}\) and the quotient \(D\backslash D_{\mathbb {A}}\) is compact. </p>
+<p>Fix a Haar measure \(\mu \) on \(D_{\mathbb {A}}\) and push it forward to \(D\backslash D_{\mathbb {A}}\); by compactness this quotient has finite and positive measure, say \(m\in \mathbb {R}_{{\gt}0}\). Choose any compact \(E\subseteq D_{\mathbb {A}}\) with measure \({\gt} m\) (for example, choose a \(\mathbb {Z}\)-lattice \(L\cong \mathbb {Z}^d\) in \(D\cong \mathbb {Q}^d\), define \(E_f:=\prod _p L_p\in D\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}^\infty \), and define \(E_{\infty }\subseteq D\otimes _{\mathbb {Q}}\mathbb {R}\cong \mathbb {R}^n\) to be a huge closed ball, large enough to ensure the measure of \(E:=E_f\times E_{\infty }\) is bigger than \(m\)). Then \(\mu (xE)=\mu (E){\gt}m\) so the map can’t be injective. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.AdeleRing.DivisionAlgebra.Aux.E">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">Lemma 10.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.E" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.E</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   We let \(E\) denote any compact set satisfying the hypothesis of the previous lemma. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">Definition 10.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.X</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Define \(X:=E-E:=\{ e-f:e,f\in E\} \subseteq D_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">Definition 10.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.Y" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.Y</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Define \(Y:=X.X:=\{ xy:x,y\in X\} \subseteq D_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000241"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">Definition 10.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(X\) is a compact subset of \(D_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000241">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>It’s the continuous image of the compact set&#160;\(E\times E\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.7</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000242"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y">Definition 10.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(Y\) is a compact subset of \(D_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000242">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>It’s the continuous image of the compact set&#160;\(X\times X\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.8</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000243"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">Definition 10.4</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">Definition 10.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(\beta \in D_{\mathbb {A}}^{(1)}\) then \(\beta X\cap D^\times \not=\emptyset \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000243">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Indeed by lemma&#160;<a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.existsE">10.2</a>, the map \(\beta E\to D\backslash D_{\mathbb {A}}\) isn’t injective, so there are distinct \(\beta e_1,\beta e_2\in \beta E\) with \(e_i\in E\) and \(\beta e_1-\beta e_2=b\in D\). Now \(b\not=0\) and \(D\) is a division algebra, so \(b\in D^\times \). And \(e_1-e_2\in X\) so \(b=\beta (e_1-e_2)\in \beta X\), so we’re done. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000244"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">Definition 10.4</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">Definition 10.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Similarly, if \(\beta \in D_{\mathbb {A}}^{(1)}\) then \(X\beta ^{-1}\cap D^\times \not=\emptyset \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000244">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Indeed, \(\beta ^{-1}\in D_{\mathbb {A}}^{(1)}\), and so left multiplication by \(\beta ^{-1}\) doesn’t change Haar measure on \(D_{\mathbb {A}}\), so neither does right multiplication (by theorem&#160;??). So the same argument works: \(E\beta ^{-1}\to D\backslash D_{\mathbb {A}}\) is not injective so choose \(e_1\beta ^{-1}\not=e_2\beta ^{-1}\) with difference \(b\in D\) and then \((e_1-e_2)\beta ^{-1}\in D-{0}=D^\times \). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10.10</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y">Definition 10.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.T" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.T</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Let \(T:=Y\cap D^\times \). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.11</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000245"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T">Definition 10.10</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.Y_compact">Lemma 10.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(T\) is finite. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000245">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> It suffices to prove that \(Y\cap D\) is finite. But \(D\subseteq D_{\mathbb {A}}\) is a discrete additive subgroup, and hence closed. And \(Y\subseteq D_{\mathbb {A}}\) is compact. So \(D\cap Y\) is compact and discrete, so finite. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">10.12</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T">Definition 10.10</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X">Definition 10.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.C" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.C</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Define \(C:= (T^{-1}.X) \times X\subset D_{\mathbb {A}}\times D_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.13</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000246"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C">Definition 10.12</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.T_finite">Lemma 10.11</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_compact">Lemma 10.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.C_compact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(C\) is compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000246">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\(X\) is compact and \(T\) is finite. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">10.14</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000247"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C">Definition 10.12</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.E">Definition 10.3</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">Lemma 10.8</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">Lemma 10.9</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.C">Definition 10.12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C" class="lean_decl">NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   For every \(\beta \in D_{\mathbb {A}}^{(1)}\), there exists \(b\in D^\times \) and \(\nu \in D_{\mathbb {A}}^{(1)}\) such that \(\beta =b\nu \) and \((\nu ,\nu ^{-1})\in C.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000247">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> By lemma&#160;<a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel">10.8</a>, \(\beta X\cap D^\times \not=\emptyset \), and lemma&#160;<a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.X_meets_kernel'">10.9</a>, \(X\beta ^{-1}\cap D^\times \not=\emptyset \), so we can write \(\beta x_1=b_1\) and \(x_2\beta ^{-1}=b_2\) with \(b_i\in D^\times \) and \(x_i\in X\). Note that \(\beta \in D_{\mathbb {A}}^{(1)}\) and \(b_i\in D^{\times }\subseteq D_{\mathbb {A}}^{(1)}\) by corollary&#160;<a href="Haar_char_project.html#NumberField.AdeleRing.units_mem_ringHaarCharacter_ker">9.39</a>, so \(x_i\in D_{\mathbb {A}}^{(1)}\) as well. In particular \(x_i\in D_{\mathbb {A}}^\times \) so \(x_1^{-1}\) makes sense. </p>
+<p>Multiplying the equations defining the \(x_i\) and \(b_i\) we deduce that \(x_2x_1=b_2b_1\in Y\cap D^\times =T\) (recall that \(Y=X.X\) and \(T=Y\cap D^\times \) is finite); call this element \(t\). Then \(x_1^{-1}=t^{-1}x_2\in T^{-1}.X\), and \(x_1\in X\), so if we set \(\nu =x_1^{-1}\in D_{\mathbb {A}}^{(1)}\) and \(b=b_1\in D^\times \) then we have \(\beta =b\nu \) and \((\nu ,\nu ^{-1})\in C := (T^{-1}.X)\times X\). We are done! </p>
+
+  </div>
+</div>
+<p>We can now prove Fujisaki’s theorem&#160;<a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.compact_quotient">10.1</a>. </p>
+<div class="proof_wrapper" id="a0000000239">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>  Indeed, if \(M\) is the preimage of \(C\) under the inclusion \(D_{\mathbb {A}}^{(1)} \to D_{\mathbb {A}}\times D_{\mathbb {A}}\) sending \(\nu \) to \((\nu ,\nu ^{-1})\), then \(M\) is a closed subspace of a compact space so it’s compact (note that \(\delta _{D_{\mathbb {A}}}\) is continuous, by theorem&#160;<a href="Haar_char_project.html#MeasureTheory.ringHaarChar_continuous">9.13</a>, so \(D_{\mathbb {A}}^{(1)}\) is a closed subset of \(D_{\mathbb {A}}^\times \) which is itself a closed subset of \(D_{\mathbb {A}}\times D_{\mathbb {A}}\)). Lemma&#160;<a href="Fujisaki_project.html#NumberField.AdeleRing.DivisionAlgebra.Aux.antidiag_mem_C">10.14</a> shows that \(M\) surjects onto \(D^\times \backslash D_{\mathbb {A}}^{(1)}\) which is thus also compact. </p>
+
+  </div>
+</div>
+<p>We note here some useful consequences. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">10.15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000248"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact" class="lean_decl">NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  \(D^\times \backslash (D\otimes _K\mathbb {A}_K^\infty )^\times \) is compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000248">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> There’s a natural map \(\alpha \) from \(D^\times \backslash D_{\mathbb {A}}^{(1)}\) to \(D^\times \backslash (D\otimes _K \mathbb {A}_K^\infty )^\times \). We claim that it’s surjective. Granted this claim, we are home, because if we put the quotient topology on \(D^\times \backslash (D\otimes _K \mathbb {A}_K^\infty )^\times \) coming from \((D\otimes _K \mathbb {A}_K^\infty )^\times \) then it’s readily verified that \(\alpha \) is continuous, and the continuous image of a compact space is compact. </p>
+<p>As for surjectivity: say \(x\in (D\otimes _K \mathbb {A}_K^\infty )^\times \). We need to extend \(x\) to an element \((x,y)\in (D\otimes _K \mathbb {A}_K^\infty )^\times \times (D\otimes _K K_\infty )^\times \) which is in the kernel of \(\delta _{D_{\mathbb {A}}}\). Because \(\delta _{D_{\mathbb {A}}}(x,1)\) is some positive real number, it will suffice to show that if \(r\) is any positive real number then we can find \(y\in (D\otimes _K \mathbb {A}_K^\infty )^\times =(D\otimes _{\mathbb {Q}}\mathbb {R})^\times \) with \(\delta _{D_{\mathbb {A}}}(1,y)=r\), or equivalently (setting \(D_{\mathbb {R}}=D\otimes _{\mathbb {Q}}\mathbb {R}\)) that \(\delta _{D_{\mathbb {R}}}(y)=r\). But \(D\not=0\) as it is a division algebra,and hence \(\mathbb {Q}\subseteq D\), meaning \(\mathbb {R}\subseteq D_{\mathbb {R}}\), and if \(x\in \mathbb {R}^\times \subseteq D_{\mathbb {R}}^\times \) then \(\delta (x)=|x|^d\) with \(d=\dim _{\mathbb {Q}}(D)\), as multiplication by \(x\) is just scaling by a factor of \(x\) on \(D_{\mathbb {R}}\cong \mathbb {R}^d\). In particular we can set \(x=y^{1/d}\). </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000249">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">10.16</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#a0000000249">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>In this generality the quotient might not be Hausdorff. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">10.17</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset">#</a>
+    
+    <a class="icon proof" href="Fujisaki_project.html#a0000000250"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">Theorem 10.15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset" class="lean_decl">NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(U\) is an open subgroup of \((D\otimes _K \mathbb {A}_K^\infty )^\times \) then the double coset space \(D^\times \backslash (D\otimes _K \mathbb {A}_K^\infty )^\times /U\) is finite. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000250">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The double cosets give a disjoint open cover of \((D\otimes _K \mathbb {A}_K^\infty )\) which descends to a disjoint open cover of the quotient space \(D^\times \backslash (D\otimes _K \mathbb {A}_K^\infty )^\times \). However this space is compact by theorem&#160;<a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">10.15</a>. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="Haar_char_project.html" title="Miniproject: Haar Characters"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="Quat_alg_project.html" title="Miniproject: Quaternion algebras"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@ Copyright (c) 2024 Salvatore Mercuri. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Salvatore Mercuri
 -/
+import Architect
 import Mathlib.NumberTheory.NumberField.AdeleRing
 import FLT.Mathlib.Algebra.Order.AbsoluteValue.Basic
 import FLT.Mathlib.Analysis.Normed.Ring.WithAbs
@@ -391,6 +392,23 @@ variable (K : Type*) [Field K] {v w : InfinitePlace K}
 *Weak approximation for subcollections*: this is the result that `K` is dense in any subcollection
 `Π v ∈ S, Kᵥ` of completions at infinite places.
 -/
+@[blueprint
+  "NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi"
+  (statement := /-- Let $S$ be a set of infinite places of $K$. The image of $K$ under the embedding
+    $K\hookrightarrow (K_v)_{v\in S}; k \mapsto (k)_v$ is dense in the product topology. -/)
+  (proof := /-- Let $(K, v)$ denote $K$ equipped with the topology induced by the infinite place
+    $v$.
+    It suffices to show that the image of $K$ under the embedding
+    $K\hookrightarrow \prod_{v\mid \infty}(K, v)$ is dense in the product topology.
+    By a standard analytic argument, for each $v$ it is possible to select a sequence
+    $(x_n^{(v)})_n$
+    with the property that $x_n^{(v)} \to 1$ in $v$'s topology, while $x_n^{(v)} \to 0$ in any other
+    infinite place's topology.
+    Let $(z_v)_v \in \prod_{v\mid \infty}(K, v)$.
+    For each $v$, the sequence $y_n := \sum_{v\mid\infty} x_n^{(v)}z_v$ in $K$ converges to
+    $z_v$ in $v$'s topology.
+    So the embedded image of $y_n$ in $\prod_{v\mid \infty}(K, v)$ converges to $(z_v)_v$ in the
+    product topology. -/)]
 theorem denseRange_algebraMap_subtype_pi (p : InfinitePlace K → Prop) [NumberField K] :
     DenseRange <| algebraMap K ((v : Subtype p) → v.1.Completion) := by
   apply DenseRange.comp (g := Subtype.restrict p)

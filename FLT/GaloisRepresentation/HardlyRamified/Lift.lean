@@ -1,3 +1,4 @@
+import Architect
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 
 namespace GaloisRepresentation.IsHardlyRamified
@@ -17,6 +18,14 @@ open TensorProduct
 /--
 An irreducible mod p hardly ramified represntation lifts to a p-adic one.
 -/
+@[blueprint
+  "hardly_ramified_lifts"
+  (statement := /-- If $\ell\geq3$ is prime and $\overline{\rho}:\GQ\to\GL_2(\Z/\ell\Z)$
+    is hardly ramified and irreducible, then there exists a finite extension~$K$ of $\Q_\ell$
+    with integer ring~$\calO$ and maximal ideal $\mathfrak{m}$
+    and a hardly ramified representation
+    $\rho:\GQ\to\GL_2(\calO)$ whose reduction modulo~$\m$ is isomorphic to $\rho$. -/)
+  (proof := /-- Omitted for now {\bf TODO} -/)]
 theorem lifts (ρ : GaloisRep ℚ k V) (hρirred : ρ.IsIrreducible)
     (hρ : IsHardlyRamified hpodd hV ρ) :
     ∃ (R : Type u) (_ : CommRing R) (_ : IsLocalRing R)

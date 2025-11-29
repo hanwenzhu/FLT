@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Matthew Jasper
 -/
+import Architect
 import FLT.DedekindDomain.Completion.BaseChange
 import FLT.DedekindDomain.FiniteAdeleRing.TensorRestrictedProduct
 import FLT.Mathlib.Topology.Algebra.RestrictedProduct.Module
@@ -74,6 +75,10 @@ noncomputable def FiniteAdeleRing.mapRingHom :
 
 /-- The ring homomorphism `𝔸_K^∞ → 𝔸_L^∞` for `L/K` an extension of number fields,
 as a morphism lying over the canonical map `K → L`. -/
+@[blueprint
+  "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom"
+  (statement := /-- There's a natural ring homomorphism
+    $\A_{A,K}^\infty\to\A_{B,L}^\infty$ lying over $K\to L$. -/)]
 noncomputable def FiniteAdeleRing.mapSemialgHom :
     FiniteAdeleRing A K →ₛₐ[algebraMap K L] FiniteAdeleRing B L where
       __ := FiniteAdeleRing.mapRingHom A K L B
@@ -268,6 +273,14 @@ theorem FiniteAdeleRing.baseChange_bijective :
     IsScalarTower.algebraMap_apply B L (FiniteAdeleRing B L)]
 
 /-- The `L`-algebra isomorphism `L ⊗_K 𝔸_K^∞ ≅ 𝔸_L^∞`. -/
+@[blueprint
+  "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"
+  (statement := /-- This natural map $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is an
+    isomorphism. -/)
+  (proof := /-- Follows immediately from
+    theorem~\ref{IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv}
+    and theorem~\ref{IsDedekindDomain.AKLB.tensorProduct_module_algEquiv}. -/)
+  (discussion := 243)]
 def FiniteAdeleRing.baseChangeAlgEquiv :
     L ⊗[K] FiniteAdeleRing A K ≃ₐ[L] FiniteAdeleRing B L :=
   AlgEquiv.ofBijective
@@ -372,6 +385,11 @@ noncomputable def FiniteAdeleRing.baseChangeAdeleContinuousAlgEquiv :
   IsModuleTopology.continuousAlgEquivOfAlgEquiv <| baseChangeAdeleAlgEquiv A K L B
 
 /-- The continuous `L`-algebra isomorphism `L ⊗_K 𝔸_K^∞ ≅ 𝔸_L^∞` -/
+@[blueprint
+  "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv"
+  (statement := /-- The induced $L$-algebra morphism
+      $L\otimes_K\A_{A,K}^\infty\to\A_{B,L}^\infty$ is a topological isomorphism. -/)
+  (latexEnv := "theorem")]
 noncomputable def FiniteAdeleRing.baseChangeContinuousAlgEquiv :
     L ⊗[K] FiniteAdeleRing A K ≃A[L] FiniteAdeleRing B L where
   __ := FiniteAdeleRing.baseChangeAlgEquiv A K L B

@@ -1,6 +1,14 @@
+import Architect
 import Mathlib.Analysis.Quaternion
 
-@[ext]
+@[ext, blueprint
+  "Hurwitz"
+  (statement := /-- The Hurwitz quaternions are the set $\calO := \Z\oplus\Z \omega\oplus\Z i\oplus
+    \Z i\omega$ (as an abstract abelian group or as a subgroup of the usual quaternions).
+    Here $\omega=\frac{-1+(i+j+k)}{2}$ and note that $(i+j+k)^2=-3$.
+    We have $\overline{\omega}=\omega^2=-(\omega+1)$. A general quaternion
+    $a+bi+cj+dk$ is a Hurwitz quaternion if either $a,b,c,d\in\Z$
+    or $a,b,c,d\in\Z+\frac{1}{2}$. -/)]
 structure Hurwitz : Type where
   re : ℤ -- 1
   im_o : ℤ -- ω
@@ -287,6 +295,11 @@ lemma preserves_castDef
 lemma toQuaternion_intCast (n : ℤ) : toQuaternion n = n :=
   preserves_castDef _ toQuaternion_natCast toQuaternion_neg n
 
+@[blueprint
+  "Hurwitz.ring"
+  (statement := /-- The Hurwitz quaternions form a ring. -/)
+  (proof := /-- Follow your nose. -/)
+  (latexEnv := "lemma")]
 noncomputable instance ring : Ring 𝓞 :=
   toQuaternion_injective.ring
     _
@@ -338,6 +351,13 @@ noncomputable instance ring : Ring 𝓞 :=
 
 
 /-- Conjugate; sends $a+bi+cj+dk$ to $a-bi-cj-dk$. -/
+@[blueprint
+  "Hurwitz.starRing"
+  (statement := /-- There's a conjugation map (which we'll call "star") from the Hurwitz quaternions
+    to themselves, sending
+    integers to themselves and purely imaginary elements like $2\omega+1$ to minus themselves.
+    It satisfies $(x^*)^*=x$, $(xy)^*=y^*x^*$ and $(x+y)^*=x^*+y^*$. In particular, the Hurwitz
+    quaternions are a "star ring" in the sense of mathlib. -/)]
 instance starRing : StarRing 𝓞 where
   star z := ⟨z.re - z.im_o - z.im_oi, -z.im_o, -z.im_i, -z.im_oi⟩
   star_involutive x := by ext <;> simp only <;> ring
@@ -364,10 +384,19 @@ lemma star_eq (z : 𝓞) : star z = (fromQuaternion ∘ star ∘ toQuaternion) z
 instance : CharZero 𝓞 where
   cast_injective x y hxy := by simpa [Hurwitz.ext_iff] using hxy
 
+@[blueprint
+  "Hurwitz.norm"
+  (statement := /-- The Hurwitz quaternions come equipped with an integer-valued norm, which is
+    $a^2+b^2+c^2+d^2$ on $a+bi+cj+dk$ but needs to be modified a bit to deal with $\omega$. -/)]
 def norm (z : 𝓞) : ℤ :=
   z.re * z.re + z.im_o * z.im_o + z.im_i * z.im_i + z.im_oi * z.im_oi
   - z.re * (z.im_o + z.im_oi) + z.im_i * (z.im_o - z.im_oi)
 
+@[blueprint
+  "Hurwitz.norm_eq_mul_conj"
+  (statement := /-- We have $N(x)=x\overline{x}$. -/)
+  (proof := /-- Easy calculation. -/)
+  (latexEnv := "lemma")]
 lemma norm_eq_mul_conj (z : 𝓞) : (norm z : 𝓞) = z * star z := by
   ext <;> simp only [norm, intCast_re, intCast_im_o, intCast_im_i, intCast_im_oi,
     mul_re, mul_im_o, mul_im_i, mul_im_oi, star_re, star_im_o, star_im_i, star_im_oi] <;> ring
@@ -383,20 +412,45 @@ lemma coe_norm (z : 𝓞) :
   norm_cast
   ring
 
+@[blueprint
+  "Hurwitz.norm_zero"
+  (statement := /-- The norm of $0$ is $0$. -/)
+  (proof := /-- A calculation. -/)
+  (latexEnv := "lemma")]
 lemma norm_zero : norm 0 = 0 := by simp [norm]
 
+@[blueprint
+  "Hurwitz.norm_one"
+  (statement := /-- The norm of $1$ is $1$. -/)
+  (proof := /-- A calculation. -/)
+  (latexEnv := "lemma")]
 lemma norm_one : norm 1 = 1 := by simp [norm]
 
+@[blueprint
+  "Hurwitz.norm_mul"
+  (statement := /-- The norm of a product is the product of the norms. -/)
+  (proof := /-- A calculation. -/)
+  (latexEnv := "lemma")]
 lemma norm_mul (x y : 𝓞) : norm (x * y) = norm x * norm y := by
   rw [← Int.cast_inj (α := 𝓞)]
   simp_rw [norm_eq_mul_conj, star_mul]
   rw [mul_assoc, ← mul_assoc y, ← norm_eq_mul_conj]
   rw [Int.cast_comm, ← mul_assoc, ← norm_eq_mul_conj, Int.cast_mul]
 
+@[blueprint
+  "Hurwitz.norm_nonneg"
+  (statement := /-- The norm of an element is nonnegative. -/)
+  (proof := /-- It's a sum of rational squares. -/)
+  (latexEnv := "lemma")]
 lemma norm_nonneg (x : 𝓞) : 0 ≤ norm x := by
   rw [← Int.cast_nonneg_iff (R := ℝ), coe_norm]
   positivity
 
+@[blueprint
+  "Hurwitz.norm_eq_zero"
+  (statement := /-- The norm of an element is zero if and only if the element is zero. -/)
+  (proof := /-- It's a sum of rational squares. -/)
+  (latexEnv := "lemma")]
 lemma norm_eq_zero (x : 𝓞) : norm x = 0 ↔ x = 0 := by
   constructor
   swap
@@ -451,6 +505,18 @@ private lemma aux2 (a b c d : ℝ) (ha : a ≤ 4⁻¹) (hb : b ≤ 4⁻¹) (hc :
   gcongr
 
 open Quaternion in
+@[blueprint
+  "Hurwitz.exists_near"
+  (statement := /-- Given a ``usual'' quaternion $a=x+yi+zj+wk$ with $x,y,z,w\in\R$,
+    there exists a Hurwitz quaternion $q$ such that $N(a-q)<1$. -/)
+  (proof := /-- If $[r]$ denotes the nearest integer to the real number $r$, then $|r-[r]|\leq
+    \frac{1}{2}$.
+    Hence if $q=[x]+[y]i+[z]j+[w]k$ then $N(a-q)=|x-[x]|^2+\cdots
+    \leq \frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}\leq 1$, with strict inequality unless
+    $|x-[x]|=|y-[y]|=|z-[z]|=|w-[w]|=\frac{1}{2}$, in which case $a\in\mathcal{O}$ because
+    $a-\omega$
+    has integer coordinates. -/)
+  (latexEnv := "lemma")]
 lemma exists_near (a : ℍ) : ∃ q : 𝓞, dist a (toQuaternion q) < 1 := by
   have four_inv : (4⁻¹ : ℝ) = 2⁻¹ ^ 2 := by norm_num
   have (r : ℝ) : (r - round r) ^ 2 ≤ 4⁻¹ := by
@@ -498,6 +564,14 @@ lemma exists_near (a : ℍ) : ∃ q : 𝓞, dist a (toQuaternion q) < 1 := by
   norm_num
 
 open Quaternion in
+@[blueprint
+  "Hurwitz.quot_rem"
+  (statement := /-- Given two Hurwitz quaternions $a$ and $b$ with $b$ nonzero, there exists
+    $q$ and $r$ such that $a=qb+r$ and $N(r)<N(b)$. -/)
+  (proof := /-- Let $q$ be the Hurwitz quaternion obtained by applying
+    Lemma~\ref{Hurwitz.exists_near}
+    to $a/b := ab^{-1}$; then $N(a/b-q)<1$ and now everything follows after multiplying up. -/)
+  (latexEnv := "lemma")]
 lemma quot_rem (a b : 𝓞) (hb : b ≠ 0) : ∃ q r : 𝓞, a = q * b + r ∧ norm r < norm b := by
   let a' := toQuaternion a
   let b' := toQuaternion b
@@ -522,6 +596,11 @@ lemma quot_rem (a b : 𝓞) (hb : b ≠ 0) : ∃ q r : 𝓞, a = q * b + r ∧ n
   · rw [← norm_pos_iff] at hb'
     exact mul_lt_of_lt_one_left hb' hq
 
+@[blueprint
+  "Hurwitz.left_ideal_princ"
+  (statement := /-- All left ideals of $\calO$ are principal. -/)
+  (proof := /-- If the ideal is 0, use 0. Otherwise, choose a nonzero element of smallest norm. -/)
+  (latexEnv := "corollary")]
 lemma left_ideal_princ (I : Submodule 𝓞 𝓞) : ∃ a : 𝓞, I = Submodule.span 𝓞 {a} := by
   by_cases h_bot : I = ⊥
   · use 0

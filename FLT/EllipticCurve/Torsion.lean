@@ -3,6 +3,7 @@ Copyright (c) 2024 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard
 -/
+import Architect
 import Mathlib.Algebra.Module.Torsion.Free
 import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Basic
 import Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Formula
@@ -46,9 +47,30 @@ theorem WeierstrassCurve.n_torsion_finite {n : ℕ} (hn : 0 < n) : Finite (E.n_t
 
 -- This theorem needs e.g. a theory of division polynomials. It's ongoing work of David Angdinata.
 -- Please do not work on it without talking to KB and David first.
+@[blueprint
+  "WeierstrassCurve.n_torsion_card"
+  (statement := /-- Let $n$ be a positive integer, let $F$ be a separably closed
+    field with $n$ nonzero in $F$, and let $E$ be an elliptic curve over $F$. Then the $n$-torsion
+    $E(K)[n]$
+    in the $F$-points of $E$ is a finite group of size $n^2$. -/)
+  (proof := /-- There are several proofs in the textbooks. The proof being worked on uses the theory
+    of division polynomials; the formalisation is ongoing work of David Angdinata, and it will be
+    part of his PhD thesis. -/)
+  (notReady := true)]
 theorem WeierstrassCurve.n_torsion_card [IsSepClosed k] {n : ℕ} (hn : (n : k) ≠ 0) :
     Nat.card (E.n_torsion n) = n^2 := sorry
 
+@[blueprint
+  "group_theory_lemma"
+  (statement := /-- Say $n$ is a positive integer, $r$ is a natural, and $A$ is an abelian group.
+    Assume that for all $d\mid n$, the $d$-torsion $A[d]$ of $A$ has size $d^r$. Then $A[n]\cong
+    (\Z/n\Z)^r$. -/)
+  (proof := /-- The result is obvious if $n=1$, so we may assume $n>1$. One proof would be to write
+    $A$ as $\prod_{i=1}^t(\Z/a_i\Z)$
+    with $a_i\mid a_{i+1}$ (this is possible by the structure theorem for finite abelian groups),
+    and then to apply our hypothesis firstly with $d=a_1$ to deduce $t=r$ and then with $d=a_t$ to
+    deduce $a_1=a_t$. -/)
+  (latexEnv := "lemma")]
 theorem group_theory_lemma {A : Type*} [AddCommGroup A] {n : ℕ} (hn : 0 < n) (r : ℕ)
     (h : ∀ d : ℕ, d ∣ n → Nat.card (Submodule.torsionBy ℤ A d) = d ^ r) :
     Nonempty ((Submodule.torsionBy ℤ A n) ≃+ (Fin r → (ZMod n))) := sorry
@@ -56,6 +78,15 @@ theorem group_theory_lemma {A : Type*} [AddCommGroup A] {n : ℕ} (hn : 0 < n) (
 -- I only need this if n is prime but there's no harm thinking about it in general I guess.
 -- It follows from the previous theorem using pure group theory (possibly including the
 -- structure theorem for finite abelian groups)
+@[blueprint
+  "Elliptic_curve_n_torsion_2d"
+  (statement := /-- Let $n$ be a positive integer, let $F$ be a separably closed
+    field with $n$ nonzero in $F$, and let $E$ be an elliptic curve over $F$. Then the $n$-torsion
+    $E(F)[n]$
+    in the $F$-points of $E$ is a finite group isomorphic to $(\Z/n\Z)^2$. -/)
+  (proof := /-- This follows from the previous group-theoretic lemma~\ref{group_theory_lemma} and
+    theorem~\ref{WeierstrassCurve.n_torsion_card}. -/)
+  (latexEnv := "corollary")]
 theorem WeierstrassCurve.n_torsion_dimension [IsSepClosed k] {n : ℕ} (hn : (n : k) ≠ 0) :
     Nonempty (E.n_torsion n ≃+ (ZMod n) × (ZMod n)) := by
   obtain ⟨φ⟩ : Nonempty (E.n_torsion n ≃+ (Fin 2 → (ZMod n))) := by

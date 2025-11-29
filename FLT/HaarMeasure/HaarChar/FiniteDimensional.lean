@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Norbert Voelker
 -/
+import Architect
 import FLT.HaarMeasure.HaarChar.Ring
 import FLT.Mathlib.Topology.Algebra.Module.Equiv
 import FLT.Mathlib.LinearAlgebra.Determinant
@@ -213,6 +214,24 @@ open Module
 
 /-- Haar measure scaling for invertible linear maps on a finite-dimensional vector space
 over a field F assuming `[SecondCountableTopology F]`. -/
+@[blueprint
+  "MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det"
+  (statement := /-- $d_V(\phi)=\delta_F(\det(\phi))$, where $\det(\phi)\in F$ is the determinant of
+    $\phi$ as an $F$-linear map. -/)
+  (proof := /-- The proof should be inspired by
+    \href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.html\#Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi}{\tt
+    Real.map\_matrix\_volume\_pi\_eq\_smul\_volume\_pi},
+    which crucially uses the induction principle
+    \href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/LinearAlgebra/Matrix/Transvection.html\#Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}{\tt
+    Matrix.diagonal\_transvection\_induction\_of\_det\_ne\_zero}.
+    In short, one needs to check it for diagonal matrices and for matrices which are the identity
+    except that one off-diagonal entry is non-zero, because these matrices generate $GL_n(F)$
+    if $F$ is a field. Note that we only need the result for $F=\R$
+    and $F=\mathbb{Q}_p$ (and possibly for finite extensions of these depending on which route
+    we go for some intermediate results), so if it helps we can assume that $F$ is second countable
+    (but it shouldn't be necessary). -/)
+  (discussion := 517)
+  (latexEnv := "lemma")]
 theorem addEquivAddHaarChar_eq_ringHaarChar_det [SecondCountableTopology F] (ρ : V ≃L[F] V) :
     addEquivAddHaarChar ρ.toContinuousAddEquiv = ringHaarChar ρ.toLinearEquiv.det := by
   let b := finBasis F V
@@ -277,6 +296,11 @@ variable {A : Type*} [Ring A] [TopologicalSpace A]
     [SecondCountableTopology F]
 
 variable (F) in
+@[blueprint
+  "MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det"
+  (statement := /-- If $u\in R^\times$ then $\delta_R(u)=\delta_F(\det(\ell_u))$. -/)
+  (proof := /-- Follows immediately from the preceding lemma. -/)
+  (latexEnv := "corollary")]
 lemma algebra_ringHaarChar_eq_ringHaarChar_det (u : Aˣ) :
     ringHaarChar u = ringHaarChar (LinearEquiv.mulLeft F u).det :=
   addEquivAddHaarChar_eq_ringHaarChar_det (ContinuousLinearEquiv.mulLeft F u)
@@ -297,6 +321,19 @@ variable {D : Type*} [Ring D] [TopologicalSpace D]
     [SecondCountableTopology F]
 
 include F in
+@[blueprint
+  "IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight"
+  (statement := /-- If $B$ is a central simple algebra over a locally compact field $F$, and if
+    $u\in B^\times$,
+    then $d_B(r_u)=\delta_B(u)$ (recall that the latter is defined to mean $d_B(\ell_u)$). -/)
+  (proof := /-- If $\ell_u$ and $r_u$ denote left and right multiplication by $u$ on $B$, then we
+    have
+    seen in lemma~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det} that
+    $d_B(r_u)=\delta_F(\det(r_u))$.
+    Lemma~\ref{IsSimpleRing.mulLeft_det_eq_mulRight_det} tells
+    us that this is $\delta_F(\det(\ell_u))$ and this is $\delta_B(u)$ again by
+    corollary~\ref{MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det}. -/)
+  (latexEnv := "corollary")]
 lemma _root_.IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight (u : Dˣ) :
     ringHaarChar u = addEquivAddHaarChar (ContinuousAddEquiv.mulRight u) := by
   rw [algebra_ringHaarChar_eq_ringHaarChar_det F u]

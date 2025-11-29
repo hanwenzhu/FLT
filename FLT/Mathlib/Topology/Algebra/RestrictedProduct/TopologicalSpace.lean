@@ -1,3 +1,4 @@
+import Architect
 import FLT.Mathlib.Topology.Algebra.RestrictedProduct.Equiv
 import Mathlib.Topology.Algebra.RestrictedProduct.TopologicalSpace
 import FLT.Mathlib.Topology.Algebra.ContinuousMonoidHom
@@ -14,7 +15,21 @@ variable {ℱ : Filter ι}
     {D : (i : ι) → Set (H i)}
 
 variable [Π i, TopologicalSpace (G i)] [Π i, TopologicalSpace (H i)] in
-@[fun_prop]
+@[fun_prop, blueprint
+  "Continuous.restrictedProduct_congrRight"
+  (statement := /-- If the $A_i$ and $B_i$ are topological spaces and the $\phi_i$ are continuous
+    functions,
+    then the restricted product $\phi = \prod'_i\phi_i$ is a continuous function. -/)
+  (proof := /-- We use the universal property {\tt RestrictedProduct.continuous\_dom} of the
+    topology in mathlib to reduce to the claim that for all finite $S$,
+    the induced map $A_S:=\prod_{i\in S}A_i\times\prod_{i\notin S}C_i\to B$ is continuous.
+    Because the inclusion $A_S\to A_T$ is continuous for $S\subseteq T$ we are reduced
+    to checking this claim for $S$ sufficiently large that it contains all of the $i$
+    for which $\phi(C_i)\not=D_i$. For such $S$, this map $A_S\to B$ factors as $A_S\to B_S\to B$
+    and $B_S\to B$ is continuous, so it suffices to prove that $A_S\to B_S$ is continuous, but
+    this is just a product of continuous maps. -/)
+  (discussion := 531)
+  (latexEnv := "lemma")]
 theorem Continuous.restrictedProduct_congrRight {φ : (i : ι) → G i → H i}
     (hφ : ∀ᶠ i in ℱ, Set.MapsTo (φ i) (C i) (D i))
     (hφcont : ∀ i, Continuous (φ i)) :
@@ -92,6 +107,43 @@ lemma Equiv.continuous_restrictedProductProd_symm {S : Set ι}
 /-- The homeomorphism between restricted product of binary products, and the binary projuct
 of the restricted products, when the products are with respect to open subsets.
 -/
+@[blueprint
+  "Homeomorph.restrictedProductProd"
+  (statement := /-- If $A_i$ is a family of topological spaces equipped with open
+    subsets $B_i$, and if $C_i$ is a family of topological spaces equipped
+    with open subsets $D_i$, and if we equip $A_i\times C_i$ with the open
+    subset $B_i\times D_i$, then the natural bijection
+    $\prod'_i(A_i\times C_i)=\left(\prod'_iA_i\right)\times\left(\prod'_iB_i\right)$
+    is a homeomorphism. -/)
+  (proof := /-- We need to check continuity in both directions. The easy way is
+    continuity of the map from the restricted product to the map from the binary
+    product; the lemma {\tt RestrictedProduct.continuous\_dom} in mathlib
+    tells us that a map from a restricted product is continuous when its restriction
+    to $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times
+    D_i)\right)$
+    is continuous for all finite $S\subseteq I$; the universal property of the binary
+    product tells us that the map into the binary product is continuous iff the maps into
+    the factors are continuous, but the map into $\prod'_iX_i$ is a product of the
+    natural maps from $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin
+    S}(B_i\times D_i)\right)$
+    to $\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)$
+    and the inclusion, and both are known to be continuous (an arbitrary product of continuous
+    maps is continuous, and the other claim is in the restricted product API in mathlib).
+    
+    The harder direction is the other way, because we are working against both universal
+    properties. The trick is {\tt RestrictedProduct.continuous\_dom\_prod} in mathlib
+    (this is where we assume $B_i$ and $D_i$ are open), which tells us that a map out of
+    a binary product of restricted products is continuous when its restriction to
+    $\left(\left(\prod_{i\in S}A_i\right)\times\left(\prod_{i\notin S}B_i\right)\right)\times
+    \left(\left(\prod_{i\in S}C_i\right)\times\left(\prod_{i\notin S}D_i\right)\right)$
+    is, for all finite $S$ (note that the $S$ in the mathlib lemma is actually our $I-S$).
+    The map from this to the restricted product factors through
+    $\left(\prod_{i\in S}(A_i\times C_i)\right)\times\left(\prod_{i\notin S}(B_i\times D_i)\right)$;
+    the first map is a homeomorphism (use the fact that $\prod_iX_i\times Y_i$ is homeomorphic
+    to $\left(\prod_iX_i\right)\times\left(\prod_iY_i\right)$), and the second is continuous
+    by definition of the topology on a restricted product. -/)
+  (discussion := 568)
+  (latexEnv := "lemma")]
 def Homeomorph.restrictedProductProd [∀ i, TopologicalSpace (A i)] [∀ i, TopologicalSpace (B i)]
     (hCopen : ∀ (i : ι), IsOpen (C i)) (hDopen : ∀ (i : ι), IsOpen (D i)) :
     Πʳ i, [A i × B i, C i ×ˢ D i] ≃ₜ (Πʳ i, [A i, C i]) × (Πʳ i, [B i, D i]) where
@@ -135,6 +187,19 @@ lemma Equiv.continuous_restrictedProductPi_symm {S : Set ι}
 /-- The homeomorphism between a restricted product of finite products, and a finite product
 of restricted products, when the products are with respect to open subsets.
 -/
+@[blueprint
+  "Homeomorph.restrictedProductPi"
+  (statement := /-- Restricted products (with respect to open subspaces) commute with finite
+    products.
+    In other words, if $j$ runs through a finite set $J$ and $i$ runs through an arbitrary
+    set $I$, and if $X_{ji}$ are topological spaces equipped with open subspaces $Y_{ji}$,
+    then the obvious bijection $\prod'_i(\prod_j X_{ji})=\prod_j\left(\prod'_i X_{ji}\right)$
+    is a homeomorphism. -/)
+  (proof := /-- Induction on the size of the finite set, using
+    lemma~\ref{Homeomorph.restrictedProductProd}
+    to get you started. -/)
+  (discussion := 570)
+  (latexEnv := "corollary")]
 def Homeomorph.restrictedProductPi {ι : Type*} {n : Type*} [Fintype n]
     {A : n → ι → Type*} [∀ j i, TopologicalSpace (A j i)]
     {C : (j : n) → (i : ι) → Set (A j i)} (hCopen : ∀ j i, IsOpen (C j i)) :
@@ -158,6 +223,13 @@ theorem Homeomorph.restrictedProductMatrix_aux {ι n : Type*} [Fintype n] {A : �
 /-- The homeomorphism between a restricted product of m x n matrices, and m x n matrices
 of restricted products, when the products are with respect to open sets.
 -/
+@[blueprint
+  "Homeomorph.restrictedProductMatrix"
+  (statement := /-- If $X_i$ are topological spaces and the $Y_i$ are open subspaces,
+    then the obvious map $M_n(\prod'_iX_i)=\prod'_iM_n(X_i)$ is a homeomorphism. -/)
+  (proof := /-- Immediate from the previous corollary~\ref{Homeomorph.restrictedProductPi}. -/)
+  (discussion := 571)
+  (latexEnv := "corollary")]
 def Homeomorph.restrictedProductMatrix {ι : Type*} {m n : Type*} [Fintype m] [Fintype n]
     {A : ι → Type*} [∀ i, TopologicalSpace (A i)]
     {C : (i : ι) → Set (A i)} (hCopen : ∀ i, IsOpen (C i)) :
@@ -204,6 +276,20 @@ def Submonoid.unitsContinuousMulEquivUnitsType {M : Type*} [TopologicalSpace M] 
 and the restricted product of the units of the monoids, when the products are with
 respect to open submonoids.
 -/
+@[blueprint
+  "ContinuousMulEquiv.restrictedProductUnits"
+  (statement := /-- If $M_i$ are a family of topological monoids equipped with open
+    submonoids $U_i$, then the canonical map $(\prod'_iM_i)^\times\to\prod'_i(M_i^\times)$
+    is a homeomorphism. -/)
+  (proof := /-- I don't know a clean way of showing that the map from left to right is continuous,
+    so here is a ``direct'' proof that the map is a homeomorphism. It is certainly an abstract group
+    isomorphism between topological groups. So to prove that it is a homeomorphism it suffices
+    to prove that it is a homeomorphism near the identity, or equivalently that there are open
+    neighbourhoods $X$ and $Y$ of the identity elements on each side such that the map induces a
+    homeomorphism from $X$ to $Y$. We choose $(\prod_i U_i)^\times$ and $\prod_i (U_i^\times)$.
+    Note that the former is open because of lemma~\ref{Submonoid.units_isOpen}.
+    The result now follows from the previous lemma~\ref{ContinuousMulEquiv.piUnits}. -/)
+  (discussion := 582)]
 def ContinuousMulEquiv.restrictedProductUnits {ι : Type*}
     {M : ι → Type*} [(i : ι) → Monoid (M i)] [(i : ι) → TopologicalSpace (M i)]
     [(i : ι) → ContinuousMul (M i)]

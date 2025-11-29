@@ -3,6 +3,7 @@ Copyright (c) 2024 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Jonas Bayer, Mario Carneiro
 -/
+import Architect
 import Mathlib.Algebra.Lie.BaseChange
 import Mathlib.Algebra.Lie.UniversalEnveloping
 import Mathlib.Analysis.Complex.Basic
@@ -196,6 +197,16 @@ def actionTensorCAlg'3 : Z G E →ₐ[ℂ] Module.End ℂ C^∞⟮𝓘(ℝ, E), 
 -- Step 3: induced action of centre
 
 variable {n : ℕ}
+@[blueprint
+  "AutomorphicForm.GLn.IsSmooth"
+  (statement := /-- A function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is \emph{smooth}
+    if it has the following three properties.
+    
+    \begin{enumerate}
+      \item $f$ is continuous.
+      \item For all $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$ is smooth.
+      \item For all $y\in\GL_n(\R)$, the function $x\mapsto f(x,y)$ is locally constant.
+    \end{enumerate} -/)]
 structure IsSmooth (f : GL (Fin n) (FiniteAdeleRing ℤ ℚ) × GL (Fin n) ℝ → ℂ) : Prop where
   continuous : Continuous f
   loc_cst (y : GL (Fin n) ℝ) :
@@ -208,6 +219,11 @@ open Matrix
 noncomputable abbrev s (M : Matrix (Fin n) (Fin n) ℝ) : ℝ :=
   (M * M.transpose).trace + (M⁻¹ * M⁻¹.transpose).trace
 
+@[blueprint
+  "AutomorphicForm.GLn.IsSlowlyIncreasing"
+  (statement := /-- We say that a function $f:\GL_n(\R)\to\bbC$ is \emph{slowly-increasing}
+    if there's some real constant $C$ and positive integer $n$ such that $|f(M)|\leq Cs(M)^n$
+    for all $M\in\GL_n(\R)$. -/)]
 structure IsSlowlyIncreasing (f : GeneralLinearGroup (Fin n) ℝ → ℂ) : Prop where
   bounded_by : ∃ (C : ℝ) (N : ℕ),
     ∀ (M : GeneralLinearGroup (Fin n) ℝ),
@@ -236,6 +252,12 @@ noncomputable def preweight.fdRep (n : ℕ) (w : preweight n) :
       simp only [_root_.map_mul, Units.val_mul, ← mulVec_mulVec, End.mul_def]
       rfl }
 
+@[blueprint
+  "AutomorphicForm.GLn.Weight"
+  (statement := /-- The \emph{weight} of an automorphic form for $\GL_n/\Q$ can be thought of as a
+    finite-dimensional
+    continuous complex representation $\rho$ of a maximal compact subgroup of $\GL_n(\R)$,
+    and it's convenient to choose one (they're all conjugate) so we choose $O_n(\R)$. -/)]
 structure Weight (n : ℕ) where
   w : preweight n
   isSimple : Simple w.fdRep
@@ -259,6 +281,28 @@ def annihilator {R} [CommSemiring R]
   Submodule.compatibleMaps (Submodule.span R {a}) ⊥
 
 /-- Automorphic forms for GL_n/Q with weight ρ. -/
+@[blueprint
+  "AutomorphicForm.GLn.AutomorphicFormForGLnOverQ"
+  (statement := /-- A smooth function $f:\GL_n(\A_{\Q}^f)\times\GL_n(\R)\to\bbC$ is
+    an $O_n(\R)$-\emph{automorphic form} on $\GL_n(\A_{\Q})$ if it satisfies the following
+    five conditions.
+    \begin{enumerate}
+      \item (periodicity) For all $g\in\GL_n(\Q)$, we have $f(gx,gy)=f(x,y)$.
+      \item (has a finite level) There exists a compact open subgroup $U\subseteq\GL_n(\A_{\Q}^f)$
+        such that $f(xu,y)=f(x,y)$ for all $u\in U$, $x\in \GL_n(\A_{\Q}^f)$ and $y\in\GL_n(\R)$.
+      \item (weight $\rho$) There exists a continuous finite-dimensional irreducible complex
+      representation $\rho$ of $O_n(\R)$ such that for every $(x,y)\in\GL_n(\A_{\Q})$, the
+      set of functions $k\mapsto f(x,yk)$ span a finite-dimensional complex vector space isomorphic
+      as $O_n(\R)$-representation to a direct sum of copies of $\rho$.
+      \item (has an infinite level) There is an ideal $I$ of the centre $Z_n$ described in the
+      previous section, which has finite complex codimension, and which annihiliates the
+      function $y \mapsto f(x,y)$ for all $x\in \GL_n(\A_{\Q}^f)$. Note that this is a very fancy
+      way of saying ``the function satisfies some natural differential equations''. In the
+      case of modular forms, the differential equations are the Cauchy-Riemann equations, which
+      is why modular forms are holomorphic.
+      \item (growth condition) For every $x\in\GL_n(\A_{\Q}^f)$, the function $y\mapsto f(x,y)$
+    on $\GL_n(\R)$ is slowly-increasing.
+    \end{enumerate} -/)]
 structure AutomorphicFormForGLnOverQ (n : ℕ) (ρ : Weight n) where
   toFun : GL (Fin n) (FiniteAdeleRing ℤ ℚ) × GL (Fin n) ℝ → ℂ
   is_smooth : IsSmooth toFun

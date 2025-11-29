@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miniproject: Quaternion algebras</title>
+<link rel="next" href="HeckeOperator_project.html" title="Miniproject: Hecke Operators" />
+<link rel="prev" href="Fujisaki_project.html" title="Miniproject: Fujisaki’s Lemma" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="Quat_alg_project">11 Miniproject: Quaternion algebras</h1>
+
+<h1 id="a0000000060">11.1 The goal</h1>
+<p>At the time of writing, <span class="tt">mathlib</span> still does not have a proof that the space of classical modular forms of a fixed weight, level and character is finite-dimensional. The main result in this miniproject is to prove that certain spaces of quaternionic modular forms are finite-dimensional. We need finiteness results like this in order to control the Hecke algebras which act on these spaces; these Hecke algebras are the “\(T\)”s which are isomorphic to the “\(R\)”s in the \(R=T\) theorem which is the big first target for the FLT project. </p>
+<h1 id="a0000000061">11.2 Initial definitions</h1>
+<p>Our first goal in this miniproject is the definition of these spaces of quaternionic modular forms. We start with some preliminary work towards this. </p>
+<p>Let \(K\) be a field. Recall that a <em>quaternion algebra</em> over \(K\) is a central simple \(K\)-algebra of \(K\)-dimension&#160;4. </p>
+<p>A fundamental fact about central simple algebras is that if \(D/K\) is a central simple \(K\)-algebra and \(L/K\) is an extension of fields, then \(D\otimes _KL\) is a central simple \(L\)-algebra. In particular if \(D\) is a quaternion algebra over \(K\) then \(D\otimes _KL\) is a quaternion algebra over \(L\). Some Imperial undergraduate students have established this fact in ongoing project work. </p>
+<p>A <em>totally real field</em> is a number field&#160;\(F\) such that the image of every ring homomorphism \(F\to \mathbb {C}\) is a subset of \(\mathbb {R}\). We fix once and for all a totally real field&#160;\(F\) and a quaternion algebra \(D\) over \(F\). We furthermore assume that \(D\) is <em>totally definite</em>, that is, that for all field embeddings \(\tau :F\to \mathbb {R}\) we have \(D\otimes _{F,\tau }\mathbb {R}\cong \mathbb {H}\). Because \(F\) has at least one real place, the totally definite hypothesis is enough to show that \(D\) is not a matrix algebra and thus must be a division algebra. Thus Fujisaki’s theorem (theorem&#160;<a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">10.15</a> from the Fujisaki miniproject) applies, and we know that \(D^\times \backslash (D\otimes _F\mathbb {A}_F)^{(1)}\) is compact. </p>
+<p>The high-falutin’ explanation of what is about to happen is that the units \(D^\times \) of \(D\) can be regarded as a connected reductive algebraic group over \(F\), and we are going to define certain spaces of automorphic forms for this algebraic group. For a general connected reductive algebraic group, part of the definition of an automorphic form is that it is satisfies some differential equations (for example modular forms are automorphic forms for the algebraic group \(\operatorname{GL}_2\) over \(\mathbb {Q}\), and the definition of a modular form involves holomorphic functions, which are solutions to the Cauchy–Riemann equations). However under the assumption that \(F\) is totally real and \(D/F\) is totally definite, the “associated symmetric space is a 0-dimensional manifold”, meaning in practice that the part of the definition of an automorphic form involving differential equations is vacuously satisfied in this setting. As a consequence, the definitions we’re about to give have a far more algebraic flavour. Crucially, in stark contrast to the general theory, the fact that we do not need to talk about differential equations at all means that one does not need to assume that our automorphic forms are \(\mathbb {C}\)-valued; our definition makes sense for forms valued in an arbitrary additive commutative group. In particular, it is possible to talk about mod \(p^n\) and \(p\)-adic automorphic forms in this setting without doing any complicated algebraic geometry. </p>
+<h1 id="a0000000062">11.3 Brief introduction to automorphic forms in this setting</h1>
+<p>Having made assumptions on \(D\) which makes the theory of automorphic forms over \(D^\times \) far less technical, we will now make it a little more technical by using the modern adelic approach to the theory. Note that many results about the adeles of a number field are proved in the adele miniproject (section <a href="Adele_miniproject.html">8</a>). Our automorphic forms will be certain functions on the units of the ring \(D_{\mathbb {A}^\infty }:=D\otimes _F\mathbb {A}_F^\infty \cong D\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}^\infty \). To prove Fermat’s Last Theorem it suffices to work in weight 2 and trivial character, and for simplicity we shall (at least for now) bake these assumptions into our definitions, even though they would be easy to remove (at the expense of having to write “of weight 2 and trivial character” throughout the proof). We remark again that there is no analogue of the holomorphicity condition that one sees in the classical theory, because the symmetric space is a finite set of points rather than the upper half plane. Also there is no analogue of the cuspidality condition because there are no cusps in this setting. Other than the number field \(F\) and the quaternion algebra \(D\), the other variable we will see in our situation will be the <em>level</em> of the forms. The main result in this miniproject will be that the space of weight 2 automorphic forms of level \(U\) is finite-dimensional. </p>
+<h1 id="a0000000063">11.4 Definition of spaces of automorphic forms</h1>
+<p>Let us now give some precise definitions. Recall that by \(\mathbb {A}_F^\infty \) we mean the finite adeles of the totally real number field \(F\). </p>
+<p>A <em>level</em> is a compact open subgroup&#160;\(U\) of \((D\otimes _F\mathbb {A}_F^\infty )^\times \). These are plentiful. The ring \(D_f:=D\otimes _F\mathbb {A}_F^\infty \) is a topological ring, and hence the units \(D_f^\times \) of this ring are a topological group. This group is locally profinite, and hence has many compact open subgroups; we will see explicit examples later on. </p>
+<p>We regard \(\mathbb {A}_F^\infty \) as a subring of \(D_{\mathbb {A}^\infty }:=D\otimes _F\mathbb {A}_F^\infty \), which is possible because \(F\) is a subring of \(D\). More precisely we embed \(\mathbb {A}_F^\infty \) into \(D\otimes _F\mathbb {A}_F^\infty \) via the map sending \(g\) to \(1\otimes g\). Because \(F\) is in the centre of&#160;\(D\), we have that \(\mathbb {A}_F^\infty \) is in the centre of \(D_{\mathbb {A}^\infty }\) (in fact it is the centre, but we do not need this). As a consequence we can identify \((\mathbb {A}_F^\infty )^\times \) as a subgroup of \((D\otimes _F\mathbb {A}_F^\infty )^\times \). We may also regard \(D\) as a subring of \(D\otimes _F\mathbb {A}_F^\infty \) via the map \(d\mapsto d\otimes 1\), and hence we can think of \(D^\times \) as a subgroup of \((D\otimes _F\mathbb {A}_F^\infty )^\times \). </p>
+<p>Let \(R\) be an additive commutative group. Later on \(R\) will be a commutative ring but we will not need this for the definition. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  The space of \(R\)-valued <em>automorphic forms</em> for \(D^\times \) is the set of functions \(f:D_{\mathbb {A}^\infty }^\times \to R\) satisfying the following axioms: </p>
+<ul class="itemize">
+  <li><p>\(f(dg)=f(g)\) for all \(d\in D^\times \) and \(g\in D_{\mathbb {A}^\infty }^\times \). </p>
+</li>
+  <li><p>\(f(gz)=f(g)\) for all \(g\in D_{\mathbb {A}^\infty }^\times \). </p>
+</li>
+  <li><p>There exists a compact open subgroup \(U\subseteq (D_{\mathbb {A}^f}^\times )\) such that \(f(gu)=f(g)\) for all \(g\in D_{\mathbb {A}^\infty }^\times \) and \(u\in U\). </p>
+</li>
+</ul>
+
+  </div>
+</div>
+<p>Let \(S^D(R)\) denote the set of automorphic forms for \(D^\times \). The space \(S^D(R)\) is sometimes referred to as a space of “quaternionic modular forms” over \(R\). Three basic observations about \(S^D(R)\) are </p>
+<div class="definition_thmwrapper theorem-style-definition" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">Definition 11.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Pointwise addition \((f_1+f_2)(g):=f_1(g)+f_2(g)\) makes \(S^D(R)\) into an additive abelian group. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">Definition 11.1</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup">Definition 11.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   If \(R\) is a commutative ring then pointwise scalar multiplication \((r\cdot f)(g):= r\cdot (f(g))\) makes \(S^D(R)\) into an \(R\)-module. </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">Definition 11.1</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup">Definition 11.2</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module">Definition 11.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The group \(D_{\mathbb {A}^f}^\times \) acts on the additive abelian group \(S^D(R)\) by \((g\cdot f)(x)=f(xg)\). </p>
+
+  </div>
+</div>
+<p>If \(R\) is a commutative ring then the action of \(D_{\mathbb {A}^\infty }^\times \) commutes with the \(R\)-action. </p>
+<p>Now let \(U\) be a level, that is, a compact open subgroup of \(D_{\mathbb {A}^\infty }^\times \). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">11.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm">Definition 11.1</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.addCommGroup">Definition 11.2</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.distribMulAction">Definition 11.4</a></li>
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module">Definition 11.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicFormOfLevel</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The quaternionic modular forms of level \(U\), with notation \(S^D(U;R)\), are the \(U\)-invariants for the \(D_{\mathbb {A}^\infty }^\times \)-action on \(S^D(R)\). </p>
+
+  </div>
+</div>
+<p>The Hecke algebras involved in the main modularity lifting theorems needed in the FLT project will be endomorphisms of these spaces \(S^D(U;R)\). </p>
+<h1 id="a0000000064">11.5 The main result</h1>
+<p>The point of this miniproject is the finite-dimensionality result below. This is an analogue of the result that classical modular forms of a fixed level, weight and character are finite-dimensional. In fact, by delicate results of Jacquet and Langlands this result (in the case \(k=\mathbb {C}\)) implies many cases of that classical claim, although of course the Jacquet–Langlands theorem is much much harder to prove than the classical proof of finite-dimensionality. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11.6</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional">#</a>
+    
+    <a class="icon proof" href="Quat_alg_project.html#a0000000251"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Quat_alg_project.html#TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.module">Definition 11.3</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">Theorem 10.15</a></li>
+          
+          <li><a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.finiteDoubleCoset">Theorem 10.17</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional" class="lean_decl">TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.finiteDimensional</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Let \(k\) be a field. Then the space \(S^D(U;k)\) is a finite-dimensional \(k\)-vector space. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000251">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>  The finite-dimensionality theorem is in fact an easy consequence of Fujisaki’s lemma, proved in the Fukisaki miniproject, chapter&#160;<a href="Fujisaki_project.html">10</a>. Write \((D\otimes _F\mathbb {A}_F^\infty )^\times \) as a disjoint union of double cosets \(\coprod _i D^\times g_i U\). This open cover descends to a disjoint open cover of \(D^\times \backslash (D\otimes _F\mathbb {A}_F^\infty )^\times \), and this latter space is compact by theorem&#160;<a href="Fujisaki_project.html#NumberField.FiniteAdeleRing.DivisionAlgebra.units_cocompact">10.15</a>. Hence the cover is finite; write the double coset representatives as \(g_1,g_2,\ldots ,g_n\). We claim that the function \(S^D(U;k)\to W^n\) sending \(f\) to \((f(g_1),f(g_2),\ldots ,f(g_n))\) is injective and \(k\)-linear, which suffices by finite-dimensionality of \(W\). \(k\)-linearity is easy, so let’s talk about injectivity. </p>
+<p>Say \(f_1\) and \(f_2\) are two elements of \(S^D(U;k)\) which agree on each \(g_i\). It suffices to prove that \(f_1(g)=f_2(g)\) for all \(g\in (D\otimes _F\mathbb {A}_F^\infty )^\times \). So say \(g\in (D\otimes _F\mathbb {A}_F^\infty )^\times \), and write \(g=\delta g_iu\) for \(\delta \in D^\times \) and \(u\in U\). Then \(f_1(g)=f_1(\delta g_iu)=f_1(g_i)\) (by the definition of \(S^D(U;k)\)), and similarly \(f_2(g)=f_2(g_i)\) and because \(f_1(g_i)=f_2(g_i)\) by assumption, we deduce \(f_1(g)=f_2(g)\) as required. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="Fujisaki_project.html" title="Miniproject: Fujisaki’s Lemma"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="HeckeOperator_project.html" title="Miniproject: Hecke Operators"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

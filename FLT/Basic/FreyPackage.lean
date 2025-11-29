@@ -1,3 +1,4 @@
+import Architect
 import Mathlib.Algebra.Polynomial.Bivariate
 import Mathlib.AlgebraicGeometry.EllipticCurve.Weierstrass
 import Mathlib.AlgebraicGeometry.EllipticCurve.VariableChange
@@ -55,7 +56,50 @@ theorem PNat.pow_add_pow_ne_pow_of_FermatLastTheorem :
   specialize h₁ n h₂ a b c (by simp) (by simp) (by simp)
   assumption_mod_cast
 
+attribute [blueprint
+  "FermatLastTheorem.of_odd_primes"
+  (statement := /-- If there is a counterexample to Fermat's Last Theorem, then there is a
+    counterexample $a^p+b^p=c^p$
+    with $p$ an odd prime. -/)
+  (proof := /-- Note: this proof is
+    \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#FermatLastTheorem.of_odd_primes}{in
+    mathlib already};
+    we run through it for completeness' sake.
+    
+    Say $a^n + b^n = c^n$ is a counterexample to Fermat's Last Theorem. Every positive integer is
+    either
+    a power of 2 or has an odd prime factor. If $n=kp$ has an odd prime factor $p$ then
+    $(a^k)^p+(b^k)^p=(c^k)^p$ is the counterexample we seek. It remains to deal with the case where
+    $n$ is a power of 2, so let's assume this. We have $3\leq n$ by assumption, so
+    $n=4k$ must be a multiple of~4, and thus $(a^k)^4=(b^k)^4=(c^k)^4$, giving us a counterexample
+    to Fermat's Last Theorem for $n=4$. However an old result of Fermat himself (proved as
+    \href{https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#fermatLastTheoremFour}{\tt
+    fermatLastTheoremFour}
+    in {\tt mathlib}) says that $x^4+y^4=z^4$ has no solutions in positive integers. -/)
+  (latexEnv := "lemma")]
+  FermatLastTheorem.of_odd_primes
+
+attribute [blueprint
+  "fermatLastTheoremThree"
+  (statement := /-- There are no solutions in positive integers to $a^3+b^3=c^3$. -/)
+  (proof := /-- The proof in mathlib was formalized by a team from the ``Lean For the Curious
+    Mathematician'' conference held in Luminy in March 2024
+    (its dependency graph can be visualised
+    \href{https://pitmonticone.github.io/FLT3/blueprint/dep_graph_document.html}{\underline{here}}).
+    -/)
+  (discussion := 16)
+  (latexEnv := "lemma")]
+  fermatLastTheoremThree
+
 /-- If Fermat's Last Theorem is true for primes `p ≥ 5`, then FLT is true. -/
+@[blueprint
+  "FermatLastTheorem.of_p_ge_5"
+  (statement := /-- If there is a counterexample to
+     Fermat's Last Theorem, then there is a counterexample $a^p+b^p=c^p$ with $p$ prime and $p\geq
+     5$. -/)
+  (proof := /-- Follows from the
+     previous two lemmas. -/)
+  (latexEnv := "corollary")]
 lemma FermatLastTheorem.of_p_ge_5 (H : ∀ p ≥ 5, p.Prime → FermatLastTheoremFor p) :
     FermatLastTheorem := by
   apply FermatLastTheorem.of_odd_primes -- this is Fermat's proof for n=4, plus reduction to
@@ -77,6 +121,12 @@ and congruences. These facts guarantee that all of
 the all the results in section 4.1 of Serre's paper [serre]
 apply to the curve $Y^2=X(X-a^p)(X+b^p).$
 -/
+@[blueprint
+  "FreyPackage"
+  (statement := /-- A \emph{Frey package} $(a,b,c,p)$
+    is three nonzero pairwise-coprime integers $a$, $b$, $c$, with $a\equiv3\pmod4$ and
+    $b\equiv0\pmod2$,
+    and a prime $p\geq5$, such that $a^p+b^p=c^p$. -/)]
 structure FreyPackage where
   /-- The integer `a` in the Frey package. -/
   a : ℤ
@@ -153,6 +203,32 @@ lemma hgcdbc (P : FreyPackage) : gcd P.b P.c = 1 :=  by
 
 /-- Given a counterexample a^p+b^p=c^p to Fermat's Last Theorem with p>=5,
 there exists a Frey package. -/
+@[blueprint
+  "FreyPackage.of_not_FermatLastTheorem_p_ge_5"
+  (statement := /-- If Fermat's Last Theorem is false for $p \ge 5$ and prime, then there exists a
+    Frey package. -/)
+  (proof := /-- Suppose we have a counterexample $a^p+b^p=c^p$ for the given $p$; we now build a
+    Frey package from this data.
+    
+    If the greatest common divisor of $a,b,c$ is $d$ then $a^p+b^p=c^p$ implies
+    $(a/d)^p+(b/d)^p=(c/d)^p$.
+    Dividing through, we can thus assume that no prime divides all of $a,b,c$. Under this assumption
+    we
+    must have that $a,b,c$ are pairwise coprime, as if some prime divides two of the integers
+    $a,b,c$
+    then by $a^p+b^p=c^p$ and unique factorization it must divide all three of them.
+    In particular we may assume that not all of $a,b,c$ are even, and now reducing modulo~2 shows
+    that precisely one of them must be even.
+    
+    Next we show that we can find a counterexample with $b$ even. If $a$ is the even one then we can
+    just switch $a$ and $b$. If $c$ is the even one then we can replace $c$ by $-b$ and $b$ by $-c$
+    (using that $p$ is odd).
+    
+    The last thing to ensure is that $a$ is 3 mod~4. Because $b$ is even, we know that $a$ is odd,
+    so it is either~1 or~3 mod~4. If $a$ is 3 mod~4 then we are home; if however $a$ is 1 mod~4 we
+    replace $a,b,c$ by their negatives and this is the Frey package we seek. -/)
+  (discussion := 19)
+  (latexEnv := "lemma")]
 lemma of_not_FermatLastTheorem_p_ge_5 {a b c : ℤ} (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0)
     {p : ℕ} (pp : p.Prime) (hp5 : 5 ≤ p) (H : a ^ p + b ^ p = c ^ p) : Nonempty FreyPackage := by
   have p_odd := pp.odd_of_ne_two (by omega)
@@ -234,6 +310,14 @@ upon a Frey package guarantee that the running hypotheses in
 Section 4.1 of [Serre] all hold. We put the curve into the form where the
 equation is semistable at 2, rather than the usual `Y^2=X(X-a^p)(X+b^p)` form.
 The change of variables is `X=4x` and `Y=8y+4x`, and then divide through by 64. -/
+@[blueprint
+  "FreyCurve"
+  (title := "Frey")
+  (statement := /-- Given a Frey package $(a,b,c,p)$, the corresponding \emph{Frey curve}
+    (considered by Frey and,
+    before him, Hellegouarch) is the elliptic curve over $\Q$ defined by the equation
+    $Y^2=X(X-a^p)(X+b^p).$ -/)
+  (discussion := 21)]
 def freyCurve (P : FreyPackage) : WeierstrassCurve ℚ where
   a₁ := 1
   -- a₂ is an integer because of the congruences assumed e.g. P.ha4
@@ -320,6 +404,11 @@ lemma Δ'inv (P : FreyPackage) :
     (↑(P.freyCurve.Δ'⁻¹) : ℚ) = 2 ^ 8 / (P.a*P.b*P.c)^(2*P.p) := by
   simp [FreyCurve.Δ]
 
+@[blueprint
+  "Frey_curve_j"
+  (statement := /-- If $(a,b,c,\ell)$ is a Frey package then the $j$-invariant of the corresponding
+    Frey curve is $2^8(C^2-AB)^3/A^2B^2C^2$, where $A=a^\ell$, $B=b^\ell$ and $C=c^\ell$. -/)
+  (proof := /-- Apply the explicit formula (presumably already in mathlib) -/)]
 lemma j (P : FreyPackage) :
     P.freyCurve.j = 2^8*(P.c^(2*P.p)-(P.a*P.b)^P.p) ^ 3 /(P.a*P.b*P.c)^(2*P.p) := by
   rw [mul_div_right_comm, WeierstrassCurve.j, FreyCurve.Δ'inv, FreyCurve.c₄']
@@ -332,6 +421,15 @@ private lemma j_pos_aux (a b : ℤ) (hb : b ≠ 0) : 0 < (a + b) ^ 2 - a * b := 
 
 /-- The q-adic valuation of the j-invariant of the Frey curve is a multiple of p if 2 < q is
 a prime of bad reduction. -/
+@[blueprint
+  "FreyCurve.j_valuation_of_bad_prime"
+  (statement := /-- If $(a,b,c,\ell)$ is a Frey package and the $j$-invariant of the corresponding
+    Frey curve is $j$, and if $2<p\mid abc$, then the $p$-adic valuation $v_p(j)$ of $j$ is a
+    multiple of $\ell$. -/)
+  (proof := /-- Indeed $p$ does not divide $2^8$ as $p>2$, and (using the notation of the previous
+    theorem) $p$ does not divide $C^2-AB$ either, because it divides precisely one of $A$, $B$ and
+    $C$. Hence $v_p(j)=-2v_p(a^\ell b^\ell c^\ell)=-2\ell v_p(abc)$ is a multiple of $\ell$. -/)
+  (latexEnv := "corollary")]
 lemma j_valuation_of_bad_prime (P : FreyPackage) {q : ℕ} (hqPrime : q.Prime)
     (hqbad : (q : ℤ) ∣ P.a * P.b * P.c) (hqodd : 2 < q) :
     (P.p : ℤ) ∣ padicValRat q P.freyCurve.j := by

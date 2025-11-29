@@ -3,6 +3,7 @@ Copyright (c) 2025 Bryan Wang. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Bryan Wang
 -/
+import Architect
 import FLT.QuaternionAlgebra.NumberField -- rigidifications of quat algs
 import Mathlib.Data.Matrix.Reflection
 import Mathlib.Algebra.Lie.OfAssociative
@@ -295,6 +296,26 @@ lemma surjOn_unipotent_mul_diagU1_U1diagU1 :
 variable (v) in
 /-- The double coset space `U1diagU1` is the disjoint union of
 `unipotent_mul_diagU1` as t ranges over `O_v / αO_v`. -/
+@[blueprint
+  "bijOn_unipotent_mul_diagU1_U1diagU1"
+  (statement := /-- The double coset space $UgU$ is the disjoint union of $g_tU$ as $t$ ranges
+    through $\calO_v/\alpha\calO_v$ and $g_t:=\begin{pmatrix}\alpha&\tilde{t}\\0&1\end{pmatrix}$,
+    where $\tilde{t}$ is any lift of $t$ to $\calO_v$. -/)
+  (proof := /-- We first manipulate the statement into a statement about finite groups.
+    We have $UgU=\coprod_t g_tU\iff UgUg^{-1}=\coprod_t g_tUg^{-1}=\coprod_t g_tg^{-1}(gUg^{-1})$.
+    By the second isomorphism theorem this is true if
+    $U=\coprod_t g_tg^{-1}(gUg^{-1}\cap U)$. So when is an element of $U$
+    in $gUg^{-1}$? Equivalently, if $x\in U$, when is $g^{-1}xg\in U$? An explicit calculation
+    of matrices shows us that this is true iff $g=\begin{pmatrix} a&b\\c&d\end{pmatrix}$ with
+    $\alpha\mid b$. Define $U^\alpha$ to be this subgroup of~$U$. We have reduced the question
+    to showing that the matrices $h_t:=\begin{pmatrix}1&\tilde{t}\\0&1\end{pmatrix}$
+    are a set of left coset representatives for the subgroup $U^\alpha$ of $U$.
+    
+    It thus suffices to show that if $u=\begin{pmatrix} a&b\\c&d\end{pmatrix}\in U$
+    then $u\in h_tU^\alpha$ iff $b\in\calO_v$ reduces mod $\alpha$ to $t\in\calO_v/\alpha$.
+    We do this by computing $h_t^{-1}u=\begin{pmatrix} a-\tilde{t}c&b-\tilde{t}d\\c&d\end{pmatrix}$
+    and observing that its top right hand entry mod~$\alpha$ is zero iff $b$ mod $\alpha$ is $t$. -/)
+  (latexEnv := "lemma")]
 theorem bijOn_unipotent_mul_diagU1_U1diagU1 :
     Set.BijOn (unipotent_mul_diagU1 v α hα) ⊤ (U1diagU1 v α hα) :=
   ⟨mapsTo_unipotent_mul_diagU1_U1diagU1 α hα,

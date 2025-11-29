@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard
 -/
+import Architect
 import FLT.Deformations.Categories
 import FLT.Deformations.RepresentationTheory.GaloisRep
 import FLT.Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas
@@ -83,6 +84,24 @@ characteristic `ℓ > 2`, and let `ρ : Gal(Qbar/Q) → GL_2(R)` be a continuous
 representation. We say that `ρ` is *hardly ramified* if it has cyclotomic determinant, is
 unramified outside `2ℓ`, flat at `ℓ` and upper-triangular at 2 with a 1-dimensional quotient which
 is unramified and whose square is trivial. -/
+@[blueprint
+  "hardly_ramified"
+  (statement := /-- Let $R$ be a coefficient ring with finite residue field of characteristic
+    $\ell\geq3$.
+    Let $V$ be a finite free $R$-module of rank~2, equipped with the product topology. A
+    continuous representation $\rho: \GQ\to \GL_R(V)$ is said to be \emph{hardly ramified} if it
+    satisfies the following four conditions:
+    \begin{enumerate}
+    \item $\det(\rho):\GQ\to R^\times$ is the cyclotomic character;
+    \item $\rho$ is unramified outside $2\ell$;
+    \item The restriction of $\rho$ to $\Gal(\Qbar_2/\Q_2)$ is reducible (more precisely,
+    there is a short exact sequence $0\to R\to V\to R\to 0$ which is stable
+    under the action of $\Gal(\Qbar_2/\Q_2)$) and the Galois action on the 1-dimensional
+    quotient is an unramified representation of $\Gal(\Qbar_2/\Q_2)$ whose square is trivial;
+    \item The restriction of $\rho$ to $\GQl$ is flat, by which we mean that for all open
+    ideals $I$ of $R$, the (finite image) representation $\rho$ mod $I:\GQl\to \GL_{R/I}(V/I)$
+    comes from a finite flat group scheme.
+    \end{enumerate} -/)]
 structure IsHardlyRamified {ℓ : ℕ} [Fact ℓ.Prime] (hℓOdd : Odd ℓ)
     {R : Type u} [CommRing R] [TopologicalSpace R] [IsTopologicalRing R] [IsLocalRing R]
     [Algebra ℤ_[ℓ] R] --[IsLocalHom (algebraMap ℤ_[ℓ] R)] -- a convenient way of saying "residue

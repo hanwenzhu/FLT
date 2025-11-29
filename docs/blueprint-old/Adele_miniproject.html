@@ -1,0 +1,3738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miniproject: Adeles</title>
+<link rel="next" href="Haar_char_project.html" title="Miniproject: Haar Characters" />
+<link rel="prev" href="sect0004.html" title="Automorphic forms and the Langlands Conjectures" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="Adele_miniproject">8 Miniproject: Adeles</h1>
+
+<h1 id="a0000000042">8.1 Status</h1>
+<p>This is an active miniproject. </p>
+<h1 id="a0000000043">8.2 The goal</h1>
+<p>There are several goals to this miniproject. </p>
+<ol class="enumerate">
+  <li><p>Define the adeles \(\mathbb {A}_K\) of a number field&#160;\(K\) and give them the structure of a \(K\)-algebra (status: now in mathlib thanks to Salvatore Mercuri); </p>
+</li>
+  <li><p>Prove that \(\mathbb {A}_K\) is a locally compact topological ring (status: <a href ="https://github.com/smmercuri/adele-ring_locally-compact"> also proved by Mercuri</a> but not yet in mathlib); </p>
+</li>
+  <li><p>Base change: show that if \(L/K\) is a finite extension of number fields then the natural map \(L\otimes _K\mathbb {A}_K\to \mathbb {A}_L\) is an isomorphism, both algebraic and topological; (status: not formalized yet, but there is a plan – see the project dashboard); </p>
+</li>
+  <li><p>Prove that \(K \subseteq \mathbb {A}_K\) is a discrete subgroup and the quotient is compact (status: not formalized yet, but there is a plan – see the project dashboard); </p>
+</li>
+  <li><p>Get this stuff into mathlib (status: (1) done, (2)–(4) not done). </p>
+</li>
+</ol>
+<p>We briefly go through the basic definitions. Let \(K\) be a number field. Let \(\widehat{\mathbb {Z}}=\projlim _{N\geq 1}(\mathbb {Z}/N\mathbb {Z})\) be the profinite completion of \(\mathbb {Z}\), equipped with the projective limit topology. </p>
+<p>A cheap definition of the finite adeles \(\mathbb {A}_K^\infty \) of \(K\) is \(K\otimes _{\mathbb {Z}}\widehat{\mathbb {Z}}\), equipped with the \(\widehat{\mathbb {Z}}\)-module topology. A cheap definition of the infinite adeles \(K_\infty \) of \(K\) is \(K\otimes _{\mathbb {Q}}\mathbb {R}\) with the \(\mathbb {R}\)-module topology (this is a finite-dimensional \(\mathbb {R}\)-vector space so this is just the usual topology on \(\mathbb {R}^n\)). A cheap definition of the adeles of \(K\) is \(\mathbb {A}_K^\infty \times K_\infty \) with the product topology. This is a commutative topological ring. </p>
+<p>However in the literature (and in mathlib) we see different definitions. The finite adeles of \(K\) are usually defined in the books as the so-called restricted product \(\prod '_{\mathfrak {p}}K_{\mathfrak {p}}\) over the completions \(K_{\mathfrak {p}}\) of \(K\) at all maximal ideals \(\mathfrak {p}\subseteq \mathcal{O}_K\) of the integers of \(K\). Here the restricted product is the subset of \(\prod _{\mathfrak {p}}K_{\mathfrak {p}}\) consisting of elements which are in the integers \(\mathcal{O}_{K,\mathfrak {p}}\) of \(K_{\mathfrak {p}}\) for all but finitely many \(\mathfrak {p}\). This is the definition given in mathlib. Mathlib also has the proof that they’re a topological ring; furthermore the construction of the finite adeles in mathlib works for any Dedekind domain (this was pointed out to me by María Inés de Frutos Fernández; the adeles are an arithmetic object, but the finite adeles are an algebraic object). </p>
+<p>Similarly the infinite adeles of a number field&#160;\(K\) are usually defined as \(\prod _v K_v\), the product running over the archimedean completions of&#160;\(K\), and this is the mathlib definition. </p>
+<p>The adeles of a number field \(K\) are the product of the finite and infinite adeles, and mathlib knows that they’re a \(K\)-algebra and a topological ring. </p>
+<h1 id="a0000000044">8.3 Local compactness</h1>
+<p>As mentioned above, Salvatore Mercuri was the first to give a complete formalisation of the proof that the adele ring is locally compact as a topological space. His work is in <a href ="https://github.com/smmercuri/adele-ring_locally-compact">his own repo</a> and proved the result using the “ad hoc” topology on the adeles which we initially had. Since then, adeles have been refactored to have the direct limit topology and mathlib has <a href ="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Algebra/RestrictedProduct.html#RestrictedProduct.locallyCompactSpace_of_addGroup"><span class="tt">RestrictedProduct.locallyCompactSpace_of_addGroup</span></a>, the result that a restricted product of topological additive groups \(K_v\) over compact open subgroups \(A_v\) is locally compact. </p>
+<p>What we need then is this (note that this is not true for a general Dedekind domain): </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.instCompactSpaceAdicCompletionIntegers">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.instCompactSpaceAdicCompletionIntegers">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000137"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.instCompactSpaceAdicCompletionIntegers" class="lean_decl">NumberField.instCompactSpaceAdicCompletionIntegers</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/451">Discussion</a>
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(K\) is a number field and \(v\) is a nonzero prime ideal of the integers of \(K\), then the integers of \(K_v\) is a compact open subgroup. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000137">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Openness should follow from the fact that the integers are \(\{ x : v(x){\lt}v(1/\pi )\} \) where \(\pi \) is a uniformizer. Compactness needs finiteness of the residue field \(\mathcal{O}_K/v\). </p>
+
+  </div>
+</div>
+<p>Once we have this, the above result from mathlib gives us </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.locallyCompactSpace">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.locallyCompactSpace">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000138"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="HeckeOperator_project.html#NumberField.instCompactSpaceAdicCompletionIntegers">Lemma 12.16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.locallyCompactSpace" class="lean_decl">NumberField.AdeleRing.locallyCompactSpace</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/253">Discussion</a>
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    The adeles of a number field are locally compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000138">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The adeles of a number field are a product of the finite adeles and the infinite adeles so it suffices to prove that the finite and infinite adeles are locally compact. The infinite adeles are just isomorphic to \(\mathbb {R}^n\) as a topological space, so they’re certainly locally compact. As for the finite adeles, the mathlib theorem <span class="tt">RestrictedProduct.locallyCompactSpace_of_addGroup</span> says that a restricted product of locally compact additive groups with respect to open compact subgroups is locally compact, so this reduces us the previous result. </p>
+
+  </div>
+</div>
+<h1 id="a0000000045">8.4 Base change</h1>
+<p>The “theorem” we want is that if \(L/K\) is a finite extension of number fields, then \(\mathbb {A}_L=L\otimes _K\mathbb {A}_K\). This isn’t a theorem though, this is actually a <em>definition</em> (the map between the two objects) and a theorem about the definition (that it’s an isomorphism). In fact the full claim is that it is both a homeomorphism and an \(L\)-algebra isomorphism. Before we can prove the theorem, we need to make the definition. </p>
+<p>Recall that the adeles \(\mathbb {A}_K\) of a number field is a product \(\mathbb {A}_K^\infty \times K_\infty \) of the finite adeles and the infinite adeles. So our “theorem” follows immediately from the “theorem”s that \(\mathbb {A}_L^\infty =L\otimes _K\mathbb {A}_K^\infty \) and \(L_\infty =L\otimes _KK_\infty \) (both of these equalities mean an algebraic and topological isomorphism). We may thus treat the finite and infinite results separately. </p>
+<h2 id="a0000000139">8.4.1 Base change for nonarchimedean completions.</h2>
+<p>As pointed out above, the theory of finite adeles works fine for Dedekind domains. So for the time being let&#160;\(A\) be a Dedekind domain. Recall that the <em>height one spectrum</em> of \(A\) is the nonzero prime ideals of&#160;\(A\). Note that because we stick to the literature, rather than to common sense, fields are Dedekind domains in mathlib, and the height one spectrum of a field is empty. The reason I don’t like allowing fields to be Dedekind domains is that geometrically the definition of Dedekind domain in the literature is “smooth affine curve, or a point”. But many theorems in algebraic geometry begin “let \(C\) be a smooth curve”, rather than “let \(C\) be a smooth curve or a point”. </p>
+<p>Let \(K\) be the field of fractions of \(A\). If \(v\) is in the height one spectrum of \(A\), then we can put the \(v\)-adic topology on \(A\) and on \(K\), and consider the completions \(A_v\) and \(K_v\). The finite adele ring \(\mathbb {A}_{A,K}^\infty \) is defined to be the restricted product of the \(K_v\) with respect to the \(A_v\), as \(v\) runs over the height one spectrum of \(A\). It is topologised by making \(\prod _v A_v\) open with the product topology (here \(A_v\) has the \(v\)-adic topology). </p>
+<p>Now let&#160;\(L/K\) be a finite separable extension, and let \(B\) be the integral closure of&#160;\(A\) in&#160;\(L\). We want to relate the finite adeles of \(K\) and of \(L\). We work place by place, starting by fixing one place \(w\) of \(B\) and analysing the relation of \(L_w\) and \(B_w\) to the completions \(K_v\) and \(A_v\) where \(v\) is the place of \(A\) dividing \(w\). </p>
+<p>So let \(w\) be a nonzero prime ideal of \(B\). Say \(w\) lies over \(v\), a prime ideal of \(A\). Then we can put the \(w\)-adic topology on \(L\) and the \(v\)-adic topology on&#160;\(K\). Furthermore we can equip \(K\) with an additive \(v\)-adic valuation, that is, a function also called \(v\) from \(K\) to \(\mathbb {Z}\cup \{ \infty \} \) normalised so that if \(\pi \) is a uniformiser for \(v\) then \(v(\pi )=1\). Similarly we consider \(w\) as a function from \(L\) to \(\mathbb {Z}\cup \{ \infty \} \). The next lemma explains how these valuations are related. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.valuation_comap">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valuation_comap">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000140"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.valuation_comap" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.valuation_comap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(i:K\to L\) denotes the inclusion then for \(k\in K\) we have \(e\times w(i(k))=v(k)\), where \(e\) is the ramification index of \(w/v\) (recall that valuations here are written additively, unlike in mathlib). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000140">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Standard (and formalized). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valuation_comap">Lemma 8.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   There’s a natural ring map \(K_v\to L_w\) extending the map \(K\to L\). It is defined by completing the inclusion \(K\to L\) at the finite places \(v\) and \(w\) (which can be done because the previous lemma shows that the map is uniformly continuous for the \(v\)-adic and \(w\)-adic topologies). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000141"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valuation_comap">Lemma 8.3</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">Definition 8.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(i_v:K_v\to L_w\) denotes the map of the previous definition then for \(x\in K_v\) we have \(e\times w(i(k))=v(k)\), where \(e\) is the ramification index of \(w/v\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000141">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows by continuity from lemma&#160;<a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valuation_comap">8.3</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000142"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">Lemma 8.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The map \(i_v:K_v\to L_w\) sends the integer ring \(A_v\) into \(B_w\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000142">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The integer ring is defined by \(v\geq 0\) (or \(v\leq 1\) in mathlib, which uses multiplicative valuations) so the result follows from <a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">8.5</a>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.7</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000143"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">Definition 8.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/326">Discussion</a>
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Giving \(L_w\) the \(K_v\)-algebra structure coming from the natural map \(K_v\to L_w\), the \(w\)-adic topology on \(L_w\) is the \(K_v\)-module topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000143">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Any basis for \(L\) as a \(K\)-vector space spans \(L_w\) as a \(K_v\)-module, so \(L_w\) is finite-dimensional over \(K_v\) and the module topology is the same as the product topology. So we need to establish that the product topology on \(L_w=K_v^n\) is the \(w\)-adic topology. But the \(w\)-adic topology is induced by the \(w\)-adic norm, which makes \(L_w\) into a normed \(K_v\)-vector space, and (after picking a basis) the product norm on \(L_w=K_v^n\) also makes \(L_w\) into a normed \(K_v\)-vector space. So the result follows from the standard fact (see for example the lemma on p52 of Cassels-Froelich, formalized as <span class="tt">ContinuousLinearEquiv.ofFinrankEq</span> in mathlib) that any two norms on a finite-dimensional vector space over a complete field are equivalent (and thus induce the same topology). </p>
+
+  </div>
+</div>
+<p>Because of the commutative diagram </p>
+<div class="centered"> <div class="tikzcd" id="a0000000144">
+    <img src="images/img-0001.svg" class="tikzcd-vector" alt="\begin{tikzcd} 
+K_v \arrow{r} &amp; L_w  \\
+K \arrow{u} \arrow{r} &amp; L \arrow{u}
+\end{tikzcd}" />
+</div> </div>
+<p>we can view \(L_w\) as an \(L\otimes _KK_v\)-algebra. </p>
+<p>Now instead of fixing \(w\) upstairs, we fix \(v\) downstairs and consider all \(w\) lying over it at once. So say \(v\) is in the height one spectrum of \(A\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.Extension.finite">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.8</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.Extension.finite">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000145"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.Extension.finite" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.Extension.finite</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  There are only finitely many primes \(w\) of \(B\) lying above \(v\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000145">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is a standard fact about Dedekind domains. The key input is mathlib’s theorem <span class="tt">primesOver_finite</span>. </p>
+
+  </div>
+</div>
+<p>We write \(w|v\) to denote the fact that \(w\) is a prime of \(B\) above \(v\) of \(A\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">Definition 8.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The product of the maps \(K_v\to L_w\) for \(w|v\) is a natural ring map \(K_v\to \prod _{w|v}L_w\) lying over \(K\to L\). </p>
+
+  </div>
+</div>
+<p>Because \(K_v\to \prod _{w|v}L_w\) lies over \(K\to L\), there’s an induced \(L\)-algebra map \(L\otimes _KK_v\to \prod _{w|v}L_w\). We are now able to state one of the key results in this section. The proof is probably the hardest proof in this section to formalize. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.10</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000146"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'">Definition 8.9</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.Extension.finite">Lemma 8.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The induced \(L\)-algebra homomorphism \(L\otimes _KK_v\to \prod _{w|v}L_w\) is an isomorphism of rings. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000146">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>My current proposal to formalize this is as follows. The map is surjective because the image is dense and closed; this has been formalized already. It is also a \(K_v\)-algebra homomorphism if we give \(L_w\) the obvious \(K_v\)-algebra structure. Thus we can conclude the result if we can prove that both spaces are finite-dimensional and have the same dimension. The \(K_v\)-dimension of \(L\otimes _KK_v\) is equal to the \(K\)-dimension of \(L\), which is \(\sum _{w|v}e_wf_w\) using the standard notation that \(e_w\) is the ramification index of \(w\) and \(f_w\) the residue degree (this result is in mathlib). So it suffices to prove that \([L_w:K_v]=e_wf_w\). We already have that \(e_w\) (defined globally) is equal to the local ramification index (defined as the factor by which the valuations differ on \(K\)). So what is left is to prove that (i) the residue field extension induced by \(L_w/K_v\) has degree is equal to the globally-defined \(f_w\), (ii) an extension of local fields has degree \(ef\). Now (i) sounds straightforward given what we have (the map from \(A\) to \(\mathcal{O}_v\) has kernel \(v\) and dense image) and (ii) is true for any complete discretely-valued field; I am not suggesting we formalize the following proof, but at least it represents a rigorous justification: A field complete with respect to a discrete valuation is <em>stable</em> in the sense of the book by Bosch-Güntzer-Remmert (Prop 3.6.2.1), so every finite extension of such a field is cartesian (def 3.6.1.1) and thus \(ef=n\) (Prop 3.6.2.4, (iii) implies (ii)). Note that if you weaken the hypotheses too much then there are counterexamples; it’s possible to have \(ef{\lt}n\) and BGR goes into details. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.11</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000147"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">Theorem 8.7</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   For \(v\) fixed, the product topology on \(\prod _{w|v}L_w\) is the \(K_v\)-module topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000147">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is a finite product of \(K_v\)-modules each of which has the \(K_v\)-module topology by&#160;<a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">8.7</a>, and the product topology is the module topology for a finite product of modules each of which has the module topology (this is in mathlib). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.12</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000148"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology">Theorem 8.11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If we give \(L\otimes _KK_v\) the \(K_v\)-module topology then the \(L\)-algebra isomorphism \(L\otimes _K K_v\cong \prod _{w|v}L_w\) is also a homeomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000148">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Indeed, is a \(K_v\)-algebra isomorphism between two modules each of which have the module topology, and any module map is automorphically continuous for the module topologies. </p>
+
+  </div>
+</div>
+<p>We now start thinking about what’s going on at the integral level. We write \(A_v\) for the integers of \(K_v\) and \(B_w\) for the integers of \(L_w\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.13</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000149"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv">Theorem 8.10</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" class="lean_decl">IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The isomorphism \(L\otimes _KK_v\to \prod _{w|v}L_w\) induces an isomorphism \(B\otimes _AA_v\to \prod _{w|v}B_w\) for all \(v\) in the height one spectrum of \(A\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000149">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Certainly the image of the integral elements are integral. The argument in the other direction is more delicate. My original plan was to follow Cassels–Froehlich, Cassels’ article “Global fields”, section 12 lemma, p61, which proves it for all but finitely many primes, but <a href ="https://github.com/ImperialCollegeLondon/FLT/pull/400">a PR by Matthew Jasper</a> gives another approach which works for all primes. Jasper’s argument is to show that the closure of \(A\) in \(K_v\) is \(A_v\) for a valuation on a Dedekind domain, and then that the closure of \(A\) in \(\prod _{v\in S}K_v\) is \(\prod _{v\in S}A_v\) for \(S\) a finite set of valuations (using the Chinese remainder theorem). Applying this to \(B\) we get that the closure of \(B\) in \(\prod _{w|v}L_w\) is \(\prod _{w|v}B_w\). He then shows that this closure is the image of \(B\otimes _A\mathcal{O}_v\) (by showing that this image is closed because it’s open), giving surjectivity; injectivity follows from the statement that \(L\otimes _KK_v=\prod _{w|v}L_w\). </p>
+
+  </div>
+</div>
+<p>A summary of what we have so far: for all finite places \(v\) of \(A\) we have shown that the natural map \(L\otimes _KK_v\to \prod _wL_w\) is an isomorphism of \(L\)-algebras, and that if \(L\otimes _KK_v\) has the \(K_v\)-module topology and each \(L_w\) has the valuation topology then this map is also a homeomorphism. Furthermore we have shown that there is an induced algebraic isomorphism \(B\otimes _AA_v\equiv \prod _w B_w\) on the subrings of the left and right hand sides. </p>
+<p>Recall that the finite adeles \(\mathbb {A}_{A,K}^\infty \) is defined in mathlib to be the restricted product of the \(K_v\) with respect to the \(A_v\), equipped with a certain restricted product topology (which is not the subspace topology of the product topology, indeed \(\prod _v A_v\) is open in this topology). We have seen in definition&#160;<a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">8.4</a> that there’s a map \(K_v\to L_w\) if \(w|v\), extending \(K\to L\), and we have seen in theorem&#160;<a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">8.6</a> that this sends \(A_v\) to \(B_w\). We conclude </p>
+<div class="definition_thmwrapper theorem-style-definition" id="IsDedekindDomain.FiniteAdeleRing.mapSemialgHom">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.14</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.mapSemialgHom">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">Definition 8.4</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">Lemma 8.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" class="lean_decl">IsDedekindDomain.FiniteAdeleRing.mapSemialgHom</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   There’s a natural ring homomorphism \(\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) lying over \(K\to L\). </p>
+
+  </div>
+</div>
+<p>Hence there’s a natural \(L\)-algebra homomorphism \(L\otimes _K\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \). </p>
+<p>Our next goal in this section is the following two results. First the algebraic claim: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000150"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">Theorem 8.13</a></li>
+          
+          <li><a href="Adele_miniproject.html#RestrictedProduct.relabelIso">Definition 8.26</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv">Theorem 8.28</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.AKLB.tensorProduct_module_algEquiv">Corollary 8.21</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" class="lean_decl">IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/243">Discussion</a>
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    This natural map \(L\otimes _K\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) is an isomorphism. </p>
+
+  </div>
+</div>
+<p>Now \(L\otimes _K\mathbb {A}_{A,K}^\infty \) is an \(\mathbb {A}_{A,K}^\infty \)-module and hence can be given the \(\mathbb {A}_{A,K}^\infty \)-module topology. We also claim </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.16</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">Theorem 8.13</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" class="lean_decl">IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The induced \(L\)-algebra morphism \(L\otimes _K\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) is a topological isomorphism. </p>
+
+  </div>
+</div>
+<p>Informally, the proofs are simple: componentwise we know that \(L\otimes _KK_v\) is isomorphic both algebraically and topologically to \(\prod _{w|v}L_w\), and that this isomorphism sends the open set \(B\otimes _AA_v\) homeomorphically onto \(\prod _{w|v}B_w\), so now it’s “just a case of putting everything together”. Formally, we really need to spell this out, as there is a lot going on. We do this in the next subsection. </p>
+<h2 id="a0000000151">8.4.2 Base change for nonarchimedean completions.</h2>
+<p>As usual we are in the AKLB set-up, so in particular \(K\) is the field of fractions of the Dedekind domain \(A\), \(L/K\) is a finite separable extension, and \(B\) is the integral closure of \(A\) in \(L\). The goal in this subsection is to spell out the following argument: Assume that \(L\otimes _KK_v\cong \prod _{w|v}L_w\) algebraically and topologically for all \(v\), with \(B\otimes _AA_v\) identified with \(\prod _{w|v}B_w\). Then \(L\otimes _K\mathbb {A}_K^\infty \cong \mathbb {A}_L^\infty \), algebraically and topologically. Here the tensor products \(L\otimes _K R\) (for \(R\) a \(K\)-algebra with a topology) are all being given the \(R\)-module topology, which if we choose a basis for \(L/K\) is just the product topology. </p>
+<p>We start with the following observation. If \(M\) is a \(K\)-module then there’s a canonical map \(B\otimes _AM\to L\otimes _KM\) sending \(b\otimes m\) to \(b\otimes m\) (this follows from the universal property of the tensor product). Our first goal is to show that this map is an isomorphism. Let us establish some lemmas first. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsDedekindDomain.dvd_norm">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.17</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.dvd_norm">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> If \(0\not=b\in B\) then there exists \(0\not=a\in A\) such that \(b\) divides the image of \(a\) in \(B\). </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000152">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">8.18</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000152">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000153"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>Is this already in mathlib? </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000153">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(a=N_{L/K}(b)\), the norm. This is known to take nonzero elements of \(L\) to nonzero elements of \(K\) (because the norm is the determinant of an invertible linear map) and integral elements to integral elements. Furthermore \(a/b\in L\) is the the product of the conjugates of \(b\) in some normal closure of \(L\), and hence it is integral, and thus in \(B\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.AKLB.surjective_tensorProduct_map">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.19</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.AKLB.surjective_tensorProduct_map">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000154"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.dvd_norm">Lemma 8.17</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The \(A\)-bilinear map \(B\times K\to L\) sending \((b,k)\) to \(bk\) is surjective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000154">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Given \(\lambda \in L\) write it as \(n/d\) with \(0\not=d\in B\). Choose \(0\not=a\in A\) and \(b\in B\) with \(db=a\) and then note \(\lambda =nb/a=nb\times a^{-1}\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.20</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000155"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.dvd_norm">Lemma 8.17</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The natural map \(B\otimes _AK\to L\) is a \(B\)-algebra isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000155">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We write down an inverse. Regard \(B\otimes _AK\) as a \(B\)-algebra via the action on the left. Note that at this point it’s not even clear that \(B\otimes _AK\) is a field. We have the structure map \(B\to B\otimes _AK\) sending \(b\) to \(b\otimes 1\), which is \(B\)-linear. I claim that every nonzero element of \(B\) gets sent to an invertible element of \(B\otimes _AK\). Indeed, if \(b\not=0\) and (using the previous lemma) we choose \(0\not=a\in A\) such that \(bb'=a\), then \((b\otimes 1)(b'\otimes \frac1a)=1\). Thus by the universal property of localisation, the \(B\)-linear map \(B\to B\otimes _AK\) extends to a ring homomorphism from the field of fractions of \(B\) to \(B\otimes _AK\), which we claim is our desired inverse. Checking that both composites are the identity should be straightforward. Starting with \(B\otimes _AK\) we only have to check on elements of the form \(b\otimes k\); starting with \(L\) we only have to check on elements of \(B\). Hopefully both are straightforward. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.AKLB.tensorProduct_module_algEquiv">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.21</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.AKLB.tensorProduct_module_algEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000156"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.linearEquivTensorProductModule" class="lean_decl">IsDedekindDomain.linearEquivTensorProductModule</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(M\) is any \(K\)-module then the canonical map \(B\otimes _A M\to L\otimes _K M\) is an isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000156">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We can factor this map as \(B\otimes _AM\cong B\otimes _A(K\otimes _KM)\cong (B\otimes _A K)\cong _KM\to L\otimes _KM\) and we just showed that the latter map was an isomorphism. </p>
+
+  </div>
+</div>
+<p>We now need to explain how tensor products sometimes commute with restricted products. Something we will need along the way is </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.AKLB.finitePresentation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.22</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.AKLB.finitePresentation">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000157"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>\(B\) is a finitely-presented \(A\)-module.  </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000157">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\(A\) is Noetherian as it is a Dedekind domain, so it suffices to prove that \(B\) is finitely-generated as an \(A\)-module. But this is in mathlib already (a proof is around line 101 of <span class="tt">BaseChange.lean</span> in FLT at the time of writing). </p>
+
+  </div>
+</div>
+<p>The reason we care about this is the following. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="pi_tensorProduct_of_finitePresentation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.23</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#pi_tensorProduct_of_finitePresentation">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000158"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> If \(R\) is a commutative ring, if \(M\) is a finitely presented \(R\)-module and if \(N_i\) are a collection of \(R\)-modules, then the canonical map \(M\otimes _R\prod _i N_i\to \prod _i(M\otimes _R N_i)\) is an isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000158">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>If \(M\) is finite and free then Maddy Crim has already formalized this in FLT. For the general case present \(M\) as \(R^a\to R^b\to M\to 0\) and use that tensor products and arbitrary products preserve surjections. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.pi_tensorProduct">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.24</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.pi_tensorProduct">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000159"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.AKLB.finitePresentation">Theorem 8.22</a></li>
+          
+          <li><a href="Adele_miniproject.html#pi_tensorProduct_of_finitePresentation">Theorem 8.23</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(S\) is a finite set of nonzero primes of \(A\) then the natural map \(B\otimes ((\prod _{v\in S}K_v)\times (\prod _{v\notin S}A_v))\to (\prod _{v\in S}(B\otimes _AK_v))\times (\prod _{v\notin S}(B\otimes _AA_v))\) is an isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000159">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows from the previous two theorems. </p>
+
+  </div>
+</div>
+<p>Recall that \(\mathbb {A}_K^\infty \) is the finite adeles of \(K\), defined as the restricted product of the \(K_v\) with respect to the \(A_v\), where \(v\) runs through the nonzero primes of \(A\). Let \(R\) denote the restricted product of the \(B\otimes _A K_v\) with respect to the \(B\otimes _A A_v\). </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.25</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000160"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.pi_tensorProduct">Corollary 8.24</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The natural map \(B\otimes _A\mathbb {A}_K^\infty \to R\) is a \(B\)-algebra isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000160">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This follows from the previous corollary and the fact that tensor products commute with filtered colimits. </p>
+
+  </div>
+</div>
+<p>Recall from earlier in this section that if \(v\) is a finite place of \(A\) then the natural map from \(B\otimes _A K_v\) to \(L\otimes _KK_v\) is an isomorphism, and recall from the previous section that the natural map from \(L\otimes _KK_v\) to \(\prod _{w|v}L_w\) was also an isomorphism. This isomorphism sends \(B\otimes _A A_v\) to \(\prod _{w|v}B_w\) (I thank Matthew Jasper for pointing out to me that this statement was true at all primes, not just at unramified primes). Finally, the set of \(w\) of \(B\) dividing a fixed place \(v\) of \(A\) is finite. Let’s now formalize the abstract statement which we need. Rather than following the notation for restricted product in the literature and writing \(\mathbb {A}_K^\infty =\prod '_vK_v\) with the \(\mathcal{O}_v\) implicit, we will write \(\prod '_v(K_v,\mathcal{O}_v)\) in the below. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="RestrictedProduct.relabelIso">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.26</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#RestrictedProduct.relabelIso">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p> Let \(V\) and \(W\) be index sets, and let \(f:W\to V\) be a map with finite fibres. Let \(X_v\) be sets, with subsets \(C_v\), let \(Y_w\) be sets with subsets \(D_w\), and say for all \(v\in V\) we’re given a bijection \(X_v\to \prod _{w|f(w)=v}Y_w\), identifying \(C_v\) with \(\prod _{w:f(w)=v}D_w\). Then there’s an induced bijection between the restricted products \(\prod '_v(X_v,C_v)\) and \(\prod '_w(Y_w,D_w)\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.27</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000161"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#RestrictedProduct.relabelIso">Definition 8.26</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  The ring \(R\) introduced above (the restricted product of the \(B\otimes _A K_v\) with respect to the \(B\otimes _A A_v\)) is isomorphic to \(\mathbb {A}_L\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000161">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(V\) be the finite places of \(K\) and \(W\) the finite places of \(L\), let \(X_v\) be \(B\otimes _A K_v\), let \(C_v\) be \(B\otimes _A A_v\), let \(Y_w\) be \(L_w\), let \(D_w\) be \(B_w\) and the result follows from the previous definition, given theorem&#160;<a href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">8.13</a>. </p>
+
+  </div>
+</div>
+<p> From this, we can deduce the theorem we claimed earlier: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.28</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000162"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#RestrictedProduct.relabelIso">Definition 8.26</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1">Corollary 8.25</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2">Corollary 8.27</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  The natural map \(B\otimes _A\mathbb {A}_K^\infty \to \mathbb {A}_L^\infty \) is a \(B\)-algebra isomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000162">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This map factors through the auxiliary ring&#160;\(R\) so the result follows from the previous two constructions. </p>
+
+  </div>
+</div>
+<p>Because this map factors through the isomorphism \(B\otimes _A\mathbb {A}_K^\infty \to L\otimes _K\mathbb {A}_K^\infty \) we can finally deduce that the natural map \(L\otimes _K\mathbb {A}_K^\infty \to \mathbb {A}_L^\infty \) is an algebraic isomorphism. </p>
+<div class="proof_wrapper" id="a0000000150">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Follows immediately from theorem&#160;<a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv">8.28</a> and theorem&#160;<a href="Adele_miniproject.html#IsDedekindDomain.AKLB.tensorProduct_module_algEquiv">8.21</a>. </p>
+
+  </div>
+</div>
+<p>We still need to talk about topologies though, so let’s finish by doing this. Let’s start with some trivialities, expressed as definitions rather than theorems because they’re constructions. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000163">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.29</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000163">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>If \(X_v\) and \(Y_v\) are families of topological spaces indexed by \(v\in V\), if \(f_v:X_v\to Y_v\) is a continuous map sending the subset \(C_v\subseteq X_v\) into \(D_v\subseteq Y_v\) then there’s an induced continuous map \(\prod '_v(X_v,C_v)\to \prod '_v(Y_v,D_v)\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000164">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.30</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000164">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>If all the \(f_v\) are homeomorphisms identifying \(C_v\) with \(D_v\) then the induced map on restricted products is also a homeomorphism (proof: apply the previous construction to \(f_v\) and their inverses) </p>
+
+  </div>
+</div>
+<p>We now allow a slight change of index set. Unfortunately I don’t think that we can deduce the results just stated above from this one, in Lean, because the product of \(Y_w\) over a set of size 1 is not definitionally equal to \(Y_w\). </p>
+<p>Recall definition&#160;<a href="Adele_miniproject.html#RestrictedProduct.relabelIso">8.26</a>, giving us a bijection between two restricted products. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="a0000000165">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.31</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000165">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000166"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>In the same setup as definition&#160;<a href="Adele_miniproject.html#RestrictedProduct.relabelIso">8.26</a> (\(V,W\) index sets, \(f:W\to V\), \(C_v\subseteq X_v\) and \(D_w\subseteq Y_w\), bijections \(b_v:X_v\to \prod _{w:f(w)=v}Y_w\) identifying \(C_v\) with \(\prod _{w:f(w)=v}D_w\)), if all the \(X_v\) and \(Y_w\) are furthermore topological spaces, all the \(C_v\) and \(D_w\) are open, and all the \(b_v\) are homeomorphisms, then the induced map \(\prod '_v(X_v,C_v)\to \prod '_w(Y_w,D_w)\) is also a homeomorphism. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000166">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>I have only thought about the cofinite filter case, where this should follow easily from the definition of the topology. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="a0000000167">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">8.32</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000167">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000168"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>\(\mathbb {\mathbb {A}_L^\infty }\) is homeomorphic to \(\prod _v(B\otimes _AK_v,B\otimes _AA_v)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000168">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows from the previous theorem with \(X_v=B\otimes _AK_v\) \(D_w=L_w\) etc. </p>
+
+  </div>
+</div>
+<p>Recall that if </p>
+<div class="displaymath" id="a0000000169">
+  \[ R \]
+</div>
+<p> is a commutative ring, and two </p>
+<div class="displaymath" id="a0000000170">
+  \[ R \]
+</div>
+<p>-modules both have the </p>
+<div class="displaymath" id="a0000000171">
+  \[ R \]
+</div>
+<p>-module topology, then any </p>
+<div class="displaymath" id="a0000000172">
+  \[ R \]
+</div>
+<p>-linear morphism between them is automatically continuous. We know that \(\mathbb {A}_L^\infty \) is \(\mathbb {A}_K^\infty \)-linearly isomorphic to \(L\otimes _K\mathbb {A}_K^\infty \) and our claim is that if \(L\otimes _K\mathbb {A}_K^\infty \) is given the \(\mathbb {A}_K^\infty \)-module topology then this isomorphism is also a homeomorphism; to prove this, we thus just need to check that \(\mathbb {A}_L^\infty \) has the \(\mathbb {A}_K^\infty \)-module topology. Equivalently, by the previous result, we need to check that the restricted product topology on the \(\mathbb {A}_K^\infty \)-algebra \(\prod '_v(B\otimes _AK_v,B\otimes _AA_v)\) is the \(\mathbb {A}_K^\infty \)-module topology. </p>
+<p>We now need to make restricted products of modules into modules over restricted product of rings. The API, which should be straightforward so we don’t give details here, is: if \(R_v\) are rings with subrings \(S_v\) and if \(M_v\) are \(R_v\)-modules with \(S_v\)-stable submodules \(N_v\), then \(\prod '_v(M_v,N_v)\) is naturally a module over \(\prod '_v(R_v,S_v)\), and that \(R_v\)-morphisms \(M_v\to M_v'\) sending \(N_v\) to \(N_v'\) induce \(\prod '_v(R_s,S_v)\)-linear maps \(\prod '_v(M_v,N_v)\to \prod '_v(M'_v,N'_v)\). From this one deduces that isomorphisms on the factors induce isomorphisms on the restricted products. </p>
+<p>Now \(A_v\) is a PID, so \(B\otimes _AA_v\) is free (as it is finitely-generated and torsion-free). This means that there is an isomorphism \(B\otimes _AA_v\cong (A_v)^n\), which extends to an isomorphism \(B\otimes _AK_v\cong K_v^n\). These isomorphisms are also homeomorphisms. If we fix such isomorphisms for all \(v\) then we get an induced \(\mathbb {A}_K^\infty \)-module isomorphism + homeomorphism \(\prod '_v(B\otimes _AK_v,B\otimes _AA_v)=\prod '_v(K_n^n,A_v^n)\). So it suffices to prove that the \(\prod '_v(K_v,A_v)\)-module \(\prod '_v(K_v^n,A_v^n)\) has the \(\prod '_v(K_v,A_v)\)-module topology. This follows from the fact that the product topology on two modules with the module topology is the module topology (a fact in mathlib) and the following result. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="a0000000173">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">8.33</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#a0000000173">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000174"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If \(X_v\) and \(Y_v\) are topological spaces with open subspaces \(C_v\) and \(D_v\), then the obvious bijection \(\prod '_v(X_v \times Y_v,C_v\times D_v) \cong \left(\prod '_v(X_v,C_v)\right)\times \left(\prod '_v(Y_v,D_v)\right)\) is a homeomorphism, where the restricted products have the restricted product topology and the binary product has the product topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000174">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This should hopefully be straightforward using <span class="tt">RestrictedProduct.continuous_dom_prod</span> </p>
+
+  </div>
+</div>
+<p>As a corollary one can prove by induction on \(n\) that the restricted product of \(n\)th powers is homeomorphic to the \(n\)th power of the restricted product and this is the result we require. </p>
+<h2 id="a0000000175">8.4.3 Base change for infinite adeles</h2>
+<p>Recall that if \(K\) is a number field then the infinite adeles of \(K\) are defined to be the product \(\prod _{v\mid \infty } K_v\) of all the completions of \(K\) at the infinite places. </p>
+<p>The result we need here is that if \(L/K\) is a finite extension of number fields, then the map \(K\to L\) extends to a continuous \(K\)-algebra map \(K_\infty \to L_\infty \), and thus to a continuous \(L\)-algebra isomorphism \(L\otimes _KK_\infty \to L_\infty \). Perhaps a cheap proof would be to deduce it from the fact that \(K_\infty =K\otimes _{\mathbb {Q}}\mathbb {R}\). </p>
+<p>The overall strategy is to first establish, for each infinite place \(v\) of \(K\), homeomorphisms between for the completion \(K_v\) and the product \(\prod _{w\mid v}L_w\) of completions of \(L\) at all infinite places \(w\) of \(L\) lying above \(v\). We then use these homeomorphisms to construct base change for the infinite adele ring. </p>
+<h3 id="a0000000176">Weak approximation at infinite places</h3>
+<p>First, we require a preliminary result that \(K\) is dense inside any product of completions \(\prod _{v\in S} K_v\) of \(K\) at infinite places. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.34</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000177"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi" class="lean_decl">NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  Let \(S\) be a set of infinite places of \(K\). The image of \(K\) under the embedding \(K\hookrightarrow (K_v)_{v\in S}; k \mapsto (k)_v\) is dense in the product topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000177">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \((K, v)\) denote \(K\) equipped with the topology induced by the infinite place \(v\). It suffices to show that the image of \(K\) under the embedding \(K\hookrightarrow \prod _{v\mid \infty }(K, v)\) is dense in the product topology. By a standard analytic argument, for each \(v\) it is possible to select a sequence \((x_n^{(v)})_n\) with the property that \(x_n^{(v)} \to 1\) in \(v\)’s topology, while \(x_n^{(v)} \to 0\) in any other infinite place’s topology. Let \((z_v)_v \in \prod _{v\mid \infty }(K, v)\). For each \(v\), the sequence \(y_n := \sum _{v\mid \infty } x_n^{(v)}z_v\) in \(K\) converges to \(z_v\) in \(v\)’s topology. So the embedded image of \(y_n\) in \(\prod _{v\mid \infty }(K, v)\) converges to \((z_v)_v\) in the product topology. </p>
+
+  </div>
+</div>
+<h3 id="a0000000178">Dimensionality of \(\prod _{w\mid v}L_w\) as a \(K_v\)-vector space</h3>
+<p>This subsection contains a result that the \(K_v\)-dimension of \(L \otimes _K K_v\) is equal to the \(K_v\)-dimension of \(\prod _{w\mid v}L_w\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.35</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct" class="lean_decl">NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  For a fixed infinite place \(v\) of \(K\), we have \(\text{dim}_{K_v} \prod _{w\mid v} L_w = \text{dim}_{K_v} L\otimes _K K_v\). </p>
+
+  </div>
+</div>
+<h3 id="a0000000179">Base change at infinite places</h3>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.InfinitePlace.Completion.piExtension">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.36</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.piExtension" class="lean_decl">NumberField.InfinitePlace.Completion.piExtension</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  Let \(v\) be an infinite place of \(K\). There is a continuous \(K\)-algebra homomorphism \(K_v \to \prod _{w\mid v}L_w\), whose restriction to \(K\) corresponds to the global embedding of \(K\) into \((L_w)_w\). </p>
+
+  </div>
+</div>
+<p>The map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">8.36</a> can be lifted to an \(L\)-algebra homomorphism defined on \(L\otimes _K K_v\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="NumberField.InfinitePlace.Completion.baseChange">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8.37</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">Definition 8.36</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange" class="lean_decl">NumberField.InfinitePlace.Completion.baseChange</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   Let \(v\) be an infinite place of \(K\). There is a natural \(L\)-algebra homomorphism \(L\otimes _K K_v \to \prod _{w\mid v}L_w\), whose restriction to \(1\otimes _K K_v\) corresponds to the map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">8.36</a>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.baseChange_surjective">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.38</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_surjective">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000180"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">Theorem 8.34</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange_surjective" class="lean_decl">NumberField.InfinitePlace.Completion.baseChange_surjective</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   For a fixed infinite place \(v\) of \(K\), the map \(L\otimes _K K_v \to \prod _{w\mid v}L_w\) is surjective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000180">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \((x_i)_i\) be a \(K_v\)-basis of \(\prod _{w\mid v}L_w\). By the density of \(L\) in \(\prod _{w\mid v}L_w\) (Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">8.34</a>), we can find \(\alpha _i \in L\) arbitrarily close to \(x_i\prod _{w\mid v}L_w\) with respect to the sup norm when embedded globally in \(\prod _{w\mid v}L_w\). In particular, it is possible to choose such \(\alpha _i\) so that the matrix representing the vector \(((\alpha _i)_{w \mid v})_i\) in the basis \((x_i)_i\) has non-zero determinant. Since \((\alpha _i)_{w \mid v}\) is the image of \(1\otimes \alpha _i\) under base change, we have that \((1 \otimes \alpha _i)_i\) also forms a basis of \(L\otimes _K K_v\), and base change is surjective. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.baseChange_injective">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.39</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_injective">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000181"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">Theorem 8.35</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange_injective" class="lean_decl">NumberField.InfinitePlace.Completion.baseChange_injective</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   For a fixed infinite place \(v\) of \(K\), the map \(L\otimes _K K_v \to \prod _{w\mid v}L_w\) is injective. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000181">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The \(L\)-algebra map \(L\otimes _K K_v \to \prod _{w\mid v}L_w\) can equivalently be thought of as \(K_v\)-linear, which is injective, because it is surjective by Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_surjective">8.38</a>, and both side have the same \(K_v\)-dimension by Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">8.35</a>. </p>
+
+  </div>
+</div>
+<p>We have established that the map of Definition&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">8.37</a> gives an \(L\)-algebra isomorphism between \(L\otimes _K K_v\) and \(\prod _{w\mid v}L_w\). The left-hand side is given the \(K_v\)-module topology, while we show that the right-hand side also has the \(K_v\)-module topology. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.40</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000182"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT" class="lean_decl">NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  If \(w \mid v\) is an infinite place of \(L\) lying above the infinite place \(v\) of \(K\), then \(L_w\) has the \(K_v\)-module topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000182">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Because \(L_w\) is a finite-dimensional normed \(K_v\) vector space, there exists a \(K_v\)-linear linear homeomorphism \(L_w \cong K_v^n\), from which \(L_w\) has the \(K_v\)-module topology. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.baseChangeEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.41</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000183"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">Definition 8.37</a></li>
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_surjective">Theorem 8.38</a></li>
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_injective">Theorem 8.39</a></li>
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT">Theorem 8.40</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChangeEquiv" class="lean_decl">NumberField.InfinitePlace.Completion.baseChangeEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Let \(v\) be an infinite place of \(K\). There is a natural \(L\)-algebra homeomorphism \(L\otimes _K K_v \cong _L \prod _{w\mid v}L_w\), whose restriction to \(1\otimes _K K_v\) corresponds to the map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">8.36</a>. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000183">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">8.37</a> is an \(L\)-algebra isomorphism by Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_surjective">8.38</a> and Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_injective">8.39</a>. Every \(K_v\)-algebra isomorphism between two \(K_v\)-module topological spaces is a homeomorphism. Since the \(L\)-algebra isomorphism of Definition&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">8.37</a> can equivalently be viewed as a \(K_v\)-algebra isomorphism, it is also a homeomorphism. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfinitePlace.Completion.piEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.42</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000184"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">Theorem 8.41</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.piEquiv" class="lean_decl">NumberField.InfinitePlace.Completion.piEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Let \(v\) be an infinite place of \(K\). There is a natural \(K_v\)-linear homeomorphism \(K_v^{[L:K]} \cong _{K_v} \prod _{w\mid v}L_w\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000184">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Compose the \(K_v\)-linear isomorphism \(K_v^{[L:K]} \cong \prod _{w\mid v}L_w\) with the \(K_v\)-linear version of base change&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">8.41</a> to get the isomorphism in the statement. Since both sides have the \(K_v\)-module topology, then this is also a homeomorphism. </p>
+
+  </div>
+</div>
+<h3 id="a0000000185">Base change for the infinite adele ring</h3>
+<p>First, we induce a \(K_{\infty }\)-algebra on \(L_{\infty }\) from the action of each \(K_v\) on \(\prod _{w\mid v}L_w\). Specifically, this means that for \(x \in K_{\infty }\) and \(y \in L_{\infty }\), we have \((x \cdot y)_w = x_{v_w} \cdot y_w\), where \(v_w\) is the restriction of \(w\) to \(K\). We show that \(L_{\infty }\) has the \(K_{\infty }\)-module topology. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfiniteAdeleRing.piEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.43</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.piEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000186"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piEquiv">Theorem 8.42</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.piEquiv" class="lean_decl">NumberField.InfiniteAdeleRing.piEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   There is a natural \(K_{\infty }\)-linear homeomorphism \(K_{\infty }^{[L:K]} \cong _{K_{\infty }} L_{\infty }\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000186">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Using the isomorphisms \(K_v^{[L:K]} \cong _{K_v} \prod _{w\mid v}L_w\) from Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piEquiv">8.42</a>, we clearly have a bijection \(K_{\infty }^{[L:K]} \cong \prod _v\prod _{w \mid v} L_w \cong \prod _w L_w\). The \(K_v\)-linearity of each component isomorphism extends to \(K_{\infty }\)-linearity if the action of \(\prod _v K_v\) on \(\prod _w L_w\) is constant on the fibers of the restriction map on infinite places. In other words, if, for all \(x \in K_{\infty }\) and \(y \in L_{\infty }\), we have \((x \cdot y)_w = x_{v_w} \cdot y_w\), which is true by definition. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.44</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000187"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.piEquiv">Theorem 8.43</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" class="lean_decl">NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   \(L_{\infty }\) has the \(K_{\infty }\)-module topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000187">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since \(L_{\infty }\) is homeomorphic to a finite product of \(K_{\infty }\) as a \(K_{\infty }\)-vector space, it has the \(K_{\infty }\)-module topology. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfiniteAdeleRing.baseChangeEquivAux">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.45</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000188"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">Theorem 8.41</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.baseChangeEquivAux" class="lean_decl">NumberField.InfiniteAdeleRing.baseChangeEquivAux</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   There is a natural \(L\)-algebra isomorphism \(L \otimes _K K_{\infty } \cong _L L_{\infty }\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000188">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This follows from the following chain of isomorphisms: </p>
+<div class="displaymath" id="a0000000189">
+  \[  L \otimes _K K_{\infty } \cong _L \prod _v (L \otimes _K K_v) \cong _L \prod _v \prod _{w\mid v}L_w \cong _L L_{\infty } .  \]
+</div>
+<p> The first isomorphism is the standard \(L\)-algebra isomorphism \(L \otimes _K \prod _v K_v \cong _L \prod _v (L \otimes _K K_v)\). The second isomorphism is given by the component \(L\)-algebra isomorphisms \(L \otimes _K K_v \cong _L \prod _{w\mid v}L_w\) from Theorem&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">8.41</a>. </p>
+
+  </div>
+</div>
+<p>It remains to show that the map in&#160;<a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">8.45</a> is a homeomorphism. Since both sides have the \(K_{\infty }\)-module topology, and since the \(L\)-algebra isomorphism of&#160;<a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">8.45</a> can equivalently be viewed as a \(K_{\infty }\)-linear isomorphism, it is also a homeomorphism. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.InfiniteAdeleRing.baseChangeEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.46</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000190"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">Theorem 8.45</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.baseChangeEquiv" class="lean_decl">NumberField.InfiniteAdeleRing.baseChangeEquiv</a></li>
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" class="lean_decl">NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(K\to L\) is a ring homomorphism between two number fields then there is a natural isomorphism (both topological and algebraic) \(L\otimes _KK_\infty \cong L_\infty \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000190">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Since both sides of the \(L\)-algebra isomorphism in&#160;<a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">8.45</a> have the \(K_{\infty }\)-module topology, and since the isomorphism can equivalently be viewed as a \(K_{\infty }\)-linear isomorphism, it is also a homeomorphism. </p>
+
+  </div>
+</div>
+<h2 id="a0000000191">8.4.4 Base change for adeles</h2>
+<p>From the previous results we deduce immediately that if \(L/K\) is a finite extension of number fields then there’s a natural (topological and algebraic) isomorphism \(L\otimes _K\mathbb {A}_K\to \mathbb {A}_L\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.baseChangeEquiv">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.47</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000192"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquiv">Theorem 8.46</a></li>
+          
+          <li><a href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">Theorem 8.15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.baseChangeEquiv" class="lean_decl">NumberField.AdeleRing.baseChangeEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(K\to L\) is a ring homomorphism between two number fields then there is a natural isomorphism (both topological and algebraic) \(L\otimes _K\mathbb {A}_K\cong \mathbb {A}_L\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000192">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows from the previous results. </p>
+
+  </div>
+</div>
+<p>Something else we shall need: </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.baseChange_moduleTopology">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.48</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.baseChange_moduleTopology">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000193"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">Theorem 8.47</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.instBaseChangeIsModuleTopology" class="lean_decl">NumberField.AdeleRing.instBaseChangeIsModuleTopology</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(K\to L\) is a ring homomorphism between two number fields then the topology on \(\mathbb {A}_L\) is the \(\mathbb {A}_K\)-module topology, where the module structure comes from the natural map \(\mathbb {A}_K\to \mathbb {A}_L\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000193">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Indeed \(\mathbb {A}_L\cong L\otimes _K\mathbb {A}_K\) is a homeomorphism, and the right hand side has the \(\mathbb {A}_K\)-module topology. </p>
+
+  </div>
+</div>
+<h1 id="a0000000046">8.5 Discreteness and compactness</h1>
+<p>We need that if \(K\) is a number field then \(K\subseteq \mathbb {A}_K\) is discrete, and the quotient (with the quotient topology) is compact. Here is a proposed proof. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Rat.AdeleRing.zero_discrete">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.49</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#Rat.AdeleRing.zero_discrete">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000194"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Rat.AdeleRing.zero_discrete" class="lean_decl">Rat.AdeleRing.zero_discrete</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  There’s an open subset of \(\mathbb {A}_{\mathbb {Q}}\) whose intersection with \(\mathbb {Q}\) is \(\{ 0\} \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000194">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Use \(\prod _p{\mathbb {Z}_p}\times (-1,1)\). Any rational \(q\) in this set is a \(p\)-adic integer for all primes \(p\) and hence (writing it in lowest terms as \(q=n/d\)) satisfies \(p\nmid d\), meaning that \(d=\pm 1\) and thus \(q\in \mathbb {Z}\). The fact that \(q\in (-1,1)\) implies \(q=0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.zero_discrete">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.50</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.zero_discrete">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000195"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#Rat.AdeleRing.zero_discrete">Theorem 8.49</a></li>
+          
+          <li><a href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">Theorem 8.47</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.zero_discrete" class="lean_decl">NumberField.AdeleRing.zero_discrete</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   There’s an open subset of \(\mathbb {A}_{K}\) whose intersection with \(K\) is \(\{ 0\} \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000195">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>By a previous result, we have \(\mathbb {A}_K=K\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\). Choose a basis of \(K/\mathbb {Q}\); then \(K\) can be identified with \(\mathbb {Q}^n\subseteq (\mathbb {A}_{\mathbb {Q}})^n\) and the result follows from the previous theorem. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.discrete">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.51</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.discrete">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000196"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#NumberField.AdeleRing.zero_discrete">Theorem 8.50</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.discrete" class="lean_decl">NumberField.AdeleRing.discrete</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The additive subgroup \(K\) of \(\mathbb {A}_K\) is discrete. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000196">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>If \(x\in K\) and \(U\) is the open subset in the previous lemma, then it’s easily checked that \(K\cap U=\{ 0\} \) implies \(K\cap (U+x)=\{ x\} \), and \(U+x\) is open. </p>
+
+  </div>
+</div>
+<p>For compactness we follow the same approach. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Rat.AdeleRing.cocompact">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.52</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#Rat.AdeleRing.cocompact">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000197"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Rat.AdeleRing.cocompact" class="lean_decl">Rat.AdeleRing.cocompact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  The quotient \(\mathbb {A}_{\mathbb {Q}}/\mathbb {Q}\) is compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000197">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The space \(\prod _p\mathbb {Z}_p\times [0,1]\subseteq \mathbb {A}_{\mathbb {Q}}\) is a product of compact spaces and is hence compact. I claim that it surjects onto \(\mathbb {A}_{\mathbb {Q}}/\mathbb {Q}\). Indeed, if \(a\in \mathbb {A}_{\mathbb {Q}}\) then for the finitely many prime numbers \(p\in S\) such that \(a_p\not\in \mathbb {Z}_p\) we have \(a_p\in \frac{r_p}{p^{n_p}}+\mathbb {Z}_p\) with \(r_p/p^{n_p}\in \mathbb {Q}\), and if \(q=\sum _{p\in S}\frac{r_p}{p^{n_p}}\in \mathbb {Q}\) then \(a-q\in \prod _p\mathbb {Z}_p\times \mathbb {R}\). Now just subtract \(\lfloor a_{\infty }-q\rfloor \) to move into \(\prod _p\mathbb {Z}_p\times [0,1)\) and we are done. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.cocompact">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">8.53</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Adele_miniproject.html#NumberField.AdeleRing.cocompact">#</a>
+    
+    <a class="icon proof" href="Adele_miniproject.html#a0000000198"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Adele_miniproject.html#Rat.AdeleRing.cocompact">Theorem 8.52</a></li>
+          
+          <li><a href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">Theorem 8.47</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.cocompact" class="lean_decl">NumberField.AdeleRing.cocompact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The quotient \(\mathbb {A}_K/K\) is compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000198">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We proceed as in the discreteness proof above, by reducing to \(\mathbb {Q}\). As before, choosing a \(\mathbb {Q}\)-basis of \(K\) gives us \(\mathbb {A}_K/K\cong (\mathbb {A}_{\mathbb {Q}}/\mathbb {Q})^n\) so the result follows from the previous theorem. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0004.html" title="Automorphic forms and the Langlands Conjectures"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="Haar_char_project.html" title="Miniproject: Haar Characters"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

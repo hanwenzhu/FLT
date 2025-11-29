@@ -3,6 +3,7 @@ Copyright (c) 2024 Yaël Dillies, Javier López-Contreras. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies, Javier López-Contreras
 -/
+import Architect
 import FLT.Mathlib.MeasureTheory.Group.Action
 import FLT.HaarMeasure.MeasurableSpacePadics
 import FLT.HaarMeasure.HaarChar.Ring
@@ -62,7 +63,16 @@ private lemma MeasureTheory.ringHaarChar_padic_padicInt (x : ℤ_[p]⁰) :
 
 This means that `volume (x • s) = ‖x‖ * volume s` for all `x : ℚ_[p]` and `s : Set ℚ_[p]`.
 See `Padic.volume_padic_smul` -/
-@[simp]
+@[simp, blueprint
+  "MeasureTheory.ringHaarChar_padic"
+  (statement := /-- If $R=\Q_p$ then $\delta_R(u)=|u|_p$, the usual $p$-adic norm. -/)
+  (proof := /-- Normalise Haar measure so that $\mu(\Z_p)=1$.
+    If $u$ is a $p$-adic unit then $u\Z_p=\Z_p$ so multiplication by $u$ didn't change
+    Haar measure. If however $u=p$ then $u\Z_p$ has index $p$ in $\Z_p$ and, because
+    $\mu(i+p\Z_p)=\mu(p\Z_p)$ we have that $\mu(\Z_p)=p\mu(p\Z_p)$ and thus $\delta(p)=p^{-1}$.
+    These elements generate $\Q_p^\times$ and two characters which agree on generators
+    of a group must agree on the group. -/)
+  (latexEnv := "lemma")]
 lemma MeasureTheory.ringHaarChar_padic (x : ℚ_[p]ˣ) : ringHaarChar x = ‖(x : ℚ_[p])‖₊ := by
   -- Write the RHS as the application of a monoid hom `g`.
   let g : ℚ_[p]ˣ →* ℝ≥0 := {

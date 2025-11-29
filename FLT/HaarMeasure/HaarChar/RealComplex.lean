@@ -3,6 +3,7 @@ Copyright (c) 2024 Yaël Dillies, Javier López-Contreras. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Yaël Dillies, Javier López-Contreras
 -/
+import Architect
 import Mathlib.Analysis.Complex.ReImTopology
 import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
 import Mathlib.RingTheory.Complex
@@ -36,6 +37,13 @@ lemma Real.volume_real_smul (x : ℝ) (s : Set ℝ) : volume (x • s) = ‖x‖
 
 This means that `volume (x • s) = ‖x‖ * volume s` for all `x : ℝ` and `s : Set ℝ`.
 See `Real.volume_real_smul`. -/
+@[blueprint
+  "MeasureTheory.ringHaarChar_real"
+  (statement := /-- If $R=\R$ then $\delta_R(u)=|u|$. -/)
+  (proof := /-- Take $\mu$ to be Lebesgue measure and $X=[0,1]$.
+    We have $\delta(u)=\mu(uX)$. If $u>0$ then $u[0,1]=[0,u]$ which has measure $u=|u|$,
+    and if $u<0$ then $u*[0,1]=[u,0]$ which has measure $-u=|u|$. -/)
+  (latexEnv := "lemma")]
 lemma MeasureTheory.ringHaarChar_real (x : ℝˣ) : ringHaarChar x = ‖(x : ℝ)‖₊ :=
   -- We compute that `volume (x • [0, 1]) = ‖x‖₊ * volume [0, 1]`.
   ringHaarChar_eq_of_measure_smul_eq_mul (s := Icc 0 1) (μ := volume)
@@ -46,6 +54,14 @@ lemma MeasureTheory.ringHaarChar_real (x : ℝˣ) : ringHaarChar x = ‖(x : ℝ
 
 This means that `volume (z • s) = ‖z‖ ^ 2 * volume s` for all `z : ℂ` and `s : Set ℂ`.
 See `Complex.volume_complex_smul`. -/
+@[blueprint
+  "MeasureTheory.ringHaarChar_complex"
+  (statement := /-- If $R=\bbC$ then $\delta_R(u)=|u|^2$. -/)
+  (proof := /-- Multiplication by a positive real $r$ sends a unit square to a square of area
+    $r^2=|r|^2$.
+    Multiplication by $e^{i\theta}$ is a rotation and thus does not change area.
+    The general case follows. -/)
+  (latexEnv := "lemma")]
 lemma MeasureTheory.ringHaarChar_complex (z : ℂˣ) : ringHaarChar z = ‖(z : ℂ)‖₊ ^ 2 := by
   -- We compute that `volume (x • ([0, 1] × [0, 1])) = ‖x‖₊ ^ 2 * volume ([0, 1] × [0, 1])`.
   refine ringHaarChar_eq_of_measure_smul_eq_mul (s := Icc 0 1 ×ℂ Icc 0 1) (μ := volume)

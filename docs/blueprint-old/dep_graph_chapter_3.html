@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-blue.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/stylecours.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="Frey_curve_hardly_ramified_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Frey_curve_hardly_ramified" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.3</span></div>
+    <div class="thm_thmcontent"><p>   The \(\ell \)-torsion \(\rho :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathbb {Z}/\ell \mathbb {Z})\) in the Frey curve associated to a Frey package \((a,b,c,\ell )\) is hardly ramified. </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#Frey_curve_hardly_ramified">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyCurve.torsion_isHardlyRamified">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">3.2</span></div>
+    <div class="thm_thmcontent"><p>  Let \(R\) be a coefficient ring with finite residue field of characteristic \(\ell \geq 3\). Let \(V\) be a finite free \(R\)-module of rank&#160;2, equipped with the product topology. A continuous representation \(\rho : \operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_R(V)\) is said to be <em>hardly ramified</em> if it satisfies the following four conditions: </p>
+<ol class="enumerate">
+  <li><p>\(\det (\rho ):\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to R^\times \) is the cyclotomic character; </p>
+</li>
+  <li><p>\(\rho \) is unramified outside \(2\ell \); </p>
+</li>
+  <li><p>The restriction of \(\rho \) to \(\operatorname{Gal}(\overline{\mathbb {Q}}_2/\mathbb {Q}_2)\) is reducible (more precisely, there is a short exact sequence \(0\to R\to V\to R\to 0\) which is stable under the action of \(\operatorname{Gal}(\overline{\mathbb {Q}}_2/\mathbb {Q}_2)\)) and the Galois action on the 1-dimensional quotient is an unramified representation of \(\operatorname{Gal}(\overline{\mathbb {Q}}_2/\mathbb {Q}_2)\) whose square is trivial; </p>
+</li>
+  <li><p>The restriction of \(\rho \) to \(\operatorname{Gal}(\overline{\mathbb {Q}}_\ell /\mathbb {Q}_\ell )\) is flat, by which we mean that for all open ideals \(I\) of \(R\), the (finite image) representation \(\rho \) mod \(I:\operatorname{Gal}(\overline{\mathbb {Q}}_\ell /\mathbb {Q}_\ell )\to \operatorname{GL}_{R/I}(V/I)\) comes from a finite flat group scheme. </p>
+</li>
+</ol>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/GaloisRepresentation.IsHardlyRamified">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_3adic_reducible_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified_3adic_reducible" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.9</span></div>
+    <div class="thm_thmcontent"><p>   Suppose \(L/\mathbb {Q}_3\) is a finite extension, with integer ring \(\mathcal{O}_L\), and suppose \(\rho _3:\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathcal{O}_L)\) is hardly ramified. Then (considered as a representation to \(\operatorname{GL}_2(L)\)) \(\rho _3^{ss}=1\oplus \chi _3\) where \(1\) is the trivial character and \(\chi _3\) is the 3-adic cyclotomic character. </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified_3adic_reducible">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/GaloisRepresentation.IsHardlyRamified.three_adic">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_lifts_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified_lifts" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.6</span></div>
+    <div class="thm_thmcontent"><p>   If \(\ell \geq 3\) is prime and \(\overline{\rho }:\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathbb {Z}/\ell \mathbb {Z})\) is hardly ramified and irreducible, then there exists a finite extension&#160;\(K\) of \(\mathbb {Q}_\ell \) with integer ring&#160;\(\mathcal{O}\) and maximal ideal \(\mathfrak {m}\) and a hardly ramified representation \(\rho :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathcal{O})\) whose reduction modulo&#160;\(\mathfrak {m}\) is isomorphic to \(\rho \). </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified_lifts">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/GaloisRepresentation.IsHardlyRamified.lifts">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_mod3_reducible_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified_mod3_reducible" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.8</span></div>
+    <div class="thm_thmcontent"><p>   Suppose \(k\) is a finite field of characteristic 3, and suppose \(\overline{rho}:\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(k)\) is hardly ramified. Then \(\overline{\rho }\) is an extension of the cyclotomic character by the trivial representation. </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified_mod3_reducible">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/GaloisRepresentation.IsHardlyRamified.mod_three">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_reducible_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified_reducible" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.4</span></div>
+    <div class="thm_thmcontent"><p>  If \(\ell \geq 3\) is a prime and \(\rho :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathbb {Z}/\ell \mathbb {Z})\) is hardly ramified, then \(\rho \) is reducible. </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified_reducible">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyCurve.torsion_not_isIrreducible">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="hardly_ramified_spreads_out_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="hardly_ramified_spreads_out" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.7</span></div>
+    <div class="thm_thmcontent"><p>   If \(\ell \geq 3\) is prime, \(K\) is a finite extension of \(\mathbb {Q}_\ell \) with integers \(\mathcal{O}\) and if \(\rho :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(\mathcal{O})\) is a hardly ramified representation whose reduction is irreducible, then there exists a number field \(M\) and, for each finite place \(\mu \) of \(M\) of characteristic prime to 2, with completion \(M_\mu \) having integer ring \(R_\mu \), a hardly ramified semisimple representation \(\rho _\mu :\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\to \operatorname{GL}_2(R_\mu )\) (by which we mean the generic fibre is semisimple), with the following properties: </p>
+<ul class="itemize">
+  <li><p>There is some \(\lambda \mid \ell \) of \(M\) such that \(\rho _\lambda \cong \rho \), the isomorphism happening over some appropriate local field containing a copy of \(M_\lambda \) and a copy of&#160;\(K\); </p>
+</li>
+  <li><p>If \(\mu _1\) and \(\mu _2\) are two finite places of \(M\) with odd residue characteristics \(m_1\) and \(m_2\), and if \(p\nmid 2m_1m_2\) is prime, then \(\rho _{\mu _1}\) and \(\rho _{\mu _2}\) are both unramified at&#160;\(p\) and the characteristic polynomials \(\rho _{\mu _1}(\operatorname{Frob}_p)\) and \(\rho _{\mu _2}(\operatorname{Frob}_p)\) lie in \(M[X]\) and are equal. </p>
+</li>
+</ul>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#hardly_ramified_spreads_out">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/GaloisRepresentation.IsHardlyRamified.mem_isCompatible">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Wiles_Frey_again_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Wiles_Frey_again" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">3.5</span></div>
+    <div class="thm_thmcontent"><p>  If \(\overline{\rho }\) is the mod \(p\) Galois representation associated to a Frey package \((a,b,c,p)\) then \(\overline{\rho }\) is reducible. </p>
+</div>
+
+    <a class="latex_link" href="ch_freyreduction.html#Wiles_Frey_again">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Wiles_Frey">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	Frey_curve_hardly_ramified	[color=green,		fillcolor="#A3D6FF",		label=Frey_curve_hardly_ramified,		shape=ellipse,		style=filled];	Wiles_Frey_again	[color=green,		fillcolor="#A3D6FF",		label=Wiles_Frey_again,		shape=ellipse,		style=filled];	Frey_curve_hardly_ramified -> Wiles_Frey_again;	hardly_ramified_lifts	[color=green,		fillcolor="#A3D6FF",		label=hardly_ramified_lifts,		shape=ellipse,		style=filled];	hardly_ramified_reducible	[color=green,		fillcolor="#A3D6FF",		label=hardly_ramified_reducible,		shape=ellipse,		style=filled];	hardly_ramified_lifts -> hardly_ramified_reducible;	hardly_ramified_reducible -> Wiles_Frey_again;	hardly_ramified_mod3_reducible	[color=green,		fillcolor="#A3D6FF",		label=hardly_ramified_mod3_reducible,		shape=ellipse,		style=filled];	hardly_ramified_3adic_reducible	[color=green,		fillcolor="#A3D6FF",		label=hardly_ramified_3adic_reducible,		shape=ellipse,		style=filled];	hardly_ramified_mod3_reducible -> hardly_ramified_3adic_reducible	[style=dashed];	hardly_ramified_3adic_reducible -> hardly_ramified_reducible;	hardly_ramified	[color=green,		fillcolor="#B0ECA3",		label=hardly_ramified,		shape=box,		style=filled];	hardly_ramified -> Frey_curve_hardly_ramified	[style=dashed];	hardly_ramified -> hardly_ramified_lifts	[style=dashed];	hardly_ramified -> hardly_ramified_mod3_reducible	[style=dashed];	hardly_ramified_spreads_out	[color=green,		fillcolor="#A3D6FF",		label=hardly_ramified_spreads_out,		shape=ellipse,		style=filled];	hardly_ramified -> hardly_ramified_spreads_out	[style=dashed];	hardly_ramified_spreads_out -> hardly_ramified_reducible;}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

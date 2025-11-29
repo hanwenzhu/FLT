@@ -1,3 +1,4 @@
+import Architect
 import FLT.GaloisRepresentation.HardlyRamified.Defs
 import FLT.Deformations.RepresentationTheory.GaloisRepFamily
 
@@ -18,6 +19,26 @@ variable {p : ℕ} (hpodd : Odd p) [hp : Fact p.Prime]
     {V : Type v} [AddCommGroup V] [Module R V] [Module.Finite R V]
     [Module.Free R V] (hv : Module.rank R V = 2) {ρ : GaloisRep ℚ R V}
 
+@[blueprint
+  "hardly_ramified_spreads_out"
+  (statement := /-- If $\ell\geq3$ is prime, $K$ is a finite extension of $\Q_\ell$
+    with integers $\calO$ and if $\rho:\GQ\to\GL_2(\calO)$ is a hardly ramified representation
+    whose reduction is irreducible,
+    then there exists a number field $M$ and, for each finite place $\mu$ of $M$
+    of characteristic prime to 2, with completion $M_\mu$ having integer ring $R_\mu$,
+    a hardly ramified semisimple representation $\rho_\mu:\GQ\to\GL_2(R_\mu)$ (by which we
+    mean the generic fibre is semisimple), with the following properties:
+    \begin{itemize}
+      \item There is some $\lambda\mid\ell$ of $M$ such that $\rho_\lambda\cong\rho$,
+        the isomorphism happening over some appropriate local field containing a copy
+        of $M_\lambda$ and a copy of~$K$;
+      \item If $\mu_1$ and $\mu_2$ are two finite places of $M$ with odd residue characteristics
+      $m_1$
+        and $m_2$, and if $p\nmid 2m_1m_2$ is prime, then $\rho_{\mu_1}$ and $\rho_{\mu_2}$
+        are both unramified at~$p$ and the characteristic polynomials $\rho_{\mu_1}(\Frob_p)$
+        and $\rho_{\mu_2}(\Frob_p)$ lie in $M[X]$ and are equal.
+    \end{itemize} -/)
+  (proof := /-- Omitted for now {\bf TODO} -/)]
 theorem mem_isCompatible (hρ : IsHardlyRamified hpodd hv ρ) :
     -- Then `ρ` lives in a compatible family of Galois representations
     -- i.e., there's a family σ of 2-dimensional representations of Γ_ℚ

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>First reductions of the problem</title>
+<link rel="next" href="ch_freyreduction.html" title="Reducibility of p-torsion of the Frey curve" />
+<link rel="prev" href="sect0001.html" title="Introduction" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="ch_reductions">2 First reductions of the problem</h1>
+
+<h1 id="a0000000010">2.1 Goal</h1>
+<p>The goal of this chapter is to reduce FLT to a deep theorem of Mazur and a deep theorem of Wiles about a Galois representation. </p>
+<h1 id="a0000000011">2.2 Overview</h1>
+<p> The proof of Fermat’s Last Theorem is by contradiction. We assume that we have a counterexample \(a^n+b^n=c^n\), and manipulate it until it satisfies the axioms of a “Frey package”, a basic concept which we will explain below. From the Frey package we build a Frey curve – an elliptic curve defined over the rationals. We then look at a certain representation of a Galois group coming from this elliptic curve, and finally using two very deep and independent theorems (one due to Mazur, the other due to Wiles) we show that this representation is both reducible and irreducible, the contradiction we seek. </p>
+<h1 id="a0000000012">2.3 Reduction to \(n\geq 5\) and prime</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="FermatLastTheorem.of_odd_primes">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2.1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FermatLastTheorem.of_odd_primes">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000081"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FermatLastTheorem.of_odd_primes" class="lean_decl">FermatLastTheorem.of_odd_primes</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>If there is a counterexample to Fermat’s Last Theorem, then there is a counterexample \(a^p+b^p=c^p\) with \(p\) an odd prime. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000081">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Note: this proof is <a href ="https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#FermatLastTheorem.of_odd_primes">in mathlib already</a>; we run through it for completeness’ sake. </p>
+<p>Say \(a^n + b^n = c^n\) is a counterexample to Fermat’s Last Theorem. Every positive integer is either a power of 2 or has an odd prime factor. If \(n=kp\) has an odd prime factor \(p\) then \((a^k)^p+(b^k)^p=(c^k)^p\) is the counterexample we seek. It remains to deal with the case where \(n\) is a power of 2, so let’s assume this. We have \(3\leq n\) by assumption, so \(n=4k\) must be a multiple of&#160;4, and thus \((a^k)^4=(b^k)^4=(c^k)^4\), giving us a counterexample to Fermat’s Last Theorem for \(n=4\). However an old result of Fermat himself (proved as <a href ="https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html#fermatLastTheoremFour"><span class="tt">fermatLastTheoremFour</span></a> in <span class="tt">mathlib</span>) says that \(x^4+y^4=z^4\) has no solutions in positive integers. </p>
+
+  </div>
+</div>
+<p>Euler proved Fermat’s Last Theorem for \(p=3\); </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="fermatLastTheoremThree">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2.2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#fermatLastTheoremThree">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000082"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/fermatLastTheoremThree" class="lean_decl">fermatLastTheoremThree</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/16">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> There are no solutions in positive integers to \(a^3+b^3=c^3\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000082">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>The proof in mathlib was formalized by a team from the “Lean For the Curious Mathematician” conference held in Luminy in March 2024 (its dependency graph can be visualised <a href ="https://pitmonticone.github.io/FLT3/blueprint/dep_graph_document.html">here</a>). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="FermatLastTheorem.of_p_ge_5">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">2.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FermatLastTheorem.of_p_ge_5">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000083"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FermatLastTheorem.of_p_ge_5" class="lean_decl">FermatLastTheorem.of_p_ge_5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>If there is a counterexample to Fermat’s Last Theorem, then there is a counterexample \(a^p+b^p=c^p\) with \(p\) prime and \(p\geq 5\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000083">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows from the previous two lemmas.</p>
+
+  </div>
+</div>
+<h1 id="a0000000013">2.4 Frey packages</h1>
+<p>For convenience we make the following definition. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="FreyPackage">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">2.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FreyPackage">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyPackage" class="lean_decl">FreyPackage</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>A <em>Frey package</em> \((a,b,c,p)\) is three nonzero pairwise-coprime integers \(a\), \(b\), \(c\), with \(a\equiv 3\pmod4\) and \(b\equiv 0\pmod2\), and a prime \(p\geq 5\), such that \(a^p+b^p=c^p\).</p>
+
+  </div>
+</div>
+<p>Our next reduction is as follows: </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="FreyPackage.of_not_FermatLastTheorem_p_ge_5">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">2.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FreyPackage.of_not_FermatLastTheorem_p_ge_5">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000084"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyPackage.of_not_FermatLastTheorem_p_ge_5" class="lean_decl">FreyPackage.of_not_FermatLastTheorem_p_ge_5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/19">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If Fermat’s Last Theorem is false for \(p \ge 5\) and prime, then there exists a Frey package. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000084">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Suppose we have a counterexample \(a^p+b^p=c^p\) for the given \(p\); we now build a Frey package from this data. </p>
+<p>If the greatest common divisor of \(a,b,c\) is \(d\) then \(a^p+b^p=c^p\) implies \((a/d)^p+(b/d)^p=(c/d)^p\). Dividing through, we can thus assume that no prime divides all of \(a,b,c\). Under this assumption we must have that \(a,b,c\) are pairwise coprime, as if some prime divides two of the integers \(a,b,c\) then by \(a^p+b^p=c^p\) and unique factorization it must divide all three of them. In particular we may assume that not all of \(a,b,c\) are even, and now reducing modulo&#160;2 shows that precisely one of them must be even. </p>
+<p>Next we show that we can find a counterexample with \(b\) even. If \(a\) is the even one then we can just switch \(a\) and \(b\). If \(c\) is the even one then we can replace \(c\) by \(-b\) and \(b\) by \(-c\) (using that \(p\) is odd). </p>
+<p>The last thing to ensure is that \(a\) is 3 mod&#160;4. Because \(b\) is even, we know that \(a\) is odd, so it is either&#160;1 or&#160;3 mod&#160;4. If \(a\) is 3 mod&#160;4 then we are home; if however \(a\) is 1 mod&#160;4 we replace \(a,b,c\) by their negatives and this is the Frey package we seek. </p>
+
+  </div>
+</div>
+<h1 id="twopointfour">2.5 Galois representations and elliptic curves</h1>
+
+<p>To continue, we need some of the theory of elliptic curves over \(\mathbb {Q}\). So let \(f(X)\) denote any monic cubic polynomial with rational coefficients and whose three complex roots are distinct, and let us consider the equation \(E:Y^2=f(X)\), which defines a curve in the \((X,Y)\) plane. This curve (or strictly speaking its projectivisation) is a so-called elliptic curve (or an elliptic curve over \(\mathbb {Q}\) if we want to keep track of the field where the coefficients of \(f(X)\) lie). </p>
+<p>If \(E:Y^2=f(X)\) is an elliptic curve over \(\mathbb {Q}\), and if \(K\) is any characteristic zero field (and hence a \(\mathbb {Q}\)-algebra), then we write \(E(K)\) for the set of solutions to \(y^2=f(x)\) with \(x,y\in K\), together with an additional “point at infinity” corresponding morally to \(x=y=\infty \). It is an extraordinary fact, and not at all obvious, that \(E(K)\) naturally has the structure of an additive abelian group, with the point at infinity being the zero element (the identity). Fortunately this fact is already in <span class="tt">mathlib</span>. This additive group structure has the property that three distinct points \(P,Q,R\in K^2\) which are in \(E(K)\) will sum to zero if and only if they are collinear. </p>
+<p>The group structure behaves well under change of field: if \(E\) is an elliptic curve over \(\mathbb {Q}\) and if \(K\to L\) is a homomorphism of characteristic zero fields then the induced map \(E(K)\to E(L)\) is a group homomorphism. Thus if \(f:K\to L\) is an isomorphism of characteristic zero fields, the induced map \(E(K)\to E(L)\) is an isomorphism of groups, with the inverse isomorphism being the map \(E(L)\to E(K)\) induced by \(f^{-1}\). This construction thus gives us an action of the multiplicative group \(\operatorname{Aut}(K)\) of automorphisms of the field \(K\) on the additive abelian group \(E(K)\), and hence also on the \(n\)-torsion of this group for any positive integer&#160;\(n\). In particular, if \(\overline{\mathbb {Q}}\) denotes an algebraic closure of the rationals (for example, the algebraic numbers in \(\mathbb {C}\)) and if \(\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\) denotes the group of field isomorphisms \(\overline{\mathbb {Q}}\to \overline{\mathbb {Q}}\), then for any elliptic curve \(E\) over \(\mathbb {Q}\) we have an action of \(\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\) on the additive abelian group \(E(\overline{\mathbb {Q}})\), and hence on its \(n\)-torsion subgroup \(E(\overline{\mathbb {Q}})[n]\). </p>
+<p>If furthermore \(n=p\) is prime, then \(E(\overline{\mathbb {Q}})[p]\) is naturally a vector space over the field \(\mathbb {Z}/p\mathbb {Z}\), and thus it inherits the structure of a mod \(p\) representation of \(\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\). This is the <em>mod \(p\) Galois representation</em> attached to the elliptic curve \(E\). It is well-known to be 2-dimensional. We call this representation \(\rho _{E,p}\). </p>
+<p>In the next section we apply this theory to an elliptic curve coming from a counterexample to Fermat’s Last theorem. </p>
+<h1 id="a0000000014">2.6 The Frey curve</h1>
+<p>Recall that a <em>Frey package</em> \((a,b,c,p)\) is simply a prime \(p\geq 5\) and nonzero pairwise-coprime integers \(a,b,c\) satisfying \(a^p+b^p=c^p\) and satisfying the congruences \(a\equiv 3\pmod4\) and \(b\equiv 0\pmod2\). We have shown above that if Fermat’s Last Theorem is false, then a Frey package exists. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="FreyCurve">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">2.6</span>
+    <span class="definition_thmtitle">Frey</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FreyCurve">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_reductions.html#FreyPackage">Definition 2.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyPackage.freyCurve" class="lean_decl">FreyPackage.freyCurve</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/21">Discussion</a>
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>    Given a Frey package \((a,b,c,p)\), the corresponding <em>Frey curve</em> (considered by Frey and, before him, Hellegouarch) is the elliptic curve over \(\mathbb {Q}\) defined by the equation \(Y^2=X(X-a^p)(X+b^p).\) </p>
+
+  </div>
+</div>
+<p>Note that the roots of the cubic \(X(X-a^p)(X+b^p)\) are distinct because \(a,b,c\) are nonzero and \(a^p+b^p=c^p\). </p>
+<p>Given a Frey package \((a,b,c,p)\) with corresponding Frey curve \(E\), the mod \(p\) Galois representation \(\rho _{E,p}\) associated to this package is the 2-dimensional representation of \(\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\) on \(E(\overline{\mathbb {Q}})[p]\) described above. Frey’s observation is that this mod \(p\) Galois representation has some very surprising properties. We will make this remark more explicit in the next chapter. Here we shall show how these properties can be used to finish the job. </p>
+<h1 id="a0000000015">2.7 Reduction to two big theorems.</h1>
+<p>Recall that a representation of a group \(G\) on a vector space \(W\) is said to be <em>irreducible</em> if there are precisely two \(G\)-stable subspaces of \(W\), namely \(0\) and \(W\). The representation is said to be <em>reducible</em> otherwise. </p>
+<p>Now say \((a,b,c,p)\) is a Frey package. Consider the mod \(p\) representation of \(\operatorname{Gal}(\overline{\mathbb {Q}}/\mathbb {Q})\) coming from the \(p\)-torsion in the Frey curve \(Y^2=X(x-a^p)(X+b^p)\) associated to the package. Let’s call this representation \(\rho \), and we say that \(\rho \) is the mod \(p\) representation associated to the Frey package \((a,b,c,p)\). Is it irreducible or not? </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Mazur_Frey">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">2.7</span>
+    <span class="theorem_thmtitle">Mazur</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#Mazur_Frey">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000085"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_reductions.html#FreyCurve">Definition 2.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Mazur_Frey" class="lean_decl">Mazur_Frey</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    If \(\rho \) is the mod \(p\) Galois representation associated to a Frey package \((a,b,c,p)\) then \(\rho \) is irreducible. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000085">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> This follows from a profound and long result of Mazur <span class="cite">
+	[
+	<a href="sect0005.html#mazur-torsion" >7</a>
+	]
+</span> from 1977, namely the fact that the torsion subgroup of an elliptic curve over \(\mathbb {Q}\) can have size at most&#160;16. In fact there is still a little more work which needs to be done to deduce the theorem from Mazur’s result. A pre-1990 reference for the full proof of this claim is Proposition&#160;6 in&#160;§4.1 of&#160;<span class="cite">
+	[
+	<a href="sect0005.html#serreconj" >9</a>
+	]
+</span>. </p>
+
+  </div>
+</div>
+<p>Note that in the first (pre-2029) phase of the FLT project, we will not be working on a formalization of this result, as it was known in the 1980s. We will however be thinking a lot about the next result, which says the exact opposite. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Wiles_Frey">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">2.8</span>
+    <span class="theorem_thmtitle">Wiles,Taylor–Wiles, Ribet,…</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#Wiles_Frey">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000086"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_reductions.html#FreyCurve">Definition 2.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Wiles_Frey" class="lean_decl">Wiles_Frey</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    If \(\rho \) is the mod \(p\) Galois representation associated to a Frey package \((a,b,c,p)\) then \(\rho \) is reducible. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000086">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is the main content of Wiles’ magnum opus. We omit the argument for now, although later on in this project we will have a lot to say about a proof of this. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="FreyPackage.false">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">2.9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FreyPackage.false">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000087"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="ch_reductions.html#Mazur_Frey">Theorem 2.7</a></li>
+          
+          <li><a href="ch_reductions.html#Wiles_Frey">Theorem 2.8</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/FreyPackage.false" class="lean_decl">FreyPackage.false</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>   There is no Frey package. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000087">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows immediately from the previous two theorems&#160;<a href="ch_reductions.html#Mazur_Frey">2.7</a> and&#160;<a href="ch_reductions.html#Wiles_Frey">2.8</a>. </p>
+
+  </div>
+</div>
+<p>We deduce </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="FLT">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">2.10</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="ch_reductions.html#FLT">#</a>
+    
+    <a class="icon proof" href="ch_reductions.html#a0000000088"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Wiles_Taylor_Wiles" class="lean_decl">Wiles_Taylor_Wiles</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  Fermat’s Last Theorem is true. In other words, there are no positive integers \(a,b,c\) and natural \(n\geq 3\) such that \(a^n+b^n=c^n\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000088">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Assume there is a there is a counterexample \(a^n+b^n=c^n\). By Corollary <a href="ch_reductions.html#FermatLastTheorem.of_p_ge_5">2.3</a> we may assume that there is also a counterexample \(a^p+b^p=c^p\) with \(p\geq 5\) and prime. Then there is a Frey package \((a,b,c,p)\) by&#160;<a href="ch_reductions.html#FreyPackage.of_not_FermatLastTheorem_p_ge_5">2.5</a>, contradicting Corollary&#160;<a href="ch_reductions.html#FreyPackage.false">2.9</a>. </p>
+
+  </div>
+</div>
+<p>Because we are (for now at least) assuming Mazur’s theorem, we now need to turn our attention to a proof of theorem&#160;<a href="ch_reductions.html#Wiles_Frey">2.8</a>. We start on this proof in Chapter&#160;<a href="ch_freyreduction.html">3</a>.  </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="ch_freyreduction.html" title="Reducibility of p-torsion of the Frey curve"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>

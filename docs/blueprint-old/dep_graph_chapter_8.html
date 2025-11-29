@@ -1,0 +1,1689 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-blue.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/stylecours.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="a0000000163_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000163" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.29</span></div>
+    <div class="thm_thmcontent"><p>If \(X_v\) and \(Y_v\) are families of topological spaces indexed by \(v\in V\), if \(f_v:X_v\to Y_v\) is a continuous map sending the subset \(C_v\subseteq X_v\) into \(D_v\subseteq Y_v\) then there’s an induced continuous map \(\prod '_v(X_v,C_v)\to \prod '_v(Y_v,D_v)\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#a0000000163">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="a0000000164_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000164" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.30</span></div>
+    <div class="thm_thmcontent"><p>If all the \(f_v\) are homeomorphisms identifying \(C_v\) with \(D_v\) then the induced map on restricted products is also a homeomorphism (proof: apply the previous construction to \(f_v\) and their inverses) </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#a0000000164">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="a0000000165_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000165" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.31</span></div>
+    <div class="thm_thmcontent"><p>In the same setup as definition&#160;<a href="Adele_miniproject.html#RestrictedProduct.relabelIso">8.26</a> (\(V,W\) index sets, \(f:W\to V\), \(C_v\subseteq X_v\) and \(D_w\subseteq Y_w\), bijections \(b_v:X_v\to \prod _{w:f(w)=v}Y_w\) identifying \(C_v\) with \(\prod _{w:f(w)=v}D_w\)), if all the \(X_v\) and \(Y_w\) are furthermore topological spaces, all the \(C_v\) and \(D_w\) are open, and all the \(b_v\) are homeomorphisms, then the induced map \(\prod '_v(X_v,C_v)\to \prod '_w(Y_w,D_w)\) is also a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#a0000000165">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="a0000000167_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000167" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.32</span></div>
+    <div class="thm_thmcontent"><p>\(\mathbb {\mathbb {A}_L^\infty }\) is homeomorphic to \(\prod _v(B\otimes _AK_v,B\otimes _AA_v)\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#a0000000167">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="a0000000173_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="a0000000173" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.33</span></div>
+    <div class="thm_thmcontent"><p>If \(X_v\) and \(Y_v\) are topological spaces with open subspaces \(C_v\) and \(D_v\), then the obvious bijection \(\prod '_v(X_v \times Y_v,C_v\times D_v) \cong \left(\prod '_v(X_v,C_v)\right)\times \left(\prod '_v(Y_v,D_v)\right)\) is a homeomorphism, where the restricted products have the restricted product topology and the binary product has the product topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#a0000000173">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.AKLB.finitePresentation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.AKLB.finitePresentation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.22</span></div>
+    <div class="thm_thmcontent"><p>\(B\) is a finitely-presented \(A\)-module.  </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.AKLB.finitePresentation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.AKLB.surjective_tensorProduct_map_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.AKLB.surjective_tensorProduct_map" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.19</span></div>
+    <div class="thm_thmcontent"><p>  The \(A\)-bilinear map \(B\times K\to L\) sending \((b,k)\) to \(bk\) is surjective. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.AKLB.surjective_tensorProduct_map">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.AKLB.tensorProduct_module_algEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.AKLB.tensorProduct_module_algEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.21</span></div>
+    <div class="thm_thmcontent"><p>  If \(M\) is any \(K\)-module then the canonical map \(B\otimes _A M\to L\otimes _K M\) is an isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.AKLB.tensorProduct_module_algEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.linearEquivTensorProductModule">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.dvd_norm_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.dvd_norm" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.17</span></div>
+    <div class="thm_thmcontent"><p> If \(0\not=b\in B\) then there exists \(0\not=a\in A\) such that \(b\) divides the image of \(a\) in \(B\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.dvd_norm">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.15</span></div>
+    <div class="thm_thmcontent"><p>    This natural map \(L\otimes _K\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) is an isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/243">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.16</span></div>
+    <div class="thm_thmcontent"><p>   The induced \(L\)-algebra morphism \(L\otimes _K\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) is a topological isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.28</span></div>
+    <div class="thm_thmcontent"><p>  The natural map \(B\otimes _A\mathbb {A}_K^\infty \to \mathbb {A}_L^\infty \) is a \(B\)-algebra isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.25</span></div>
+    <div class="thm_thmcontent"><p>  The natural map \(B\otimes _A\mathbb {A}_K^\infty \to R\) is a \(B\)-algebra isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.27</span></div>
+    <div class="thm_thmcontent"><p>  The ring \(R\) introduced above (the restricted product of the \(B\otimes _A K_v\) with respect to the \(B\otimes _A A_v\)) is isomorphic to \(\mathbb {A}_L\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.mapSemialgHom_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.mapSemialgHom" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.14</span></div>
+    <div class="thm_thmcontent"><p>   There’s a natural ring homomorphism \(\mathbb {A}_{A,K}^\infty \to \mathbb {A}_{B,L}^\infty \) lying over \(K\to L\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.mapSemialgHom">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.mapSemialgHom">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.20</span></div>
+    <div class="thm_thmcontent"><p>  The natural map \(B\otimes _AK\to L\) is a \(B\)-algebra isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.7</span></div>
+    <div class="thm_thmcontent"><p>    Giving \(L_w\) the \(K_v\)-algebra structure coming from the natural map \(K_v\to L_w\), the \(w\)-adic topology on \(L_w\) is the \(K_v\)-module topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/326">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.10</span></div>
+    <div class="thm_thmcontent"><p>   The induced \(L\)-algebra homomorphism \(L\otimes _KK_v\to \prod _{w|v}L_w\) is an isomorphism of rings. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.13</span></div>
+    <div class="thm_thmcontent"><p>   The isomorphism \(L\otimes _KK_v\to \prod _{w|v}L_w\) induces an isomorphism \(B\otimes _AA_v\to \prod _{w|v}B_w\) for all \(v\) in the height one spectrum of \(A\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.12</span></div>
+    <div class="thm_thmcontent"><p>   If we give \(L\otimes _KK_v\) the \(K_v\)-module topology then the \(L\)-algebra isomorphism \(L\otimes _K K_v\cong \prod _{w|v}L_w\) is also a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.4</span></div>
+    <div class="thm_thmcontent"><p>   There’s a natural ring map \(K_v\to L_w\) extending the map \(K\to L\). It is defined by completing the inclusion \(K\to L\) at the finite places \(v\) and \(w\) (which can be done because the previous lemma shows that the map is uniformly continuous for the \(v\)-adic and \(w\)-adic topologies). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.9</span></div>
+    <div class="thm_thmcontent"><p>   The product of the maps \(K_v\to L_w\) for \(w|v\) is a natural ring map \(K_v\to \prod _{w|v}L_w\) lying over \(K\to L\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.6</span></div>
+    <div class="thm_thmcontent"><p>   The map \(i_v:K_v\to L_w\) sends the integer ring \(A_v\) into \(B_w\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.Extension.finite_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.Extension.finite" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.8</span></div>
+    <div class="thm_thmcontent"><p>  There are only finitely many primes \(w\) of \(B\) lying above \(v\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.Extension.finite">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.Extension.finite">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.11</span></div>
+    <div class="thm_thmcontent"><p>   For \(v\) fixed, the product topology on \(\prod _{w|v}L_w\) is the \(K_v\)-module topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.valuation_comap_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.valuation_comap" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.3</span></div>
+    <div class="thm_thmcontent"><p>  If \(i:K\to L\) denotes the inclusion then for \(k\in K\) we have \(e\times w(i(k))=v(k)\), where \(e\) is the ramification index of \(w/v\) (recall that valuations here are written additively, unlike in mathlib). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valuation_comap">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.valuation_comap">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">8.5</span></div>
+    <div class="thm_thmcontent"><p>   If \(i_v:K_v\to L_w\) denotes the map of the previous definition then for \(x\in K_v\) we have \(e\times w(i(k))=v(k)\), where \(e\) is the ramification index of \(w/v\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="IsDedekindDomain.pi_tensorProduct_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="IsDedekindDomain.pi_tensorProduct" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">8.24</span></div>
+    <div class="thm_thmcontent"><p>  If \(S\) is a finite set of nonzero primes of \(A\) then the natural map \(B\otimes ((\prod _{v\in S}K_v)\times (\prod _{v\notin S}A_v))\to (\prod _{v\in S}(B\otimes _AK_v))\times (\prod _{v\notin S}(B\otimes _AA_v))\) is an isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#IsDedekindDomain.pi_tensorProduct">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.baseChange_moduleTopology_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.baseChange_moduleTopology" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.48</span></div>
+    <div class="thm_thmcontent"><p>   If \(K\to L\) is a ring homomorphism between two number fields then the topology on \(\mathbb {A}_L\) is the \(\mathbb {A}_K\)-module topology, where the module structure comes from the natural map \(\mathbb {A}_K\to \mathbb {A}_L\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.baseChange_moduleTopology">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.instBaseChangeIsModuleTopology">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.baseChangeEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.baseChangeEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.47</span></div>
+    <div class="thm_thmcontent"><p>   If \(K\to L\) is a ring homomorphism between two number fields then there is a natural isomorphism (both topological and algebraic) \(L\otimes _K\mathbb {A}_K\cong \mathbb {A}_L\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.baseChangeEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.baseChangeEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.cocompact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.cocompact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.53</span></div>
+    <div class="thm_thmcontent"><p>   The quotient \(\mathbb {A}_K/K\) is compact. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.cocompact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.cocompact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.discrete_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.discrete" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.51</span></div>
+    <div class="thm_thmcontent"><p>   The additive subgroup \(K\) of \(\mathbb {A}_K\) is discrete. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.discrete">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.discrete">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.locallyCompactSpace_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.locallyCompactSpace" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.2</span></div>
+    <div class="thm_thmcontent"><p>    The adeles of a number field are locally compact. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.locallyCompactSpace">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.locallyCompactSpace">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/253">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.AdeleRing.zero_discrete_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.AdeleRing.zero_discrete" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.50</span></div>
+    <div class="thm_thmcontent"><p>   There’s an open subset of \(\mathbb {A}_{K}\) whose intersection with \(K\) is \(\{ 0\} \). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.AdeleRing.zero_discrete">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.zero_discrete">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfiniteAdeleRing.baseChangeEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfiniteAdeleRing.baseChangeEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.46</span></div>
+    <div class="thm_thmcontent"><p>   If \(K\to L\) is a ring homomorphism between two number fields then there is a natural isomorphism (both topological and algebraic) \(L\otimes _KK_\infty \cong L_\infty \). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquiv">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.baseChangeEquiv" class="lean_decl">NumberField.InfiniteAdeleRing.baseChangeEquiv</a></li>
+        
+           <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" class="lean_decl">NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfiniteAdeleRing.baseChangeEquivAux_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfiniteAdeleRing.baseChangeEquivAux" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.45</span></div>
+    <div class="thm_thmcontent"><p>   There is a natural \(L\)-algebra isomorphism \(L \otimes _K K_{\infty } \cong _L L_{\infty }\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.baseChangeEquivAux">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.baseChangeEquivAux">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.44</span></div>
+    <div class="thm_thmcontent"><p>   \(L_{\infty }\) has the \(K_{\infty }\)-module topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfiniteAdeleRing.piEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfiniteAdeleRing.piEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.43</span></div>
+    <div class="thm_thmcontent"><p>   There is a natural \(K_{\infty }\)-linear homeomorphism \(K_{\infty }^{[L:K]} \cong _{K_{\infty }} L_{\infty }\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfiniteAdeleRing.piEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfiniteAdeleRing.piEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.baseChange_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.baseChange" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.37</span></div>
+    <div class="thm_thmcontent"><p>   Let \(v\) be an infinite place of \(K\). There is a natural \(L\)-algebra homomorphism \(L\otimes _K K_v \to \prod _{w\mid v}L_w\), whose restriction to \(1\otimes _K K_v\) corresponds to the map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">8.36</a>. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.baseChange_injective_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.baseChange_injective" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.39</span></div>
+    <div class="thm_thmcontent"><p>   For a fixed infinite place \(v\) of \(K\), the map \(L\otimes _K K_v \to \prod _{w\mid v}L_w\) is injective. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_injective">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange_injective">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.baseChange_surjective_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.baseChange_surjective" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.38</span></div>
+    <div class="thm_thmcontent"><p>   For a fixed infinite place \(v\) of \(K\), the map \(L\otimes _K K_v \to \prod _{w\mid v}L_w\) is surjective. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChange_surjective">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChange_surjective">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.baseChangeEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.baseChangeEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.41</span></div>
+    <div class="thm_thmcontent"><p>   Let \(v\) be an infinite place of \(K\). There is a natural \(L\)-algebra homeomorphism \(L\otimes _K K_v \cong _L \prod _{w\mid v}L_w\), whose restriction to \(1\otimes _K K_v\) corresponds to the map in&#160;<a href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">8.36</a>. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.baseChangeEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.baseChangeEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.34</span></div>
+    <div class="thm_thmcontent"><p>  Let \(S\) be a set of infinite places of \(K\). The image of \(K\) under the embedding \(K\hookrightarrow (K_v)_{v\in S}; k \mapsto (k)_v\) is dense in the product topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.35</span></div>
+    <div class="thm_thmcontent"><p>  For a fixed infinite place \(v\) of \(K\), we have \(\text{dim}_{K_v} \prod _{w\mid v} L_w = \text{dim}_{K_v} L\otimes _K K_v\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.40</span></div>
+    <div class="thm_thmcontent"><p>  If \(w \mid v\) is an infinite place of \(L\) lying above the infinite place \(v\) of \(K\), then \(L_w\) has the \(K_v\)-module topology. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.piEquiv_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.piEquiv" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.42</span></div>
+    <div class="thm_thmcontent"><p>   Let \(v\) be an infinite place of \(K\). There is a natural \(K_v\)-linear homeomorphism \(K_v^{[L:K]} \cong _{K_v} \prod _{w\mid v}L_w\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piEquiv">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.piEquiv">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.InfinitePlace.Completion.piExtension_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.InfinitePlace.Completion.piExtension" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.36</span></div>
+    <div class="thm_thmcontent"><p>  Let \(v\) be an infinite place of \(K\). There is a continuous \(K\)-algebra homomorphism \(K_v \to \prod _{w\mid v}L_w\), whose restriction to \(K\) corresponds to the global embedding of \(K\) into \((L_w)_w\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.InfinitePlace.Completion.piExtension">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.InfinitePlace.Completion.piExtension">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.instCompactSpaceAdicCompletionIntegers_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.instCompactSpaceAdicCompletionIntegers" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.1</span></div>
+    <div class="thm_thmcontent"><p>   If \(K\) is a number field and \(v\) is a nonzero prime ideal of the integers of \(K\), then the integers of \(K_v\) is a compact open subgroup. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#NumberField.instCompactSpaceAdicCompletionIntegers">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.instCompactSpaceAdicCompletionIntegers">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/451">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="pi_tensorProduct_of_finitePresentation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="pi_tensorProduct_of_finitePresentation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.23</span></div>
+    <div class="thm_thmcontent"><p> If \(R\) is a commutative ring, if \(M\) is a finitely presented \(R\)-module and if \(N_i\) are a collection of \(R\)-modules, then the canonical map \(M\otimes _R\prod _i N_i\to \prod _i(M\otimes _R N_i)\) is an isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#pi_tensorProduct_of_finitePresentation">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Rat.AdeleRing.cocompact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Rat.AdeleRing.cocompact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.52</span></div>
+    <div class="thm_thmcontent"><p>  The quotient \(\mathbb {A}_{\mathbb {Q}}/\mathbb {Q}\) is compact. </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#Rat.AdeleRing.cocompact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Rat.AdeleRing.cocompact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Rat.AdeleRing.zero_discrete_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Rat.AdeleRing.zero_discrete" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8.49</span></div>
+    <div class="thm_thmcontent"><p>  There’s an open subset of \(\mathbb {A}_{\mathbb {Q}}\) whose intersection with \(\mathbb {Q}\) is \(\{ 0\} \). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#Rat.AdeleRing.zero_discrete">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Rat.AdeleRing.zero_discrete">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="RestrictedProduct.relabelIso_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="RestrictedProduct.relabelIso" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">8.26</span></div>
+    <div class="thm_thmcontent"><p> Let \(V\) and \(W\) be index sets, and let \(f:W\to V\) be a map with finite fibres. Let \(X_v\) be sets, with subsets \(C_v\), let \(Y_w\) be sets with subsets \(D_w\), and say for all \(v\in V\) we’re given a bijection \(X_v\to \prod _{w|f(w)=v}Y_w\), identifying \(C_v\) with \(\prod _{w:f(w)=v}D_w\). Then there’s an induced bijection between the restricted products \(\prod '_v(X_v,C_v)\) and \(\prod '_w(Y_w,D_w)\). </p>
+</div>
+
+    <a class="latex_link" href="Adele_miniproject.html#RestrictedProduct.relabelIso">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"	[color=green,		fillcolor="#B0ECA3",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom",		shape=box,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"	[color=green,		fillcolor="#1CAC78",		label="IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" -> "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"	[color=green,		fillcolor="#B0ECA3",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'",		shape=box,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"	[color=green,		fillcolor="#A3D6FF",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"	[color=green,		fillcolor="#1CAC78",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"	[color=green,		fillcolor="#A3D6FF",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"	[color=green,		fillcolor="#9CEC8B",		label="IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology" -> "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.mapSemialgHom"	[color=green,		fillcolor="#B0ECA3",		label="IsDedekindDomain.FiniteAdeleRing.mapSemialgHom",		shape=box,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers" -> "IsDedekindDomain.FiniteAdeleRing.mapSemialgHom"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"	[color=green,		fillcolor="#9CEC8B",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv"	[color=blue,		fillcolor="#A3D6FF",		label="IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv"	[style=dashed];	"NumberField.InfinitePlace.Completion.piExtension"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.InfinitePlace.Completion.piExtension",		shape=box,		style=filled];	"NumberField.InfinitePlace.Completion.baseChange"	[color=green,		fillcolor="#B0ECA3",		label="NumberField.InfinitePlace.Completion.baseChange",		shape=box,		style=filled];	"NumberField.InfinitePlace.Completion.piExtension" -> "NumberField.InfinitePlace.Completion.baseChange"	[style=dashed];	"NumberField.InfinitePlace.Completion.baseChangeEquiv"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfinitePlace.Completion.baseChangeEquiv",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.baseChange" -> "NumberField.InfinitePlace.Completion.baseChangeEquiv"	[style=dashed];	"NumberField.InfinitePlace.Completion.piEquiv"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfinitePlace.Completion.piEquiv",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.baseChangeEquiv" -> "NumberField.InfinitePlace.Completion.piEquiv"	[style=dashed];	"NumberField.InfiniteAdeleRing.baseChangeEquivAux"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfiniteAdeleRing.baseChangeEquivAux",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.baseChangeEquiv" -> "NumberField.InfiniteAdeleRing.baseChangeEquivAux"	[style=dashed];	a0000000165	[color=blue,		fillcolor="#A3D6FF",		label=a0000000165,		shape=ellipse,		style=filled];	"NumberField.InfiniteAdeleRing.piEquiv"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfiniteAdeleRing.piEquiv",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.piEquiv" -> "NumberField.InfiniteAdeleRing.piEquiv"	[style=dashed];	"NumberField.InfiniteAdeleRing.baseChangeEquiv"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfiniteAdeleRing.baseChangeEquiv",		shape=ellipse,		style=filled];	"NumberField.InfiniteAdeleRing.baseChangeEquivAux" -> "NumberField.InfiniteAdeleRing.baseChangeEquiv"	[style=dashed];	"NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT",		shape=ellipse,		style=filled];	"NumberField.InfiniteAdeleRing.piEquiv" -> "NumberField.InfiniteAdeleRing.instIsModuleTopology_fLT"	[style=dashed];	"NumberField.AdeleRing.baseChangeEquiv"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.baseChangeEquiv",		shape=ellipse,		style=filled];	"NumberField.InfiniteAdeleRing.baseChangeEquiv" -> "NumberField.AdeleRing.baseChangeEquiv"	[style=dashed];	"NumberField.AdeleRing.baseChange_moduleTopology"	[color=green,		fillcolor="#9CEC8B",		label="NumberField.AdeleRing.baseChange_moduleTopology",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.baseChangeEquiv" -> "NumberField.AdeleRing.baseChange_moduleTopology"	[style=dashed];	"NumberField.AdeleRing.zero_discrete"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.zero_discrete",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.baseChangeEquiv" -> "NumberField.AdeleRing.zero_discrete"	[style=dashed];	"NumberField.AdeleRing.cocompact"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.cocompact",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.baseChangeEquiv" -> "NumberField.AdeleRing.cocompact"	[style=dashed];	"NumberField.AdeleRing.discrete"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.discrete",		shape=ellipse,		style=filled];	"NumberField.AdeleRing.zero_discrete" -> "NumberField.AdeleRing.discrete"	[style=dashed];	"IsDedekindDomain.dvd_norm"	[color=blue,		label="IsDedekindDomain.dvd_norm",		shape=ellipse];	"IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv"	[label="IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv",		shape=ellipse];	"IsDedekindDomain.dvd_norm" -> "IsDedekindDomain.FiniteAdeleRing.tensorProduct_algEquiv"	[style=dashed];	"IsDedekindDomain.AKLB.surjective_tensorProduct_map"	[label="IsDedekindDomain.AKLB.surjective_tensorProduct_map",		shape=ellipse];	"IsDedekindDomain.dvd_norm" -> "IsDedekindDomain.AKLB.surjective_tensorProduct_map"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv"	[color=green,		label="IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv",		shape=ellipse];	"NumberField.InfinitePlace.Completion.baseChange_injective"	[color=green,		label="NumberField.InfinitePlace.Completion.baseChange_injective",		shape=ellipse];	"NumberField.InfinitePlace.Completion.baseChange_injective" -> "NumberField.InfinitePlace.Completion.baseChangeEquiv"	[style=dashed];	"IsDedekindDomain.AKLB.tensorProduct_module_algEquiv"	[color=green,		fillcolor="#1CAC78",		label="IsDedekindDomain.AKLB.tensorProduct_module_algEquiv",		shape=ellipse,		style=filled];	"IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"	[color=green,		label="IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv",		shape=ellipse];	"IsDedekindDomain.AKLB.tensorProduct_module_algEquiv" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv" -> "NumberField.AdeleRing.baseChangeEquiv"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1"	[label="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1",		shape=ellipse];	"IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"	[label="IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv",		shape=ellipse];	"IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"	[style=dashed];	a0000000163	[color=blue,		fillcolor="#A3D6FF",		label=a0000000163,		shape=box,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.Extension.finite"	[color=green,		fillcolor="#1CAC78",		label="IsDedekindDomain.HeightOneSpectrum.Extension.finite",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.Extension.finite" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeContinuousAlgEquiv"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeAlgEquiv"	[style=dashed];	"NumberField.InfinitePlace.Completion.baseChange_surjective"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfinitePlace.Completion.baseChange_surjective",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.baseChange_surjective" -> "NumberField.InfinitePlace.Completion.baseChangeEquiv"	[style=dashed];	"IsDedekindDomain.HeightOneSpectrum.valuation_comap"	[color=green,		fillcolor="#1CAC78",		label="IsDedekindDomain.HeightOneSpectrum.valuation_comap",		shape=ellipse,		style=filled];	"IsDedekindDomain.HeightOneSpectrum.valuation_comap" -> "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"	[style=dashed];	"NumberField.instCompactSpaceAdicCompletionIntegers"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.instCompactSpaceAdicCompletionIntegers",		shape=ellipse,		style=filled];	"RestrictedProduct.relabelIso"	[color=blue,		fillcolor="#A3D6FF",		label="RestrictedProduct.relabelIso",		shape=box,		style=filled];	"IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2"	[label="IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2",		shape=ellipse];	"RestrictedProduct.relabelIso" -> "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2"	[style=dashed];	"IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux2" -> "IsDedekindDomain.FiniteAdeleRing.baseChangeIntegralAlgEquiv"	[style=dashed];	a0000000173	[color=blue,		fillcolor="#A3D6FF",		label=a0000000173,		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.instIsModuleTopologyValEqComapAlgebraMap_fLT" -> "NumberField.InfinitePlace.Completion.baseChangeEquiv"	[style=dashed];	"IsDedekindDomain.pi_tensorProduct"	[label="IsDedekindDomain.pi_tensorProduct",		shape=ellipse];	"IsDedekindDomain.pi_tensorProduct" -> "IsDedekindDomain.FiniteAdeleRing.IntegraltensorProductAlgEquiv_aux1"	[style=dashed];	a0000000164	[color=blue,		fillcolor="#A3D6FF",		label=a0000000164,		shape=box,		style=filled];	"NumberField.AdeleRing.locallyCompactSpace"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.AdeleRing.locallyCompactSpace",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi"	[color=green,		fillcolor="#A3D6FF",		label="NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi",		shape=ellipse,		style=filled];	"NumberField.InfinitePlace.Completion.denseRange_algebraMap_subtype_pi" -> "NumberField.InfinitePlace.Completion.baseChange_surjective"	[style=dashed];	"Rat.AdeleRing.zero_discrete"	[color=green,		fillcolor="#A3D6FF",		label="Rat.AdeleRing.zero_discrete",		shape=ellipse,		style=filled];	"Rat.AdeleRing.zero_discrete" -> "NumberField.AdeleRing.zero_discrete"	[style=dashed];	"IsDedekindDomain.AKLB.finitePresentation"	[color=blue,		fillcolor="#A3D6FF",		label="IsDedekindDomain.AKLB.finitePresentation",		shape=ellipse,		style=filled];	"IsDedekindDomain.AKLB.finitePresentation" -> "IsDedekindDomain.pi_tensorProduct"	[style=dashed];	pi_tensorProduct_of_finitePresentation	[color=blue,		fillcolor="#A3D6FF",		label=pi_tensorProduct_of_finitePresentation,		shape=ellipse,		style=filled];	pi_tensorProduct_of_finitePresentation -> "IsDedekindDomain.pi_tensorProduct"	[style=dashed];	"NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct"	[color=blue,		label="NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct",		shape=ellipse];	"NumberField.InfinitePlace.Completion.finrank_pi_eq_finrank_tensorProduct" -> "NumberField.InfinitePlace.Completion.baseChange_injective"	[style=dashed];	"Rat.AdeleRing.cocompact"	[color=green,		fillcolor="#A3D6FF",		label="Rat.AdeleRing.cocompact",		shape=ellipse,		style=filled];	"Rat.AdeleRing.cocompact" -> "NumberField.AdeleRing.cocompact"	[style=dashed];	a0000000167	[color=blue,		fillcolor="#A3D6FF",		label=a0000000167,		shape=ellipse,		style=filled];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

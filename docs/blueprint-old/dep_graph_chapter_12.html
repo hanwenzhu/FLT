@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-blue.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/stylecours.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="AbstractHeckeOperator.comm_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="AbstractHeckeOperator.comm" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.3</span></div>
+    <div class="thm_thmcontent"><p>   Say \(g,h\in G\) and we have \(UgU=\coprod _i g_iU\) and \(UhU=\coprod _j h_j\) and we have \(g_ih_j=h_jg_i\) for all \(i,j\). Then \([UgU][UhU]=[UhU][UgU]\), that is, the Hecke operators acting on \(A^U\) commute. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#AbstractHeckeOperator.comm">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/AbstractHeckeOperator.comm">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="AbstractHeckeOperator.HeckeOperator_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="AbstractHeckeOperator.HeckeOperator" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.2</span></div>
+    <div class="thm_thmcontent"><p>   This function is well-defined (that is, independent of the choice of \(g_i\)), has image in \(A^U\) and is \(R\)-linear. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#AbstractHeckeOperator.HeckeOperator">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/AbstractHeckeOperator.HeckeOperator">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="AbstractHeckeOperator.HeckeOperator_toFun_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="AbstractHeckeOperator.HeckeOperator_toFun" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">12.1</span></div>
+    <div class="thm_thmcontent"><p>  Assuming \(UgV\) is a finite union of cosets \(g_iV\), we define \([UgV]:A^V\to A^U\) to be the map sending \(a\in A^V\) to \(\sum _i g_ia.\) </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#AbstractHeckeOperator.HeckeOperator_toFun">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/AbstractHeckeOperator.HeckeOperator_toFun">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="bijOn_unipotent_mul_diagU1_U1diagU1_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="bijOn_unipotent_mul_diagU1_U1diagU1" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.21</span></div>
+    <div class="thm_thmcontent"><p>  The double coset space \(UgU\) is the disjoint union of \(g_tU\) as \(t\) ranges through \(\mathcal{O}_v/\alpha \mathcal{O}_v\) and \(g_t:=\begin{pmatrix} \alpha 
+
+& \tilde{t}
+
+\\ 0
+
+& 1
+
+\end{pmatrix}\), where \(\tilde{t}\) is any lift of \(t\) to \(\mathcal{O}_v\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#bijOn_unipotent_mul_diagU1_U1diagU1">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/TotallyDefiniteQuaternionAlgebra.WeightTwoAutomorphicForm.HeckeOperator.Local.bijOn_unipotent_mul_diagU1_U1diagU1">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="ContinuousMulEquiv.piUnits_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="ContinuousMulEquiv.piUnits" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.13</span></div>
+    <div class="thm_thmcontent"><p>   If \(U_i\) are topological monoids then the canonical group isomorphism \((\prod _i U_i)^\times =\prod _i(U_i^\times )\) is a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#ContinuousMulEquiv.piUnits">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ContinuousMulEquiv.piUnits">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/581">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="ContinuousMulEquiv.restrictedProductUnits_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="ContinuousMulEquiv.restrictedProductUnits" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">12.14</span></div>
+    <div class="thm_thmcontent"><p>   If \(M_i\) are a family of topological monoids equipped with open submonoids \(U_i\), then the canonical map \((\prod '_iM_i)^\times \to \prod '_i(M_i^\times )\) is a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#ContinuousMulEquiv.restrictedProductUnits">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/ContinuousMulEquiv.restrictedProductUnits">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/582">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="GL2.restrictedProduct_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="GL2.restrictedProduct" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">12.22</span></div>
+    <div class="thm_thmcontent"><p>  \(G\) is isomorphic and homeomorphic to the restricted product of \(GL_2(K_v)\) with respect to the compact open subgroups \(GL_2(\mathcal{O}_v)\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#GL2.restrictedProduct">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.FiniteAdeleRing.GL2.restrictedProduct">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Homeomorph.restrictedProductMatrix_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Homeomorph.restrictedProductMatrix" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">12.8</span></div>
+    <div class="thm_thmcontent"><p>   If \(X_i\) are topological spaces and the \(Y_i\) are open subspaces, then the obvious map \(M_n(\prod '_iX_i)=\prod '_iM_n(X_i)\) is a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#Homeomorph.restrictedProductMatrix">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Homeomorph.restrictedProductMatrix">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/571">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Homeomorph.restrictedProductPi_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Homeomorph.restrictedProductPi" style="display: none">
+    <div class="thm_thmheading">
+      <span class="corollary_thmcaption">
+      Corollary
+      </span>
+      <span class="corollary_thmlabel">12.7</span></div>
+    <div class="thm_thmcontent"><p>   Restricted products (with respect to open subspaces) commute with finite products. In other words, if \(j\) runs through a finite set \(J\) and \(i\) runs through an arbitrary set \(I\), and if \(X_{ji}\) are topological spaces equipped with open subspaces \(Y_{ji}\), then the obvious bijection \(\prod '_i(\prod _j X_{ji})=\prod _j\left(\prod '_i X_{ji}\right)\) is a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#Homeomorph.restrictedProductPi">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Homeomorph.restrictedProductPi">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/570">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Homeomorph.restrictedProductProd_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Homeomorph.restrictedProductProd" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.5</span></div>
+    <div class="thm_thmcontent"><p>   If \(A_i\) is a family of topological spaces equipped with open subsets \(B_i\), and if \(C_i\) is a family of topological spaces equipped with open subsets \(D_i\), and if we equip \(A_i\times C_i\) with the open subset \(B_i\times D_i\), then the natural bijection \(\prod '_i(A_i\times C_i)=\left(\prod '_iA_i\right)\times \left(\prod '_iB_i\right)\) is a homeomorphism. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#Homeomorph.restrictedProductProd">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Homeomorph.restrictedProductProd">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/568">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="M2.localFullLevel.isCompact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="M2.localFullLevel.isCompact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.18</span></div>
+    <div class="thm_thmcontent"><p>\(M_2(\mathcal{O}_v)\) is a compact subring of \(M_2(K_v)\).   </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#M2.localFullLevel.isCompact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.M2.localFullLevel.isCompact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="M2.localFullLevel.isOpen_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="M2.localFullLevel.isOpen" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.17</span></div>
+    <div class="thm_thmcontent"><p>\(M_2(\mathcal{O}_v)\) is an open subring of \(M_2(K_v)\).   </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#M2.localFullLevel.isOpen">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsDedekindDomain.M2.localFullLevel.isOpen">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="nolean-compactopen-GL2_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="nolean-compactopen-GL2" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.19</span></div>
+    <div class="thm_thmcontent"><p>\(GL_2(\mathcal{O}_v)\) is a compact open subgroup of \(GL_2(K_v)\).  </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#nolean-compactopen-GL2">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="nolean-compactopen-U1p_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="nolean-compactopen-U1p" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.20</span></div>
+    <div class="thm_thmcontent"><p> \(U_v\) is a compact open subgroup of \(GL_2(K_v)\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#nolean-compactopen-U1p">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="nolean-hecke-algebra-commutative-noetherian_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="nolean-hecke-algebra-commutative-noetherian" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">12.23</span></div>
+    <div class="thm_thmcontent"><p> Say&#160;\(R\) is a Noetherian ring. Then the subalgebra of the \(R\)-linear endomorphisms of \(A^U\) generated by the Hecke operators \(T_v\) for \(v\notin S\) and \(U_{v,\alpha }\) for \(v\in S\) is a Noetherian commutative ring. </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#nolean-hecke-algebra-commutative-noetherian">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="nolean-product-of-U-alpha_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="nolean-product-of-U-alpha" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.24</span></div>
+    <div class="thm_thmcontent"><p> If \(v\in S\) and \(\begin{pmatrix} 1
+
+& *
+
+\\ 0
+
+& 1
+
+\end{pmatrix}\subseteq \Gamma _v\subseteq \begin{pmatrix} *
+
+& *
+
+\\ 0
+
+& *
+
+\end{pmatrix}\) then \(U_{\alpha ,v}U_{\beta ,v}=U_{\alpha \beta ,v}\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#nolean-product-of-U-alpha">LaTeX</a>
+    
+    
+  
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.instCompactSpaceAdicCompletionIntegers_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.instCompactSpaceAdicCompletionIntegers" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.16</span></div>
+    <div class="thm_thmcontent"><p>  \(\mathcal{O}_v\) is a compact subring of \(K_v\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#NumberField.instCompactSpaceAdicCompletionIntegers">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.instCompactSpaceAdicCompletionIntegers">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="NumberField.isOpenAdicCompletionIntegers_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="NumberField.isOpenAdicCompletionIntegers" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.15</span></div>
+    <div class="thm_thmcontent"><p>  \(\mathcal{O}_v\) is an open subring of \(K_v\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#NumberField.isOpenAdicCompletionIntegers">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.isOpenAdicCompletionIntegers">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="QuotientGroup.mk_image_finite_of_compact_of_open_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="QuotientGroup.mk_image_finite_of_compact_of_open" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.4</span></div>
+    <div class="thm_thmcontent"><p>   If \(U\) and \(V\) are compact subgroups of a topological group&#160;\(G\), if \(V\) is also open, and if \(g\in G\), then the double coset space \(UgV\) is a finite union of left cosets \(g_iV\). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#QuotientGroup.mk_image_finite_of_compact_of_open">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/QuotientGroup.mk_image_finite_of_compact_of_open">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/563">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Submonoid.units_isCompact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Submonoid.units_isCompact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.11</span></div>
+    <div class="thm_thmcontent"><p>   If \(M\) is a Hausdorff topological monoid and \(U\) is a compact submonoid, then the units \(U^\times \) of \(U\) are naturally a compact subgroup of \(M^\times \). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#Submonoid.units_isCompact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Submonoid.units_isCompact">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/588">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="Submonoid.units_isOpen_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="Submonoid.units_isOpen" style="display: none">
+    <div class="thm_thmheading">
+      <span class="lemma_thmcaption">
+      Lemma
+      </span>
+      <span class="lemma_thmlabel">12.9</span></div>
+    <div class="thm_thmcontent"><p>   If \(M\) is a topological monoid and \(U\) is an open submonoid, then the units \(U^\times \) of \(U\) are naturally an open subgroup of \(M^\times \). </p>
+</div>
+
+    <a class="latex_link" href="HeckeOperator_project.html#Submonoid.units_isOpen">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Submonoid.units_isOpen">Lean</a>
+    
+    
+  <a class="issue_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/587">Discussion</a>
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"nolean-product-of-U-alpha"	[color=blue,		fillcolor="#A3D6FF",		label="nolean-product-of-U-alpha",		shape=ellipse,		style=filled];	"nolean-hecke-algebra-commutative-noetherian"	[color=blue,		label="nolean-hecke-algebra-commutative-noetherian",		shape=ellipse];	"Homeomorph.restrictedProductPi"	[color=green,		fillcolor="#1CAC78",		label="Homeomorph.restrictedProductPi",		shape=ellipse,		style=filled];	"Homeomorph.restrictedProductMatrix"	[color=green,		fillcolor="#1CAC78",		label="Homeomorph.restrictedProductMatrix",		shape=ellipse,		style=filled];	"Homeomorph.restrictedProductPi" -> "Homeomorph.restrictedProductMatrix";	"GL2.restrictedProduct"	[color=green,		fillcolor="#1CAC78",		label="GL2.restrictedProduct",		shape=ellipse,		style=filled];	"Homeomorph.restrictedProductMatrix" -> "GL2.restrictedProduct";	"AbstractHeckeOperator.HeckeOperator_toFun"	[color=green,		fillcolor="#B0ECA3",		label="AbstractHeckeOperator.HeckeOperator_toFun",		shape=box,		style=filled];	"AbstractHeckeOperator.HeckeOperator"	[color=green,		fillcolor="#1CAC78",		label="AbstractHeckeOperator.HeckeOperator",		shape=ellipse,		style=filled];	"AbstractHeckeOperator.HeckeOperator_toFun" -> "AbstractHeckeOperator.HeckeOperator"	[style=dashed];	"AbstractHeckeOperator.comm"	[color=green,		fillcolor="#1CAC78",		label="AbstractHeckeOperator.comm",		shape=ellipse,		style=filled];	"AbstractHeckeOperator.HeckeOperator" -> "AbstractHeckeOperator.comm"	[style=dashed];	"Submonoid.units_isOpen"	[color=green,		fillcolor="#1CAC78",		label="Submonoid.units_isOpen",		shape=ellipse,		style=filled];	"nolean-compactopen-U1p"	[color=blue,		fillcolor="#A3D6FF",		label="nolean-compactopen-U1p",		shape=ellipse,		style=filled];	"Submonoid.units_isOpen" -> "nolean-compactopen-U1p";	"ContinuousMulEquiv.restrictedProductUnits"	[color=green,		fillcolor="#1CAC78",		label="ContinuousMulEquiv.restrictedProductUnits",		shape=ellipse,		style=filled];	"Submonoid.units_isOpen" -> "ContinuousMulEquiv.restrictedProductUnits";	"nolean-compactopen-GL2"	[color=blue,		fillcolor="#A3D6FF",		label="nolean-compactopen-GL2",		shape=ellipse,		style=filled];	"Submonoid.units_isOpen" -> "nolean-compactopen-GL2";	"ContinuousMulEquiv.restrictedProductUnits" -> "GL2.restrictedProduct";	"M2.localFullLevel.isOpen"	[color=green,		fillcolor="#1CAC78",		label="M2.localFullLevel.isOpen",		shape=ellipse,		style=filled];	"ContinuousMulEquiv.piUnits"	[color=green,		fillcolor="#1CAC78",		label="ContinuousMulEquiv.piUnits",		shape=ellipse,		style=filled];	"ContinuousMulEquiv.piUnits" -> "ContinuousMulEquiv.restrictedProductUnits";	"NumberField.isOpenAdicCompletionIntegers"	[color=green,		fillcolor="#1CAC78",		label="NumberField.isOpenAdicCompletionIntegers",		shape=ellipse,		style=filled];	"NumberField.isOpenAdicCompletionIntegers" -> "M2.localFullLevel.isOpen";	"NumberField.instCompactSpaceAdicCompletionIntegers"	[color=green,		fillcolor="#1CAC78",		label="NumberField.instCompactSpaceAdicCompletionIntegers",		shape=ellipse,		style=filled];	"M2.localFullLevel.isCompact"	[color=green,		fillcolor="#1CAC78",		label="M2.localFullLevel.isCompact",		shape=ellipse,		style=filled];	"NumberField.instCompactSpaceAdicCompletionIntegers" -> "M2.localFullLevel.isCompact";	"Submonoid.units_isCompact"	[color=green,		fillcolor="#A3D6FF",		label="Submonoid.units_isCompact",		shape=ellipse,		style=filled];	"Submonoid.units_isCompact" -> "nolean-compactopen-U1p";	"Submonoid.units_isCompact" -> "nolean-compactopen-GL2";	"QuotientGroup.mk_image_finite_of_compact_of_open"	[color=green,		fillcolor="#1CAC78",		label="QuotientGroup.mk_image_finite_of_compact_of_open",		shape=ellipse,		style=filled];	"Homeomorph.restrictedProductProd"	[color=green,		fillcolor="#1CAC78",		label="Homeomorph.restrictedProductProd",		shape=ellipse,		style=filled];	"Homeomorph.restrictedProductProd" -> "Homeomorph.restrictedProductPi";	bijOn_unipotent_mul_diagU1_U1diagU1	[color=green,		fillcolor="#1CAC78",		label=bijOn_unipotent_mul_diagU1_U1diagU1,		shape=ellipse,		style=filled];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

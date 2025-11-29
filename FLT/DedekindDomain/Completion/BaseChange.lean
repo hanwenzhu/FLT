@@ -3,6 +3,7 @@ Copyright (c) 2025 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Kevin Buzzard, Andrew Yang, Matthew Jasper
 -/
+import Architect
 import FLT.Mathlib.Algebra.Algebra.Bilinear
 import FLT.Mathlib.Algebra.Algebra.Pi
 import FLT.Mathlib.Algebra.Module.Submodule.Basic
@@ -161,6 +162,13 @@ lemma adicValued.continuous_algebraMap
 /-- If w of L divides v of K, `adicCompletionComapSemialgHom v w pf` is the canonical map
 `Kᵥ → L_w` lying above `K → L`. Here we actually use the type synonyms `WithVal K` and `WithVal L`.
 -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom"
+  (statement := /-- There's a natural ring map $K_v\to L_w$ extending the map $K\to L$.
+    It is defined by completing
+    the inclusion $K\to L$ at the finite places $v$ and $w$ (which can be done
+    because the previous lemma shows that the map is uniformly continuous for the $v$-adic
+    and $w$-adic topologies). -/)]
 noncomputable def adicCompletionComapSemialgHom (v : HeightOneSpectrum A) (w : HeightOneSpectrum B)
     (hvw : w.comap A = v) :
     v.adicCompletion K →ₛₐ[σ v w] w.adicCompletion L :=
@@ -181,6 +189,14 @@ The local ramification index for the extension L_w/K_v is equal to the global ra
 index for the extension w/v. In other words, if x in K_v and i:K_v->L_w then w(i(x))=v(x)^e
 where e is computed globally.
 -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap"
+  (statement := /-- If $i_v:K_v\to L_w$ denotes the map of the previous definition
+    then for $x\in K_v$ we have
+    $e\times w(i(k))=v(k)$, where $e$ is the ramification index of $w/v$. -/)
+  (proof := /-- Follows by continuity from
+    lemma~\ref{IsDedekindDomain.HeightOneSpectrum.valuation_comap}. -/)
+  (latexEnv := "lemma")]
 lemma valued_adicCompletionComap
   (v : HeightOneSpectrum A) (w : HeightOneSpectrum B) (hvw : w.comap A = v) (x) :
     Valued.v (adicCompletionComapSemialgHom A K L B v w hvw x) = Valued.v x ^
@@ -199,6 +215,14 @@ lemma valued_adicCompletionComap
 
 omit [IsIntegralClosure B A L] [FiniteDimensional K L] in
 /-- The canonical map K_v → L_w sends 𝓞_v to 𝓞_w. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom.mapadicCompletionIntegers"
+  (statement := /-- The map $i_v:K_v\to L_w$ sends the integer ring $A_v$ into $B_w$. -/)
+  (proof := /-- The integer ring is defined by $v\geq0$ (or $v\leq 1$ in mathlib, which uses
+    multiplicative
+    valuations) so the result follows from
+    \ref{IsDedekindDomain.HeightOneSpectrum.valued_adicCompletionComap}. -/)
+  (latexEnv := "lemma")]
 lemma adicCompletionComapSemialgHom.mapadicCompletionIntegers (v : HeightOneSpectrum A)
     (w : HeightOneSpectrum B) (hvw : w.comap A = v) :
     (adicCompletionComapSemialgHom A K L B v w hvw) '' (v.adicCompletionIntegers K) ≤
@@ -216,6 +240,11 @@ def comap_algebra {v : HeightOneSpectrum A} {w : HeightOneSpectrum B} (h : w.com
   (adicCompletionComapSemialgHom A K L B v w h).toAlgebra
 
 /-- The canonical map `K_v → ∏_{w|v} L_w` extending K → L. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapSemialgHom'"
+  (statement := /-- The product of the maps $K_v\to L_w$ for $w|v$ is a natural ring map
+    $K_v\to\prod_{w|v}L_w$
+    lying over $K\to L$. -/)]
 noncomputable def adicCompletionComapSemialgHom' (v : HeightOneSpectrum A) :
   v.adicCompletion K →ₛₐ[algebraMap K L] ∀ w : v.Extension B, w.1.adicCompletion L :=
   Pi.semialgHom _ _ fun i ↦ adicCompletionComapSemialgHom A K L B v i.1 i.2
@@ -345,6 +374,22 @@ theorem comap_algebra_finite (v : HeightOneSpectrum A) (w : HeightOneSpectrum B)
 
 omit [IsIntegralClosure B A L] in
 /-- L_w has the K_v-module topology. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology"
+  (statement := /-- Giving $L_w$ the $K_v$-algebra structure coming from the natural map $K_v\to
+    L_w$,
+    the $w$-adic topology on $L_w$ is the $K_v$-module topology. -/)
+  (proof := /-- Any basis for $L$ as a $K$-vector space spans $L_w$ as a $K_v$-module, so $L_w$ is
+    finite-dimensional over $K_v$ and the module topology is the same as the product
+    topology. So we need to establish that the product topology on $L_w=K_v^n$ is
+    the $w$-adic topology. But the $w$-adic topology is induced by the $w$-adic norm,
+    which makes $L_w$ into a normed $K_v$-vector space, and (after picking a basis)
+    the product norm on $L_w=K_v^n$ also makes $L_w$ into a normed $K_v$-vector space.
+    So the result follows from the standard fact (see for example the lemma on p52
+    of Cassels-Froelich, formalized as {\tt ContinuousLinearEquiv.ofFinrankEq} in mathlib)
+    that any two norms on a finite-dimensional vector space over
+    a complete field are equivalent (and thus induce the same topology). -/)
+  (discussion := 326)]
 lemma adicCompletionComap_isModuleTopology
     (v : HeightOneSpectrum A) (w : HeightOneSpectrum B) (hvw : w.comap A = v) :
     -- temporarily make L_w a K_v-algebra
@@ -362,6 +407,15 @@ lemma adicCompletionComap_isModuleTopology
 
 omit [IsIntegralClosure B A L] in
 /-- ∏_{w|v} L_w has the K_v-module topology. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.prodAdicCompletionComap_isModuleTopology"
+  (statement := /-- For $v$ fixed, the product topology on $\prod_{w|v}L_w$ is the $K_v$-module
+    topology. -/)
+  (proof := /-- This is a finite product of $K_v$-modules each of which has the $K_v$-module
+    topology
+    by~\ref{IsDedekindDomain.HeightOneSpectrum.adicCompletionComap_isModuleTopology},
+    and the product topology is the module topology for a finite product of modules each of which
+    has the module topology (this is in mathlib). -/)]
 lemma prodAdicCompletionComap_isModuleTopology (v : HeightOneSpectrum A) :
     -- TODO: the `let _` in the statement below should not be required as it is an instance
     -- see mathlib PR #22488 for potential fix to this.
@@ -605,6 +659,24 @@ instance : OneHomClass
 
 open scoped TensorProduct.RightActions in
 /-- The image of `B ⊗[A] 𝓞_v` in `∏_w L_w` is `∏_w 𝓞_w`. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv_integral"
+  (statement := /-- The isomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ induces an isomorphism
+    $B\otimes_AA_v\to \prod_{w|v}B_w$
+    for all $v$ in the height one spectrum of $A$. -/)
+  (proof := /-- Certainly the image of the integral elements are integral. The argument in the other
+    direction is more delicate. My original plan was to follow Cassels--Froehlich,
+    Cassels' article ``Global fields'', section 12 lemma, p61, which proves it for
+    all but finitely many primes, but \href{https://github.com/ImperialCollegeLondon/FLT/pull/400}
+    {a PR by Matthew Jasper} gives another approach which works for all primes.
+    Jasper's argument is to show that the closure of $A$ in $K_v$ is $A_v$
+    for a valuation on a Dedekind domain, and then that the closure of $A$ in $\prod_{v\in S}K_v$
+    is $\prod_{v\in S}A_v$ for $S$ a finite set of valuations (using the Chinese
+    remainder theorem). Applying this to $B$ we get that the closure of $B$ in $\prod_{w|v}L_w$
+    is $\prod_{w|v}B_w$. He then shows that this closure is the image of
+    $B\otimes_A\mathcal{O}_v$ (by showing that this image is closed because it's open),
+    giving surjectivity; injectivity follows from the statement
+    that $L\otimes_KK_v=\prod_{w|v}L_w$. -/)]
 theorem adicCompletionComapAlgEquiv_integral :
     AlgHom.range (((tensorAdicCompletionComapAlgHom A K L B v).restrictScalars B).comp
       (tensorAdicCompletionIntegersTo A K L B v)) =
@@ -901,6 +973,31 @@ theorem tensorAdicCompletionComapAlgHom_bijective (v : HeightOneSpectrum A) :
   rwa [LinearMap.injective_iff_surjective_of_finrank_eq_finrank hrank]
 
 /-- The L-algebra isomorphism `L ⊗[K] K_v ≅ ∏_{w|v} L_w`. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapAlgEquiv"
+  (statement := /-- The induced $L$-algebra homomorphism $L\otimes_KK_v\to\prod_{w|v}L_w$ is an
+    isomorphism of rings. -/)
+  (proof := /-- My current proposal to formalize this is as follows. The map is surjective
+    because the image is dense and closed; this has been formalized already.
+    It is also a $K_v$-algebra homomorphism if we give $L_w$ the obvious $K_v$-algebra
+    structure. Thus we can conclude the result if we can prove that both spaces are
+    finite-dimensional and have the same dimension. The $K_v$-dimension of $L\otimes_KK_v$
+    is equal to the $K$-dimension of $L$, which is $\sum_{w|v}e_wf_w$ using the standard
+    notation that $e_w$ is the ramification index of $w$ and $f_w$ the residue degree
+    (this result is in mathlib). So it suffices to prove that $[L_w:K_v]=e_wf_w$.
+    We already have that $e_w$ (defined globally) is equal to the local ramification
+    index (defined as the factor by which the valuations differ on $K$). So what is left
+    is to prove that (i) the residue field extension induced by $L_w/K_v$ has degree is equal to the
+    globally-defined $f_w$, (ii) an extension of local fields has degree $ef$. Now (i) sounds
+    straightforward given what we have (the map from $A$ to $\mathcal{O}_v$ has kernel $v$ and
+    dense image) and (ii) is true for any complete discretely-valued field; I am not suggesting
+    we formalize the following proof, but at least it represents a rigorous justification:
+    A field complete with respect to a discrete valuation is \emph{stable} in the sense
+    of the book by Bosch-G\"{u}ntzer-Remmert (Prop 3.6.2.1), so every finite extension of such a
+    field
+    is cartesian (def 3.6.1.1) and thus $ef=n$ (Prop 3.6.2.4, (iii) implies (ii)). Note
+    that if you weaken the hypotheses too much then there are counterexamples; it's possible
+    to have $ef<n$ and BGR goes into details. -/)]
 noncomputable def adicCompletionComapAlgEquiv (v : HeightOneSpectrum A) :
     L ⊗[K] v.adicCompletion K ≃ₐ[L] (∀ w : v.Extension B, w.1.adicCompletion L) :=
   AlgEquiv.ofBijective (tensorAdicCompletionComapAlgHom A K L B v) <|
@@ -920,6 +1017,14 @@ noncomputable def adicCompletionComapRightContinuousAlgEquiv (v : HeightOneSpect
 
 open scoped TensorProduct.RightActions in
 /-- The continuous L-algebra isomorphism `L ⊗[K] K_v ≅ ∏_{w|v} L_w`. -/
+@[blueprint
+  "IsDedekindDomain.HeightOneSpectrum.adicCompletionComapContinuousAlgEquiv"
+  (statement := /-- If we give $L\otimes_KK_v$ the $K_v$-module topology then the $L$-algebra
+    isomorphism
+    $L\otimes_K K_v\cong\prod_{w|v}L_w$ is also a homeomorphism. -/)
+  (proof := /-- Indeed, is a $K_v$-algebra isomorphism between two modules each of which
+     have the module topology, and any module map is automorphically continuous for the
+     module topologies. -/)]
 noncomputable def adicCompletionComapContinuousAlgEquiv (v : HeightOneSpectrum A) :
     L ⊗[K] v.adicCompletion K ≃A[L] ∀ w : v.Extension B, w.1.adicCompletion L :=
   {

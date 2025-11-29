@@ -79,9 +79,10 @@ jobs:
       - name: Build and lint project
         uses: leanprover/lean-action@v1
         with:
+          build-args: :blueprint
           build: true
           lint: true
-          mk_all-check: true
+          mk_all-check: false
 
       - name: Upstreaming dashboard
         run: python3 scripts/upstreaming_dashboard.py

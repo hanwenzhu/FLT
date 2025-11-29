@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['$','$'], ['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Miniproject: Haar Characters</title>
+<link rel="next" href="Fujisaki_project.html" title="Miniproject: Fujisaki’s Lemma" />
+<link rel="prev" href="Adele_miniproject.html" title="Miniproject: Adeles" />
+<link rel="up" href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem" />
+<link rel="stylesheet" href="styles/theme-blue.css" />
+<link rel="stylesheet" href="styles/amsthm.css" />
+<link rel="stylesheet" href="styles/showmore.css" />
+<link rel="stylesheet" href="styles/blueprint.css" />
+<link rel="stylesheet" href="styles/stylecours.css" />
+</head>
+
+<body>
+<header>
+<svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
+<h1 id="doc_title"><a href="index.html">Towards a Lean proof of Fermat’s Last Theorem</a></h1>
+</header>
+
+<div class="wrapper">
+<nav class="toc">
+<ul class="sub-toc-0">
+<li class="">
+  <a href="sect0001.html"><span class="toc_ref">1</span> <span class="toc_entry">Introduction</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0001.html#a0000000007"><span class="toc_ref">1.1</span> <span class="toc_entry">Which proof is being formalised?</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">The structure of this blueprint</span></a>
+ </li>
+<li class="">
+  <a href="sect0001.html#a0000000009"><span class="toc_ref">1.3</span> <span class="toc_entry">Remarks</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_reductions.html"><span class="toc_ref">2</span> <span class="toc_entry">First reductions of the problem</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_reductions.html#a0000000010"><span class="toc_ref">2.1</span> <span class="toc_entry">Goal</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000011"><span class="toc_ref">2.2</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000012"><span class="toc_ref">2.3</span> <span class="toc_entry">Reduction to \(n\geq 5\) and prime</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000013"><span class="toc_ref">2.4</span> <span class="toc_entry">Frey packages</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#twopointfour"><span class="toc_ref">2.5</span> <span class="toc_entry">Galois representations and elliptic curves</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000014"><span class="toc_ref">2.6</span> <span class="toc_entry">The Frey curve</span></a>
+ </li>
+<li class="">
+  <a href="ch_reductions.html#a0000000015"><span class="toc_ref">2.7</span> <span class="toc_entry">Reduction to two big theorems.</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html"><span class="toc_ref">3</span> <span class="toc_entry">Reducibility of <i class="it">p</i>-torsion of the Frey curve</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_freyreduction.html#a0000000016"><span class="toc_ref">3.1</span> <span class="toc_entry">Overview</span></a>
+ </li>
+<li class="">
+  <a href="ch_freyreduction.html#a0000000017"><span class="toc_ref">3.2</span> <span class="toc_entry">Hardly ramified representations</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_overview.html"><span class="toc_ref">4</span> <span class="toc_entry">An overview of the proof</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_overview.html#a0000000018"><span class="toc_ref">4.1</span> <span class="toc_entry">Potential modularity.</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000019"><span class="toc_ref">4.2</span> <span class="toc_entry">A modularity lifting theorem</span></a>
+ </li>
+<li class="">
+  <a href="ch_overview.html#a0000000020"><span class="toc_ref">4.3</span> <span class="toc_entry">Compatible families, and reduction at 3</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html"><span class="toc_ref">5</span> <span class="toc_entry">An example of an automorphic form</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000021"><span class="toc_ref">5.1</span> <span class="toc_entry">Introduction</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000022"><span class="toc_ref">5.2</span> <span class="toc_entry">A quaternion algebra</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000023"><span class="toc_ref">5.3</span> <span class="toc_entry">\(\widehat{\mathbb {Z}}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000024"><span class="toc_ref">5.4</span> <span class="toc_entry">More advanced remarks on \(\widehat{\mathbb {Z}}\) versus \(\mathbb {Q}\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000025"><span class="toc_ref">5.5</span> <span class="toc_entry">\(\widehat{\mathbb {Q}}\) and tensor products.</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000026"><span class="toc_ref">5.6</span> <span class="toc_entry">A crash course in tensor products</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000027"><span class="toc_ref">5.7</span> <span class="toc_entry">Additive structure of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000028"><span class="toc_ref">5.8</span> <span class="toc_entry">Multiplicative structure of the units of \(\widehat{\mathbb {Q}}\).</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000029"><span class="toc_ref">5.9</span> <span class="toc_entry">The Hurwitz quaternions</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000030"><span class="toc_ref">5.10</span> <span class="toc_entry">Profinite completion of the Hurwitz quaternions</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0003.html"><span class="toc_ref">6</span> <span class="toc_entry">Stating the modularity lifting theorems</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0003.html#a0000000031"><span class="toc_ref">6.1</span> <span class="toc_entry">Automorphic forms and analysis</span></a>
+ </li>
+<li class="">
+  <a href="sect0003.html#a0000000032"><span class="toc_ref">6.2</span> <span class="toc_entry">Central simple algebras</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0004.html"><span class="toc_ref">7</span> <span class="toc_entry">Automorphic forms and the Langlands Conjectures</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0004.html#a0000000033"><span class="toc_ref">7.1</span> <span class="toc_entry">Definition of an automorphic form</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000034"><span class="toc_ref">7.2</span> <span class="toc_entry">The finite adeles of the rationals.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000035"><span class="toc_ref">7.3</span> <span class="toc_entry">The adelic general linear group</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000036"><span class="toc_ref">7.4</span> <span class="toc_entry">Smooth functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000037"><span class="toc_ref">7.5</span> <span class="toc_entry">Slowly-increasing functions</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000038"><span class="toc_ref">7.6</span> <span class="toc_entry">Weights at infinity</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000039"><span class="toc_ref">7.7</span> <span class="toc_entry">The action of the universal enveloping algebra.</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000040"><span class="toc_ref">7.8</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="sect0004.html#a0000000041"><span class="toc_ref">7.9</span> <span class="toc_entry">Hecke operators</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html"><span class="toc_ref">8</span> <span class="toc_entry">Miniproject: Adeles</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Adele_miniproject.html#a0000000042"><span class="toc_ref">8.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000043"><span class="toc_ref">8.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000044"><span class="toc_ref">8.3</span> <span class="toc_entry">Local compactness</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000045"><span class="toc_ref">8.4</span> <span class="toc_entry">Base change</span></a>
+ </li>
+<li class="">
+  <a href="Adele_miniproject.html#a0000000046"><span class="toc_ref">8.5</span> <span class="toc_entry">Discreteness and compactness</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class=" active current">
+  <a href="Haar_char_project.html"><span class="toc_ref">9</span> <span class="toc_entry">Miniproject: Haar Characters</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="Haar_char_project.html#a0000000047"><span class="toc_ref">9.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000048"><span class="toc_ref">9.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000049"><span class="toc_ref">9.3</span> <span class="toc_entry">Examples</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000050"><span class="toc_ref">9.4</span> <span class="toc_entry">Algebras</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000051"><span class="toc_ref">9.5</span> <span class="toc_entry">Left and right multiplication</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000052"><span class="toc_ref">9.6</span> <span class="toc_entry">Finite Products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000053"><span class="toc_ref">9.7</span> <span class="toc_entry">Some measure-theoretic preliminaries</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000054"><span class="toc_ref">9.8</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="Haar_char_project.html#a0000000055"><span class="toc_ref">9.9</span> <span class="toc_entry">Adeles</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html"><span class="toc_ref">10</span> <span class="toc_entry">Miniproject: Fujisaki’s Lemma</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Fujisaki_project.html#a0000000056"><span class="toc_ref">10.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000057"><span class="toc_ref">10.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000058"><span class="toc_ref">10.3</span> <span class="toc_entry">Enter the adeles</span></a>
+ </li>
+<li class="">
+  <a href="Fujisaki_project.html#a0000000059"><span class="toc_ref">10.4</span> <span class="toc_entry">The proof</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html"><span class="toc_ref">11</span> <span class="toc_entry">Miniproject: Quaternion algebras</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="Quat_alg_project.html#a0000000060"><span class="toc_ref">11.1</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000061"><span class="toc_ref">11.2</span> <span class="toc_entry">Initial definitions</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000062"><span class="toc_ref">11.3</span> <span class="toc_entry">Brief introduction to automorphic forms in this setting</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000063"><span class="toc_ref">11.4</span> <span class="toc_entry">Definition of spaces of automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="Quat_alg_project.html#a0000000064"><span class="toc_ref">11.5</span> <span class="toc_entry">The main result</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html"><span class="toc_ref">12</span> <span class="toc_entry">Miniproject: Hecke Operators</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="HeckeOperator_project.html#a0000000065"><span class="toc_ref">12.1</span> <span class="toc_entry">Status</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000066"><span class="toc_ref">12.2</span> <span class="toc_entry">The goal</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000067"><span class="toc_ref">12.3</span> <span class="toc_entry">The abstract theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000068"><span class="toc_ref">12.4</span> <span class="toc_entry">Restricted products</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000069"><span class="toc_ref">12.5</span> <span class="toc_entry">Some local theory</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000070"><span class="toc_ref">12.6</span> <span class="toc_entry">Adelic groups</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000071"><span class="toc_ref">12.7</span> <span class="toc_entry">Automorphic forms</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000072"><span class="toc_ref">12.8</span> <span class="toc_entry">Concrete Hecke operators</span></a>
+ </li>
+<li class="">
+  <a href="HeckeOperator_project.html#a0000000073"><span class="toc_ref">12.9</span> <span class="toc_entry">Analysis of the Hecke algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html"><span class="toc_ref">13</span> <span class="toc_entry">Appendix: A collection of results which are needed in the proof.</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="ch_bestiary.html#a0000000074"><span class="toc_ref">13.1</span> <span class="toc_entry">Results from class field theory</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000075"><span class="toc_ref">13.2</span> <span class="toc_entry">Structures on the points of an affine variety.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000076"><span class="toc_ref">13.3</span> <span class="toc_entry">Algebraic groups.</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000077"><span class="toc_ref">13.4</span> <span class="toc_entry">Automorphic forms and representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000078"><span class="toc_ref">13.5</span> <span class="toc_entry">Galois representations</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000079"><span class="toc_ref">13.6</span> <span class="toc_entry">Algebraic geometry</span></a>
+ </li>
+<li class="">
+  <a href="ch_bestiary.html#a0000000080"><span class="toc_ref">13.7</span> <span class="toc_entry">Algebra</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0005.html"><span class="toc_ref">14</span> <span class="toc_entry">Bibliography</span></a>
+ </li>
+<li ><a href="dep_graph_chapter_1.html">Chapter 1 graph</a></li>
+<li ><a href="dep_graph_chapter_2.html">Chapter 2 graph</a></li>
+<li ><a href="dep_graph_chapter_3.html">Chapter 3 graph</a></li>
+<li ><a href="dep_graph_chapter_4.html">Chapter 4 graph</a></li>
+<li ><a href="dep_graph_chapter_5.html">Chapter 5 graph</a></li>
+<li ><a href="dep_graph_chapter_6.html">Chapter 6 graph</a></li>
+<li ><a href="dep_graph_chapter_7.html">Chapter 7 graph</a></li>
+<li ><a href="dep_graph_chapter_8.html">Chapter 8 graph</a></li>
+<li ><a href="dep_graph_chapter_9.html">Chapter 9 graph</a></li>
+<li ><a href="dep_graph_chapter_10.html">Chapter 10 graph</a></li>
+<li ><a href="dep_graph_chapter_11.html">Chapter 11 graph</a></li>
+<li ><a href="dep_graph_chapter_12.html">Chapter 12 graph</a></li>
+<li ><a href="dep_graph_chapter_13.html">Chapter 13 graph</a></li>
+</ul>
+</nav>
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<h1 id="Haar_char_project">9 Miniproject: Haar Characters</h1>
+
+<h1 id="a0000000047">9.1 The goal</h1>
+<p>The goal of this miniproject is to develop the theory (i.e., the basic API) of Haar characters. “Haar character” is a name I’ve made up to describe a certain character of the units of a locally compact topological ring. The main result we need here is that if \(B\) is a finite-dimensional algebra over a number field&#160;\(K\), then \(B^\times \) is in the kernel of the Haar character of \(B\otimes _K\mathbb {A}_K\), where \(\mathbb {A}_K\) is the ring of adeles of&#160;\(K\). Most if not all of this should probably be in mathlib. </p>
+<p>KMB would like to heartily thank Sébastien Gouëzel for the help he gave during the preparation of this material. </p>
+<h1 id="a0000000048">9.2 Initial definitions</h1>
+<h2 id="a0000000199">9.2.1 Scaling Haar measure on a group</h2>
+<p>Let \(A\) be a locally compact topological additive abelian group. There’s then a regular additive Haar measure \(\mu \) on \(A\), unique up to a positive scalar factor. If \(\phi :(A,+)\cong (A,+)\) is a homeomorphism and an additive automorphism of \(A\), then we can push forward \(\mu \) along \(\phi \) to get a second measure \(\phi _*\mu \) on \(A\), with the property that \((\phi _*\mu )(X)=\mu (\phi ^{-1}X)\) for any Borel subset \(X\) of \(A\). </p>
+<p>Now \(\phi _*\mu \) is a translation-invariant and regular measure, and hence also a Haar measure on \(A.\) It must thus differ from \(\mu \) by a positive scalar factor, which we call \(d_A(\phi )\). There is a choice of normalization here between \(d_A(\phi )\) and \(d_A(\phi )^{-1}\), so let us be more precise. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="MeasureTheory.addEquivAddHaarChar">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9.1</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar" class="lean_decl">MeasureTheory.addEquivAddHaarChar</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>  If \(A\) is a locally compact topological additive abelian group, if \(\mu \) is a regular Haar measure on \(A\), and if \(\phi :A\to A\) is an additive homeomorphism, then we let \(d_A(\phi )\) denote the unique positive real number such that \(\mu (X)=d_A(\phi )(\phi _*\mu )(X)\) for any Borel set&#160;\(X\). </p>
+
+  </div>
+</div>
+<p>To give an example, if \(\phi \) is multiplication by \(2\) on the real numbers, if \(X=[0,1]\), and if \(\mu \) is Lebesgue measure on the Borel subsets of \(\mathbb {R}\), we have that \(\phi _*\mu (X)=\mu (\phi ^{-1}(X))=\mu ([0,1/2])=1/2\), so \(1=d_A(\phi )/2\) meaning that \(d_A(\phi )=2\). Similarly if \(\phi \) is multiplication by \(-2\) and \(X=[0,1]\) then \(\phi ^{-1}(X)=[-1/2,0]\) which again has measure \(1/2\), so \(d_A(\phi )\) is 2 again. </p>
+<p>Strictly speaking our definition of \(d_A(\phi )\) depends on the choice of regular Haar measure \(\mu \). Note that <span class="tt">mathlib</span> offers a fixed Borel regular Haar measure <span class="tt">MeasureTheory.Measure.haar</span> on any locally compact topological group and the actual definition of \(d_A\) in the code uses this definition. Note also that the code defines everything for multiplicative groups and uses <span class="tt">@[to_additive]</span> to deduce the corresponding results for additive groups. </p>
+<p>Here are some basic results about this construction. In all of them, \(A\) is a locally compact topological group and \(\phi :A\to A\) is a group isomorphism and a homeomorphism. The first lemma shows that the definition of \(d_A(\phi )\) is indeed independent of the choice of Haar measure. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_eq">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.2</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000200"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_eq" class="lean_decl">MeasureTheory.addEquivAddHaarChar_eq</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/508">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    \(d_A(\phi )\) is independent of choice of regular Haar measure. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000200">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>If \(\mu '\) is a second choice then \(\mu '=\lambda \mu \) for some positive real \(\lambda \), and the \(\lambda \)s on each side of \(\mu '(X)=d_A(\phi )(\phi _*\mu ')(X)\) cancel. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_map">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.3</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000201"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq">Lemma 9.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_map" class="lean_decl">MeasureTheory.addEquivAddHaarChar_map</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(\mu \) is any regular Haar measure on \(A\) then \(d_A(\phi )(\phi _*\mu ) = \mu .\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000201">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is a restatement of the previous result. </p>
+
+  </div>
+</div>
+<p>We can of course also pull a Haar measure \(\mu \) back along a homeomorphism \(\phi \), giving a measure \(\phi ^*\mu \) such that \(\phi ^*\mu (X)=\mu (\phi (X))\). </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_comap">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.4</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_comap">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000202"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">Lemma 9.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_comap" class="lean_decl">MeasureTheory.addEquivAddHaarChar_comap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>   If \(\mu \) is any regular Haar measure on \(A\) then \(d_A(\phi )\mu = \phi ^*\mu .\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000202">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This follows from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">9.3</a> applied to the regular Haar measure \(\phi ^*\mu \) and the fact that \(\phi _*\phi ^*\mu =\mu \). </p>
+
+  </div>
+</div>
+<p>Now let \(\mu \) be any regular additive Haar measure on \(A\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_smul_preimage">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.5</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000203"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">Lemma 9.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_smul_preimage" class="lean_decl">MeasureTheory.addEquivAddHaarChar_smul_preimage</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/509">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    If \(X\) is a Borel set then \(\mu (X)=d_A(\phi )\mu (\phi ^{-1}X)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000203">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> This follows immediately from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">9.3</a> and the definition of the pushforward of a measure. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_smul_integral_map">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.6</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_map">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000204"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">Lemma 9.3</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_smul_integral_map" class="lean_decl">MeasureTheory.addEquivAddHaarChar_smul_integral_map</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/510">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    If \(f:A\to \mathbb {R}\) is a Borel measurable function then \(d_A(\phi )\int f(x)d\phi _*\mu (x)=\int f(x)d\mu (x)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000204">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> This also follows immediately from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">9.3</a>. </p>
+
+  </div>
+</div>
+<p>We also have the following variant: </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_smul_integral_comap">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.7</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_comap">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000205"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_comap">Corollary 9.4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_smul_integral_comap" class="lean_decl">MeasureTheory.addEquivAddHaarChar_smul_integral_comap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(f:A\to \mathbb {R}\) is a Borel measurable function then \(d_A(\phi )\int f(x)d\mu (x)=\int f(x)d\phi ^*\mu (x)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000205">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>This is immediate from corollary&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_comap">9.4</a>. </p>
+
+  </div>
+</div>
+<p>Note that as a consequence of lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">9.5</a>, if \(X\) is a Borel subset of \(A\) with positive finite measure then we can read off \(d_A(\phi )\) by \(d_A(\phi )=\mu (X)/\mu (\phi ^{-1}(X))\), and hence also by \(d_A(\phi )=\mu (\phi (X))/\mu (X)\). A nice special case is when \(\mu (X)=1\), in which case we have \(d_A(\phi )=\mu (\phi (X))\) for all \(\phi \), or \(d_A(\phi )=1/\mu (\phi ^{-1}(X))\). Similarly, by lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_map">9.6</a>, if \(f\) is a measurable function with \(0{\lt}\int f(x)d\mu (x){\lt}\infty \) then we can read off \(d_A(\phi )\) by \(d_A(\phi )=(\int f(x)d\mu (x))/(\int f(x)\phi _*\mu (x))\). Note that <span class="tt">mathlib</span> supplies such \(f\) with the function <span class="tt">exists_continuous_nonneg_pos</span>. The following are also straightforward. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_refl">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.8</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_refl">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000206"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq">Lemma 9.2</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_refl" class="lean_decl">MeasureTheory.addEquivAddHaarChar_refl</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   \(d_A(id)=1.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000206">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Clear. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_trans">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.9</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_trans">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000207"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">Lemma 9.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_trans" class="lean_decl">MeasureTheory.addEquivAddHaarChar_trans</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/511">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    \(d_A(\phi \circ \psi )=d_A(\phi )d_A(\psi ).\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000207">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Here’s one way: it suffices to prove that \(d_A(\phi \circ \psi )(\phi \circ \psi )_*\mu =d_A(\phi )d_A(\psi )(\phi \circ \psi )_*\mu \) (because there exists a compact set with positive finite measure) and using lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_map">9.3</a> and the fact that \((\phi \circ \psi )_*\mu =\phi _*(\psi _*\mu )\) one can simplify both sides to \(\mu \). </p>
+
+  </div>
+</div>
+<h2 id="a0000000208">9.2.2 Scaling Haar measure on a ring</h2>
+<p>Now let \(R\) be a locally compact topological ring. The <em>Haar character</em> of \(R\), or more precisely the <em>left Haar character</em> of \(R\), is a group homomorphism \(R^\times \to \mathbb {R}^\times \) defined in the following way. If \(u\in R^\times \) then left multiplication by \(u\), namely the map \(\ell _u:(R,+)\to (R,+)\) defined by \(\ell _u(r)=ur\), is a homeomorphism and an additive automorphism of \((R,+)\), so the preceding theory applies to \(\ell _u\). </p>
+<div class="definition_thmwrapper theorem-style-definition" id="MeasureTheory.ringHaarChar">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">9.10</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_refl">Lemma 9.8</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_trans">Lemma 9.9</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar" class="lean_decl">MeasureTheory.ringHaarChar</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   We define \(\delta _R(u)\) (or just \(\delta (u)\) when the ring \(R\) is clear) to be \(d_R(\ell _u)\). </p>
+
+  </div>
+</div>
+<p>Lemmas&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_refl">9.8</a> and&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_trans">9.9</a> immediately imply that \(\delta _R\) is a group homomorphism from \(R^\times \) to \(\mathbb {R}_{{\gt}0}\). Also immediate from previous lemmas is </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_mul_integral">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.11</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_mul_integral">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000209"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.ringHaarChar">Definition 9.10</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_map">Lemma 9.6</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_mul_integral" class="lean_decl">MeasureTheory.ringHaarChar_mul_integral</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/514">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    If \(f:R\to \mathbb {R}\) is a Borel measurable function and \(u\in R^\times \) then \(\delta _R(u)\int f(ux)d\mu (x)=\int f(x)d\mu (x)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000209">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> A short calculation using lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_map">9.6</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_mul_volume">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.12</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_mul_volume">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000210"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.ringHaarChar">Definition 9.10</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">Lemma 9.5</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">Lemma 9.5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_mul_volume" class="lean_decl">MeasureTheory.ringHaarChar_mul_volume</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/515">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    If \(X\) is a Borel subset of \(R\) and \(r\in R^\times \) then \(\mu (rX)=\delta _R(r)\mu (X)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000210">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Immediate from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">9.5</a>. </p>
+
+  </div>
+</div>
+<p>The next result lies a little deeper. </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_continuous">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.13</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_continuous">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000211"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.ringHaarChar">Definition 9.10</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.ringHaarChar_mul_integral">Lemma 9.11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_continuous" class="lean_decl">MeasureTheory.ringHaarChar_continuous</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/516">Discussion</a>
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>    The function \(\delta _R:R^\times \to \mathbb {R}_{{\gt}0}\) is continuous. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000211">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Fix a Haar measure \(\mu \) on \(R\) and a continuous real-valued function \(f\) on \(R\) with compact support and such that \(\int f(x) d\mu (x)\not=0\). Then \(r \mapsto \int f(rx) d\mu (x)\) is a continuous function from \(R\to \mathbb {R}\) (because a continuous function with compact support is uniformly continuous) and thus gives a continuous function \(R^\times \to \mathbb {R}\). Thus the function \(u\mapsto (\int f(ux) d\mu (x))/(\int f(x)d\mu (x))\) is a continuous function from \(R^\times \) to \(\mathbb {R}\) taking values in \(\mathbb {R}_{{\gt}0}\). Hence \(\delta _R^{-1}\) is continuous, from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.ringHaarChar_mul_integral">9.11</a>, and thus \(\delta _R\) is too. </p>
+
+  </div>
+</div>
+<h1 id="a0000000049">9.3 Examples</h1>
+<p>We discuss some examples of Haar characters. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_real">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.14</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_real">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000212"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_real" class="lean_decl">MeasureTheory.ringHaarChar_real</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(R=\mathbb {R}\) then \(\delta _R(u)=|u|\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000212">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Take \(\mu \) to be Lebesgue measure and \(X=[0,1]\). We have \(\delta (u)=\mu (uX)\). If \(u{\gt}0\) then \(u[0,1]=[0,u]\) which has measure \(u=|u|\), and if \(u{\lt}0\) then \(u*[0,1]=[u,0]\) which has measure \(-u=|u|\). </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_complex">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.15</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_complex">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000213"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_complex" class="lean_decl">MeasureTheory.ringHaarChar_complex</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(R=\mathbb {C}\) then \(\delta _R(u)=|u|^2\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000213">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Multiplication by a positive real \(r\) sends a unit square to a square of area \(r^2=|r|^2\). Multiplication by \(e^{i\theta }\) is a rotation and thus does not change area. The general case follows. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_padic">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.16</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_padic">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000214"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_padic" class="lean_decl">MeasureTheory.ringHaarChar_padic</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(R=\mathbb {Q}_p\) then \(\delta _R(u)=|u|_p\), the usual \(p\)-adic norm. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000214">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Normalise Haar measure so that \(\mu (\mathbb {Z}_p)=1\). If \(u\) is a \(p\)-adic unit then \(u\mathbb {Z}_p=\mathbb {Z}_p\) so multiplication by \(u\) didn’t change Haar measure. If however \(u=p\) then \(u\mathbb {Z}_p\) has index \(p\) in \(\mathbb {Z}_p\) and, because \(\mu (i+p\mathbb {Z}_p)=\mu (p\mathbb {Z}_p)\) we have that \(\mu (\mathbb {Z}_p)=p\mu (p\mathbb {Z}_p)\) and thus \(\delta (p)=p^{-1}\). These elements generate \(\mathbb {Q}_p^\times \) and two characters which agree on generators of a group must agree on the group. </p>
+
+  </div>
+</div>
+<div class="remark_thmwrapper theorem-style-remark" id="a0000000215">
+  <div class="remark_thmheading">
+    <span class="remark_thmcaption">
+    Remark
+    </span>
+    <span class="remark_thmlabel">9.17</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#a0000000215">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="remark_thmcontent">
+  <p>If \(R\) is a finite extension of \(\mathbb {Q}_p\) then \(\delta _R(u)\) is the norm on \(R\) normalised in the following way: \(\delta _R(\varpi )=q^{-1}\), where \(\varpi \) is a uniformiser and \(q\) is the size of the (finite) residue field. In fact the same is true for any nonarchimedean local field. The proof is the same as for \(\mathbb {Q}_p\). Right now this is difficult to state in Lean because there is still some discussion about the definition of a nonarchimedean local field. </p>
+
+  </div>
+</div>
+<h1 id="a0000000050">9.4 Algebras</h1>
+<p>Say \(F\) is a locally compact topological field (for example \(\mathbb {R}\) or \(\mathbb {C}\) or \(\mathbb {Q}_p\)), \(V\) is a finite-dimensional \(F\)-vector space, and \(\phi :V\to V\) is an invertible \(F\)-linear map. Then \(V\) with its module topology (which is the product topology if one picks a basis) is a locally compact topological abelian group, and \(\phi \) is additive. One can check that linearity implies continuity (this is <span class="tt">IsModuleTopology.continuous_of_linearMap</span> in mathlib), so in fact \(\phi \) is a homeomorphism and our theory applies. The following lemma gives a formula for the scale factor \(d_V(\phi )\). </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.18</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000216"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.ringHaarChar">Definition 9.10</a></li>
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar">Definition 9.1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det" class="lean_decl">MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/517">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    \(d_V(\phi )=\delta _F(\det (\phi ))\), where \(\det (\phi )\in F\) is the determinant of \(\phi \) as an \(F\)-linear map. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000216">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> The proof should be inspired by <a href ="https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Measure/Lebesgue/Basic.html#Real.map_matrix_volume_pi_eq_smul_volume_pi"><span class="tt">Real.map_matrix_volume_pi_eq_smul_volume_pi</span></a>, which crucially uses the induction principle <a href ="https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Matrix/Transvection.html#Matrix.diagonal_transvection_induction_of_det_ne_zero"><span class="tt">Matrix.diagonal_transvection_induction_of_det_ne_zero</span></a>. In short, one needs to check it for diagonal matrices and for matrices which are the identity except that one off-diagonal entry is non-zero, because these matrices generate \(GL_n(F)\) if \(F\) is a field. Note that we only need the result for \(F=\mathbb {R}\) and \(F=\mathbb {Q}_p\) (and possibly for finite extensions of these depending on which route we go for some intermediate results), so if it helps we can assume that \(F\) is second countable (but it shouldn’t be necessary). </p>
+
+  </div>
+</div>
+<p>Now say \(F\) is still a locally compact topological field, and that \(R\) is a (possibly non-commutative) \(F\)-algebra. Recall that this means that (\(R=0\) or) \(F\) lies in the centre of \(R\). Assume that \(R\) is finite-dimensional as an \(F\)-vector space. Then if we give \(R\) the \(F\)-module topology (which is just the product topology if we pick a basis) then it is known that \(R\) becomes a topological ring. Now say \(u\in R^\times \), and recall \(\ell _u:R\to R\) is left multiplication by \(u\). Then \(\ell _u\) is easily checked to be an \(F\)-linear homeomorphism. </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.19</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000217"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det" class="lean_decl">MeasureTheory.algebra_ringHaarChar_eq_ringHaarChar_det</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(u\in R^\times \) then \(\delta _R(u)=\delta _F(\det (\ell _u))\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000217">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Follows immediately from the preceding lemma. </p>
+
+  </div>
+</div>
+<h1 id="a0000000051">9.5 Left and right multiplication</h1>
+<p>If \(R\) is a locally compact topological ring, and if multiplication on \(R\) is not commutative, then left and right multiplication by an element of&#160;\(R\) can scale Haar measure in different ways. For example if \(R\) is the upper-triangular \(2\times 2\) matrices with real entries, then left multiplication by \(\begin{pmatrix} a
+
+& 0
+
+\\ 0
+
+& 1
+
+\end{pmatrix}\) sends \(\begin{pmatrix} x
+
+& y
+
+\\ 0
+
+& z
+
+\end{pmatrix}\) to \(\begin{pmatrix} ax
+
+& ay
+
+\\ 0
+
+& z
+
+\end{pmatrix}\) and thus scales \(R\)’s additive Haar measure by \(|a|^2\), but right multiplication by \(\begin{pmatrix} a
+
+& 0
+
+\\ 0
+
+& 1
+
+\end{pmatrix}\) sends \(\begin{pmatrix} x
+
+& y
+
+\\ 0
+
+& z
+
+\end{pmatrix}\) to \(\begin{pmatrix} ax
+
+& y
+
+\\ 0
+
+& z
+
+\end{pmatrix}\) and thus scales \(R\)’s additive Haar measure by a factor of \(|a|\). </p>
+<p>What’s going on here is that if we regard left and right multiplication as \(\mathbb {R}\)-linear maps from \(R\) to \(R\), then their associated matrices with respect to the obvious basis are \(diag(a,a,1)\) and \(diag(a,1,1)\), which have different determinants. </p>
+<p>However, if \(k\) is now any field and if \(B\) is a finite-dimensional central simple algebra over \(k\) (for example a quaternion algebra, the case we’ll care about later), and if \(u\in B^\times \) then \(x\mapsto ux\) and \(x\mapsto xu\) are both \(k\)-linear endomorphisms of \(B\), and I claim that they have the same determinant. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsSimpleRing.mulLeft_det_eq_mulRight_det">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.20</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#IsSimpleRing.mulLeft_det_eq_mulRight_det">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000218"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsSimpleRing.mulLeft_det_eq_mulRight_det" class="lean_decl">IsSimpleRing.mulLeft_det_eq_mulRight_det</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/518">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Say \(B\) is a finite-dimensional central simple algebra over a field&#160;\(k\), and \(u\in B^\times \). Let \(\ell _u:B\to B\) be the \(k\)-linear mapping \(x\) to \(ux\) and let \(r_u:B\to B\) be the \(k\)-linear map sending \(x\) to \(xu\). Then \(\det (\ell _u)=\det (r_u)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000218">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Determinants are unchanged by base extension, so WLOG \(k\) is algebraically closed. Then it’s known that \(B\) must be a matrix algebra, say \(M_n(k)\). Now \(u\) can be thought of as a matrix which has its own intrinsic determinant \(d\), and \(B\) as a left \(B\)-module becomes a direct sum of \(n\) copies of \(V\), the standard \(n\)-dimensional representation of \(B\). Thus \(\det (\ell _u)=d^n\). Similarly \(\det (r_u)=d^n\) and in particular they are equal. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.21</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000219"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight" class="lean_decl">IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(B\) is a central simple algebra over a locally compact field \(F\), and if \(u\in B^\times \), then \(d_B(r_u)=\delta _B(u)\) (recall that the latter is defined to mean \(d_B(\ell _u)\)). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000219">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> If \(\ell _u\) and \(r_u\) denote left and right multiplication by \(u\) on \(B\), then we have seen in lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det">9.18</a> that \(d_B(r_u)=\delta _F(\det (r_u))\). Lemma&#160;<a href="Haar_char_project.html#IsSimpleRing.mulLeft_det_eq_mulRight_det">9.20</a> tells us that this is \(\delta _F(\det (\ell _u))\) and this is \(\delta _B(u)\) again by corollary&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det">9.18</a>. </p>
+
+  </div>
+</div>
+<h1 id="a0000000052">9.6 Finite Products</h1>
+<p>Here are two facts which we will need about products. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_prodCongr">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.22</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000220"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_prodCongr" class="lean_decl">MeasureTheory.addEquivAddHaarChar_prodCongr</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/520">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \((A,+)\) and \((B,+)\) are locally compact topological abelian groups, and if \(\phi :A\to A\) and \(\psi :B\to B\) are additive homeomorphisms, then \(\phi \times \psi :A\times B\to A\times B\) is an additive homeomorphism (this is obvious), and \(d_{A\times B}(\phi \times \psi )=d_A(\phi )d_B(\psi )\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000220">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We only need this result in the case where both \(A\) and \(B\) are second-countable, in which case <span class="tt">Prod.borelSpace</span> can be used to show that Haar measure on \(A\times B\) is the product of Haar measures on \(A\) and \(B\), and in this case the result follows easily. Without this assumption, the product of these measures may not even be a Borel measure and one has to be more careful. The proof in this case is explained by Gouëzel <a href ="https://leanprover.zulipchat.com/#narrow/channel/116395-maths/topic/Product.20of.20Borel.20spaces/near/487257981">here</a>. Here is the idea. Let \(\rho \) be a Haar measure on \(A\times B\). Fix sets \(X\subseteq A\) and \(Y\subseteq B\) which are compact with nonempty interior. We can now pull back \(\rho \) to a measure \(\nu \) on the Borel sigma-algebra of \(A\) defined as \(\nu (s)=\rho (s\times Y)\) and this is easily checked to be a Haar measure on \(A\). Then \(\delta _{A\times B}(a,0)\nu (X)= \delta _{A\times B}(a,0)\rho (X\times Y)=\rho ((a,0)(X\times Y))= \rho (aX\times Y)=\nu (aX)=\delta _A(a)\nu (X)\) , so \(\delta _{A\times B}(a,0)=\delta _A(a)\). Similarly \(\delta _{A\times B}(0,b)=\delta _B(b)\) and because \(\delta _{A\times B}\) is a group homomorphism we’re home. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_piCongrRight">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.23</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_piCongrRight">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000221"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">Lemma 9.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_piCongrRight" class="lean_decl">MeasureTheory.addEquivAddHaarChar_piCongrRight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/521">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>    If \(A_i\) are a finite collection of locally compact topological abelian groups, with \(\phi _i:A_i\to A_i\) additive homeomorphisms, then \(d_{\prod _i A_i}(\prod _i\phi _i)=\prod _i d_{A_i}(\phi _i)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000221">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Induction on the size of the finite set, using the previous lemma. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_prod">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.24</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_prod">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000222"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">Lemma 9.22</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_prod" class="lean_decl">MeasureTheory.ringHaarChar_prod</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(R\) and \(S\) are locally compact topological rings, then \(\delta _{R\times S}(r,s)=\delta _R(r)\times \delta _S(s)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000222">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows immediately from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">9.22</a>. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_pi">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.25</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_pi">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000223"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_piCongrRight">Lemma 9.23</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_pi" class="lean_decl">MeasureTheory.ringHaarChar_pi</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(R_i\) are a finite collection of locally compact topological rings, and \(u_i\in R_i^\times \) then \(\delta _{\prod _i R_i}((u_i)_i)=\prod _i\delta _{R_i}(u_i)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000223">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Follows immediately from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_piCongrRight">9.23</a>. </p>
+
+  </div>
+</div>
+<h1 id="a0000000053">9.7 Some measure-theoretic preliminaries</h1>
+<div class="lemma_thmwrapper theorem-style-plain" id="Topology.IsOpenEmbedding.isHaarMeasure_comap">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.26</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#Topology.IsOpenEmbedding.isHaarMeasure_comap">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000224"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Topology.IsOpenEmbedding.isHaarMeasure_comap" class="lean_decl">Topology.IsOpenEmbedding.isHaarMeasure_comap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/507">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Let \(A\) and \(B\) be locally compact topological groups and let \(f:A\to B\) be both a group homomorphism and open embedding. The pullback along \(f\) of a Haar measure on \(B\) is a Haar measure on \(A\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000224">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Translation-invariance is easy, compact sets are finite because continuous image of compact is compact, open sets are bounded because image of open is open. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="Topology.IsOpenEmbedding.regular_comap">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.27</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#Topology.IsOpenEmbedding.regular_comap">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000225"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Topology.IsOpenEmbedding.regular_comap" class="lean_decl">Topology.IsOpenEmbedding.regular_comap</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/513">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   The pullback of a regular Borel measure along an open embedding is a regular Borel measure. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000225">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Again this is because the image of compact is compact and the image of open is open, so all the properties of being a regular measure are easily checked. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.28</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000226"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace" class="lean_decl">MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/532">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   Say \(A\) is a compact topological additive group and \(\phi :A\to A\) is an additive isomorphism. Then \(d_A(\phi )=1.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000226">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> We have \(d_A(\phi )\mu (A)=\mu (A)\) from lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_preimage">9.5</a> and \(\mu (A)\) is positive and finite because \(A\) is open and compact. </p>
+
+  </div>
+</div>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.29</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000227"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding" class="lean_decl">MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/551">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If \(f:A\to B\) is a group homomorphism and open embedding between locally compact topological additive groups and if \(\alpha :A\to A\) and \(\beta :B\to B\) are additive homeomorphisms such that the square commutes (i.e., \(f\circ \alpha =\beta \circ f\)) then \(d_A(\alpha )=d_B(\beta )\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000227">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Choose a regular Haar measure \(\mu _B\) on \(B\). We just saw in lemmas&#160;<a href="Haar_char_project.html#Topology.IsOpenEmbedding.isHaarMeasure_comap">9.26</a> and&#160;<a href="Haar_char_project.html#Topology.IsOpenEmbedding.regular_comap">9.27</a> that its pullback \(\mu _A:=f^*\mu _B\) to \(A\) is also a regular Haar measure. Now fix a continuous compactly-supported function \(g\) on \(A\) with \(0{\lt}\int g(a)d\mu (a){\lt}\infty \). Then \(d_A(\alpha )\int g(a)d\mu _A(a)=\int g(a)d(\alpha ^*\mu _A)(a)\) by lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_smul_integral_comap">9.7</a>. This equals \(\int g(a)d(\alpha ^* f^*\mu _B)(a)\) by definition, which is \(\int g(a)d(f^*\beta ^*\mu _B)(a)\) because pullback of pullback is pullback. This equals \(d_B(\beta )\int g(a) d(f^*\mu _B)(a)\) by corollary&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_comap">9.4</a> which is \(d_B(\beta )\int g(a)d\mu _A(a)\) by definition, and so \(d_A(\alpha )=d_B(\beta )\) as required. </p>
+
+  </div>
+</div>
+<h1 id="a0000000054">9.8 Restricted products</h1>
+<p>Now say \(A=\prod '_i A_i\) is the restricted product of a collection of types \(A_i\) with respect to the subsets \(C_i\). Recall that this is the subset of \(\prod _i A_i\) consisting of y Say \(B=\prod '_i B_i\) is the restricted product of types \(B_i\) over the same index set, with respect to subsets \(D_i\). Say \(\phi _i:A_i\to B_i\) are functions with the property that \(\phi _i(C_i)\subseteq D_i\) for all but finitely many \(i\). It is easily checked that the \(\phi _i\) induce a function \(\phi :=\prod '_i\phi _i:A\to B\). It is also easily checked that if all the \(A_i\) and \(B_i\) are groups or rings or \(R\)-modules, the \(C_i\) and \(D_i\) are subgroups or subrings or submodules, and the \(\phi _i\) are group or ring or module homomorphisms, then \(\phi \) is a group or ring or module homomorphism. However topological facts lie a little deeper. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="Continuous.restrictedProduct_congrRight">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.30</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#Continuous.restrictedProduct_congrRight">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000228"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/Continuous.restrictedProduct_congrRight" class="lean_decl">Continuous.restrictedProduct_congrRight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/531">Discussion</a>
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>   If the \(A_i\) and \(B_i\) are topological spaces and the \(\phi _i\) are continuous functions, then the restricted product \(\phi = \prod '_i\phi _i\) is a continuous function. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000228">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>We use the universal property <span class="tt">RestrictedProduct.continuous_dom</span> of the topology in mathlib to reduce to the claim that for all finite \(S\), the induced map \(A_S:=\prod _{i\in S}A_i\times \prod _{i\notin S}C_i\to B\) is continuous. Because the inclusion \(A_S\to A_T\) is continuous for \(S\subseteq T\) we are reduced to checking this claim for \(S\) sufficiently large that it contains all of the \(i\) for which \(\phi (C_i)\not=D_i\). For such \(S\), this map \(A_S\to B\) factors as \(A_S\to B_S\to B\) and \(B_S\to B\) is continuous, so it suffices to prove that \(A_S\to B_S\) is continuous, but this is just a product of continuous maps. </p>
+
+  </div>
+</div>
+<p>We now focus on the case that \(B_i=A_i\) are locally compact groups, \(D_i=C_i\) are compact open subgroups, and \(\phi _i:A_i\to A_i\) are group isomorphisms and homeomorphisms sending \(C_i\) onto \(C_i\) for all but finitely many \(i\). Then the restricted product \(A:=\prod 'A_i\) of the \(A_i\) with respect to the \(C_i\) is also a locally compact topological group, and the restricted product \(\phi =\prod '\phi _i\) of the \(\phi _i\) is a group isomorphism and homeomorphism, so we can ask how \(d_A(\phi )\) compares to the \(d_{A_i}(\phi _i)\). </p>
+<p>First note that \(d_{A_i}(\phi _i)=1\) for all the \(i\) such that \(\phi _i(C_i)=C_i\), as \(d_{A_i}(\phi _i)\) can be computed as \(\mu (\phi _i(C_i))/\mu (C_i)\) and \(\mu (C_i)\) is guaranteed to have positive finite measure as it is open and compact. Hence the product \(\prod _id_{A_i}\phi _i\) is a finite product, in the sense that all but finitely many terms are 1. The following theorem shows that the value of this product is \(d(\phi )\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.31</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000229"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight" class="lean_decl">MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/552">Discussion</a>
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   With \(A\), \(A_i\), \(C_i\), \(\phi _i\), \(\phi \) defined as above, we have \(\delta _A(\phi )=\prod _i\delta _{A_i}(\phi _i)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000229">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Assume \(\phi _i(C_i)=C_i\) for all \(i\not\in S\), a finite set, and work in the open subgroup \(U:=\prod _{i\in S}A_i\times \prod _{i\not\in S}C_i\). Then \(\phi \) induces an automorphism \(\phi _S\) of this open subgroup \(U\) of \(A\), and in particular lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_addEquivAddHaarChar_of_isOpenEmbedding">9.29</a> tells us that \(\delta (\phi )=\delta _U(\phi _S)\). Next note that \(\phi _S:U\to U\) can be written as a product of the automorphisms \(\prod _{i\not\in S}\phi _i|_{C_i}\) of \(\prod _{i\not\in S}C_i\) and \(\prod _{i\in S}\phi _i\) of \(\prod _{i\in S}A_i\), so by lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">9.22</a> we have \(\delta (\phi )=\delta (\prod _{i\not\in S}\phi _i|_{C_i})\times \delta (\prod _{i\in S}\phi _i).\) Because \(\prod _{i\not\in S}C_i\) is a compact group we must have \(\delta (\phi _{i\not\in S}\phi _i|_{C_i})=1\) by lemma&#160;<a href="Haar_char_project.html#MeasureTheory.mulEquivHaarChar_eq_one_of_compactSpace">9.28</a>. Finally \(\delta (\prod _{i\in S}\phi _i)=\prod _{i\in S}\delta (\phi _i)\) by lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_piCongrRight">9.23</a> and we are home. </p>
+
+  </div>
+</div>
+<p>As a special case, if \(R\) is the restricted product of a collection of topological rings \(R_i\) (not necessarily commutative) each equipped with a compact open subring \(C_i\), then we have </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_restrictedProduct">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.32</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_restrictedProduct">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000230"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_restrictedProduct" class="lean_decl">MeasureTheory.ringHaarChar_restrictedProduct</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <a class="github_link" href="https://github.com/ImperialCollegeLondon/FLT/issues/554">Discussion</a>
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>   If \(u=(u_i)_i\in R^\times \) then \(\delta _R(u)=\prod _i\delta _{R_i}(u_i)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000230">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> By definition of restricted product we have \(u_i\in C_i\) for all but finitely many \(i\). Note also that \(u\) has an inverse \(v=(v_i)_i\) with \(v_i\in C_i\) for all but finitely many \(i\). The fact that \(u_iv_i=v_iu_i=1\) means that \(u_i,v_i\in C_i^\times \) for all but finitely many \(i\). Thus the previous theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">9.31</a> applies. </p>
+
+  </div>
+</div>
+<h1 id="a0000000055">9.9 Adeles</h1>
+<p>We finish this miniproject by proving some results about Haar characters for algebras over adele rings. So let \(K\) be a number field and let \(\mathbb {A}_K\) be the adeles of \(K\). We will prove some theorems about \(\mathbb {A}_K\)-algebras \(R\) which are finite and free as \(\mathbb {A}_K\)-modules. Such algebras can be given the \(\mathbb {A}_K\)-module topology and this makes them into locally compact topological rings. In fact we shall only be concerned in applications with algebras of the form \(B\otimes _K\mathbb {A}_K\) where \(B\) is a finite-dimensional \(K\)-algebra. So fix such a \(B\), and write \(B_{\mathbb {A}}\) for \(B\otimes _K\mathbb {A}_K\). Let us first deal with a subtlety. Recall that if \(K\subseteq L\) are number fields, then \(\mathbb {A}_L\) is a module-finite \(\mathbb {A}_K\)-algebra and hence an \(\mathbb {A}_K\)-module, and theorem&#160;<a href="Adele_miniproject.html#NumberField.AdeleRing.baseChange_moduleTopology">8.48</a> tells us that \(\mathbb {A}_L\) has the \(\mathbb {A}_K\)-module topology. Thus the next lemma applies. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="IsModuleTopology.continuous_bilinear_of_finite_left">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.33</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#IsModuleTopology.continuous_bilinear_of_finite_left">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000231"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/IsModuleTopology.continuous_bilinear_of_finite_left" class="lean_decl">IsModuleTopology.continuous_bilinear_of_finite_left</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  Say \(R\) and \(S\) are topological rings, and \(S\) is an \(R\)-algebra, finite as an \(R\)-module. Assume that the topology on \(S\) is the \(R\)-module topology. Now say \(M\) is an \(S\)-module, and give it the induced \(R\)-module structure. Then the \(R\)-module topology and \(S\)-module topology on&#160;\(M\) coincide. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000231">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(i:R\to S\) denote the structure map. First observe that \(S\) has the \(R\)-module topology so the \(R\)-action map \(R\times S\to S\) (explicitly defined by \((r,s)\mapsto i(r)s\)) is continuous, and restricting to \(s=1\) we deduce that \(i\) is continuous. </p>
+<p>Now let \(M_R\) and \(M_S\) denote \(M\) with the \(R\)-module and \(S\)-module topologies respectively. It suffices to prove that the identity maps \(M_R\to M_S\) and \(M_S\to M_R\) are continuous. Equivalently, because the \(A\)-module topology on an \(A\)-module is the finest topology making it into a topological module, we need to prove that \(M_R\) is a topological \(S\)-module and that \(M_S\) is a topological \(R\)-module. We start with the latter claim. </p>
+<p>First observe that \(M_S\) is a topological \(S\)-module, so addition is continuous. Next note that the map \(R\times M_S\to M_S\) factors through \(S\times M_S\) and is hence the composite of two continuous maps and thus continuous. Hence \(M_S\) is a topological \(R\)-module. </p>
+<p>It thus remains to check that \(M_R\) is a topological \(S\)-module, or equivalently that the map \(S\times M_R\to M_R\) is continuous. But this map is \(R\)-bilinear, and by the result <span class="tt">Module.continuous_bilinear_of_finite</span> in <span class="tt">mathlib</span>, any \(R\)-bilinear map between modules with the \(R\)-module topology is automatically continuous if one of the source modules is finitely-generated. The result applies because \(S\) is assumed to be a finite \(R\)-module and the proof is complete. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.34</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000232"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv" class="lean_decl">NumberField.AdeleRing.ModuleBaseChangeContinuousAddEquiv</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(K\) is a number field and \(V\) is an \(K\)-module, then the natural isomorphism \(V\otimes _K\mathbb {A}_K=V\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\) induced by the natural isomorphism \(\mathbb {A}_K=K\otimes _K\mathbb {A}_{\mathbb {Q}}\) is a homeomorphism if the left hand side has the \(\mathbb {A}_K\)-module topology and the right hand side has the \(\mathbb {A}_{\mathbb {Q}}\)-module topology. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000232">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Lemma&#160;<a href="Haar_char_project.html#IsModuleTopology.continuous_bilinear_of_finite_left">9.33</a> tells us that \(V\otimes _K\mathbb {A}_K\) has the \(\mathbb {A}_{\mathbb {Q}}\)-module topology, and it is easily checked that the isomorphism is \(\mathbb {A}_{\mathbb {Q}}\)-linear and hence automatically continuous. </p>
+<p>Note that in the Lean we prove this for a general extension \(L/K\) rather than \(K/\mathbb {Q}\). </p>
+
+  </div>
+</div>
+<p>As a consequence, if \(B\) is a \(K\)-algebra then we can think of \(B_{\mathbb {A}}\) as either \(B\otimes _K\mathbb {A}_K\) with the \(\mathbb {A}_K\)-module topology or as \(B\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\) with the \(\mathbb {A}_{\mathbb {Q}}\)-module topology. Note that this isomorphism commutes with the inclusions from \(B\) into these rings. But Lean is picky about these things so we’ll have to be careful. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.35</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000233"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul" class="lean_decl">NumberField.AdeleRing.isCentralSimple_addHaarScalarFactor_left_mul_eq_right_mul</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  Let \(B\) be a finite-dimensional central simple \(K\)-algebra. Say \(u\in B_{\mathbb {A}}^\times \), and define \(\ell _u\) and \(r_u:B_{\mathbb {A}}\to B_{\mathbb {A}}\) by \(\ell _u(x)=ux\) and \(r_u(x)=xu\). Then \(d_{B_{\mathbb {A}}}(\ell _u)=d_{B_{\mathbb {A}}}(r_u)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000233">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> We think of \(B_{\mathbb {A}}\) as \(B\otimes _K\mathbb {A}_K\). If \(u=(u_v)\) as \(v\) runs through the places of \(K\) then \(d_{B_{\mathbb {A}}}(\ell _u)=\prod _v d_{B_v}(\ell _{u_v})\) by theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">9.31</a> (and the product is finite). By corollary&#160;<a href="Haar_char_project.html#IsSimpleRing.ringHaarChar_eq_addEquivAddHaarChar_mulRight">9.21</a> this equals \(\prod _v d_{B_v}(r_{u_v})\), and again by theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">9.31</a> this is \(d_{B_{\mathbb {A}}}(r_u)\). </p>
+
+  </div>
+</div>
+<p>The previous theorem only applies to inner forms of matrix algebras, but the below theorem, a generalization of the adelic product formula, is valid for any finite-dimensional \(K\)-algebra. Before we state it let’s remind ourselves of the product formula for \(\mathbb {Q}\), and restate it in the language of these Haar characters. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_adeles_rat">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.36</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_adeles_rat">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000234"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_adeles_rat" class="lean_decl">MeasureTheory.ringHaarChar_adeles_rat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(x\in \mathbb {A}_{\mathbb {Q}}^\times \) then \(\delta _{\mathbb {A}_{\mathbb {Q}}}(x)=\prod _v|x_v|_v.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000234">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> By theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_prodCongr">9.22</a> we have \(\delta _{\mathbb {A}_{\mathbb {Q}}}(x)=\delta _{\mathbb {A}_{\mathbb {Q}}^\infty }(x^\infty )\times \delta _{\mathbb {R}}(x_\infty )\). By lemma&#160;<a href="Haar_char_project.html#MeasureTheory.ringHaarChar_real">9.14</a> we have \(\delta _{\mathbb {R}}(x_\infty )=|x|_\infty \), and by theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">9.31</a> we have \(\delta _{\mathbb {A}_{\mathbb {Q}}^\infty }=\prod _p\delta _{\mathbb {Q}_p}(x_p)\). By lemma&#160;<a href="Haar_char_project.html#MeasureTheory.ringHaarChar_padic">9.16</a> we have \(\delta _{\mathbb {Q}_p}(x_p)=|x_p|_p\) and putting everything together we get the result. </p>
+
+  </div>
+</div>
+<p>Now \(\mathbb {A}_{\mathbb {Q}}\) is nonzero a \(\mathbb {Q}\)-algebra and hence we have an inclusion \(\mathbb {Q}^\times \to \mathbb {A}_{\mathbb {Q}}^\times \). Here is our reinterpretation of the product formula. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="MeasureTheory.ringHaarChar_adeles_units_rat_eq_one">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">9.37</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.ringHaarChar_adeles_units_rat_eq_one">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000235"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.ringHaarChar_adeles_units_rat_eq_one" class="lean_decl">MeasureTheory.ringHaarChar_adeles_units_rat_eq_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>  If \(x\in \mathbb {Q}^\times \subseteq \mathbb {A}_{\mathbb {Q}}^\times \) then \(\delta _{\mathbb {A}_{\mathbb {Q}}}(x)=1.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000235">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> By lemma&#160;<a href="Haar_char_project.html#MeasureTheory.ringHaarChar_adeles_rat">9.36</a> we have \(\delta _{\mathbb {A}_{\mathbb {Q}}}(x)=\prod _v|x|_v\). But the product formula says that this is 1. A quick proof: if \(x=\pm \prod _pp^{e_p}\) then \(\prod _p|x|_p=\prod _pp^{-e_p}\) and \(|x|_\infty =\prod _pp^{e_p}\) so they cancel. </p>
+
+  </div>
+</div>
+<p>Next we generalize this to finite-dimensional \(\mathbb {Q}\)-vector spaces. </p>
+<p>So say \(V\) is an \(N\)-dimensional \(\mathbb {Q}\)-vector space, and define \(V_{\mathbb {A}}:= V\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\) with its \(\mathbb {A}_{\mathbb {Q}}\)-module topology. If we choose an isomorphism \(V\cong \mathbb {Q}^N\) then \(V_{\mathbb {A}}\cong \mathbb {A}_{\mathbb {Q}}^N\) as an additive topological abelian group. In particular, \(V_{\mathbb {A}}\) is locally compact. </p>
+<p>Fix a \(\mathbb {Q}\)-linear automorphism \(\phi :V\to V\). By base extension \(\phi \) induces an \(\mathbb {A}_{\mathbb {Q}}\)-linear automorphism \(\phi _{\mathbb {A}}\) of \(V_{\mathbb {A}}\) which is also a homeomorphism of \(V_{\mathbb {A}}\) if \(V_{\mathbb {A}}\) is given the module topology as an \(\mathbb {A}_{\mathbb {Q}}\)-module. Our goal is </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9.38</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000236"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one" class="lean_decl">MeasureTheory.addHaarScalarFactor_tensor_adeles_eq_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>  In the above situation (\(V\) a finite-dimensional \(\mathbb {Q}\)-vector space, \(\phi :V\cong V\) is \(\mathbb {Q}\)-linear, \(\phi _{\mathbb {A}}\) the base extension to \(V_{\mathbb {A}}:=V\otimes _{\mathbb {Q}}{\mathbb {A}_{\mathbb {Q}}}\), a continuous linear endomorphism of \(V_{\mathbb {A}}\) with the \(\mathbb {A}_{\mathbb {Q}}\)-module topology), we have \(d_{V_{\mathbb {A}}}(\phi _{\mathbb {A}})=1.\) </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000236">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Fix once and for all a \(\mathbb {Z}\)-lattice \(L\subseteq V\) (that is, a spanning \(\mathbb {Z}^N\) in the \(\mathbb {Q}^N\)). Then \(V\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}=L\otimes _{\mathbb {Z}}\mathbb {A}_{\mathbb {Q}}\) which is \(L\otimes _{\mathbb {Z}}(\mathbb {A}_{\mathbb {Q}}^\infty \times \mathbb {R})\). Because tensoring by a finitely presented module commute with restricted products and binary products this equals \(\prod '_p(L\otimes _{\mathbb {Z}}\mathbb {Q}_p)\times (L\otimes _{\mathbb {Q}}\mathbb {R})\), the restricted product being over \(L\otimes _{\mathbb {Z}}\mathbb {Z}_p\), and this is \(\prod '_p(V\otimes _{\mathbb {Q}}\mathbb {Q}_p)\times (V\otimes _{\mathbb {Q}}\mathbb {R})\). If \(V_v\) denotes \(V\otimes _{\mathbb {Q}}\mathbb {Q}_v\) then the endomorphism \(\phi _{\mathbb {A}}\) is the product of \(\phi _p\) for all \(p\) and \(\phi _\infty \), where \(\phi _v\) is a \(\mathbb {Q}_v\)-linear and and hence continuous automorphism of \(V_v\). </p>
+<p>Hence by theorem&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_restrictedProductCongrRight">9.31</a> we have \(d_{V_{\mathbb {A}}}(\phi _{\mathbb {A}})=\prod _p d_{V_p}(\phi _p)\times d_{V_\infty }(\phi _\infty )\), where we note that all but finitely many of the \(d_{V_p}(\phi _p)\) are 1. </p>
+<p>By Lemma&#160;<a href="Haar_char_project.html#MeasureTheory.addEquivAddHaarChar_eq_ringHaarChar_det">9.18</a> we have that \(d_{V_v}(\phi _v)=\delta _{\mathbb {Q}_v}(\det (\phi _v))\), hence \(d_{V_{\mathbb {A}}}(\phi _{\mathbb {A}})=\prod _v\delta _{\mathbb {Q}_v}(\det (\phi _v))\). But \(\det (\phi _v)\) is equal to the determinant of \(\phi \) on \(V\) as \(\mathbb {Q}\)-vector space (because base change does not change determinant), which is some nonzero rational number \(q\). Thus \(d_{V_{\mathbb {A}}}(\phi _{\mathbb {A}})=\prod _v\delta _{\mathbb {Q}_v}(q)=1\) by the product formula for \(\mathbb {Q}\). </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.units_mem_ringHaarCharacter_ker">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.39</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#NumberField.AdeleRing.units_mem_ringHaarCharacter_ker">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000237"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.units_mem_ringHaarCharacter_ker" class="lean_decl">NumberField.AdeleRing.units_mem_ringHaarCharacter_ker</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(B\) is a finite-dimensional \(\mathbb {Q}\)-algebra (for example a number field, or a quaternion algebra over a number field), if \(B_{\mathbb {A}}\) denotes the ring \(B\otimes _{\mathbb {Q}}\mathbb {A}_{\mathbb {Q}}\), and if \(b\in B^\times \), then \(\delta _{B_{\mathbb {A}}}(b)=1\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000237">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Follows immediately from the previous theorem. </p>
+
+  </div>
+</div>
+<div class="corollary_thmwrapper theorem-style-plain" id="NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">9.40</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="Haar_char_project.html#NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one">#</a>
+    
+    <a class="icon proof" href="Haar_char_project.html#a0000000238"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="https://ImperialCollegeLondon.github.io/FLT/docs/find/#doc/NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one" class="lean_decl">NumberField.AdeleRing.addEquivAddHaarChar_mulRight_unit_eq_one</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>  If \(B\) is a finite-dimensional \(\mathbb {Q}\)-algebra and if \(b\in B^\times \) then right multiplication by \(b\) does not change Haar measure on \(B_{\mathbb {A}}\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000238">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p> Follows immediately from the previous theorem. </p>
+
+  </div>
+</div>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+  <svg  id="showmore-minus" class="icon icon-eye-minus showmore"><use xlink:href="symbol-defs.svg#icon-eye-minus"></use></svg>
+
+  <svg  id="showmore-plus" class="icon icon-eye-plus showmore"><use xlink:href="symbol-defs.svg#icon-eye-plus"></use></svg>
+
+  <a href="Adele_miniproject.html" title="Miniproject: Adeles"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
+</a>
+  <a href="index.html" title="Towards a Lean proof of Fermat’s Last Theorem"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+</a>
+  <a href="Fujisaki_project.html" title="Miniproject: Fujisaki’s Lemma"><svg  class="icon icon-arrow-right "><use xlink:href="symbol-defs.svg#icon-arrow-right"></use></svg>
+</a>
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/js.cookie.min.js"></script>
+<script type="text/javascript" src="js/showmore.js"></script>
+</body>
+</html>
